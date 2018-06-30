@@ -12,7 +12,7 @@ Clarifying clearly that IVOXIS IVOXTOKEN will not be used to buy iVOXCOIN SAPI s
 IVOXIS IVOXTOKEN
 ERC 20
 Capaity:20000000
-Unit: 18 decimals
+Unity: 18 decimals
 Sale on: Ether Delta.
 
 We are working on the Whitepaper and the specific Roadmap of the Token.
