@@ -36,6 +36,8 @@ Roberto Best is a professional in the field of sustainable energy in Mexico, spe
 Legal
 The legal department will work on project contracts and patents to ensure that the project is carried out in a correct manner complying with Mexican laws and evaluating the best legal options for the company.In charge of Carlos Sanchés, Mexican lawyer and Founder of IVOXCOIN.
 
-For my part I keep bringing in the Whitepaper to make it known during the week of the Token. Our company is in development and understands different strategic plans, we will not implement publicity for this project because it is a project open to the public but that depends in turn on iVOX Token, IVOXCOIN SAPI and All its other derivatives
+For my part I keep bringing in the Whitepaper to make it known during the week of the Token. Our company is in development and understands different strategic plans, we will not implement publicity for this project because it is a project open to the public but that depends in turn on iVOX Token, IVOXCOIN SAPI and All its other derivatives.
+
+Buy in Etherdelta https://etherdelta.com/#0x1c26c58d230b48a7e012f27d769703909309c75c-ETH
 
 Jordi Prats/ Ceo and Founder 30 Jun 2018
