@@ -14,6 +14,7 @@ ERC 20
 Capaity:20000000
 Unity: 18 decimals
 Sale on: Ether Delta.
+Only 7,000000 to sale13,000000 are reserv funds.
 
 We are working on the Whitepaper and the specific Roadmap of the Token.
 
