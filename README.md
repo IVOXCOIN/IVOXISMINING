@@ -10,6 +10,7 @@ So those interested in buying shares of the IVOXIS project can invest and receiv
 Clarifying clearly that IVOXIS IVOXTOKEN will not be used to buy iVOXCOIN SAPI shares only from the IVOXIS mining project, to buy assets or shares of IVOXCOIN SAPI you must buy Token iVOX and they are not the same currency. Both belong to IVOXCOIN but have different characteristics and purposes of financing as well as sale of shares and royalties.
 
 IVOXIS IVOXTOKEN
+Contract: 0x1c26c58d230b48a7e012f27d769703909309c75c
 ERC 20
 Capaity:20000000
 Unity: 18 decimals
