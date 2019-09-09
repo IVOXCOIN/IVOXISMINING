@@ -1,0 +1,116 @@
+<div>
+    <div class="row">
+        <div class="col">
+            <h1 style="margin: 20px 0"></h1>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col">
+            <table class="table table-responsive table-hover w-100 d-block d-md-table">
+                <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Rate</th>
+                </tr>
+                </thead>
+                <tbody>
+                    <ng-container *ngFor="let currency of currencies">
+                        <tr id="{{currency.id}}">
+                            <td>{{currency.name}}</td>
+                            <td>{{currency.rate | currency}}</td>
+                            <td>
+                                <div style="width: 110px">
+                                    <button type="button" class="btn btn-warning" data-toggle="modal" [attr.data-target]="'#modal-' + currency.name">
+                                        Edit
+                                    </button>
+                                    <!-- Modal -->
+                                    <div class="modal fade" id="{{ 'modal-' + currency.name }}" tabindex="-1" role="dialog" aria-labelledby="editModalLabel" aria-hidden="true">
+                                        <div class="modal-dialog" role="document">
+                                            <div class="modal-content">
+                                                <div class="modal-header">
+                                                    <h5 class="modal-title" id="editModalLabel">Edit Currency</h5>
+                                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                    <span aria-hidden="true">&times;</span>
+                                                    </button>
+                                                </div>
+                                                <div class="modal-body">
+                                                    <form #editForm="ngForm">
+                                                        <div class="form-group">
+                                                            <label for="name">Name</label>
+                                                            <input type="text" name="name" class="form-control" id="name" [ngModel]="currency.name">
+                                                        </div>
+                                                        <div class="form-group">
+                                                            <label for="rate">Rate</label>
+                                                            <input type="text" name="rate" class="form-control" id="rate" [ngModel]="currency.rate">
+                                                        </div>
+                                                        <button type="button" (click)='editCurrency(editForm.value)' data-dismiss="modal" class="btn btn-primary">Submit</button>
+                                                    </form>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <button type="button" class="btn btn-danger" data-toggle="modal" [attr.data-target]="'#deleteModal-' + currency.name">Del</button>
+                                                                        
+                                    <!-- Modal -->
+                                    <div class="modal fade" id="{{ 'deleteModal-' + currency.name }}" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+                                        <div class="modal-dialog modal-dialog-centered" role="document">
+                                            <div class="modal-content">
+                                                <div class="modal-header">
+                                                <h5 class="modal-title" id="exampleModalLongTitle">Delete Currency</h5>
+                                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                    <span aria-hidden="true">&times;</span>
+                                                </button>
+                                                </div>
+                                                <div class="modal-body">
+                                                Do you really want to delete the {{currency.name}} currency?
+                                                </div>
+                                                <div class="modal-footer">
+                                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                                <button type="button" (click)='deleteCurrency(currency)' data-dismiss="modal" class="btn btn-danger">Delete</button>
+                                            </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </td>
+                        </tr>
+                    </ng-container>
+                </tbody>
+            </table>
+
+        </div>
+    </div>
+    <div class="row">
+        <div class="col">
+            <button type="button" class="btn btn-success" data-toggle="modal" [attr.data-target]="'#addModal'">
+                    Add
+                </button>
+                <!-- Modal -->
+            <div class="modal fade" id="{{ 'addModal' }}" tabindex="-1" role="dialog" aria-labelledby="addModalLabel" aria-hidden="true">
+                <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="addModalLabel">Add Currency</h5>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                        <div class="modal-body">
+                            <form #addForm="ngForm">
+                                <div class="form-group">
+                                    <label for="name">Name</label>
+                                    <input type="text" name="name" class="form-control" id="name" ngModel>
+                                </div>
+                                <div class="form-group">
+                                    <label for="rate">Rate</label>
+                                    <input type="text" name="rate" class="form-control" id="rate" ngModel>
+                                </div>
+                                <button type="button" (click)='addCurrency(addForm.value)' data-dismiss="modal" class="btn btn-primary">Submit</button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,40 @@
+<div>
+    <div class="row">
+        <div class="col">
+            <h1 style="margin: 20px 0"></h1>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col">
+            <table class="table table-responsive table-hover w-100 d-block d-md-table">
+                <thead>
+                <tr>
+                    <th>PayPal ID</th>
+                    <th>Transaction ID</th>
+                    <th>Network</th>
+                    <th>Destination</th>
+                    <th>Currency</th>
+                    <th>Amount - Eth</th>
+                    <th>Amount - Currency</th>
+                    <th>Description</th>
+                </tr>
+                </thead>
+                <tbody>
+                    <ng-container *ngFor="let transaction of transactions">
+                        <tr>
+                            <td>{{transaction.paypal}}</td>
+                            <td>{{transaction.id}}</td>
+                            <td>{{transaction.network}}</td>
+                            <td>{{transaction.destination}}</td>
+                            <td>{{transaction.currency}}</td>
+                            <td>{{transaction.amount.eth}}</td>
+                            <td>{{transaction.amount.currency | currency}}</td>
+                            <td>{{transaction.status}}</td>
+                        </tr>
+                    </ng-container>
+                </tbody>
+            </table>
+
+        </div>
+    </div>
+</div>
