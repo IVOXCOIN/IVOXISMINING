@@ -106,7 +106,7 @@
             android:textStyle="bold"
             app:layout_constraintBaseline_toBaselineOf="@id/wallet_card_value_usd"
             app:layout_constraintStart_toEndOf="@id/wallet_card_currency_usd"
-            tools:text="\@ 731.13/ETH" />
+            tools:text="\@ 731.13/IVOX" />
 
         <android.support.constraint.ConstraintLayout
             android:id="@+id/wallet_card_address_container"

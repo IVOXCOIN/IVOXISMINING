@@ -8,8 +8,8 @@ import com.myetherwallet.mewconnect.R
  */
 enum class Network(val fullName: Int, val shortName: Int, val currency: Int, val apiMethod: String, val path: String, val chainId: Byte) {
 
-    MAIN(R.string.wallet_network_main_full, R.string.wallet_network_main_short, R.string.wallet_network_main_currency, "eth", "m/44'/60'/0'/0", 1),
-    RINKEBY(R.string.wallet_network_rinkeby_full, R.string.wallet_network_rinkeby_short, R.string.wallet_network_rinkeby_currency, "rin", "m/44'/1'/0'/0", 4);
+    MAIN(R.string.wallet_network_main_full, R.string.wallet_network_main_short, R.string.wallet_network_main_currency, "eth", "m/44'/60'/0'/0", 1);
+    //RINKEBY(R.string.wallet_network_rinkeby_full, R.string.wallet_network_rinkeby_short, R.string.wallet_network_rinkeby_currency, "rin", "m/44'/1'/0'/0", 4);
 
     companion object {
 

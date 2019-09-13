@@ -67,7 +67,7 @@
             android:maxLines="1"
             android:textColor="@color/text_white"
             android:textSize="@dimen/text_size_fixed_14sp"
-            tools:text="0.5679 ETH" />
+            tools:text="0.5679 IVOX" />
 
         <TextView
             android:id="@+id/wallet_toolbar_network"

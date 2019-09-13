@@ -7,28 +7,31 @@
 
     <TextView
         android:id="@+id/wallet_list_title"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="@dimen/dimen_168dp"
+        android:layout_height="0dp"
         android:layout_marginStart="@dimen/dimen_16dp"
         android:layout_marginTop="@dimen/dimen_8dp"
         android:fontFamily="sans-serif-medium"
         android:letterSpacing="0.03"
+        android:minLines="3"
         android:textColor="@color/text_black"
         android:textSize="@dimen/text_size_16sp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        tools:text="0xBitcoin Token" />
+        tools:text="0xBitcoin Token XXXXXXXXXXXXXXXXXXXXXXXXX" />
 
     <TextView
         android:id="@+id/wallet_list_value"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_alignBottom="@id/wallet_list_title"
         android:layout_marginStart="@dimen/dimen_16dp"
-        android:layout_marginBottom="@dimen/dimen_8dp"
+        android:layout_marginBottom="@dimen/dimen_2dp"
         android:letterSpacing="0.02"
+        android:paddingTop="@dimen/dimen_32dp"
         android:textColor="@color/text_grey"
         android:textSize="@dimen/text_size_14sp"
-        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintBottom_toBottomOf="@id/wallet_list_title"
         app:layout_constraintStart_toStartOf="parent"
         tools:text="0.001 0xBTC" />
 

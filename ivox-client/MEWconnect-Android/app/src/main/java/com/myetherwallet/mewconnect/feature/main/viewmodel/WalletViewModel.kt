@@ -121,6 +121,7 @@ class WalletViewModel
         private val client = OkHttpClient()
 
         fun execute() {
+            balances = mutableListOf<Balance>()
             loadWalletBalance()
             loadAllBalances()
         }

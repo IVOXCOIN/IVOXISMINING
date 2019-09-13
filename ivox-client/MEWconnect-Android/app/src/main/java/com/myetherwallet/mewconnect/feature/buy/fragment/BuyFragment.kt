@@ -59,10 +59,10 @@ import okhttp3.*
  */
 
 const val CURRENCY_MXN = "MXN"
-const val CURRENCY_ETH = "ETH"
+const val CURRENCY_IVOX = "IVOX"
 private const val ETH_DECIMALS = 8
-private val LIMIT_MIN = BigDecimal(50)
-private val LIMIT_MAX = BigDecimal(20000)
+private val LIMIT_MIN = BigDecimal(500)
+private val LIMIT_MAX = BigDecimal(1500000)
 private const val EXTRA_STOCK_PRICE = "stock_price"
 
 class BuyFragment : BaseViewModelFragment() {
@@ -231,6 +231,10 @@ class BuyFragment : BaseViewModelFragment() {
         val intent = Intent(this.activity, PayPalService::class.java)
         intent.putExtra(PayPalService.EXTRA_PAYPAL_CONFIGURATION, config)
         this.activity?.startService(intent)
+
+        displayToast(this.activity!!.resources!!.displayMetrics!!.density.toString())
+        
+
     }
 
     private fun getEthereumToBuy(paymentIntent: String,
@@ -287,7 +291,6 @@ class BuyFragment : BaseViewModelFragment() {
 
             buy_button_delete.isEnabled = true
             buy_toggle_currency.isEnabled = true
-            buy_button.isEnabled = true
         })
     }
 
@@ -308,7 +311,6 @@ class BuyFragment : BaseViewModelFragment() {
 
             buy_button_delete.isEnabled = false
             buy_toggle_currency.isEnabled = false
-            buy_button.isEnabled = false
         })
     }
 
@@ -508,10 +510,10 @@ class BuyFragment : BaseViewModelFragment() {
         if (isInUsd) {
             buy_currency_1.text = CURRENCY_MXN
             buy_symbol_1.text = "$"
-            buy_currency_2.text = CURRENCY_ETH
+            buy_currency_2.text = CURRENCY_IVOX
             buy_symbol_2.text = ""
         } else {
-            buy_currency_1.text = CURRENCY_ETH
+            buy_currency_1.text = CURRENCY_IVOX
             buy_symbol_1.text = ""
             buy_currency_2.text = ""
             buy_symbol_2.text = "$"

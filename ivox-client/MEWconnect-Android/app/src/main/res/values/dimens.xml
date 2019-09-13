@@ -72,7 +72,7 @@
     <dimen name="text_size_fixed_48sp">48dp</dimen>
 
     <dimen name="wallet_scroll_threshold">216dp</dimen>
-    <dimen name="wallet_list_item_height">56dp</dimen>
+    <dimen name="wallet_list_item_height">72dp</dimen>
     <dimen name="wallet_list_footer_height">80dp</dimen>
     <dimen name="wallet_toolbar_height">48dp</dimen>
     <dimen name="wallet_header_height">96dp</dimen>

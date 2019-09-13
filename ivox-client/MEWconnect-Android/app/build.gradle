@@ -6,7 +6,7 @@ apply plugin: 'org.jetbrains.kotlin.android.extensions'
 
 int MAJOR_VERSION = 0
 int MINOR_VERSION = 0
-int MICRO_VERSION = 3
+int MICRO_VERSION = 1
 int BUILD_FOR_TODAY = 1
 
 def secretsPropertiesFile = rootProject.file("secrets.properties");
@@ -39,7 +39,7 @@ android {
         buildConfigField "String", "APICCSWAP_API_KEY", "\"" + secretsProperties['apiccswapApiKey'] + "\""
         buildConfigField "String", "APICCSWAP_REFERER", "\"" + secretsProperties['apiccswapReferer'] + "\""
         buildConfigField "String", "RATES_API_END_POINT", "\"https://cryptorates.mewapi.io/\""
-        buildConfigField "String", "IVOX_API_TOKEN_END_POINT", "\"https://ivox-ethereum.herokuapp.com\""
+        buildConfigField "String", "IVOX_API_TOKEN_END_POINT", "\"https://ivox-backend.herokuapp.com\""
         //buildConfigField "String", "IVOX_API_TOKEN_END_POINT", "\"http://192.168.0.2:3000\""
     }
     buildTypes {

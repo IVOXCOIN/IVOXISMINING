@@ -144,6 +144,17 @@ class WalletFragment : BaseViewModelFragment() {
             return
         }
 
+        wallet_list.isLayoutFrozen = true
+        wallet_list.isVerticalScrollBarEnabled = false
+        wallet_list.isNestedScrollingEnabled = false
+        wallet_list.alpha = 0.0f
+
+        wallet_header.alpha = 1.0f
+        wallet_header.isClickable = false
+
+        wallet_header.setSearchVisible(false)
+
+
         load()
     }
 
@@ -189,7 +200,7 @@ class WalletFragment : BaseViewModelFragment() {
                 wallet_header.setSearchVisible(false)
             } else {
                 wallet_empty.visibility = GONE
-                wallet_header.setSearchVisible(true)
+                wallet_header.setSearchVisible(false)
 
                 val items = it.items
                 adapter.items = items.toMutableList()

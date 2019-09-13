@@ -8,15 +8,42 @@
     android:background="@color/wallet_background"
     android:orientation="vertical">
 
+    <Button
+        android:id="@+id/transfer_tokens"
+        style="@style/Widget.AppCompat.Button.Colored"
+        android:layout_width="250dp"
+        android:layout_height="64dp"
+        android:layout_marginStart="48dp"
+        android:layout_marginTop="440dp"
+        android:padding="10dp"
+        android:shape="rectangle"
+        android:text="Transferir tokens"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/view_tokens"
+        style="@style/Widget.AppCompat.Button.Colored"
+        android:layout_width="250dp"
+        android:layout_height="64dp"
+        android:layout_marginStart="48dp"
+        android:layout_marginTop="370dp"
+        android:text="Ver tokens"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+
     <android.support.design.widget.CoordinatorLayout
         android:id="@+id/wallet_coordinator_layout"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
+
         <android.support.v7.widget.RecyclerView
             android:id="@+id/wallet_list"
             android:layout_width="match_parent"
-            android:layout_height="match_parent" />
+            android:layout_height="match_parent"
+            android:visibility="invisible" />
 
         <FrameLayout
             android:id="@+id/wallet_scrollable_container"
@@ -38,7 +65,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/dimen_80dp"
                 android:background="@drawable/wallet_content_background"
-                android:elevation="@dimen/dimen_12dp" />
+                android:elevation="@dimen/dimen_12dp"
+                android:visibility="invisible"/>
 
             <com.myetherwallet.mewconnect.feature.main.view.WalletToolbar
                 android:id="@+id/wallet_toolbar"

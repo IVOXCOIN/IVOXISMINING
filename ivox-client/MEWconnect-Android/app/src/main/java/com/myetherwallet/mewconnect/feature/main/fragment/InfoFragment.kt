@@ -37,7 +37,7 @@ class InfoFragment : BaseDiFragment(), Toolbar.OnMenuItemClickListener {
         info_user_guide.setOnClickListener { LaunchUtils.openWebSite(context, "https://kb.myetherwallet.com/getting-started/mew-connect-user-guide.html") }
         info_knowledge_base.setOnClickListener { LaunchUtils.openWebSite(context, "https://myetherwallet.github.io/knowledge-base/") }
         info_privacy_and_terms.setOnClickListener { LaunchUtils.openWebSite(context, "https://www.myetherwallet.com/privacy-policy.html") }
-        info_site.setOnClickListener { LaunchUtils.openWebSite(context, "https://www.myetherwallet.com") }
+        info_site.setOnClickListener { LaunchUtils.openWebSite(context, "https://www.ivoxcoin.com") }
 
         info_version.text = getString(R.string.info_version, BuildConfig.VERSION_NAME, BuildConfig.VERSION_CODE)
 
