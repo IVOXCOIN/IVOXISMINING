@@ -20,10 +20,10 @@ import java.io.IOException
 import java.math.BigDecimal
 import javax.inject.Inject
 
-class TokensFragment : BaseDiFragment(), Toolbar.OnMenuItemClickListener {
+class TransactionFragment : BaseDiFragment(), Toolbar.OnMenuItemClickListener {
 
     companion object {
-        fun newInstance() = TokensFragment()
+        fun newInstance() = TransactionFragment()
     }
 
     @Inject
