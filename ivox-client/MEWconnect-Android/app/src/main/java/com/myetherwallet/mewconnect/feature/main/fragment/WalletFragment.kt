@@ -121,6 +121,7 @@ class WalletFragment : BaseViewModelFragment() {
         wallet_toolbar.onNetworkClickListener = ::showNetworkMenu
 
         view_tokens.setOnClickListener { addFragment(TokensFragment.newInstance()) }
+        transfer_tokens.setOnClickListener { addFragment(TransactionFragment.newInstance()) }
 
         // Auto scroll on search start
         wallet_header.onEnterSearchModeListener = {

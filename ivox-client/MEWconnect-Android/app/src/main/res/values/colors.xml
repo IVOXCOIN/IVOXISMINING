@@ -45,4 +45,10 @@
     <color name="buy_keyboard_background">#f9f9f9</color>
 
     <color name="address_copy_background">#ebf1fc</color>
+
+    <color name="transaction_intro">#f64c73</color>
+    <color name="transaction_amount">#20d2bb</color>
+    <color name="transaction_wallet">#3395ff</color>
+    <color name="transaction_password">#c873f4</color>
+
 </resources>
