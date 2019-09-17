@@ -10,8 +10,6 @@ import com.myetherwallet.mewconnect.core.ui.fragment.BaseDiFragment
 import com.myetherwallet.mewconnect.core.utils.KeyboardStateObserver
 import com.myetherwallet.mewconnect.feature.register.fragment.password.PickPasswordFragment
 import kotlinx.android.synthetic.main.fragment_enter_recovery_phrase.*
-import org.web3j.crypto.MnemonicUtils
-
 
 /**
  * Created by BArtWell on 13.08.2018.
@@ -57,6 +55,7 @@ class EnterRecoveryPhraseFragment : BaseDiFragment() {
         text = text.replace(Regex("\\s+"), " ")
         text = text.trim()
         val wordsCount = text.count { " ".contains(it) } + 1
+        //if (wordsCount == WORDS_COUNT && MnemonicUtils.validateMnemonic(text)) { // @TODO true validateMnemonic implementation
         if (wordsCount == WORDS_COUNT && MnemonicUtils.validateMnemonic(text)) {
             addFragment(PickPasswordFragment.newInstance(text))
         } else {
