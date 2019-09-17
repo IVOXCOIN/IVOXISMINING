@@ -55,7 +55,6 @@ class EnterRecoveryPhraseFragment : BaseDiFragment() {
         text = text.replace(Regex("\\s+"), " ")
         text = text.trim()
         val wordsCount = text.count { " ".contains(it) } + 1
-        //if (wordsCount == WORDS_COUNT && MnemonicUtils.validateMnemonic(text)) { // @TODO true validateMnemonic implementation
         if (wordsCount == WORDS_COUNT && MnemonicUtils.validateMnemonic(text)) {
             addFragment(PickPasswordFragment.newInstance(text))
         } else {

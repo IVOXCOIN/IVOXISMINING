@@ -18,6 +18,42 @@ import org.spongycastle.crypto.digests.SHA512Digest;
 import org.spongycastle.crypto.generators.PKCS5S2ParametersGenerator;
 import org.spongycastle.crypto.params.KeyParameter;
 
+import org.web3j.crypto.LinuxSecureRandom;
+
+import java.security.SecureRandom;
+
+import org.web3j.crypto.Hash;
+
+final class SecureRandomUtils {
+    private static final SecureRandom SECURE_RANDOM;
+    private static int isAndroid;
+
+    static SecureRandom secureRandom() {
+        return SECURE_RANDOM;
+    }
+
+    static boolean isAndroidRuntime() {
+        if (isAndroid == -1) {
+            String runtime = System.getProperty("java.runtime.name");
+            isAndroid = runtime != null && runtime.equals("Android Runtime") ? 1 : 0;
+        }
+
+        return isAndroid == 1;
+    }
+
+    private SecureRandomUtils() {
+    }
+
+    static {
+        if (isAndroidRuntime()) {
+            new LinuxSecureRandom();
+        }
+
+        SECURE_RANDOM = new SecureRandom();
+        isAndroid = -1;
+    }
+}
+
 public class MnemonicUtils {
     private static final int SEED_ITERATIONS = 2048;
     private static final int SEED_KEY_SIZE = 512;
