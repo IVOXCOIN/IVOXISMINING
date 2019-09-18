@@ -42,7 +42,7 @@ import java.util.regex.Pattern
 import org.web3j.crypto.Credentials
 import org.web3j.crypto.WalletUtils
 import org.web3j.protocol.Web3j
-//import org.web3j.protocol.Web3jFactory
+import org.web3j.protocol.Web3jFactory
 import org.web3j.protocol.core.methods.response.TransactionReceipt
 import org.web3j.protocol.http.HttpService
 import org.web3j.tx.ChainId
@@ -157,15 +157,36 @@ class TransactionFragment : BaseDiFragment(), Toolbar.OnMenuItemClickListener {
             builder.setPositiveButton("OK"){dialog, which ->
                 val password = editText.text.toString()
                 val privateKey = StorageCryptHelper.decrypt(preferences.getCurrentWalletPreferences().getWalletPrivateKey(), password)
-                if (checkPrivateKey(privateKey)) {
 
-                    val privateKeyString = HexUtils.bytesToStringLowercase(privateKey)
+                var isDestinationWalletValid = false
 
-                    displayToast(privateKeyString)
+                if(Ethereum.isValidAddress(transfer_wallet.text.toString()))
+                {
+                    isDestinationWalletValid = true
+                }
+                else if(Ethereum.isChecksumAddress(transfer_wallet.text.toString()))
+                {
+                    isDestinationWalletValid = true
+                }
 
+                if(!isDestinationWalletValid){
+                    displayToast(activity!!.getText(R.string.transfer_wallet_error).toString())
                 } else {
+                    if (checkPrivateKey(privateKey)) {
+
+                        val privateKeyString = HexUtils.bytesToStringLowercase(privateKey)
+
+                        transferCoins(transfer_wallet.text.toString(),
+                                        transfer_amount.text.toString().toDouble(),
+                                        privateKeyString)
+
+                    } else {
+                        displayToast(activity!!.getText(R.string.transfer_wrong_password).toString())
+                    }
 
                 }
+
+
 
             }
 
@@ -187,12 +208,12 @@ class TransactionFragment : BaseDiFragment(), Toolbar.OnMenuItemClickListener {
 
     }
 
-    fun transferCoins (toAccount: String, coinAmount: Int, clientPrivateKey: String){
+    fun transferCoins (toAccount: String, coinAmount: Double, clientPrivateKey: String){
 
 
         // if testing, use https://ropsten.etherscan.io/address/[Your contract address]
 
-        var web3 = Web3j.build(HttpService(INFURA_URL))
+        var web3 = Web3jFactory.build(HttpService(INFURA_URL))
 
 
         try{
