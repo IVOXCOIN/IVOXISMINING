@@ -145,6 +145,9 @@
     <string name="transfer_wallet_error">La cartera destino no es una cartera valida</string>
     <string name="transfer_wrong_password">Contraseña incorrecta</string>
 
+    <string name="transfer_complete">Transaccion completa, por favor espere hasta 30 minutos para que se vea reflejada en Etherscan</string>
+    <string name="transfer_insufficient_funds">Fondos insuficientes</string>
+
     <string name="transfer_info">Informacion</string>
 
     <string name="transfer_ether_message">El uso de transferencia de tokens requiere que su cartera contenga ether suficiente para minar la transaccion, para hacer una transferencia de Ether a su cartera puede visitar https://ivoxcoin.com/ether</string>

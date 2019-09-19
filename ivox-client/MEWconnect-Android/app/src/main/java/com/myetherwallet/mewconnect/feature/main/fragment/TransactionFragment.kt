@@ -26,6 +26,7 @@ import android.view.ViewGroup
 import android.view.LayoutInflater
 import android.support.v4.view.PagerAdapter
 import android.text.InputFilter
+import android.text.InputType
 import android.text.SpannableString
 import android.text.Spanned
 import android.text.util.Linkify
@@ -146,6 +147,9 @@ class TransactionFragment : BaseDiFragment(), Toolbar.OnMenuItemClickListener {
 
         confirm_transfer_tokens.setOnClickListener {
             val editText = EditText(activity!!)
+
+            editText.inputType = InputType.TYPE_CLASS_TEXT or InputType.TYPE_TEXT_VARIATION_PASSWORD
+
             val builder = AlertDialog.Builder(activity!!)
 
             builder.setTitle(activity!!.getText(R.string.transfer_info))
@@ -218,10 +222,6 @@ class TransactionFragment : BaseDiFragment(), Toolbar.OnMenuItemClickListener {
 
         try{
 
-            var web3ClientVersion = web3.web3ClientVersion().send()
-            var clientVersion = web3ClientVersion.getWeb3ClientVersion()
-            System.out.println("clientVersion " + clientVersion)
-
             val privateKey = clientPrivateKey
             val key = BigInteger(privateKey,16)
             var ecKeyPair = ECKeyPair.create(key.toByteArray())
@@ -236,33 +236,46 @@ class TransactionFragment : BaseDiFragment(), Toolbar.OnMenuItemClickListener {
 
 
             // need to use the java wrapper filed generated before
-            var mycontract = MICE.load(CONTRACT_ADDRESS, web3, transactionManager, GAS_PRICE, GAS_LIMIT)
+            var mycontract = MICE.load(CONTRACT_ADDRESS, web3, transactionManager, GAS_PRICE, BigInteger("200000"))
 
 
-            var _value = BigInteger.valueOf( (coinAmount * Math.pow(10.0, 8.0)).toLong() )
+            var value = Convert.toWei(coinAmount.toString(), Convert.Unit.ETHER).toBigInteger()
+            var balance = mycontract.balanceOf(address).sendAsync().get()
+
+            if(balance - value >= BigInteger("0")){
+                try {
+
+                    var mReceipt = mycontract.transfer(toAccount, value).sendAsync().get()
+
+                    val sTransHash = mReceipt.getTransactionHash()
 
 
-            try {
+                    System.out.println("toAccount: " + toAccount + " coinAmount: " + coinAmount + " transactionhash: " + sTransHash)
 
-                var mReceipt = mycontract.transfer(toAccount, _value).sendAsync().get()
+                    // You can view the transaction record on https://etherscan.io/tx/[transaction hash]
+                    // if testing , on https://ropsten.etherscan.io/tx/[transaction hash]
 
-                val sTransHash = mReceipt.getTransactionHash()
+                    displayToast(activity!!.getText(R.string.transfer_complete).toString())
 
+                    goBack()
 
-                System.out.println("toAccount: " + toAccount + " coinAmount: " + coinAmount + " transactionhash: " + sTransHash)
-
-                // You can view the transaction record on https://etherscan.io/tx/[transaction hash]
-                // if testing , on https://ropsten.etherscan.io/tx/[transaction hash]
-            } catch (e: Exception) {
-                System.out.println("Ethereum Exception " + e.message)
-                displayToast("Ethereum Exception " + e.message)
-
+                } catch (e: Exception) {
+                    System.out.println("Ethereum Exception " + e.message)
+                    displayToast("Ethereum Exception " + e.message)
+                    goBack()
+                }
+            } else {
+                displayToast(activity!!.getText(R.string.transfer_insufficient_funds).toString())
+                goBack()
             }
+
+
 
         }catch(e: IOException){
             System.out.println("Ethereum IOException " + e.message)
 
             displayToast("Ethereum IOException " + e.message)
+            goBack()
         }
     }
 
@@ -274,6 +287,12 @@ class TransactionFragment : BaseDiFragment(), Toolbar.OnMenuItemClickListener {
             }
         }
         return false
+    }
+
+    private fun goBack(){
+        this.activity?.runOnUiThread(java.lang.Runnable {
+            close()
+        })
     }
 
     private fun displayToast(message: String){
