@@ -232,7 +232,7 @@ class BuyFragment : BaseViewModelFragment() {
         intent.putExtra(PayPalService.EXTRA_PAYPAL_CONFIGURATION, config)
         this.activity?.startService(intent)
 
-        displayToast(this.activity!!.resources!!.displayMetrics!!.density.toString())
+        //displayToast(this.activity!!.resources!!.displayMetrics!!.density.toString())
         
 
     }
