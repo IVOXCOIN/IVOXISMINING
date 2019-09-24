@@ -64,6 +64,8 @@ private const val ETH_DECIMALS = 8
 private val LIMIT_MIN = BigDecimal(500)
 private val LIMIT_MAX = BigDecimal(1500000)
 private const val EXTRA_STOCK_PRICE = "stock_price"
+private const val MAX_ETHER_VALUE = "1000000"
+
 
 class BuyFragment : BaseViewModelFragment() {
 
@@ -113,6 +115,9 @@ class BuyFragment : BaseViewModelFragment() {
     private var isInUsd = false
     private var price = BigDecimal.ZERO
     private var gasPrice = BigDecimal.ZERO
+
+    private var walletBalance: BigDecimal? = null
+
 
     private val client = OkHttpClient()
 
@@ -203,22 +208,30 @@ class BuyFragment : BaseViewModelFragment() {
 
             }
 
+            if(walletBalance!! + BigDecimal(ethereumValue) <= BigDecimal(MAX_ETHER_VALUE)){
+                val ethereumToBuy = getEthereumToBuy(PayPalPayment.PAYMENT_INTENT_SALE,
+                        currentValue,
+                        ethereumValue)
 
+                val intent = Intent(this.activity, PaymentActivity::class.java)
 
-            val ethereumToBuy = getEthereumToBuy(PayPalPayment.PAYMENT_INTENT_SALE,
-                                                 currentValue,
-                                                 ethereumValue)
+                // send the same configuration for restart resiliency
+                intent.putExtra(PayPalService.EXTRA_PAYPAL_CONFIGURATION, config)
 
-            val intent = Intent(this.activity, PaymentActivity::class.java)
+                intent.putExtra(PaymentActivity.EXTRA_PAYMENT, ethereumToBuy)
 
-            // send the same configuration for restart resiliency
-            intent.putExtra(PayPalService.EXTRA_PAYPAL_CONFIGURATION, config)
+                this.activity?.startActivityForResult(intent, REQUEST_CODE_PAYMENT)
 
-            intent.putExtra(PaymentActivity.EXTRA_PAYMENT, ethereumToBuy)
+                buy_loading.visibility = GONE
 
-            this.activity?.startActivityForResult(intent, REQUEST_CODE_PAYMENT)
+            } else {
+                displayToast(activity!!.getText(R.string.buy_exceeded_limit).toString())
 
-            buy_loading.visibility = GONE
+                buy_loading.visibility = GONE
+
+                goBack()
+            }
+
         }
 
         populateMainValue(BigDecimal.ZERO)
@@ -235,6 +248,75 @@ class BuyFragment : BaseViewModelFragment() {
         //displayToast(this.activity!!.resources!!.displayMetrics!!.density.toString())
         
 
+    }
+
+    private fun getBalance(){
+
+        val json = JSONObject()
+
+        val network = preferences.applicationPreferences.getCurrentNetwork()
+
+        val formatedEthereumAddress = "0x" + preferences.getCurrentWalletPreferences().getWalletAddress()
+
+        json.put("account", formatedEthereumAddress)
+
+        json.put("network", network.apiMethod)
+
+        val mediaType = MediaType.parse("application/json; charset=utf-8")
+
+        val formBody = RequestBody.create(mediaType, json.toString())
+
+        val parsedUrl = HttpUrl.parse(BuildConfig.IVOX_API_TOKEN_END_POINT)
+
+        var builtUrl = HttpUrl.Builder()
+                .scheme(parsedUrl?.scheme())
+                .host(parsedUrl?.host())
+                .port(parsedUrl?.port()!!)
+                .addPathSegment("ethereum")
+                .addPathSegment("balance")
+                .build()
+
+        val request = Request.Builder()
+                .url(builtUrl)
+                .post(formBody)
+                .build()
+
+        client.newCall(request).enqueue(object : Callback {
+            override fun onFailure(cliall: Call, e: IOException) {
+                onWalletBalanceFail(e.message!!)
+            }
+            override fun onResponse(call: Call, response: Response) {
+
+                try{
+                    var responseData = response.body()?.string()
+
+                    var json = JSONArray(responseData)
+
+                    val response = json.getJSONObject(0)
+
+                    val balanceString = response.getString("BALANCE")
+
+                    val balance = BigDecimal(balanceString)
+
+                    onWalletBalanceSuccess(balance)
+
+                }catch (e: Exception) {
+                    onWalletBalanceFail(e.message!!)
+                }
+            }
+
+        })
+    }
+
+    private fun onWalletBalanceFail(error: String) {
+        displayToast(error)
+        walletBalance = BigDecimal.ZERO
+    }
+
+    private fun onWalletBalanceSuccess(result: BigDecimal) {
+        walletBalance = result
+
+        enableButtons()
     }
 
     private fun getEthereumToBuy(paymentIntent: String,
@@ -400,7 +482,7 @@ class BuyFragment : BaseViewModelFragment() {
 
                     setGasPrice(response.getString("price"))
 
-                    enableButtons()
+                    getBalance()
 
                 }catch (e: Exception) {
                     displayToast("An error occurred")

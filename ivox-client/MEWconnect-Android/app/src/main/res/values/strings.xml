@@ -162,7 +162,9 @@
     <string name="buy_title">Comprar IVOX</string>
     <string name="buy_button">Comprar</string>
     <string name="buy_minimum_warning">$500 compra minima</string>
-    <string name="buy_loading_error">Comprar IVOX fallo</string>
+    <string name="buy_loading_error">Fallo al comprar IVOX</string>
+
+    <string name="buy_exceeded_limit">No se pueden adquirir mas de 1 000 000 de tokens</string>
 
     <string name="history_title">Purchase history</string>
     <string name="history_total_amount_title">Total amount:</string>
