@@ -120,28 +120,6 @@
             android:textSize="@dimen/text_size_16sp" />
     </FrameLayout>
 
-    <TextView
-        android:id="@+id/wallet_scan_to_connect"
-        android:layout_width="wrap_content"
-        android:layout_height="@dimen/dimen_48dp"
-        android:layout_marginBottom="@dimen/dimen_16dp"
-        android:background="@drawable/wallet_scan_to_connect_background"
-        android:drawableStart="@drawable/wallet_scan_to_connect"
-        android:drawablePadding="@dimen/dimen_8dp"
-        android:fontFamily="sans-serif-medium"
-        android:gravity="center"
-        android:letterSpacing="0.09"
-        android:paddingStart="@dimen/dimen_20dp"
-        android:paddingEnd="@dimen/dimen_20dp"
-        android:text="@string/wallet_scan_to_connect"
-        android:textAllCaps="true"
-        android:textColor="@color/white"
-        android:textSize="@dimen/text_size_14sp"
-        android:visibility="gone"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
-
     <LinearLayout
         android:id="@+id/wallet_status_container"
         android:layout_width="0dp"

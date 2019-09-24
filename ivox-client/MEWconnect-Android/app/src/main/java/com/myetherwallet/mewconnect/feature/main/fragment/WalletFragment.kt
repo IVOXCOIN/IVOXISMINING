@@ -108,7 +108,7 @@ class WalletFragment : BaseViewModelFragment() {
         wallet_list.layoutManager = layoutManager
         wallet_list.adapter = adapter
 
-        wallet_scan_to_connect.setOnClickListener { addFragment(ScanFragment.newInstance()) }
+        //wallet_scan_to_connect.setOnClickListener { addFragment(ScanFragment.newInstance()) }
         wallet_status_disconnect.setOnClickListener {
             viewModel.disconnect()
             setConnectedStatus()
@@ -261,19 +261,19 @@ class WalletFragment : BaseViewModelFragment() {
             networkHandler.isConnected != true -> {
                 wallet_status_container.visibility = GONE
                 wallet_offline_container.visibility = VISIBLE
-                wallet_scan_to_connect.visibility = GONE
+                //wallet_scan_to_connect.visibility = GONE
             }
             viewModel.checkConnected() -> {
                 viewModel.setOnTransactionListener { activity?.runOnUiThread { openConfirmFragment(it) } }
                 viewModel.setOnMessageListener { activity?.runOnUiThread { openSignMessageFragment(it) } }
                 wallet_status_container.visibility = VISIBLE
                 wallet_offline_container.visibility = GONE
-                wallet_scan_to_connect.visibility = GONE
+                //wallet_scan_to_connect.visibility = GONE
             }
             else -> {
                 wallet_status_container.visibility = GONE
                 wallet_offline_container.visibility = GONE
-                wallet_scan_to_connect.visibility = VISIBLE
+                //wallet_scan_to_connect.visibility = VISIBLE
             }
         }
     }

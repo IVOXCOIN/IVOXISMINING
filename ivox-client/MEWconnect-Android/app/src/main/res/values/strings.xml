@@ -127,10 +127,9 @@
 
     <string name="info_title">Info</string>
     <string name="info_contact">Contacto</string>
-    <string name="info_user_guide">Guia de usuario</string>
-    <string name="info_knowledge_base">Base de conocimiento</string>
+    <string name="info_user_agreement">Terminos y condiciones</string>
     <string name="info_site">Ivoxcoin.com</string>
-    <string name="info_privacy_and_terms">Privacidad y terminos</string>
+    <string name="info_privacy_and_terms">Politica de privacidad</string>
     <string name="info_copyright">Derechos de copia 2019 Ivox Coin SAPI.</string>
     <string name="info_version">Version %s (%d)</string>
 
