@@ -9,6 +9,7 @@ import android.view.View
 import android.view.View.*
 import android.view.ViewGroup
 import com.myetherwallet.mewconnect.R
+import com.myetherwallet.mewconnect.content.data.BalanceMethod
 import com.myetherwallet.mewconnect.content.data.MessageToSign
 import com.myetherwallet.mewconnect.content.data.Network
 import com.myetherwallet.mewconnect.content.data.Transaction
@@ -26,6 +27,7 @@ import com.myetherwallet.mewconnect.feature.main.adapter.WalletListAdapter
 import com.myetherwallet.mewconnect.feature.main.data.WalletBalance
 import com.myetherwallet.mewconnect.feature.main.data.WalletData
 import com.myetherwallet.mewconnect.feature.main.dialog.BackupWarningDialog
+import com.myetherwallet.mewconnect.feature.main.dialog.BalanceMethodDialog
 import com.myetherwallet.mewconnect.feature.main.dialog.ChooseNetworkDialog
 import com.myetherwallet.mewconnect.feature.main.receiver.NetworkStateReceiver
 import com.myetherwallet.mewconnect.feature.main.utils.WalletSizingUtils
@@ -66,7 +68,6 @@ class WalletFragment : BaseViewModelFragment() {
     private lateinit var scrollWatcher: ScrollWatcher
     private var scrollThreshold = 0
     private var shouldScrollToThreshold = false
-
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -174,7 +175,10 @@ class WalletFragment : BaseViewModelFragment() {
 
     private fun load() {
         wallet_header.setUpdating(true)
-        viewModel.loadData(preferences.getCurrentWalletPreferences(), preferences.applicationPreferences.getCurrentNetwork(), address)
+        viewModel.loadData(preferences.getCurrentWalletPreferences(),
+                            preferences.applicationPreferences.getCurrentNetwork(),
+                            address,
+                            context!!.getString(preferences.applicationPreferences.getBalanceMethod().shortName))
     }
 
     private fun populateWithEmpties() {
@@ -218,6 +222,17 @@ class WalletFragment : BaseViewModelFragment() {
 
             wallet_toolbar.setBalance(balance.value)
             wallet_toolbar.setNetwork(preferences.applicationPreferences.getCurrentNetwork())
+            wallet_toolbar.setBalanceMethod(preferences.applicationPreferences.getBalanceMethod())
+
+            val method = context!!.getString(preferences.applicationPreferences.getBalanceMethod().shortName)
+
+            if(method == "IVOX"){
+                wallet_card.setCurrency("IVOX TOKEN")
+            } else {
+
+                wallet_card.setCurrency("ETHER")
+            }
+
 
             balance.stockPrice?.let { stockPrice ->
                 wallet_toolbar.onBuyClickListener = { addFragment(BuyFragment.newInstance(stockPrice)) }
@@ -287,9 +302,9 @@ class WalletFragment : BaseViewModelFragment() {
     }
 
     private fun showNetworkMenu() {
-        val dialog = ChooseNetworkDialog()
+        val dialog = BalanceMethodDialog()
         dialog.listener = {
-            preferences.applicationPreferences.setCurrentNetwork(it)
+            preferences.applicationPreferences.setBalanceMethod(it)
             if (preferences.getCurrentWalletPreferences().isWalletExists()) {
                 wallet_header.clearSearch()
                 viewModel.disconnect()

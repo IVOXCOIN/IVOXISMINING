@@ -1,6 +1,7 @@
 package com.myetherwallet.mewconnect.core.persist.prefenreces
 
 import android.content.SharedPreferences
+import com.myetherwallet.mewconnect.content.data.BalanceMethod
 import com.myetherwallet.mewconnect.content.data.Network
 import com.myetherwallet.mewconnect.core.utils.crypto.KeystoreHelper
 import java.util.*
@@ -12,6 +13,7 @@ import java.util.*
 private const val WALLET_MNEMONIC = "wallet_mnemonic"
 private const val WALLET_IS_BACKED_UP = "wallet_is_backed_up"
 private const val CURRENT_NETWORK = "current_network"
+private const val BALANCE_METHOD = "balance_method"
 private const val BACKUP_WARNING_TIME = "backup_warning_time"
 private const val INSTALL_TIME = "install_time"
 
@@ -39,6 +41,14 @@ class ApplicationPreferences(private val preferences: SharedPreferences) {
 
     fun setCurrentNetwork(network: Network) {
         preferences.edit().putString(CURRENT_NETWORK, network.name).apply()
+    }
+
+    fun getBalanceMethod(): BalanceMethod {
+        return BalanceMethod.valueOf(preferences.getString(BALANCE_METHOD, BalanceMethod.IVOX.name)!!)
+    }
+
+    fun setBalanceMethod(method: BalanceMethod) {
+        preferences.edit().putString(BALANCE_METHOD, method.name).apply()
     }
 
     fun getBackupWarningTime(): Long = preferences.getLong(BACKUP_WARNING_TIME, 0L)

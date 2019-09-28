@@ -61,14 +61,14 @@
     <string name="wallet_card_currency_usd">USD</string>
     <string name="wallet_card_currency_mxn">MXN</string>
     <string name="wallet_card_address_title">Su direccion publica de Ethereum</string>
-    <string name="wallet_card_stock_price">\@ %.2f/%s</string>
+    <string name="wallet_card_stock_price">\@ %.2f</string>
     <string name="wallet_card_backup_title">Accion requerida: sin respaldar</string>
     <string name="wallet_card_backup_description">Si pierde este dispositvo, perdera su direccion y fondos para siempre.</string>
     <string name="wallet_card_backed_up">Respaldado</string>
     <string name="wallet_toolbar_buy_ether">Comprar</string>
     <string name="wallet_header_balances_title">Tokens</string>
     <string name="wallet_network_title">Select network</string>
-    <string name="wallet_network_main_full">Main Ethereum Network</string>
+    <string name="wallet_network_main_full">Red Principal De Ethereum</string>
     <string name="wallet_network_ropsten_full">Ropsten Test Network</string>
     <string name="wallet_network_rinkeby_full">Rinkeby Test Network</string>
     <string name="wallet_network_main_short">Mainnet</string>
@@ -79,6 +79,14 @@
     <string name="wallet_network_rinkeby_currency">RINKEBY ETH</string>
     <string name="wallet_scan_to_connect">Scan to connect</string>
     <string name="wallet_offline">Sin conexion a internet</string>
+
+    <string name="balance_method_title">Seleccione moneda</string>
+    <string name="balance_method_ivox_full">IVOX TOKEN</string>
+    <string name="balance_method_ivox_short">IVOX</string>
+    <string name="balance_method_ether_full">ETHEREUM</string>
+    <string name="balance_method_ether_short">ETHER</string>
+
+
 
     <string name="scan_camera_permission_rationale_settings">Please enable camera access for\nMEWconnect in Settings</string>
     <string name="scan_camera_permission_rationale_dialog">Please enable camera access for\nMEWconnect</string>

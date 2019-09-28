@@ -260,7 +260,7 @@ class BuyFragment : BaseViewModelFragment() {
 
         json.put("account", formatedEthereumAddress)
 
-        json.put("network", network.apiMethod)
+        json.put("method", context!!.getString(preferences.applicationPreferences.getBalanceMethod().shortName))
 
         val mediaType = MediaType.parse("application/json; charset=utf-8")
 
@@ -399,6 +399,7 @@ class BuyFragment : BaseViewModelFragment() {
     private fun getTicker(){
         val json = JSONObject()
 
+        json.put("method", "IVOX")
         json.put("tag", CURRENCY_MXN)
 
         val mediaType = MediaType.parse("application/json; charset=utf-8")

@@ -9,6 +9,7 @@ import android.util.AttributeSet
 import android.util.TypedValue
 import android.view.View
 import com.myetherwallet.mewconnect.R
+import com.myetherwallet.mewconnect.content.data.BalanceMethod
 import com.myetherwallet.mewconnect.content.data.Network
 import com.myetherwallet.mewconnect.core.extenstion.formatMoney
 import com.myetherwallet.mewconnect.core.extenstion.overrideColor
@@ -41,6 +42,10 @@ class WalletToolbar @JvmOverloads constructor(
 
     fun setNetwork(network: Network) {
         wallet_toolbar_network.setText(network.shortName)
+    }
+
+    fun setBalanceMethod(method: BalanceMethod){
+        wallet_toolbar_network.setText(method.shortName)
     }
 
     override fun setRatio(ratio: Float) {

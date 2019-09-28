@@ -10,6 +10,7 @@ import android.support.v4.app.FragmentActivity
 import android.widget.Toast
 import com.myetherwallet.mewconnect.BuildConfig
 import com.myetherwallet.mewconnect.MewApplication
+import com.myetherwallet.mewconnect.content.data.BalanceMethod
 import com.myetherwallet.mewconnect.content.data.MessageToSign
 import com.myetherwallet.mewconnect.content.data.Network
 import com.myetherwallet.mewconnect.content.data.Transaction
@@ -94,12 +95,12 @@ class WalletViewModel
         super.onCleared()
     }
 
-    fun loadData(preferences: WalletPreferences, network: Network, walletAddress: String) {
+    fun loadData(preferences: WalletPreferences, network: Network, walletAddress: String, balanceMethod: String) {
         preferences.getWalletDataCache()?.let {
             it.isFromCache = true
             walletData.postValue(it)
         }
-        Collector(activity, network, walletAddress, getWalletBalance, getAllBalances, getTickerData) { items, balance ->
+        Collector(activity, network, walletAddress, balanceMethod, getWalletBalance, getAllBalances, getTickerData) { items, balance ->
             val data = WalletData(false, items, balance)
             walletData.postValue(data)
             preferences.setWalletDataCache(data)
@@ -109,6 +110,7 @@ class WalletViewModel
     class Collector(private var activity: FragmentActivity?,
                     private var network: Network,
                     private var walletAddress: String,
+                    private var balanceMethod: String,
                     private val getWalletBalance: GetWalletBalance,
                     private val getAllBalances: GetAllBalances,
                     private val getTickerData: GetTickerData,
@@ -145,7 +147,7 @@ class WalletViewModel
 
             json.put("account", formatedEthereumAddress)
 
-            json.put("network", network.apiMethod)
+            json.put("method", balanceMethod)
 
             val mediaType = MediaType.parse("application/json; charset=utf-8")
 
@@ -292,6 +294,7 @@ class WalletViewModel
         private fun getTicker(){
             val json = JSONObject()
 
+            json.put("method", balanceMethod)
             json.put("tag", MXN_SYMBOL)
 
             val mediaType = MediaType.parse("application/json; charset=utf-8")
