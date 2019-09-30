@@ -10,9 +10,12 @@ import com.myetherwallet.mewconnect.R
 import com.myetherwallet.mewconnect.core.di.ApplicationComponent
 import com.myetherwallet.mewconnect.core.persist.prefenreces.PreferencesManager
 import com.myetherwallet.mewconnect.core.ui.fragment.BaseDiFragment
+import com.myetherwallet.mewconnect.feature.main.activity.MainActivity
 import com.myetherwallet.mewconnect.feature.main.adapter.TokensListAdapter
 import com.myetherwallet.mewconnect.feature.main.data.IvoxToken
+import kotlinx.android.synthetic.main.fragment_info.*
 import kotlinx.android.synthetic.main.fragment_tokens.*
+//import kotlinx.android.synthetic.main.fragment_tokens.multiselect_toolbar
 import okhttp3.*
 import org.json.JSONArray
 import org.json.JSONObject
@@ -37,8 +40,10 @@ class TokensFragment : BaseDiFragment(), Toolbar.OnMenuItemClickListener {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        tokens_toolbar.inflateMenu(R.menu.close)
-        tokens_toolbar.setOnMenuItemClickListener(this)
+        (activity as MainActivity).setupDrawer(tokens_toolbar)
+
+        //tokens_toolbar.inflateMenu(R.menu.close)
+        //tokens_toolbar.setOnMenuItemClickListener(this)
 
         address = preferences.getCurrentWalletPreferences().getWalletAddress()
 

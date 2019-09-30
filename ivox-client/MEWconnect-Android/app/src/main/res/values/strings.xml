@@ -86,6 +86,11 @@
     <string name="balance_method_ether_full">ETHEREUM</string>
     <string name="balance_method_ether_short">ETHER</string>
 
+    <string name="drawer_item_home">Inicio</string>
+    <string name="drawer_item_buy">Comprar</string>
+    <string name="drawer_item_tokens">Tokens</string>
+    <string name="drawer_item_transfer">Transferir</string>
+    <string name="drawer_item_info">Informacion</string>
 
 
     <string name="scan_camera_permission_rationale_settings">Please enable camera access for\nMEWconnect in Settings</string>

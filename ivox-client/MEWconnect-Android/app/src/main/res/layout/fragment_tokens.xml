@@ -6,10 +6,12 @@
     android:background="@color/default_background"
     android:orientation="vertical">
 
-    <com.myetherwallet.mewconnect.core.ui.view.StaticToolbar
+    <android.support.v7.widget.Toolbar
         android:id="@+id/tokens_toolbar"
         android:layout_width="match_parent"
-        android:layout_height="@dimen/static_toolbar_height" />
+        android:layout_height="?attr/actionBarSize"
+        android:background="?attr/colorPrimary"
+        android:elevation="20dp" />
 
     <LinearLayout
         android:id="@+id/info_content_container"

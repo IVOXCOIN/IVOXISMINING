@@ -52,6 +52,7 @@ import com.paypal.android.sdk.payments.PaymentConfirmation
 import android.os.Handler
 
 import com.myetherwallet.mewconnect.BuildConfig
+import kotlinx.android.synthetic.main.fragment_tokens.*
 import okhttp3.*
 
 /**
@@ -129,10 +130,13 @@ class BuyFragment : BaseViewModelFragment() {
         textSizeMin = resources.getDimension(R.dimen.text_size_fixed_20sp)
         textSizeMax = resources.getDimension(R.dimen.text_size_fixed_48sp)
 
-        buy_toolbar.setNavigationIcon(R.drawable.ic_action_close)
+        (activity as MainActivity).setupDrawer(drawer_toolbar)
+
+        /*buy_toolbar.setNavigationIcon(R.drawable.ic_action_close)
         buy_toolbar.setNavigationOnClickListener(View.OnClickListener { close() })
         buy_toolbar.setTitle(R.string.buy_title)
-        buy_toolbar.inflateMenu(R.menu.buy)
+        buy_toolbar.inflateMenu(R.menu.buy)*/
+
         /*
         buy_toolbar.setOnMenuItemClickListener(Toolbar.OnMenuItemClickListener {
             if (it.itemId == R.id.buy_history) {

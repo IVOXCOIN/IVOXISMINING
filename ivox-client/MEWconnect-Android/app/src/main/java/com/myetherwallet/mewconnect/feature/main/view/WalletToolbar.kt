@@ -75,8 +75,8 @@ class WalletToolbar @JvmOverloads constructor(
         val buttonBackground = ArgbEvaluator().evaluate(ratio, Color.WHITE, ContextCompat.getColor(context, R.color.wallet_toolbar_buttons_background)) as Int
         wallet_toolbar_buy.background = ContextCompat.getDrawable(context, R.drawable.wallet_toolbar_buy_background)!!.overrideColor(buttonBackground)
         wallet_toolbar_buy.setOnClickListener { onBuyClickListener?.invoke() }
-        wallet_toolbar_info.background = ContextCompat.getDrawable(context, R.drawable.wallet_toolbar_info_background)!!.overrideColor(buttonBackground)
-        wallet_toolbar_info.setOnClickListener { onInfoClickListener?.invoke() }
+        //wallet_toolbar_info.background = ContextCompat.getDrawable(context, R.drawable.wallet_toolbar_info_background)!!.overrideColor(buttonBackground)
+        //wallet_toolbar_info.setOnClickListener { onInfoClickListener?.invoke() }
 
         wallet_toolbar_network.setOnClickListener { onNetworkClickListener?.invoke() }
     }

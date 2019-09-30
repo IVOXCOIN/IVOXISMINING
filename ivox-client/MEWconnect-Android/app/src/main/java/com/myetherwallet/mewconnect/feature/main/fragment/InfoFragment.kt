@@ -11,8 +11,11 @@ import com.myetherwallet.mewconnect.core.persist.prefenreces.PreferencesManager
 import com.myetherwallet.mewconnect.core.ui.fragment.BaseDiFragment
 import com.myetherwallet.mewconnect.core.utils.ApplicationUtils
 import com.myetherwallet.mewconnect.core.utils.LaunchUtils
+import com.myetherwallet.mewconnect.feature.main.activity.MainActivity
 import com.myetherwallet.mewconnect.feature.main.dialog.ResetWalletDialog
 import kotlinx.android.synthetic.main.fragment_info.*
+//import kotlinx.android.synthetic.main.fragment_info.multiselect_toolbar
+import kotlinx.android.synthetic.main.fragment_wallet.*
 import javax.inject.Inject
 
 /**
@@ -30,8 +33,11 @@ class InfoFragment : BaseDiFragment(), Toolbar.OnMenuItemClickListener {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        info_toolbar.inflateMenu(R.menu.close)
-        info_toolbar.setOnMenuItemClickListener(this)
+        (activity as MainActivity).setupDrawer(info_toolbar)
+
+
+        //info_toolbar.inflateMenu(R.menu.close)
+        //info_toolbar.setOnMenuItemClickListener(this)
 
         info_contact.setOnClickListener { LaunchUtils.openMailApp(context, "support@myetherwallet.com") }
         info_user_agreement.setOnClickListener { LaunchUtils.openWebSite(context, "http://ivoxis.net/TERMINOS_Y_CONDICIONES_DE_IVOX.pdf") }

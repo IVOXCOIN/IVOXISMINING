@@ -1,13 +1,16 @@
 package com.myetherwallet.mewconnect.feature.main.fragment
 
+import android.app.Activity
 import android.os.Bundle
 import android.os.Handler
 import android.support.design.widget.CoordinatorLayout
 import android.support.v7.widget.LinearLayoutManager
 import android.support.v7.widget.RecyclerView
+import android.util.Log
 import android.view.View
 import android.view.View.*
 import android.view.ViewGroup
+import com.mikepenz.materialdrawer.Drawer
 import com.myetherwallet.mewconnect.R
 import com.myetherwallet.mewconnect.content.data.BalanceMethod
 import com.myetherwallet.mewconnect.content.data.MessageToSign
@@ -43,6 +46,12 @@ import java.math.BigDecimal
 import java.util.concurrent.TimeUnit
 import javax.inject.Inject
 
+import com.mikepenz.materialdrawer.DrawerBuilder
+import com.mikepenz.materialdrawer.model.DividerDrawerItem
+import com.mikepenz.materialdrawer.model.PrimaryDrawerItem
+import com.mikepenz.materialdrawer.model.interfaces.IDrawerItem
+import com.myetherwallet.mewconnect.feature.main.activity.MainActivity
+
 /**
  * Created by BArtWell on 11.07.2018.
  */
@@ -71,6 +80,12 @@ class WalletFragment : BaseViewModelFragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
+        ///////////////////////
+
+        (activity as MainActivity).setupDrawer(multiselect_toolbar)
+
+        //////////////////////
 
         scrollWatcher = ScrollWatcher(wallet_list)
         scrollWatcher.scrollStateListener = ::onScrollStateChanged
@@ -121,8 +136,8 @@ class WalletFragment : BaseViewModelFragment() {
         wallet_toolbar.onInfoClickListener = { addFragment(InfoFragment.newInstance()) }
         wallet_toolbar.onNetworkClickListener = ::showNetworkMenu
 
-        view_tokens.setOnClickListener { addFragment(TokensFragment.newInstance()) }
-        transfer_tokens.setOnClickListener { addFragment(TransactionFragment.newInstance()) }
+        //view_tokens.setOnClickListener { addFragment(TokensFragment.newInstance()) }
+        //transfer_tokens.setOnClickListener { addFragment(TransactionFragment.newInstance()) }
 
         // Auto scroll on search start
         wallet_header.onEnterSearchModeListener = {

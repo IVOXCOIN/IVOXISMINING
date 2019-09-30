@@ -33,8 +33,10 @@ import android.text.util.Linkify
 import android.widget.EditText
 import com.myetherwallet.mewconnect.core.utils.HexUtils
 import com.myetherwallet.mewconnect.core.utils.crypto.StorageCryptHelper
+import com.myetherwallet.mewconnect.feature.main.activity.MainActivity
 import com.myetherwallet.mewconnect.feature.main.data.MICE
-import kotlinx.android.synthetic.main.fragment_tokens.tokens_toolbar
+import kotlinx.android.synthetic.main.fragment_info.*
+//import kotlinx.android.synthetic.main.fragment_tokens.tokens_toolbar
 import kotlinx.android.synthetic.main.fragment_transaction.*
 import kotlinx.android.synthetic.main.fragment_wallet.*
 import org.web3j.crypto.ECKeyPair
@@ -98,8 +100,10 @@ class TransactionFragment : BaseDiFragment(), Toolbar.OnMenuItemClickListener {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        transaction_toolbar.inflateMenu(R.menu.close)
-        transaction_toolbar.setOnMenuItemClickListener(this)
+        (activity as MainActivity).setupDrawer(transaction_toolbar)
+
+        //transaction_toolbar.inflateMenu(R.menu.close)
+        //transaction_toolbar.setOnMenuItemClickListener(this)
 
         address = preferences.getCurrentWalletPreferences().getWalletAddress()
 

@@ -6,20 +6,6 @@
     android:layout_height="@dimen/wallet_toolbar_height"
     tools:background="#ddd">
 
-    <com.myetherwallet.mewconnect.core.ui.view.FixedFontTextView
-        android:id="@+id/wallet_toolbar_info"
-        android:layout_width="@dimen/dimen_20dp"
-        android:layout_height="@dimen/dimen_20dp"
-        android:layout_marginStart="@dimen/dimen_16dp"
-        android:gravity="center"
-        android:text="i"
-        android:textColor="@color/colorAccent"
-        android:textSize="@dimen/text_size_fixed_13sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        tools:ignore="HardcodedText" />
-
     <TextView
         android:id="@+id/wallet_toolbar_title"
         android:layout_width="wrap_content"
