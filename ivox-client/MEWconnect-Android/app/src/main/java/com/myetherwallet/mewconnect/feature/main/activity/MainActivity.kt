@@ -64,6 +64,7 @@ class MainActivity : BaseDiActivity() {
         val headerResult = AccountHeaderBuilder()
                 .withActivity(this as Activity)
                 .withHeaderBackground(R.color.blue)
+                .withSelectionListEnabledForSingleProfile(false)
                 .addProfiles(
                     ProfileDrawerItem()
                             .withName("Ivox Wallet")
@@ -71,17 +72,30 @@ class MainActivity : BaseDiActivity() {
                 )
                 .build()
 
-        var item1 = PrimaryDrawerItem().withIdentifier(1).withName(R.string.drawer_item_home)
-        //var item2 = PrimaryDrawerItem().withIdentifier(2).withName(R.string.drawer_item_buy)
-        var item3 = PrimaryDrawerItem().withIdentifier(3).withName(R.string.drawer_item_tokens)
-        var item4 = PrimaryDrawerItem().withIdentifier(4).withName(R.string.drawer_item_transfer)
-        var item5 = PrimaryDrawerItem().withIdentifier(5).withName(R.string.drawer_item_info)
+        var item1 = PrimaryDrawerItem()
+                    .withIdentifier(1)
+                    .withName(R.string.drawer_item_home)
+                    .withSelectedColor(getResources().getColor(R.color.white))
 
+        //var item2 = PrimaryDrawerItem().withIdentifier(2).withName(R.string.drawer_item_buy)
+
+        var item3 = PrimaryDrawerItem()
+                    .withIdentifier(3)
+                    .withName(R.string.drawer_item_tokens)
+
+        var item4 = PrimaryDrawerItem()
+                    .withIdentifier(4)
+                    .withName(R.string.drawer_item_transfer)
+
+        var item5 = PrimaryDrawerItem()
+                    .withIdentifier(5)
+                    .withName(R.string.drawer_item_info)
 
         drawer = DrawerBuilder()
                 .withActivity(this as Activity)
                 .withAccountHeader(headerResult)
                 .withToolbar(toolbar)
+                .withSelectedItem(-1)
                 .addDrawerItems(
                         item1,
                         DividerDrawerItem(),
@@ -126,6 +140,7 @@ class MainActivity : BaseDiActivity() {
                     }
                 })
                 .build()
+
     }
 
     override fun onResume() {
