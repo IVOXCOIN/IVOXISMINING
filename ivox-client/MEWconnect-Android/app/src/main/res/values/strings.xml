@@ -12,32 +12,32 @@
     <string name="reset_wallet">Reiniciar cartera</string>
     <string name="words_loading_error">No se pudo cargar la lista de palabras</string>
 
-    <string name="enter_recovery_phrase_title">Ingrese su\nfrase de \nrecuperacion</string>
+    <string name="enter_recovery_phrase_title">Ingrese su\nfrase de \nrecuperación</string>
     <string name="enter_recovery_phrase_hint">Palabras separadas por espacios</string>
-    <string name="enter_recovery_phrase_error">Frase de recuperacion incorrecta</string>
+    <string name="enter_recovery_phrase_error">Frase de recuperación incorrecta</string>
 
     <string name="pick_password_title">Ingresa una\ncontraseña</string>
     <string name="pick_password_description">De modo que nadie pueda desbloquear tu cartera.</string>
-    <string name="pick_password_description2">Las mejores contraseñas son largas y contienen letras, numeros y caracteres especiales.</string>
-    <string name="pick_password_strength_weak">Debil</string>
+    <string name="pick_password_description2">Las mejores contraseñas son largas y contienen letras, números y caracteres especiales.</string>
+    <string name="pick_password_strength_weak">Débil</string>
     <string name="pick_password_strength_so_so">So-so</string>
     <string name="pick_password_strength_good">Bien</string>
     <string name="pick_password_strength_great">Fabuloso</string>
 
     <string name="password_again_title">Escribe tu\ncontraseña de nuevo</string>
-    <string name="password_again_description"><![CDATA[No habra boton <u>‘Restaurar contraseña’</u>. Asegurese de recordarla.]]></string>
+    <string name="password_again_description"><![CDATA[No habra botón <u>‘Restaurar contraseña’</u>. Asegurese de recordarla.]]></string>
     <string name="password_again_error">Contraseña incorrecta</string>
 
     <string name="lets_double_check_title">Verifiquemos \nde nuevo</string>
-    <string name="lets_double_check_description">Una vez que termines no veras tu frase de recuperacion de nuevo.</string>
+    <string name="lets_double_check_description">Una vez que termines no verás tu frase de recuperación de nuevo.</string>
     <string name="lets_double_check_item_title">Selecciona la palabra #%d</string>
 
-    <string name="prepare_write_title">Preparese para escribir su frase de recuperacion</string>
-    <string name="prepare_write_description">Si su dispositivo se pierde usted podra usar su frase de recuperacion para recuperar su cartera.</string>
+    <string name="prepare_write_title">Prepárese para escribir su frase de recuperación</string>
+    <string name="prepare_write_description">Si su dispositivo se pierde usted podrá usar su frase de recuperación para recuperar su cartera.</string>
     <string name="prepare_write_confirm">Inicio</string>
 
     <string name="wallet_backed_up_title">Su cartera esta\nrespaldada</string>
-    <string name="wallet_backed_up_description">Proteja su frase con recelo, en un mundo des-centralizado la seguridad es primero!</string>
+    <string name="wallet_backed_up_description">Proteja su frase con recelo, en un mundo des-centralizado la seguridad es primero</string>
     <string name="wallet_status_connected">Conectado a MyEtherWallet</string>
     <string name="wallet_status_disconnect">Desconectar</string>
     <string name="wallet_header_search_hint">Buscar %d tokens</string>
@@ -47,38 +47,38 @@
     <string name="intro_verify">Verificar</string>
     <string name="intro_restore_wallet">Restaurar cartera</string>
     <string name="intro_setup">CREAR CARTERA NUEVA</string>
-    <string name="intro_page_footer1">Finally, a ’hardware wallet’\nwithout all the hardware.\nOfficially by MyEtherWallet</string>
-    <string name="intro_page_footer2">Secure your every\nMyEtherWallet\ntransaction with two-\nfactor verification</string>
-    <string name="intro_page_footer3">Store your private keys\nsafely in a local isolated\nsecure vault on your\ndevice</string>
-    <string name="intro_page_footer4">Protect yourself from\nphishers and malware. No\none can obtain your\nprivate key.</string>
-    <string name="intro_page_footer5">No data collection:\nMyEtherWallet can\'t\ncollect your personal data\neven if we wanted to.</string>
-    <string name="intro_page_footer6">No centralized servers, no\ndatabases.\nMEWconnect and\nMyEtherWallet talk via\nP2P communication.</string>
-    <string name="intro_page_footer7">Transparent, free and\nopen source. Audited by\nthe community.</string>
+    <string name="intro_page_footer1">Energía sustentable para todos\ninvierta fácilmente.\nPor Ivox Coin</string>
+    <string name="intro_page_footer2">Una cartera de \nEthereum\nque permite almacenar\ntokens de Ivox</string>
+    <string name="intro_page_footer3">De manera sencilla compre\ny gestione sus tokens\nde forma segura</string>
+    <string name="intro_page_footer4">Incluya en sus planes\nla inversión en energía sustentable\nde alto impacto.</string>
+    <string name="intro_page_footer5">Sin colección de datos:\nIvox no puede\ncolectar sus datos privados\nsin su consentimiento.</string>
+    <string name="intro_page_footer6">Tecnología de punta\n\nIvox Wallet de\nIvox Coin cuentan con la\nmejor tecnología.</string>
+    <string name="intro_page_footer7">Transparente, claro y \nconciso. Aprobado por\nla comunidad.</string>
 
     <string name="generating_start_using">Comenzar a usar Ivox Wallet</string>
 
     <string name="wallet_card_currency_eth">IVOX TOKEN</string>
     <string name="wallet_card_currency_usd">USD</string>
     <string name="wallet_card_currency_mxn">MXN</string>
-    <string name="wallet_card_address_title">Su direccion publica de Ethereum</string>
+    <string name="wallet_card_address_title">Su dirección pública de Ethereum</string>
     <string name="wallet_card_stock_price">\@ %.2f</string>
-    <string name="wallet_card_backup_title">Accion requerida: sin respaldar</string>
-    <string name="wallet_card_backup_description">Si pierde este dispositvo, perdera su direccion y fondos para siempre.</string>
+    <string name="wallet_card_backup_title">Acción requerida: sin respaldar</string>
+    <string name="wallet_card_backup_description">Si pierde este dispositvo, perderá su dirección y fondos para siempre.</string>
     <string name="wallet_card_backed_up">Respaldado</string>
     <string name="wallet_toolbar_buy_ether">Comprar</string>
     <string name="wallet_header_balances_title">Tokens</string>
-    <string name="wallet_network_title">Select network</string>
+    <string name="wallet_network_title">Seleccionar red</string>
     <string name="wallet_network_main_full">Red Principal De Ethereum</string>
-    <string name="wallet_network_ropsten_full">Ropsten Test Network</string>
-    <string name="wallet_network_rinkeby_full">Rinkeby Test Network</string>
+    <string name="wallet_network_ropsten_full">Red de prueba Ropsten</string>
+    <string name="wallet_network_rinkeby_full">Red de prueba Rinkeby</string>
     <string name="wallet_network_main_short">Mainnet</string>
     <string name="wallet_network_ropsten_short">Ropsten</string>
     <string name="wallet_network_rinkeby_short">Rinkeby</string>
     <string name="wallet_network_main_currency">IVOX TOKEN</string>
     <string name="wallet_network_ropsten_currency">ROPSTEN ETH</string>
     <string name="wallet_network_rinkeby_currency">RINKEBY ETH</string>
-    <string name="wallet_scan_to_connect">Scan to connect</string>
-    <string name="wallet_offline">Sin conexion a internet</string>
+    <string name="wallet_scan_to_connect">Escanear para conectar</string>
+    <string name="wallet_offline">Sin conexión a internet</string>
 
     <string name="balance_method_title">Seleccione moneda</string>
     <string name="balance_method_ivox_full">IVOX TOKEN</string>
@@ -90,15 +90,15 @@
     <string name="drawer_item_buy">Comprar</string>
     <string name="drawer_item_tokens">Tokens</string>
     <string name="drawer_item_transfer">Transferir</string>
-    <string name="drawer_item_info">Informacion</string>
+    <string name="drawer_item_info">Información</string>
 
 
-    <string name="scan_camera_permission_rationale_settings">Please enable camera access for\nMEWconnect in Settings</string>
-    <string name="scan_camera_permission_rationale_dialog">Please enable camera access for\nMEWconnect</string>
-    <string name="scan_low_storage_error">Not enough free space</string>
-    <string name="scan_camera_source_error">Unable to start camera</string>
+    <string name="scan_camera_permission_rationale_settings">Habilite el acceso a la cámara para\nIvox en Configuración</string>
+    <string name="scan_camera_permission_rationale_dialog">Habilite el acceso a la cámara para\nIvox</string>
+    <string name="scan_low_storage_error">Espacio insuficiente</string>
+    <string name="scan_camera_source_error">No se pudo iniciar la cámara</string>
 
-    <string name="transaction_confirmed_title">Continue in your browser</string>
+    <string name="transaction_confirmed_title">Continúe en su navegador</string>
     <string name="transaction_confirmed_description">Transaction is generated and signed. Please continue in MyEtherWallet in your browser in order to send it.</string>
 
     <string name="transaction_declined_title">Transaction declined</string>
@@ -121,26 +121,26 @@
     <string name="scan_manual_2"><![CDATA[Select <b>MEWconnect</b> option on <b>How<br/>would you like to access your wallet</b><br/>screen.]]></string>
     <string name="scan_manual_3"><![CDATA[Click <b>Access with MEWconnect</b> and scan<br/>the QR code on the screen that will follow.]]></string>
 
-    <string name="auth_forgot_password">Olvido su contraseña?</string>
+    <string name="auth_forgot_password">¿Olvidó su contraseña?</string>
     <string name="auth_forgot_password_error">Contraseña incorrecta</string>
 
-    <string name="forgot_password_title">Olvido su contraseña?</string>
-    <string name="forgot_password_description">Desafortunadamente, como lo habiamos mencionado cuando se genero la contraseña, no hay opcion para recuperar la contraseña, si usted genero un respaldo puede usar su lista de frases para restaurar su cartera y establecer una nueva contraseña.</string>
-    <string name="forgot_password_restore_wallet">Restore wallet</string>
+    <string name="forgot_password_title">¿Olvidó su contraseña?</string>
+    <string name="forgot_password_description">Desafortunadamente, como lo habiamos mencionado cuando se generó la contraseña, no hay opción para recuperar la contraseña, si usted generó un respaldo puede usar su lista de frases para restaurar su cartera y establecer una nueva contraseña.</string>
+    <string name="forgot_password_restore_wallet">Restaurar cartera</string>
 
     <string name="write_these_title">Anote</string>
     <string name="write_these_subtitle">Esta es su lista de frases:</string>
-    <string name="write_these_description">Resista la tentacion de enviarsela por correo o tomarle una captura de pantalla.</string>
-    <string name="write_these_screenshot_text">No mantenga sus frases de recuperacion de manera digital, anotelas en papel.</string>
+    <string name="write_these_description">Resista la tentación de enviársela por correo o tomarle una captura de pantalla.</string>
+    <string name="write_these_screenshot_text">No mantenga sus frases de recuperación de manera digital, anótelas en papel.</string>
     <string name="write_these_screenshot_title">Oops! Parece que ha tomado una captura de pantalla.</string>
 
     <string name="back_up_wallet_title">Respalde su cartera</string>
-    <string name="back_up_wallet_description">Su direccion de Ethereum y llave privada estan almacenadas en una boveda segura, si usted pierde su dispositivo perdera sus fondos por siempre.</string>
+    <string name="back_up_wallet_description">Su dirección de Ethereum y llave privada están almacenadas en una boveda segura, si usted pierde su dispositivo perderá sus fondos por siempre.</string>
     <string name="back_up_wallet_now">Respaldar ahora</string>
 
     <string name="info_title">Info</string>
     <string name="info_contact">Contacto</string>
-    <string name="info_user_agreement">Terminos y condiciones</string>
+    <string name="info_user_agreement">Términos y condiciones</string>
     <string name="info_site">Ivoxcoin.com</string>
     <string name="info_privacy_and_terms">Politica de privacidad</string>
     <string name="info_copyright">Derechos de copia 2019 Ivox Coin SAPI.</string>
@@ -154,22 +154,22 @@
     <string name="transfer_password">Contraseña</string>
     <string name="transfer_title">Transferir</string>
 
-    <string name="transfer_wallet_error">La cartera destino no es una cartera valida</string>
+    <string name="transfer_wallet_error">La cartera destino no es una cartera válida</string>
     <string name="transfer_wrong_password">Contraseña incorrecta</string>
 
-    <string name="transfer_complete">Transaccion completa, por favor espere hasta 30 minutos para que se vea reflejada en Etherscan</string>
+    <string name="transfer_complete">Transacción completa, por favor espere hasta 30 minutos para que se vea reflejada en Etherscan</string>
     <string name="transfer_insufficient_funds">Fondos insuficientes</string>
 
-    <string name="transfer_info">Informacion</string>
+    <string name="transfer_info">Información</string>
 
-    <string name="transfer_ether_message">El uso de transferencia de tokens requiere que su cartera contenga ether suficiente para minar la transaccion, para hacer una transferencia de Ether a su cartera puede visitar https://ivoxcoin.com/ether</string>
+    <string name="transfer_ether_message">El uso de transferencia de tokens requiere que su cartera contenga ether suficiente para minar la transacción, para hacer una transferencia de Ether a su cartera puede visitar https://ivoxcoin.com/ether</string>
     <string name="transfer_usage_message">El sistema de transferencias le solicita un monto que debe ser inferior al total de tokens con el que cuente en su cartera, una cartera destino y su contraseña, con estos tres datos y suficiente ether se puede realizar una transaccion de tokens</string>
-    <string name="transfer_confirm_message">Introdusca la contraseña de su cartera para confirmar la transaccion</string>
+    <string name="transfer_confirm_message">Introdusca la contraseña de su cartera para confirmar la transacción</string>
 
-    <string name="reset_wallet_title">⚠ Precaucion: Usted puede perder sus fondos por siempre</string>
-    <string name="reset_wallet_message">No reinicie si no realizo un respaldo de su cartera.</string>
-    <string name="backup_warning_title">Accion requerida: sus fondos estan en riesgo</string>
-    <string name="backup_warning_message">Si su dispositivo se pierde usted podria perder sus fondos por siempre, haga un respaldo.</string>
+    <string name="reset_wallet_title">⚠ Precaución: Usted puede perder sus fondos por siempre</string>
+    <string name="reset_wallet_message">No reinicie si no realizó un respaldo de su cartera.</string>
+    <string name="backup_warning_title">Acción requerida: sus fondos estan en riesgo</string>
+    <string name="backup_warning_message">Si su dispositivo se pierde usted podría perder sus fondos por siempre, haga un respaldo.</string>
 
     <string name="buy_title">Comprar IVOX</string>
     <string name="buy_button">Comprar</string>
