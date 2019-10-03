@@ -21,7 +21,7 @@ export class TransactionsComponent implements OnInit {
         var transaction = {
           paypal: '',
           id: '',
-          network: '',
+          wallet: '',
           destination: '',
           currency: '',
           amount: {
@@ -34,7 +34,7 @@ export class TransactionsComponent implements OnInit {
         
         transaction.paypal = res[i].paypal;
         transaction.id = res[i].id;
-        transaction.network = res[i].network;
+        transaction.wallet = res[i].wallet;
         transaction.destination = res[i].destination;
         transaction.currency = res[i].currency;
         transaction.amount.eth = res[i].amount.eth;

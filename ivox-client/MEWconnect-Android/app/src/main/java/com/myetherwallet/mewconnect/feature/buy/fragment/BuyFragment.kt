@@ -159,7 +159,7 @@ class BuyFragment : BaseViewModelFragment() {
         buy_button_7.setOnClickListener { addDigit(7) }
         buy_button_8.setOnClickListener { addDigit(8) }
         buy_button_9.setOnClickListener { addDigit(9) }
-        buy_button_point.setOnClickListener { addPoint() }
+        //buy_button_point.setOnClickListener { addPoint() }
         buy_button_0.setOnClickListener { addDigit(0) }
         buy_button_delete.setOnClickListener { delete() }
 
@@ -327,11 +327,13 @@ class BuyFragment : BaseViewModelFragment() {
                                  paymentPrice: String,
                                  paymentEthereum: String): PayPalPayment {
 
+        val method = context!!.getString(preferences.applicationPreferences.getBalanceMethod().shortName)
+
         val paymentTotal = BigDecimal(paymentPrice) + gasPrice
 
         val payment = PayPalPayment(    paymentTotal,
                                         "MXN",
-                                        paymentEthereum + " Ethereum",
+                                        paymentEthereum + " " + method,
                                         paymentIntent   )
 
         val customObject = JSONObject()
@@ -340,9 +342,9 @@ class BuyFragment : BaseViewModelFragment() {
 
         val formatedEthereumAddress = "0x" + preferences.getCurrentWalletPreferences().getWalletAddress()
 
+        customObject.put("method", method)
         customObject.put("address", formatedEthereumAddress)
         customObject.put("ether", paymentEthereum)
-        customObject.put("network", network.apiMethod)
         customObject.put("currency", "MXN")
         customObject.put("amount", paymentTotal.toString())
 
@@ -373,7 +375,14 @@ class BuyFragment : BaseViewModelFragment() {
             buy_button_8.isEnabled = true
             buy_button_9.isEnabled = true
             buy_button_0.isEnabled = true
-            buy_button_point.isEnabled = true
+
+            val method = context!!.getString(preferences.applicationPreferences.getBalanceMethod().shortName)
+
+            if(method == "ETHER"){
+                buy_button_point.isEnabled = true
+            } else {
+                buy_button_point.isEnabled = false
+            }
 
             buy_button_delete.isEnabled = true
             buy_toggle_currency.isEnabled = true
@@ -401,9 +410,11 @@ class BuyFragment : BaseViewModelFragment() {
     }
 
     private fun getTicker(){
+        val method = context!!.getString(preferences.applicationPreferences.getBalanceMethod().shortName)
+
         val json = JSONObject()
 
-        json.put("method", "IVOX")
+        json.put("method", method)
         json.put("tag", CURRENCY_MXN)
 
         val mediaType = MediaType.parse("application/json; charset=utf-8")

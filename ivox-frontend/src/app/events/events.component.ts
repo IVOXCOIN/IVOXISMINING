@@ -13,7 +13,7 @@ export class EventsComponent implements OnInit {
   constructor(private _eventService: EventService) { }
 
   ngOnInit() {
-    this._eventService.getCurrencies({tag: 'all'}).subscribe(
+    this._eventService.getCurrencies({tag: 'all', method: 'IVOX'}).subscribe(
       res => {
         this.currencies = res;
       },
