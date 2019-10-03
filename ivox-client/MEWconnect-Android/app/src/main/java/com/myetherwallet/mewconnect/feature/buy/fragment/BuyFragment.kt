@@ -159,7 +159,7 @@ class BuyFragment : BaseViewModelFragment() {
         buy_button_7.setOnClickListener { addDigit(7) }
         buy_button_8.setOnClickListener { addDigit(8) }
         buy_button_9.setOnClickListener { addDigit(9) }
-        //buy_button_point.setOnClickListener { addPoint() }
+        buy_button_point.setOnClickListener { addPoint() }
         buy_button_0.setOnClickListener { addDigit(0) }
         buy_button_delete.setOnClickListener { delete() }
 
