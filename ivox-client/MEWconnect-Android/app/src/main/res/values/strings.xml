@@ -162,8 +162,8 @@
 
     <string name="transfer_info">Información</string>
 
-    <string name="transfer_ether_message">El uso de transferencia de tokens requiere que su cartera contenga ether suficiente para minar la transacción, para hacer una transferencia de Ether a su cartera puede visitar https://ivoxcoin.com/ether</string>
-    <string name="transfer_usage_message">El sistema de transferencias le solicita un monto que debe ser inferior al total de tokens con el que cuente en su cartera, una cartera destino y su contraseña, con estos tres datos y suficiente ether se puede realizar una transaccion de tokens</string>
+    <string name="transfer_ether_message">El uso de transferencia de tokens requiere que su cartera contenga ether suficiente para minar la transacción, para hacer una transferencia de Ether a su cartera puede seleccionar la moneda "ETHEREUM" desde la interfaz principal, luego seleccionar "Comprar"</string>
+    <string name="transfer_usage_message">El sistema de transferencias le solicita un monto que debe ser inferior al total de tokens con el que cuente en su cartera, una cartera destino y su contraseña, con estos tres datos y suficiente ether se puede realizar una transacción de tokens</string>
     <string name="transfer_confirm_message">Introdusca la contraseña de su cartera para confirmar la transacción</string>
 
     <string name="reset_wallet_title">⚠ Precaución: Usted puede perder sus fondos por siempre</string>
