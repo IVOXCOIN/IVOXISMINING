@@ -605,13 +605,16 @@ class BuyFragment : BaseViewModelFragment() {
     private fun getCurrentValue() = buy_sum_1.text.toString()
 
     private fun populateCurrency() {
+
+        val method = context!!.getString(preferences.applicationPreferences.getBalanceMethod().shortName)
+
         if (isInUsd) {
             buy_currency_1.text = CURRENCY_MXN
             buy_symbol_1.text = "$"
-            buy_currency_2.text = CURRENCY_IVOX
+            buy_currency_2.text = method
             buy_symbol_2.text = ""
         } else {
-            buy_currency_1.text = CURRENCY_IVOX
+            buy_currency_1.text = method
             buy_symbol_1.text = ""
             buy_currency_2.text = ""
             buy_symbol_2.text = "$"
@@ -624,10 +627,13 @@ class BuyFragment : BaseViewModelFragment() {
         if (!isInUsd) {
             currentValue = currentValue.multiply(price)
         }
-        if (currentValue < LIMIT_MIN) {
+
+        val method = context!!.getString(preferences.applicationPreferences.getBalanceMethod().shortName)
+
+        if (currentValue < LIMIT_MIN && method == "ANY") {
             buy_button.setText(R.string.buy_minimum_warning)
             buy_button.isEnabled = false
-        } else {
+        } else if(currentValue > BigDecimal(0)){
             buy_button.setText(R.string.buy_button)
             buy_button.isEnabled = true
         }
