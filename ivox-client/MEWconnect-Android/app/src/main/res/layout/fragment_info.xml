@@ -5,7 +5,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/default_background"
+    android:background="@drawable/default_window_background_info"
     android:orientation="vertical">
 
     <android.support.v7.widget.Toolbar
@@ -39,7 +39,7 @@
                 android:paddingStart="@dimen/dimen_24dp"
                 android:paddingEnd="@dimen/dimen_24dp"
                 android:text="@string/info_contact"
-                android:textColor="@color/text_black"
+                android:textColor="@color/text_white"
                 android:textSize="@dimen/text_size_16sp" />
 
             <TextView
@@ -52,7 +52,7 @@
                 android:paddingStart="@dimen/dimen_24dp"
                 android:paddingEnd="@dimen/dimen_24dp"
                 android:text="@string/info_user_agreement"
-                android:textColor="@color/text_black"
+                android:textColor="@color/text_white"
                 android:textSize="@dimen/text_size_16sp" />
 
             <TextView
@@ -65,7 +65,7 @@
                 android:paddingStart="@dimen/dimen_24dp"
                 android:paddingEnd="@dimen/dimen_24dp"
                 android:text="@string/info_privacy_and_terms"
-                android:textColor="@color/text_black"
+                android:textColor="@color/text_white"
                 android:textSize="@dimen/text_size_16sp" />
 
             <TextView
@@ -78,7 +78,7 @@
                 android:paddingStart="@dimen/dimen_24dp"
                 android:paddingEnd="@dimen/dimen_24dp"
                 android:text="@string/info_site"
-                android:textColor="@color/text_black"
+                android:textColor="@color/text_white"
                 android:textSize="@dimen/text_size_16sp" />
 
             <View
@@ -96,7 +96,7 @@
                 android:layout_marginTop="@dimen/dimen_16dp"
                 android:layout_marginEnd="@dimen/dimen_24dp"
                 android:letterSpacing="0.03"
-                android:textColor="@color/text_grey"
+                android:textColor="@color/text_white"
                 android:textSize="@dimen/text_size_12sp"
                 tools:text="Version 21.4.17" />
 
@@ -109,7 +109,7 @@
                 android:layout_marginEnd="@dimen/dimen_24dp"
                 android:letterSpacing="0.03"
                 android:text="@string/info_copyright"
-                android:textColor="@color/text_grey"
+                android:textColor="@color/text_white"
                 android:textSize="@dimen/text_size_12sp" />
 
             <TextView
@@ -125,7 +125,7 @@
                 android:paddingEnd="@dimen/dimen_8dp"
                 android:text="@string/reset_wallet"
                 android:textAllCaps="true"
-                android:textColor="@color/text_grey"
+                android:textColor="@color/text_white"
                 android:textSize="@dimen/text_size_14sp" />
         </LinearLayout>
     </ScrollView>

@@ -17,7 +17,7 @@
     <string name="enter_recovery_phrase_error">Frase de recuperación incorrecta</string>
 
     <string name="pick_password_title">Ingresa una\ncontraseña</string>
-    <string name="pick_password_description">De modo que nadie pueda desbloquear tu cartera.</string>
+    <string name="pick_password_description">De modo que nadie pueda desbloquear su cartera.</string>
     <string name="pick_password_description2">Las mejores contraseñas son largas y contienen letras, números y caracteres especiales.</string>
     <string name="pick_password_strength_weak">Débil</string>
     <string name="pick_password_strength_so_so">So-so</string>
@@ -25,18 +25,18 @@
     <string name="pick_password_strength_great">Fabuloso</string>
 
     <string name="password_again_title">Escribe tu\ncontraseña de nuevo</string>
-    <string name="password_again_description"><![CDATA[No habra botón <u>‘Restaurar contraseña’</u>. Asegurese de recordarla.]]></string>
+    <string name="password_again_description"><![CDATA[No habra botón <u>‘Restaurar contraseña’</u>. Asegúrese de recordarla.]]></string>
     <string name="password_again_error">Contraseña incorrecta</string>
 
     <string name="lets_double_check_title">Verifiquemos \nde nuevo</string>
-    <string name="lets_double_check_description">Una vez que termines no verás tu frase de recuperación de nuevo.</string>
+    <string name="lets_double_check_description">Una vez que termine no verá su frase de recuperación de nuevo.</string>
     <string name="lets_double_check_item_title">Selecciona la palabra #%d</string>
 
     <string name="prepare_write_title">Prepárese para escribir su frase de recuperación</string>
     <string name="prepare_write_description">Si su dispositivo se pierde usted podrá usar su frase de recuperación para recuperar su cartera.</string>
     <string name="prepare_write_confirm">Inicio</string>
 
-    <string name="wallet_backed_up_title">Su cartera esta\nrespaldada</string>
+    <string name="wallet_backed_up_title">Su cartera está\nrespaldada</string>
     <string name="wallet_backed_up_description">Proteja su frase con recelo, en un mundo des-centralizado la seguridad es primero</string>
     <string name="wallet_status_connected">Conectado a MyEtherWallet</string>
     <string name="wallet_status_disconnect">Desconectar</string>
@@ -52,7 +52,7 @@
     <string name="intro_page_footer3">De manera sencilla compre\ny gestione sus tokens\nde forma segura</string>
     <string name="intro_page_footer4">Incluya en sus planes\nla inversión en energía sustentable\nde alto impacto.</string>
     <string name="intro_page_footer5">Sin colección de datos:\nIvox no puede\ncolectar sus datos privados\nsin su consentimiento.</string>
-    <string name="intro_page_footer6">Tecnología de punta\n\nIvox Wallet de\nIvox Coin cuentan con la\nmejor tecnología.</string>
+    <string name="intro_page_footer6">Tecnología de punta\n\nIvox Wallet de\nIvox Coin cuenta con la\nmejor tecnología.</string>
     <string name="intro_page_footer7">Transparente, claro y \nconciso. Aprobado por\nla comunidad.</string>
 
     <string name="generating_start_using">Comenzar a usar Ivox Wallet</string>
@@ -135,7 +135,7 @@
     <string name="write_these_screenshot_title">Oops! Parece que ha tomado una captura de pantalla.</string>
 
     <string name="back_up_wallet_title">Respalde su cartera</string>
-    <string name="back_up_wallet_description">Su dirección de Ethereum y llave privada están almacenadas en una boveda segura, si usted pierde su dispositivo perderá sus fondos por siempre.</string>
+    <string name="back_up_wallet_description">Su dirección de Ethereum y llave privada están almacenadas en una bóveda segura, si usted pierde su dispositivo perderá sus fondos por siempre.</string>
     <string name="back_up_wallet_now">Respaldar ahora</string>
 
     <string name="info_title">Info</string>
@@ -156,6 +156,9 @@
 
     <string name="transfer_wallet_error">La cartera destino no es una cartera válida</string>
     <string name="transfer_wrong_password">Contraseña incorrecta</string>
+
+    <string name="transfer_amount_error">La cantidad de tokens no puede ser 0</string>
+
 
     <string name="transfer_complete">Transacción completa, por favor espere hasta 30 minutos para que se vea reflejada en Etherscan</string>
     <string name="transfer_insufficient_funds">Fondos insuficientes</string>
@@ -190,10 +193,10 @@
     <string name="message_sidned_title">Continue in your browser</string>
     <string name="message_sidned_description">The message is signed. Please continue in MyEtherWallet in your browser.</string>
 
-    <string name="address_title">Your public\nethereum address</string>
-    <string name="address_description">Share your public address to receive Ether and ERC-20 tokens</string>
-    <string name="address_share">Share</string>
-    <string name="address_share_title">Choose application</string>
-    <string name="address_copy">Copy</string>
-    <string name="address_copied">Address copied</string>
+    <string name="address_title">Su dirección\npública de ethereum</string>
+    <string name="address_description">Comparta su dirección pública para recibir Ether y tokens ERC-20</string>
+    <string name="address_share">Compartir</string>
+    <string name="address_share_title">Escoger aplicación</string>
+    <string name="address_copy">Copiar</string>
+    <string name="address_copied">Dirección copiada</string>
 </resources>

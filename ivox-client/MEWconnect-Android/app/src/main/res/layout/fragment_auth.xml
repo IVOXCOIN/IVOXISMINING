@@ -3,13 +3,8 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/default_background"
+    android:background="@drawable/default_window_background_auth"
     android:orientation="vertical">
-
-    <com.myetherwallet.mewconnect.core.ui.view.StaticToolbar
-        android:layout_width="match_parent"
-        android:layout_height="@dimen/dimen_112dp"
-        android:dividerPadding="@dimen/dimen_96dp" />
 
     <LinearLayout
         android:layout_width="match_parent"

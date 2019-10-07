@@ -5,7 +5,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/default_background"
+    android:background="@drawable/default_window_background_transaction"
     android:orientation="vertical">
 
 
@@ -82,7 +82,7 @@
                         android:layout_height="wrap_content"
                         android:layout_marginTop="64dp"
                         android:layout_gravity="left"
-                        android:inputType="numberDecimal"
+                        android:inputType="number"
 
                         android:textSize="@dimen/text_size_16sp" />
 

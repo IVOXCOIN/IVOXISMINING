@@ -62,7 +62,7 @@ class WalletCardView @JvmOverloads constructor(
         layoutParams.height = expandedHeight.toInt()
         wallet_card_content.layoutParams = layoutParams
 
-        CardBackgroundHelper.setImage(wallet_card_background, preferences.applicationPreferences.getCurrentNetwork())
+        //CardBackgroundHelper.setImage(wallet_card_background, preferences.applicationPreferences.getCurrentNetwork())
 
         if (preferences.applicationPreferences.isBackedUp()) {
             wallet_card_backup_container.visibility = View.GONE

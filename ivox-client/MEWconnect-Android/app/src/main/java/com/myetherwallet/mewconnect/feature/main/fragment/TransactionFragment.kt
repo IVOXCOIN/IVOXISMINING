@@ -30,6 +30,7 @@ import android.text.InputType
 import android.text.SpannableString
 import android.text.Spanned
 import android.text.util.Linkify
+import android.util.Log
 import android.widget.EditText
 import com.myetherwallet.mewconnect.core.utils.HexUtils
 import com.myetherwallet.mewconnect.core.utils.crypto.StorageCryptHelper
@@ -150,67 +151,77 @@ class TransactionFragment : BaseDiFragment(), Toolbar.OnMenuItemClickListener {
         dialog.show()
 
         confirm_transfer_tokens.setOnClickListener {
-            val editText = EditText(activity!!)
 
-            editText.inputType = InputType.TYPE_CLASS_TEXT or InputType.TYPE_TEXT_VARIATION_PASSWORD
+            if(transfer_amount.text.toString().toDouble() == 0.0){
 
-            val builder = AlertDialog.Builder(activity!!)
+                displayToast(activity!!.getText(R.string.transfer_amount_error).toString())
+            } else {
 
-            builder.setTitle(activity!!.getText(R.string.transfer_info))
 
-            builder.setMessage(activity!!.getText(R.string.transfer_confirm_message))
+                val editText = EditText(activity!!)
 
-            builder.setView(editText)
+                editText.inputType = InputType.TYPE_CLASS_TEXT or InputType.TYPE_TEXT_VARIATION_PASSWORD
 
-            builder.setPositiveButton("OK"){dialog, which ->
-                val password = editText.text.toString()
-                val privateKey = StorageCryptHelper.decrypt(preferences.getCurrentWalletPreferences().getWalletPrivateKey(), password)
+                val builder = AlertDialog.Builder(activity!!)
 
-                var isDestinationWalletValid = false
+                builder.setTitle(activity!!.getText(R.string.transfer_info))
 
-                if(Ethereum.isValidAddress(transfer_wallet.text.toString()))
-                {
-                    isDestinationWalletValid = true
-                }
-                else if(Ethereum.isChecksumAddress(transfer_wallet.text.toString()))
-                {
-                    isDestinationWalletValid = true
-                }
+                builder.setMessage(activity!!.getText(R.string.transfer_confirm_message))
 
-                if(!isDestinationWalletValid){
-                    displayToast(activity!!.getText(R.string.transfer_wallet_error).toString())
-                } else {
-                    if (checkPrivateKey(privateKey)) {
+                builder.setView(editText)
 
-                        val privateKeyString = HexUtils.bytesToStringLowercase(privateKey)
+                builder.setPositiveButton("OK"){dialog, which ->
+                    val password = editText.text.toString()
+                    val privateKey = StorageCryptHelper.decrypt(preferences.getCurrentWalletPreferences().getWalletPrivateKey(), password)
 
-                        transferCoins(transfer_wallet.text.toString(),
-                                        transfer_amount.text.toString().toDouble(),
-                                        privateKeyString)
+                    var isDestinationWalletValid = false
 
-                    } else {
-                        displayToast(activity!!.getText(R.string.transfer_wrong_password).toString())
+                    if(Ethereum.isValidAddress(transfer_wallet.text.toString()))
+                    {
+                        isDestinationWalletValid = true
+                    }
+                    else if(Ethereum.isChecksumAddress(transfer_wallet.text.toString()))
+                    {
+                        isDestinationWalletValid = true
                     }
 
+                    if(!isDestinationWalletValid){
+                        displayToast(activity!!.getText(R.string.transfer_wallet_error).toString())
+                    } else {
+                        if (checkPrivateKey(privateKey)) {
+
+                            val privateKeyString = HexUtils.bytesToStringLowercase(privateKey)
+
+                            transferCoins(transfer_wallet.text.toString(),
+                                            transfer_amount.text.toString().toDouble(),
+                                            privateKeyString)
+
+                        } else {
+                            displayToast(activity!!.getText(R.string.transfer_wrong_password).toString())
+                        }
+
+                    }
+
+
+
                 }
 
+                builder.setNegativeButton("Cancelar", null)
 
+                val dialog: AlertDialog = builder.create()
+
+                dialog.setOnShowListener(DialogInterface.OnShowListener {
+                    dialog.getButton(AlertDialog.BUTTON_POSITIVE).setBackgroundColor(resources.getColor(R.color.blue))
+                    dialog.getButton(AlertDialog.BUTTON_POSITIVE).setTextColor(resources.getColor(R.color.white))
+
+                    dialog.getButton(AlertDialog.BUTTON_NEGATIVE).setBackgroundColor(resources.getColor(R.color.blue))
+                    dialog.getButton(AlertDialog.BUTTON_NEGATIVE).setTextColor(resources.getColor(R.color.white))
+                })
+
+                dialog.show()
 
             }
 
-            builder.setNegativeButton("Cancelar", null)
-
-            val dialog: AlertDialog = builder.create()
-
-            dialog.setOnShowListener(DialogInterface.OnShowListener {
-                dialog.getButton(AlertDialog.BUTTON_POSITIVE).setBackgroundColor(resources.getColor(R.color.blue))
-                dialog.getButton(AlertDialog.BUTTON_POSITIVE).setTextColor(resources.getColor(R.color.white))
-
-                dialog.getButton(AlertDialog.BUTTON_NEGATIVE).setBackgroundColor(resources.getColor(R.color.blue))
-                dialog.getButton(AlertDialog.BUTTON_NEGATIVE).setTextColor(resources.getColor(R.color.white))
-            })
-
-            dialog.show()
         }
 
 

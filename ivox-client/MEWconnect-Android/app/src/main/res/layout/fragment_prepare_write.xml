@@ -2,7 +2,7 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/default_background"
+    android:background="@drawable/default_window_background_general"
     android:orientation="vertical">
 
     <com.myetherwallet.mewconnect.core.ui.view.StaticToolbar

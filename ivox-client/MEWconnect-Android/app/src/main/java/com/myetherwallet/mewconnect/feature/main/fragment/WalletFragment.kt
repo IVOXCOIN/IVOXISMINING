@@ -156,7 +156,7 @@ class WalletFragment : BaseViewModelFragment() {
             }
         })
 
-        CardBackgroundHelper.setImage(wallet_card_background, preferences.applicationPreferences.getCurrentNetwork())
+        //CardBackgroundHelper.setImage(wallet_card_background, preferences.applicationPreferences.getCurrentNetwork())
 
         if (address.isEmpty()) {
             return

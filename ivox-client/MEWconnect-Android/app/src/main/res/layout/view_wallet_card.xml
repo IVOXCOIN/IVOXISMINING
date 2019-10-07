@@ -14,7 +14,7 @@
         android:layout_height="match_parent"
         android:contentDescription="@null"
         android:scaleType="matrix"
-        android:src="@drawable/default_window_background" />
+        android:src="@drawable/background_wallet" />
 
     <View
         android:layout_width="match_parent"

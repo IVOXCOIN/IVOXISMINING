@@ -91,10 +91,9 @@ class IntroAnimationView @JvmOverloads constructor(
         for (i in 0 until pagesCount) {
             keyFrames[i] = Keyframe.of(min(1f / pagesCount * i, 1f), PathData.parse(buildPath(100, 100, 4 + i * 2, maxCorners)))
             if (i == 0) {
-                backgrounds[i] = Animation.ofArgb(Color.WHITE, Color.WHITE)
+                backgrounds[i] = Animation.ofArgb(Color.GRAY, Color.GRAY)
             } else {
-                val color = if (i == 2) Color.TRANSPARENT else Color.WHITE
-                backgrounds[i] = Animation.ofArgb(color)
+                backgrounds[i] = Animation.ofArgb(Color.GRAY, Color.GRAY)
             }
             backgrounds[i]?.duration((maxProgress / pagesCount).toLong())?.startDelay((maxProgress / pagesCount * i).toLong())
         }

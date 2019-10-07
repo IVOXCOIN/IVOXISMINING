@@ -9,7 +9,7 @@
         android:layout_height="match_parent"
         android:contentDescription="@null"
         android:scaleType="centerCrop"
-        android:src="@drawable/default_window_background" />
+        android:src="@drawable/default_window_background_help" />
 
     <LinearLayout
         android:layout_width="match_parent"
