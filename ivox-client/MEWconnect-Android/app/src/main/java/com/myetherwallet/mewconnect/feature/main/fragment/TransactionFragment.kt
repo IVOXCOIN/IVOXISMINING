@@ -59,6 +59,7 @@ import org.web3j.tx.Transfer
 import org.web3j.tx.response.NoOpProcessor
 import org.web3j.utils.Convert
 import org.web3j.utils.Numeric
+import java.lang.NumberFormatException
 import java.math.BigInteger
 
 private const val CONTRACT_ADDRESS = "0x1c26C58d230B48A7e012F27D769703909309c75c"
@@ -108,7 +109,39 @@ class TransactionFragment : BaseDiFragment(), Toolbar.OnMenuItemClickListener {
 
         address = preferences.getCurrentWalletPreferences().getWalletAddress()
 
-        transfer_amount.filters = arrayOf<InputFilter>(InputFilterMaxDecimals(5, 4))
+        confirm_transaction_cancel.setOnClickListener {
+            replaceFragment(WalletFragment.newInstance())
+        }
+
+
+        confirm_transaction_wallet_address.setText("")
+        confirm_transaction_amount.setText("0")
+
+        confirm_transaction_amount.filters = arrayOf<InputFilter>(InputFilterMaxDecimals(5, 4))
+
+
+        updateCheckBoxState(confirm_transaction_wallet_container, true)
+        updateCheckBoxState(confirm_transaction_amount_container, true)
+        updateOkButtonState()
+
+        confirm_transaction_wallet_checkbox.setOnCheckedChangeListener{ buttonView, isChecked ->
+            //confirm_transaction_wallet_checkbox.isChecked = !confirm_transaction_wallet_checkbox.isChecked
+            //updateCheckBoxState(confirm_transaction_wallet_container, confirm_transaction_wallet_checkbox.isChecked)
+
+
+            confirm_transaction_wallet_address.isEnabled = !isChecked
+
+            updateOkButtonState()
+        }
+
+        confirm_transaction_amount_checkbox.setOnCheckedChangeListener{ buttonView, isChecked ->
+            //confirm_transaction_amount_checkbox.isChecked = !confirm_transaction_amount_checkbox.isChecked
+            //updateCheckBoxState(confirm_transaction_amount_container, confirm_transaction_amount_checkbox.isChecked)
+
+            confirm_transaction_amount.isEnabled = !isChecked
+
+            updateOkButtonState()
+        }
 
 
         var s = SpannableString(activity!!.getText(R.string.transfer_ether_message))
@@ -150,9 +183,19 @@ class TransactionFragment : BaseDiFragment(), Toolbar.OnMenuItemClickListener {
 
         dialog.show()
 
-        confirm_transfer_tokens.setOnClickListener {
+        confirm_transaction_ok.setOnClickListener {
 
-            if(transfer_amount.text.toString().toDouble() == 0.0){
+            var transaction_amount = 0.0
+
+            try{
+
+                transaction_amount = confirm_transaction_amount.text.toString().toDouble()
+
+            } catch(e: NumberFormatException){
+                transaction_amount = 0.0
+            }
+
+            if(transaction_amount == 0.0){
 
                 displayToast(activity!!.getText(R.string.transfer_amount_error).toString())
             } else {
@@ -176,11 +219,11 @@ class TransactionFragment : BaseDiFragment(), Toolbar.OnMenuItemClickListener {
 
                     var isDestinationWalletValid = false
 
-                    if(Ethereum.isValidAddress(transfer_wallet.text.toString()))
+                    if(Ethereum.isValidAddress(confirm_transaction_wallet_address.text.toString()))
                     {
                         isDestinationWalletValid = true
                     }
-                    else if(Ethereum.isChecksumAddress(transfer_wallet.text.toString()))
+                    else if(Ethereum.isChecksumAddress(confirm_transaction_wallet_address.text.toString()))
                     {
                         isDestinationWalletValid = true
                     }
@@ -192,8 +235,8 @@ class TransactionFragment : BaseDiFragment(), Toolbar.OnMenuItemClickListener {
 
                             val privateKeyString = HexUtils.bytesToStringLowercase(privateKey)
 
-                            transferCoins(transfer_wallet.text.toString(),
-                                            transfer_amount.text.toString().toDouble(),
+                            transferCoins(confirm_transaction_wallet_address.text.toString(),
+                                            transaction_amount,
                                             privateKeyString)
 
                         } else {
@@ -225,6 +268,15 @@ class TransactionFragment : BaseDiFragment(), Toolbar.OnMenuItemClickListener {
         }
 
 
+    }
+
+    private fun updateCheckBoxState(container: ViewGroup, isChecked: Boolean) {
+        container.isEnabled = isChecked
+    }
+
+    private fun updateOkButtonState() {
+        val isAllChecked = confirm_transaction_wallet_checkbox.isChecked && confirm_transaction_amount_checkbox.isChecked
+        confirm_transaction_ok.isEnabled = isAllChecked
     }
 
     fun transferCoins (toAccount: String, coinAmount: Double, clientPrivateKey: String){

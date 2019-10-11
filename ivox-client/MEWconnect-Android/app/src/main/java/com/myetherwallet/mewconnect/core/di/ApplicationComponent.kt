@@ -41,6 +41,8 @@ interface ApplicationComponent {
 
     fun inject(fragment: InfoFragment)
 
+    fun inject(fragment: TokenFragment)
+
     fun inject(fragment: TokensFragment)
 
     fun inject(fragment: TransactionFragment)

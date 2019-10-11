@@ -13,7 +13,6 @@ import com.myetherwallet.mewconnect.core.ui.fragment.BaseDiFragment
 import com.myetherwallet.mewconnect.feature.main.activity.MainActivity
 import com.myetherwallet.mewconnect.feature.main.adapter.TokensListAdapter
 import com.myetherwallet.mewconnect.feature.main.data.IvoxToken
-import kotlinx.android.synthetic.main.fragment_info.*
 import kotlinx.android.synthetic.main.fragment_tokens.*
 //import kotlinx.android.synthetic.main.fragment_tokens.multiselect_toolbar
 import okhttp3.*
@@ -108,15 +107,30 @@ class TokensFragment : BaseDiFragment(), Toolbar.OnMenuItemClickListener {
                     (0..(json.length()-1)).forEach { i ->
                         var item = json.getJSONObject(i)
 
+                        val paypalId = item.getString("paypal")
+                        val id = item.getString("id")
+                        val wallet = item.getString("wallet")
+                        val currency = item.getString("currency")
+                        val date = item.getString("date")
+                        val value = item.getString("value")
+                        val purchase = item.getString("purchase")
+
                         val total = BigDecimal(item.getString("total"))
                         val eth = BigDecimal(item.getString("eth"))
 
                         val rate = total / eth
 
-                        balanceItems.add(IvoxToken(item.getString("date"),
-                                                    eth.toString(),
+                        val status = item.getString("status")
+
+                        balanceItems.add(IvoxToken(paypalId,
+                                                    id,
+                                                    wallet,
+                                                    currency,
+                                                    date,
+                                                    value,
+                                                    purchase,
                                                     rate.toString(),
-                                                    item.getString("paypal")))
+                                                    status))
                     }
 
                     onAllBalancesSuccess(balanceItems)
@@ -149,9 +163,9 @@ class TokensFragment : BaseDiFragment(), Toolbar.OnMenuItemClickListener {
 
             for (balance in balances!!) {
                 val date    = balance.date
-                val amount  = balance.amount
+                val amount  = balance.value
                 val rate    = balance.rate
-                val paypal  = balance.paypal
+                val paypal  = balance.paypalId
 
                 dates.add(date)
                 amounts.add(amount + " @" + rate)
@@ -162,9 +176,21 @@ class TokensFragment : BaseDiFragment(), Toolbar.OnMenuItemClickListener {
                                                         dates,
                                                         amounts,
                                                         paypalIds,
-                                                        R.mipmap.ic_launcher)
+                                                        R.drawable.tokens_logo)
 
             tokens_list.adapter = tokensListAdapter
+
+            tokens_list.setOnItemClickListener{ parent, view, position, id ->
+                val token = balances?.get(position)
+                addFragment(TokenFragment.newInstance(token?.paypalId!!,
+                                                        token?.id!!,
+                                                        token?.wallet!!,
+                                                        token?.currency!!,
+                                                        token?.date!!,
+                                                        token?.value!!,
+                                                        token?.purchase!!,
+                                                        token?.status!!))
+            }
         })
 
     }
