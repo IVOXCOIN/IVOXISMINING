@@ -115,8 +115,8 @@ class TokensFragment : BaseDiFragment(), Toolbar.OnMenuItemClickListener {
                         val value = item.getString("value")
                         val purchase = item.getString("purchase")
 
-                        val total = BigDecimal(item.getString("total"))
-                        val eth = BigDecimal(item.getString("eth"))
+                        val total = BigDecimal(purchase)
+                        val eth = BigDecimal(value)
 
                         val rate = total / eth
 

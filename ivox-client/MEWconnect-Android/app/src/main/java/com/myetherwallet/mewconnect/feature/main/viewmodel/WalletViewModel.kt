@@ -251,8 +251,8 @@ class WalletViewModel
 
                         (0..(json.length()-1)).forEach { i ->
                             var item = json.getJSONObject(i)
-                            balanceItems.add(Balance(BigDecimal(item.getString("total")),
-                                                    BigDecimal(item.getString("eth")),
+                            balanceItems.add(Balance(BigDecimal(item.getString("purchase")),
+                                                    BigDecimal(item.getString("value")),
                                                     item.getString("currency"),
                                                     "",
                                                     item.getString("paypal"),

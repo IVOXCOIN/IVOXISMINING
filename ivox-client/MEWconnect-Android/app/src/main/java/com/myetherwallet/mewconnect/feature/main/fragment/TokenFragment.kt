@@ -10,7 +10,6 @@ import com.myetherwallet.mewconnect.core.ui.fragment.BaseDiFragment
 import com.myetherwallet.mewconnect.feature.main.activity.MainActivity
 import com.myetherwallet.mewconnect.feature.main.adapter.TokenListAdapter
 import kotlinx.android.synthetic.main.fragment_tokens.*
-import javax.inject.Inject
 
 class TokenFragment : BaseDiFragment(), Toolbar.OnMenuItemClickListener {
 
