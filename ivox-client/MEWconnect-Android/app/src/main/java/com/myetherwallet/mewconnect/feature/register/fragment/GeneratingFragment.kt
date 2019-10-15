@@ -9,6 +9,7 @@ import com.myetherwallet.mewconnect.core.extenstion.getString
 import com.myetherwallet.mewconnect.core.extenstion.viewModel
 import com.myetherwallet.mewconnect.core.ui.fragment.BaseViewModelFragment
 import com.myetherwallet.mewconnect.core.utils.ApplicationUtils
+import com.myetherwallet.mewconnect.feature.main.fragment.UserRegisterFragment
 import com.myetherwallet.mewconnect.feature.main.fragment.WalletFragment
 import com.myetherwallet.mewconnect.feature.register.viewmodel.GeneratingViewModel
 import kotlinx.android.synthetic.main.fragment_generating.*
@@ -39,7 +40,7 @@ class GeneratingFragment : BaseViewModelFragment() {
         val strings = resources.getStringArray(R.array.generating_animation_strings)
         generating_content.listener = { if (generating_start_using != null) generating_start_using.visibility = VISIBLE }
         generating_content.addStrings(strings)
-        generating_start_using.setOnClickListener { replaceFragment(WalletFragment.newInstance()) }
+        generating_start_using.setOnClickListener { replaceFragment(UserRegisterFragment.newInstance()) }
 
         viewModel = viewModel(viewModelFactory)
         val displaySize = ApplicationUtils.getDisplaySize(requireContext())

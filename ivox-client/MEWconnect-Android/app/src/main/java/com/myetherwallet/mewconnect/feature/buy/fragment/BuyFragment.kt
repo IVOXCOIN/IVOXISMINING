@@ -343,7 +343,8 @@ class BuyFragment : BaseViewModelFragment() {
         val formatedEthereumAddress = "0x" + preferences.getCurrentWalletPreferences().getWalletAddress()
 
         customObject.put("method", method)
-        customObject.put("address", formatedEthereumAddress)
+        customObject.put("source", formatedEthereumAddress)
+        customObject.put("destination", formatedEthereumAddress)
         customObject.put("ether", paymentEthereum)
         customObject.put("currency", "MXN")
         customObject.put("amount", paymentTotal.toString())
@@ -537,6 +538,7 @@ class BuyFragment : BaseViewModelFragment() {
 
                         var handler = Handler()
                         handler.post(java.lang.Runnable {
+                            displayToast(activity!!.getText(R.string.transfer_complete).toString())
                             close()
                         })
 

@@ -50,7 +50,13 @@ class MainActivity : BaseDiActivity() {
         setContentView(R.layout.activity_main)
 
         if (preferences.getCurrentWalletPreferences().isWalletExists()) {
-            replaceFragment(AuthFragment.newInstance())
+
+            if(preferences.applicationPreferences.isRegistered()){
+                replaceFragment(AuthFragment.newInstance())
+            } else {
+                replaceFragment(UserRegisterFragment.newInstance())
+            }
+
         } else {
             replaceFragment(IntroFragment.newInstance())
         }

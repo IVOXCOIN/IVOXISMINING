@@ -6,6 +6,8 @@ data class IvoxToken(
         val wallet: String,
         val currency: String,
         val date: String,
+        val source: String,
+        val destination: String,
         val value: String,
         val purchase: String,
         val rate: String,

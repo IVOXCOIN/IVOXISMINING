@@ -20,6 +20,8 @@ class TokenFragment : BaseDiFragment(), Toolbar.OnMenuItemClickListener {
                         wallet: String,
                         currency: String,
                         date: String,
+                        source: String,
+                        destination: String,
                         value: String,
                         purchase: String,
                         status: String): TokenFragment {
@@ -32,6 +34,8 @@ class TokenFragment : BaseDiFragment(), Toolbar.OnMenuItemClickListener {
             arguments.putSerializable("wallet", wallet)
             arguments.putSerializable("currency", currency)
             arguments.putSerializable("date", date)
+            arguments.putSerializable("source", source)
+            arguments.putSerializable("destination", destination)
             arguments.putSerializable("value", value)
             arguments.putSerializable("purchase", purchase)
             arguments.putSerializable("status", status)
@@ -46,6 +50,8 @@ class TokenFragment : BaseDiFragment(), Toolbar.OnMenuItemClickListener {
     private var wallet: String = ""
     private var currency: String = ""
     private var date: String = ""
+    private var source: String = ""
+    private var destination: String = ""
     private var value: String = ""
     private var purchase: String = ""
     private var status: String = ""
@@ -61,6 +67,8 @@ class TokenFragment : BaseDiFragment(), Toolbar.OnMenuItemClickListener {
         wallet = arguments!!.getSerializable("wallet") as String
         currency = arguments!!.getSerializable("currency") as String
         date = arguments!!.getSerializable("date") as String
+        source = arguments!!.getSerializable("source") as String
+        destination = arguments!!.getSerializable("destination") as String
         value = arguments!!.getSerializable("value") as String
         purchase = arguments!!.getSerializable("purchase") as String
         status = arguments!!.getSerializable("status") as String
@@ -84,6 +92,8 @@ class TokenFragment : BaseDiFragment(), Toolbar.OnMenuItemClickListener {
             titles.add(activity!!.getText(R.string.transfer_wallet_title).toString())
             titles.add(activity!!.getText(R.string.transfer_currency_title).toString())
             titles.add(activity!!.getText(R.string.transfer_date_title).toString())
+            titles.add(activity!!.getText(R.string.transfer_date_source).toString())
+            titles.add(activity!!.getText(R.string.transfer_date_destination).toString())
             titles.add(activity!!.getText(R.string.transfer_value_title).toString())
             titles.add(activity!!.getText(R.string.transfer_purchase_title).toString())
             titles.add(activity!!.getText(R.string.transfer_status_title).toString())
@@ -93,6 +103,8 @@ class TokenFragment : BaseDiFragment(), Toolbar.OnMenuItemClickListener {
             strings.add(wallet)
             strings.add(currency)
             strings.add(date)
+            strings.add(source)
+            strings.add(destination)
             strings.add(value)
             strings.add(purchase)
             strings.add(status)

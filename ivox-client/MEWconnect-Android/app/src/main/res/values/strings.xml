@@ -24,7 +24,7 @@
     <string name="pick_password_strength_good">Bien</string>
     <string name="pick_password_strength_great">Fabuloso</string>
 
-    <string name="password_again_title">Escribe tu\ncontraseña de nuevo</string>
+    <string name="password_again_title">Escriba su\ncontraseña de nuevo</string>
     <string name="password_again_description"><![CDATA[No habra botón <u>‘Restaurar contraseña’</u>. Asegúrese de recordarla.]]></string>
     <string name="password_again_error">Contraseña incorrecta</string>
 
@@ -134,6 +134,12 @@
     <string name="write_these_screenshot_text">No mantenga sus frases de recuperación de manera digital, anótelas en papel.</string>
     <string name="write_these_screenshot_title">Oops! Parece que ha tomado una captura de pantalla.</string>
 
+
+    <string name="register_password_error">Contraseña incorrecta</string>
+    <string name="register_user_error">Un usuario ya se ha registrado con ese email</string>
+    <string name="register_server_error">Error en el servidor</string>
+
+
     <string name="back_up_wallet_title">Respalde su cartera</string>
     <string name="back_up_wallet_description">Su dirección de Ethereum y llave privada están almacenadas en una bóveda segura, si usted pierde su dispositivo perderá sus fondos por siempre.</string>
     <string name="back_up_wallet_now">Respaldar ahora</string>
@@ -170,16 +176,23 @@
     <string name="transfer_wallet_title">Tipo de cartera</string>
     <string name="transfer_currency_title">Moneda</string>
     <string name="transfer_date_title">Fecha</string>
+
+    <string name="transfer_date_source">Origen</string>
+    <string name="transfer_date_destination">Destino</string>
+
     <string name="transfer_value_title">Valor de Token</string>
     <string name="transfer_purchase_title">Valor de compra</string>
     <string name="transfer_status_title">Estatus</string>
 
     <string name="transfer_ether_message">El uso de transferencia de tokens requiere que su cartera contenga ether suficiente para minar la transacción, para hacer una transferencia de Ether a su cartera puede seleccionar la moneda "ETHEREUM" desde la interfaz principal, luego seleccionar "Comprar"</string>
     <string name="transfer_usage_message">El sistema de transferencias le solicita un monto que debe ser inferior al total de tokens con el que cuente en su cartera, una cartera destino y su contraseña, con estos tres datos y suficiente ether se puede realizar una transacción de tokens</string>
-    <string name="transfer_confirm_message">Introdusca la contraseña de su cartera para confirmar la transacción</string>
+    <string name="transfer_confirm_message">Introduzca la contraseña de su cartera para confirmar la transacción</string>
 
     <string name="reset_wallet_title">⚠ Precaución: Usted puede perder sus fondos por siempre</string>
     <string name="reset_wallet_message">No reinicie si no realizó un respaldo de su cartera.</string>
+    <string name="reset_wallet_confirm_title">Reiniciar cartera</string>
+    <string name="reset_wallet_email_error">El email asociado a esta cuenta no existe o la contraseña es incorrecta</string>
+    <string name="reset_wallet_confirm">Introduzca la contraseña de su cartera para confirmar el reinicio de su cartera</string>
     <string name="backup_warning_title">Acción requerida: sus fondos estan en riesgo</string>
     <string name="backup_warning_message">Si su dispositivo se pierde usted podría perder sus fondos por siempre, haga un respaldo.</string>
 

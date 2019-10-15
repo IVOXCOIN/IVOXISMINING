@@ -12,6 +12,8 @@ import java.util.*
 
 private const val WALLET_MNEMONIC = "wallet_mnemonic"
 private const val WALLET_IS_BACKED_UP = "wallet_is_backed_up"
+private const val USER_IS_REGISTERED = "user_is_registered"
+private const val USER_EMAIL = "user_email"
 private const val CURRENT_NETWORK = "current_network"
 private const val BALANCE_METHOD = "balance_method"
 private const val BACKUP_WARNING_TIME = "backup_warning_time"
@@ -51,6 +53,22 @@ class ApplicationPreferences(private val preferences: SharedPreferences) {
         preferences.edit().putString(BALANCE_METHOD, method.name).apply()
     }
 
+    fun isRegistered() = preferences.getBoolean(USER_IS_REGISTERED, false)
+
+    fun setRegistered(isRegistered: Boolean) {
+        preferences.edit().putBoolean(USER_IS_REGISTERED, isRegistered).apply()
+    }
+
+
+    fun getUserEmail(): String {
+        return preferences.getString(USER_EMAIL, "")!!
+    }
+
+    fun setUserEmail(email: String) {
+        preferences.edit().putString(USER_EMAIL, email).apply()
+    }
+
+
     fun getBackupWarningTime(): Long = preferences.getLong(BACKUP_WARNING_TIME, 0L)
 
     fun setBackupWarningTime() {
@@ -77,6 +95,9 @@ class ApplicationPreferences(private val preferences: SharedPreferences) {
                 .remove(WALLET_MNEMONIC)
                 .remove(WALLET_IS_BACKED_UP)
                 .remove(BACKUP_WARNING_TIME)
+                .remove(BALANCE_METHOD)
+                .remove(USER_IS_REGISTERED)
+                .remove(USER_EMAIL)
                 .remove(CURRENT_NETWORK)
                 .apply()
     }

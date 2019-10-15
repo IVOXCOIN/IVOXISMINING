@@ -69,7 +69,7 @@ class TokensFragment : BaseDiFragment(), Toolbar.OnMenuItemClickListener {
         val json = JSONObject()
         val formatedEthereumAddress = "0x" + address
 
-        json.put("destination", formatedEthereumAddress)
+        json.put("source", formatedEthereumAddress)
 
         val mediaType = MediaType.parse("application/json; charset=utf-8")
 
@@ -112,10 +112,17 @@ class TokensFragment : BaseDiFragment(), Toolbar.OnMenuItemClickListener {
                         val wallet = item.getString("wallet")
                         val currency = item.getString("currency")
                         val date = item.getString("date")
+                        val source = item.getString("source")
+                        val destination = item.getString("destination")
                         val value = item.getString("value")
                         val purchase = item.getString("purchase")
 
-                        val total = BigDecimal(purchase)
+                        var total = BigDecimal("0")
+
+                        if(purchase != "N/A"){
+                            total = BigDecimal(purchase)
+                        }
+
                         val eth = BigDecimal(value)
 
                         val rate = total / eth
@@ -127,6 +134,8 @@ class TokensFragment : BaseDiFragment(), Toolbar.OnMenuItemClickListener {
                                                     wallet,
                                                     currency,
                                                     date,
+                                                    source,
+                                                    destination,
                                                     value,
                                                     purchase,
                                                     rate.toString(),
@@ -167,8 +176,14 @@ class TokensFragment : BaseDiFragment(), Toolbar.OnMenuItemClickListener {
                 val rate    = balance.rate
                 val paypal  = balance.paypalId
 
+                var rateString = "N/A"
+
+                if(rate != "0"){
+                    rateString = rate
+                }
+
                 dates.add(date)
-                amounts.add(amount + " @" + rate)
+                amounts.add(amount + " @" + rateString)
                 paypalIds.add(paypal)
             }
 
@@ -187,6 +202,8 @@ class TokensFragment : BaseDiFragment(), Toolbar.OnMenuItemClickListener {
                                                         token?.wallet!!,
                                                         token?.currency!!,
                                                         token?.date!!,
+                                                        token?.source!!,
+                                                        token?.destination!!,
                                                         token?.value!!,
                                                         token?.purchase!!,
                                                         token?.status!!))

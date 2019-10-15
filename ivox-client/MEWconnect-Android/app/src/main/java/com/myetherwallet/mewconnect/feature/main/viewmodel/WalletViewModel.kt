@@ -214,7 +214,7 @@ class WalletViewModel
             val json = JSONObject()
             val formatedEthereumAddress = "0x" + walletAddress
 
-            json.put("destination", formatedEthereumAddress)
+            json.put("source", formatedEthereumAddress)
 
             val mediaType = MediaType.parse("application/json; charset=utf-8")
 
@@ -251,7 +251,14 @@ class WalletViewModel
 
                         (0..(json.length()-1)).forEach { i ->
                             var item = json.getJSONObject(i)
-                            balanceItems.add(Balance(BigDecimal(item.getString("purchase")),
+
+                            var purchaseValue = BigDecimal("0")
+
+                            if(item.getString("purchase") != "N/A"){
+                                purchaseValue = BigDecimal(item.getString("purchase"))
+                            }
+
+                            balanceItems.add(Balance(purchaseValue,
                                                     BigDecimal(item.getString("value")),
                                                     item.getString("currency"),
                                                     "",

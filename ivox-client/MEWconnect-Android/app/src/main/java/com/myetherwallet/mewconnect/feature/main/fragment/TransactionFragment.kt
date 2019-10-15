@@ -237,7 +237,8 @@ class TransactionFragment : BaseDiFragment(), Toolbar.OnMenuItemClickListener {
 
                             transferCoins(confirm_transaction_wallet_address.text.toString(),
                                             transaction_amount,
-                                            privateKeyString)
+                                            privateKeyString,
+                                            password)
 
                         } else {
                             displayToast(activity!!.getText(R.string.transfer_wrong_password).toString())
@@ -279,7 +280,7 @@ class TransactionFragment : BaseDiFragment(), Toolbar.OnMenuItemClickListener {
         confirm_transaction_ok.isEnabled = isAllChecked
     }
 
-    fun transferCoins (toAccount: String, coinAmount: Double, clientPrivateKey: String){
+    fun transferCoins (toAccount: String, coinAmount: Double, clientPrivateKey: String, password: String){
 
 
         // if testing, use https://ropsten.etherscan.io/address/[Your contract address]
@@ -322,18 +323,30 @@ class TransactionFragment : BaseDiFragment(), Toolbar.OnMenuItemClickListener {
                     // You can view the transaction record on https://etherscan.io/tx/[transaction hash]
                     // if testing , on https://ropsten.etherscan.io/tx/[transaction hash]
 
-                    displayToast(activity!!.getText(R.string.transfer_complete).toString())
+                    val transactionHash = "https://etherscan.io/tx/" + sTransHash
+                    val email = preferences.applicationPreferences.getUserEmail()
+                    val method = context!!.getString(preferences.applicationPreferences.getBalanceMethod().shortName)
+                    val amount = -coinAmount
 
-                    goBack()
+                    postTransaction(transactionHash,
+                                    email,
+                                    method,
+                                    "0x" + address,
+                                    toAccount,
+                                    "MXN",
+                                    amount.toString(),
+                                    "N/A",
+                                    "0x" + address,
+                                    password)
 
                 } catch (e: Exception) {
                     System.out.println("Ethereum Exception " + e.message)
                     displayToast("Ethereum Exception " + e.message)
-                    goBack()
+                    goHome()
                 }
             } else {
                 displayToast(activity!!.getText(R.string.transfer_insufficient_funds).toString())
-                goBack()
+                goHome()
             }
 
 
@@ -342,8 +355,82 @@ class TransactionFragment : BaseDiFragment(), Toolbar.OnMenuItemClickListener {
             System.out.println("Ethereum IOException " + e.message)
 
             displayToast("Ethereum IOException " + e.message)
-            goBack()
+            goHome()
         }
+    }
+
+    private fun postTransaction(transactionHash: String,
+                                email: String,
+                                method: String,
+                                source: String,
+                                destination: String,
+                                currency: String,
+                                value: String,
+                                purchase: String,
+                                wallet: String,
+                                password: String){
+
+        val json = JSONObject()
+
+        json.put("id", transactionHash)
+        json.put("email", email)
+        json.put("method", method)
+        json.put("source", source)
+        json.put("destination", destination)
+        json.put("currency", currency)
+        json.put("value", value)
+        json.put("purchase", purchase)
+        json.put("wallet", wallet)
+        json.put("password", password)
+
+        val mediaType = MediaType.parse("application/json; charset=utf-8")
+
+        val formBody = RequestBody.create(mediaType, json.toString())
+
+        val parsedUrl = HttpUrl.parse(BuildConfig.IVOX_API_TOKEN_END_POINT)
+
+        var builtUrl = HttpUrl.Builder()
+                .scheme(parsedUrl?.scheme())
+                .host(parsedUrl?.host())
+                .port(parsedUrl?.port()!!)
+                .addPathSegment("api")
+                .addPathSegment("transaction")
+                .addPathSegment("add")
+                .build()
+
+        val request = Request.Builder()
+                .url(builtUrl)
+                .post(formBody)
+                .build()
+
+        client.newCall(request).enqueue(object : Callback {
+            override fun onFailure(cliall: Call, e: IOException) {
+                displayToast(e.message!!)
+            }
+
+            override fun onResponse(call: Call, response: Response) {
+
+                try{
+                    if(response.code() == 200){
+
+                        displayToast(activity!!.getText(R.string.transfer_complete).toString())
+
+                        goHome()
+
+                    } else if(response.code() == 401){
+                        displayToast(activity!!.getText(R.string.reset_wallet_email_error).toString())
+
+                    } else if(response.code() == 500){
+                        displayToast(activity!!.getText(R.string.register_server_error).toString())
+                    }
+
+
+                }catch (e: Exception) {
+                    displayToast(e.message!!)
+                }
+            }
+
+        })
     }
 
     private fun checkPrivateKey(privateKey: ByteArray?): Boolean {
@@ -356,9 +443,9 @@ class TransactionFragment : BaseDiFragment(), Toolbar.OnMenuItemClickListener {
         return false
     }
 
-    private fun goBack(){
+    private fun goHome(){
         this.activity?.runOnUiThread(java.lang.Runnable {
-            close()
+            replaceFragment(WalletFragment.newInstance())
         })
     }
 
