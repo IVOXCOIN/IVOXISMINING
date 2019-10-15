@@ -13,18 +13,27 @@ import com.myetherwallet.mewconnect.core.persist.prefenreces.PreferencesManager
 import com.myetherwallet.mewconnect.core.ui.fragment.BaseDiFragment
 import com.myetherwallet.mewconnect.core.utils.HexUtils
 import com.myetherwallet.mewconnect.core.utils.crypto.StorageCryptHelper
+import com.myetherwallet.mewconnect.feature.main.activity.MainActivity
 import okhttp3.*
 import kotlinx.android.synthetic.main.fragment_user_register.*
+import kotlinx.android.synthetic.main.fragment_user_register.user_address
+import kotlinx.android.synthetic.main.fragment_user_register.user_country
+import kotlinx.android.synthetic.main.fragment_user_register.user_credit_card
+import kotlinx.android.synthetic.main.fragment_user_register.user_email
+import kotlinx.android.synthetic.main.fragment_user_register.user_name
+import kotlinx.android.synthetic.main.fragment_user_register.user_password
+import kotlinx.android.synthetic.main.fragment_user_register.user_phone
+import kotlinx.android.synthetic.main.fragment_user_update.*
 import org.json.JSONArray
 import org.json.JSONObject
 import org.web3j.crypto.ECKeyPair
 import java.io.IOException
 import javax.inject.Inject
 
-class UserRegisterFragment : BaseDiFragment(), Toolbar.OnMenuItemClickListener {
+class UserUpdateFragment : BaseDiFragment(), Toolbar.OnMenuItemClickListener {
 
     companion object {
-        fun newInstance() = UserRegisterFragment()
+        fun newInstance() = UserUpdateFragment()
     }
 
     @Inject
@@ -44,8 +53,17 @@ class UserRegisterFragment : BaseDiFragment(), Toolbar.OnMenuItemClickListener {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        (activity as MainActivity).setupDrawer(data_toolbar)
 
-        register_button.setOnClickListener {
+
+        user_name.setText(preferences.applicationPreferences.getUserName())
+        user_email.setText(preferences.applicationPreferences.getUserEmail())
+        user_phone.setText(preferences.applicationPreferences.getUserPhone())
+        user_address.setText(preferences.applicationPreferences.getUserAddress())
+        user_country.setText(preferences.applicationPreferences.getUserCountry())
+        user_credit_card.setText(preferences.applicationPreferences.getUserCreditCard())
+
+        update_button.setOnClickListener {
 
             userName = user_name.text.toString()
             userEmail = user_email.text.toString()
@@ -59,7 +77,7 @@ class UserRegisterFragment : BaseDiFragment(), Toolbar.OnMenuItemClickListener {
             val privateKey = StorageCryptHelper.decrypt(preferences.getCurrentWalletPreferences().getWalletPrivateKey(), userPassword)
             if (checkPrivateKey(privateKey)) {
 
-                registerUser()
+                updateUser()
 
             } else {
                 displayToast(activity!!.getText(R.string.register_password_error).toString())
@@ -70,12 +88,13 @@ class UserRegisterFragment : BaseDiFragment(), Toolbar.OnMenuItemClickListener {
 
     }
 
-    private fun registerUser(){
+    private fun updateUser(){
 
         val json = JSONObject()
 
         json.put("name", userName)
-        json.put("email", userEmail)
+        json.put("email", preferences.applicationPreferences.getUserEmail())
+        json.put("new_email", userEmail)
         json.put("phone", userPhone)
         json.put("address", userAddress)
         json.put("country", userCountry)
@@ -95,7 +114,7 @@ class UserRegisterFragment : BaseDiFragment(), Toolbar.OnMenuItemClickListener {
                 .port(parsedUrl?.port()!!)
                 .addPathSegment("api")
                 .addPathSegment("user")
-                .addPathSegment("register")
+                .addPathSegment("update")
                 .build()
 
         val request = Request.Builder()
@@ -119,17 +138,17 @@ class UserRegisterFragment : BaseDiFragment(), Toolbar.OnMenuItemClickListener {
                         preferences.applicationPreferences.setUserAddress(userAddress)
                         preferences.applicationPreferences.setUserCountry(userCountry)
                         preferences.applicationPreferences.setUserCreditCard(userCreditCard)
-
                         preferences.applicationPreferences.setRegistered(true)
+
+                        displayToast(activity!!.getText(R.string.update_user_success).toString())
                         openWallet()
 
-                    } else if(response.code() == 400){
+                    } else if(response.code() == 401){
                         displayToast(activity!!.getText(R.string.register_user_error).toString())
 
                     } else if(response.code() == 500){
                         displayToast(activity!!.getText(R.string.register_server_error).toString())
                     }
-
 
                 }catch (e: Exception) {
                     displayToast(e.message!!)
@@ -180,5 +199,5 @@ class UserRegisterFragment : BaseDiFragment(), Toolbar.OnMenuItemClickListener {
         appComponent.inject(this)
     }
 
-    override fun layoutId() = R.layout.fragment_user_register
+    override fun layoutId() = R.layout.fragment_user_update
 }

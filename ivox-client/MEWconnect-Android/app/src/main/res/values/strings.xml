@@ -91,6 +91,7 @@
     <string name="drawer_item_tokens">Tokens</string>
     <string name="drawer_item_transfer">Transferir</string>
     <string name="drawer_item_info">Información</string>
+    <string name="drawer_item_data">Datos</string>
 
 
     <string name="scan_camera_permission_rationale_settings">Habilite el acceso a la cámara para\nIvox en Configuración</string>
@@ -195,6 +196,22 @@
     <string name="reset_wallet_confirm">Introduzca la contraseña de su cartera para confirmar el reinicio de su cartera</string>
     <string name="backup_warning_title">Acción requerida: sus fondos estan en riesgo</string>
     <string name="backup_warning_message">Si su dispositivo se pierde usted podría perder sus fondos por siempre, haga un respaldo.</string>
+
+
+    <string name="user_register_title">Registro</string>
+    <string name="user_register_name">Nombre completo</string>
+    <string name="user_register_email">Email</string>
+    <string name="user_register_phone">Teléfono</string>
+    <string name="user_register_address">Domicilio</string>
+    <string name="user_register_country">País</string>
+    <string name="user_register_credit_card">Número de tarjeta de crédito</string>
+    <string name="user_register_password">Contraseña</string>
+    <string name="user_register_register">Registrarse</string>
+
+    <string name="update_user_title">Actualizar datos</string>
+    <string name="update_user_success">Datos actualizados</string>
+    <string name="update_user_update">Actualizar</string>
+
 
     <string name="buy_title">Comprar IVOX</string>
     <string name="buy_button">Comprar</string>

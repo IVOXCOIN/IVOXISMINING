@@ -49,6 +49,8 @@ interface ApplicationComponent {
 
     fun inject(fragment: UserRegisterFragment)
 
+    fun inject(fragment: UserUpdateFragment)
+
     fun inject(fragment: IntroFragment)
 
     fun inject(fragment: GeneratingFragment)

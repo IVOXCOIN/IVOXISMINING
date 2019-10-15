@@ -13,7 +13,12 @@ import java.util.*
 private const val WALLET_MNEMONIC = "wallet_mnemonic"
 private const val WALLET_IS_BACKED_UP = "wallet_is_backed_up"
 private const val USER_IS_REGISTERED = "user_is_registered"
+private const val USER_NAME = "user_name"
 private const val USER_EMAIL = "user_email"
+private const val USER_PHONE = "user_phone"
+private const val USER_ADDRESS = "user_address"
+private const val USER_COUNTRY = "user_country"
+private const val USER_CREDIT_CARD = "user_credit_card"
 private const val CURRENT_NETWORK = "current_network"
 private const val BALANCE_METHOD = "balance_method"
 private const val BACKUP_WARNING_TIME = "backup_warning_time"
@@ -60,12 +65,52 @@ class ApplicationPreferences(private val preferences: SharedPreferences) {
     }
 
 
+    fun getUserName(): String {
+        return preferences.getString(USER_NAME, "")!!
+    }
+
+    fun setUserName(name: String) {
+        preferences.edit().putString(USER_NAME, name).apply()
+    }
+
     fun getUserEmail(): String {
         return preferences.getString(USER_EMAIL, "")!!
     }
 
     fun setUserEmail(email: String) {
         preferences.edit().putString(USER_EMAIL, email).apply()
+    }
+
+    fun getUserPhone(): String {
+        return preferences.getString(USER_PHONE, "")!!
+    }
+
+    fun setUserPhone(phone: String) {
+        preferences.edit().putString(USER_PHONE, phone).apply()
+    }
+
+    fun getUserAddress(): String {
+        return preferences.getString(USER_ADDRESS, "")!!
+    }
+
+    fun setUserAddress(address: String) {
+        preferences.edit().putString(USER_ADDRESS, address).apply()
+    }
+
+    fun getUserCountry(): String {
+        return preferences.getString(USER_COUNTRY, "")!!
+    }
+
+    fun setUserCountry(country: String) {
+        preferences.edit().putString(USER_COUNTRY, country).apply()
+    }
+
+    fun getUserCreditCard(): String {
+        return preferences.getString(USER_CREDIT_CARD, "")!!
+    }
+
+    fun setUserCreditCard(creditCard: String) {
+        preferences.edit().putString(USER_CREDIT_CARD, creditCard).apply()
     }
 
 
@@ -97,7 +142,12 @@ class ApplicationPreferences(private val preferences: SharedPreferences) {
                 .remove(BACKUP_WARNING_TIME)
                 .remove(BALANCE_METHOD)
                 .remove(USER_IS_REGISTERED)
+                .remove(USER_NAME)
                 .remove(USER_EMAIL)
+                .remove(USER_PHONE)
+                .remove(USER_ADDRESS)
+                .remove(USER_COUNTRY)
+                .remove(USER_CREDIT_CARD)
                 .remove(CURRENT_NETWORK)
                 .apply()
     }

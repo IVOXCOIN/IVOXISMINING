@@ -97,6 +97,11 @@ class MainActivity : BaseDiActivity() {
                     .withIdentifier(5)
                     .withName(R.string.drawer_item_info)
 
+        var item6 = PrimaryDrawerItem()
+                    .withIdentifier(6)
+                    .withName(R.string.drawer_item_data)
+
+
         drawer = DrawerBuilder()
                 .withActivity(this as Activity)
                 .withAccountHeader(headerResult)
@@ -111,7 +116,9 @@ class MainActivity : BaseDiActivity() {
                         DividerDrawerItem(),
                         item4,
                         DividerDrawerItem(),
-                        item5
+                        item5,
+                        DividerDrawerItem(),
+                        item6
                 )
                 .withOnDrawerItemClickListener(object : Drawer.OnDrawerItemClickListener {
                     override fun onItemClick(view: View,
@@ -137,6 +144,10 @@ class MainActivity : BaseDiActivity() {
                         } else if(drawerItem!!.identifier == 5.toLong()){
 
                             replaceFragment(InfoFragment.newInstance())
+
+                        } else if(drawerItem!!.identifier == 6.toLong()){
+
+                            replaceFragment(UserUpdateFragment.newInstance())
 
                         }
 

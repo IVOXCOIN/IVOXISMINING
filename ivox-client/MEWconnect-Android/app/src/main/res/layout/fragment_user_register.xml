@@ -12,8 +12,8 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="80dp"
-            android:text="Registration"
-            android:textSize="25dp"
+            android:text="@string/user_register_title"
+            android:textSize="25sp"
             android:textStyle="bold"
             android:layout_gravity="center"/>
         <TextView
@@ -22,7 +22,7 @@
             android:layout_height="wrap_content"
             android:layout_marginLeft="50dp"
             android:layout_marginTop="20dp"
-            android:text="Full Name"/>
+            android:text="@string/user_register_name"/>
         <EditText
             android:id="@+id/user_name"
             android:layout_width="wrap_content"
@@ -33,7 +33,7 @@
             android:id="@+id/lblEmail"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Email"
+            android:text="@string/user_register_email"
             android:layout_marginLeft="50dp" />
         <EditText
             android:id="@+id/user_email"
@@ -46,7 +46,7 @@
             android:id="@+id/lblPhone"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Phone"
+            android:text="@string/user_register_phone"
             android:layout_marginLeft="50dp" />
         <EditText
             android:id="@+id/user_phone"
@@ -59,7 +59,7 @@
             android:id="@+id/lblAddress"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Address"
+            android:text="@string/user_register_address"
             android:layout_marginLeft="50dp" />
         <EditText
             android:id="@+id/user_address"
@@ -71,7 +71,7 @@
             android:id="@+id/lblCountry"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Country"
+            android:text="@string/user_register_country"
             android:layout_marginLeft="50dp" />
         <EditText
             android:id="@+id/user_country"
@@ -83,7 +83,7 @@
             android:id="@+id/lblCreditCard"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Credit card number"
+            android:text="@string/user_register_credit_card"
             android:layout_marginLeft="50dp" />
         <EditText
             android:id="@+id/user_credit_card"
@@ -97,7 +97,7 @@
             android:id="@+id/lblPassword"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Password"
+            android:text="@string/user_register_password"
             android:layout_marginLeft="50dp" />
         <EditText
             android:id="@+id/user_password"
@@ -111,6 +111,6 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginLeft="50dp"
-            android:text="Register" />
+            android:text="@string/user_register_register" />
     </LinearLayout>
 </ScrollView>
