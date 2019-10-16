@@ -136,7 +136,11 @@
     <string name="write_these_screenshot_title">Oops! Parece que ha tomado una captura de pantalla.</string>
 
 
+    <string name="register_name_error">Nombre inválido</string>
     <string name="register_password_error">Contraseña incorrecta</string>
+
+    <string name="register_email_error">Email inválido</string>
+    <string name="register_card_error">Número de tarjeta de crédito inválido</string>
     <string name="register_user_error">Un usuario ya se ha registrado con ese email</string>
     <string name="register_server_error">Error en el servidor</string>
 

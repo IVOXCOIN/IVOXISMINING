@@ -2,10 +2,14 @@ package com.myetherwallet.mewconnect.feature.main.fragment
 
 import android.os.Bundle
 import android.support.v7.widget.Toolbar
+import android.text.TextUtils
 import android.util.Log
+import android.util.Patterns
 import android.view.MenuItem
 import android.view.View
+import android.widget.ArrayAdapter
 import android.widget.Toast
+import br.com.moip.validators.CreditCard
 import com.myetherwallet.mewconnect.BuildConfig
 import com.myetherwallet.mewconnect.R
 import com.myetherwallet.mewconnect.core.di.ApplicationComponent
@@ -19,7 +23,10 @@ import org.json.JSONArray
 import org.json.JSONObject
 import org.web3j.crypto.ECKeyPair
 import java.io.IOException
+import java.util.*
+import java.util.regex.Pattern.matches
 import javax.inject.Inject
+import kotlin.collections.ArrayList
 
 class UserRegisterFragment : BaseDiFragment(), Toolbar.OnMenuItemClickListener {
 
@@ -45,29 +52,89 @@ class UserRegisterFragment : BaseDiFragment(), Toolbar.OnMenuItemClickListener {
         super.onViewCreated(view, savedInstanceState)
 
 
+        setupCountry()
+
         register_button.setOnClickListener {
 
             userName = user_name.text.toString()
             userEmail = user_email.text.toString()
             userPhone = user_phone.text.toString()
             userAddress = user_address.text.toString()
-            userCountry = user_country.text.toString()
+            userCountry = user_country.getSelectedItem().toString()
             userCreditCard = user_credit_card.text.toString()
             userWallet = "0x" + preferences.getCurrentWalletPreferences().getWalletAddress()
             userPassword = user_password.text.toString()
 
-            val privateKey = StorageCryptHelper.decrypt(preferences.getCurrentWalletPreferences().getWalletPrivateKey(), userPassword)
-            if (checkPrivateKey(privateKey)) {
+            if(checkName(userName)){
+                if(checkEmail(userEmail)){
 
-                registerUser()
+                    if(checkCreditCard(userCreditCard)){
+                        val privateKey = StorageCryptHelper.decrypt(preferences.getCurrentWalletPreferences().getWalletPrivateKey(), userPassword)
+                        if (checkPrivateKey(privateKey)) {
+
+                            registerUser()
+
+                        } else {
+                            displayToast(activity!!.getText(R.string.register_password_error).toString())
+
+                        }
+                    } else {
+                        displayToast(activity!!.getText(R.string.register_card_error).toString())
+                    }
+
+                } else {
+                    displayToast(activity!!.getText(R.string.register_email_error).toString())
+
+                }
 
             } else {
-                displayToast(activity!!.getText(R.string.register_password_error).toString())
-
+                displayToast(activity!!.getText(R.string.register_name_error).toString())
             }
+
 
         }
 
+    }
+
+
+    private fun setupCountry(){
+        val locales = Locale.getAvailableLocales()
+        val countries = ArrayList<String>()
+        for (locale in locales) {
+            val country = locale.getDisplayCountry()
+            if (country.trim({ it <= ' ' }).length > 0 &&
+                    !countries.contains(country) &&
+                    !country.matches(".*\\d.*".toRegex())) {
+                countries.add(country)
+            }
+        }
+
+
+        Collections.sort(countries)
+
+        val countryAdapter = ArrayAdapter(activity, android.R.layout.simple_spinner_item, countries)
+
+        countryAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
+
+        // Apply the adapter to the your spinner
+        user_country.setAdapter(countryAdapter)
+
+    }
+
+    private fun checkName(name: String): Boolean{
+        return name.length >= 3
+    }
+
+
+    private fun checkEmail(email: String): Boolean{
+        val isEmpty = TextUtils.isEmpty(email)
+        val matches = Patterns.EMAIL_ADDRESS.matcher(email).matches()
+
+        return !isEmpty && matches
+    }
+
+    private fun checkCreditCard(creditCard: String): Boolean{
+        return CreditCard(creditCard).isValid()
     }
 
     private fun registerUser(){

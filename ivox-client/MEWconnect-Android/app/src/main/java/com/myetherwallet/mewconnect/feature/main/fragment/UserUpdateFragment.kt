@@ -2,10 +2,14 @@ package com.myetherwallet.mewconnect.feature.main.fragment
 
 import android.os.Bundle
 import android.support.v7.widget.Toolbar
+import android.text.TextUtils
 import android.util.Log
+import android.util.Patterns
 import android.view.MenuItem
 import android.view.View
+import android.widget.ArrayAdapter
 import android.widget.Toast
+import br.com.moip.validators.CreditCard
 import com.myetherwallet.mewconnect.BuildConfig
 import com.myetherwallet.mewconnect.R
 import com.myetherwallet.mewconnect.core.di.ApplicationComponent
@@ -28,7 +32,9 @@ import org.json.JSONArray
 import org.json.JSONObject
 import org.web3j.crypto.ECKeyPair
 import java.io.IOException
+import java.util.*
 import javax.inject.Inject
+import kotlin.collections.ArrayList
 
 class UserUpdateFragment : BaseDiFragment(), Toolbar.OnMenuItemClickListener {
 
@@ -56,12 +62,15 @@ class UserUpdateFragment : BaseDiFragment(), Toolbar.OnMenuItemClickListener {
         (activity as MainActivity).setupDrawer(data_toolbar)
 
 
+
         user_name.setText(preferences.applicationPreferences.getUserName())
         user_email.setText(preferences.applicationPreferences.getUserEmail())
         user_phone.setText(preferences.applicationPreferences.getUserPhone())
         user_address.setText(preferences.applicationPreferences.getUserAddress())
-        user_country.setText(preferences.applicationPreferences.getUserCountry())
         user_credit_card.setText(preferences.applicationPreferences.getUserCreditCard())
+
+        setupCountry(preferences.applicationPreferences.getUserCountry())
+
 
         update_button.setOnClickListener {
 
@@ -69,23 +78,94 @@ class UserUpdateFragment : BaseDiFragment(), Toolbar.OnMenuItemClickListener {
             userEmail = user_email.text.toString()
             userPhone = user_phone.text.toString()
             userAddress = user_address.text.toString()
-            userCountry = user_country.text.toString()
+            userCountry = user_country.getSelectedItem().toString()
             userCreditCard = user_credit_card.text.toString()
             userWallet = "0x" + preferences.getCurrentWalletPreferences().getWalletAddress()
             userPassword = user_password.text.toString()
 
-            val privateKey = StorageCryptHelper.decrypt(preferences.getCurrentWalletPreferences().getWalletPrivateKey(), userPassword)
-            if (checkPrivateKey(privateKey)) {
 
-                updateUser()
+            if(checkName(userName)){
+                if(checkEmail(userEmail)){
+
+                    if(checkCreditCard(userCreditCard)){
+                        val privateKey = StorageCryptHelper.decrypt(preferences.getCurrentWalletPreferences().getWalletPrivateKey(), userPassword)
+                        if (checkPrivateKey(privateKey)) {
+
+                            updateUser()
+
+                        } else {
+                            displayToast(activity!!.getText(R.string.register_password_error).toString())
+
+                        }
+                    } else {
+                        displayToast(activity!!.getText(R.string.register_card_error).toString())
+                    }
+
+                } else {
+                    displayToast(activity!!.getText(R.string.register_email_error).toString())
+
+                }
 
             } else {
-                displayToast(activity!!.getText(R.string.register_password_error).toString())
-
+                displayToast(activity!!.getText(R.string.register_name_error).toString())
             }
 
         }
 
+    }
+
+    private fun setupCountry(displayCountry: String){
+        val locales = Locale.getAvailableLocales()
+        val countries = ArrayList<String>()
+        for (locale in locales) {
+            val country = locale.getDisplayCountry()
+            if (country.trim({ it <= ' ' }).length > 0 &&
+                    !countries.contains(country) &&
+                    !country.matches(".*\\d.*".toRegex())) {
+                countries.add(country)
+            }
+        }
+
+        Collections.sort(countries)
+
+        val countryAdapter = ArrayAdapter(activity, android.R.layout.simple_spinner_item, countries)
+
+        countryAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
+
+        // Apply the adapter to the your spinner
+        user_country.setAdapter(countryAdapter)
+
+        val countryListLength = user_country.getAdapter().getCount()
+
+        var iterationLength = 0
+
+        if(countryListLength > 0) {
+            iterationLength = countryListLength - 1
+        }
+
+        for(i in  0..iterationLength)
+        {
+            if(user_country.getAdapter().getItem(i).toString().contains(displayCountry))
+            {
+                user_country.setSelection(i)
+            }
+        }
+
+    }
+
+    private fun checkName(name: String): Boolean{
+        return name.length >= 3
+    }
+
+    private fun checkEmail(email: String): Boolean{
+        val isEmpty = TextUtils.isEmpty(email)
+        val matches = Patterns.EMAIL_ADDRESS.matcher(email).matches()
+
+        return !isEmpty && matches
+    }
+
+    private fun checkCreditCard(creditCard: String): Boolean{
+        return CreditCard(creditCard).isValid()
     }
 
     private fun updateUser(){

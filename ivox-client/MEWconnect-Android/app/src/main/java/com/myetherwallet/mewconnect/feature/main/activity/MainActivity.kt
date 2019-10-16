@@ -95,11 +95,11 @@ class MainActivity : BaseDiActivity() {
 
         var item5 = PrimaryDrawerItem()
                     .withIdentifier(5)
-                    .withName(R.string.drawer_item_info)
+                    .withName(R.string.drawer_item_data)
 
         var item6 = PrimaryDrawerItem()
                     .withIdentifier(6)
-                    .withName(R.string.drawer_item_data)
+                    .withName(R.string.drawer_item_info)
 
 
         drawer = DrawerBuilder()
@@ -143,11 +143,11 @@ class MainActivity : BaseDiActivity() {
 
                         } else if(drawerItem!!.identifier == 5.toLong()){
 
-                            replaceFragment(InfoFragment.newInstance())
+                            replaceFragment(UserUpdateFragment.newInstance())
 
                         } else if(drawerItem!!.identifier == 6.toLong()){
 
-                            replaceFragment(UserUpdateFragment.newInstance())
+                            replaceFragment(InfoFragment.newInstance())
 
                         }
 

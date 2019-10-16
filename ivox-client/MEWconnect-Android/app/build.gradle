@@ -137,6 +137,8 @@ dependencies {
     implementation 'com.paypal.sdk:paypal-android-sdk:2.16.0'
 
     implementation 'com.squareup.okhttp3:okhttp:3.10.0'
+
+    implementation 'br.com.moip:credit-card-validator:0.0.6'
 }
 
 kotlin {
