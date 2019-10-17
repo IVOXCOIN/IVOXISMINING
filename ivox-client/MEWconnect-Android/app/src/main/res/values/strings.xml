@@ -137,6 +137,7 @@
 
 
     <string name="register_name_error">Nombre inválido</string>
+    <string name="register_phone_error">Número de teléfono inválido</string>
     <string name="register_password_error">Contraseña incorrecta</string>
 
     <string name="register_email_error">Email inválido</string>

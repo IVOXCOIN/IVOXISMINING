@@ -66,26 +66,31 @@ class UserRegisterFragment : BaseDiFragment(), Toolbar.OnMenuItemClickListener {
             userPassword = user_password.text.toString()
 
             if(checkName(userName)){
-                if(checkEmail(userEmail)){
+                if(checkPhone(userPhone)){
+                    if(checkEmail(userEmail)){
 
-                    if(checkCreditCard(userCreditCard)){
-                        val privateKey = StorageCryptHelper.decrypt(preferences.getCurrentWalletPreferences().getWalletPrivateKey(), userPassword)
-                        if (checkPrivateKey(privateKey)) {
+                        if(checkCreditCard(userCreditCard)){
+                            val privateKey = StorageCryptHelper.decrypt(preferences.getCurrentWalletPreferences().getWalletPrivateKey(), userPassword)
+                            if (checkPrivateKey(privateKey)) {
 
-                            registerUser()
+                                registerUser()
 
+                            } else {
+                                displayToast(activity!!.getText(R.string.register_password_error).toString())
+
+                            }
                         } else {
-                            displayToast(activity!!.getText(R.string.register_password_error).toString())
-
+                            displayToast(activity!!.getText(R.string.register_card_error).toString())
                         }
+
                     } else {
-                        displayToast(activity!!.getText(R.string.register_card_error).toString())
+                        displayToast(activity!!.getText(R.string.register_email_error).toString())
+
                     }
-
                 } else {
-                    displayToast(activity!!.getText(R.string.register_email_error).toString())
-
+                    displayToast(activity!!.getText(R.string.register_phone_error).toString())
                 }
+
 
             } else {
                 displayToast(activity!!.getText(R.string.register_name_error).toString())
@@ -123,6 +128,14 @@ class UserRegisterFragment : BaseDiFragment(), Toolbar.OnMenuItemClickListener {
 
     private fun checkName(name: String): Boolean{
         return name.length >= 3
+    }
+
+    private fun checkPhone(phone: String): Boolean {
+        val isEmpty = TextUtils.isEmpty(phone)
+        val isCorrectLength = phone.length==10
+        val phoneMatches = android.util.Patterns.PHONE.matcher(phone).matches()
+
+        return  !isEmpty && (isCorrectLength) && phoneMatches
     }
 
 
