@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView
+<com.myetherwallet.mewconnect.feature.main.fragment.CustomInsetsLayout
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="fill_parent"
-    android:layout_height="fill_parent">
-    <LinearLayout
-        android:orientation="vertical"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent">
+    android:fitsSystemWindows="true"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:id="@+id/container">
         <TextView
             android:id="@+id/lblRegister"
             android:layout_width="wrap_content"
@@ -75,7 +75,7 @@
             android:layout_marginLeft="50dp" />
         <Spinner
             android:id="@+id/user_country"
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginLeft="50dp"
             android:spinnerMode="dropdown"
@@ -91,27 +91,22 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginLeft="50dp"
-            android:inputType="number"
+            android:inputType="numberPassword"
             android:maxLength="16"
             android:ems="10" />
-        <TextView
-            android:id="@+id/lblPassword"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/user_register_password"
-            android:layout_marginLeft="50dp" />
-        <EditText
-            android:id="@+id/user_password"
+
+        <Button
+            android:id="@+id/view_button"
+            android:layout_gravity="left"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginLeft="50dp"
-            android:inputType="textPassword"
-            android:ems="10" />
+            android:text="@string/update_register_user_view" />
+
         <Button
             android:id="@+id/register_button"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginLeft="50dp"
             android:text="@string/user_register_register" />
-    </LinearLayout>
-</ScrollView>
+</com.myetherwallet.mewconnect.feature.main.fragment.CustomInsetsLayout>

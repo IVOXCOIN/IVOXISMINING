@@ -213,6 +213,12 @@
     <string name="user_register_password">Contraseña</string>
     <string name="user_register_register">Registrarse</string>
 
+    <string name="update_register_user_view">Ver tarjeta</string>
+    <string name="update_register_user_hide">Ocultar</string>
+    <string name="update_register_user_password_confirm">Introduzca su contraseña para continuar</string>
+    <string name="update_register_user_continue">Continuar</string>
+
+
     <string name="update_user_title">Actualizar datos</string>
     <string name="update_user_success">Datos actualizados</string>
     <string name="update_user_update">Actualizar</string>

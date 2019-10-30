@@ -1,13 +1,22 @@
 package com.myetherwallet.mewconnect.feature.main.fragment
 
+import android.app.AlertDialog
+import android.content.DialogInterface
 import android.os.Bundle
+import android.support.v4.view.ViewCompat
 import android.support.v7.widget.Toolbar
+import android.text.Editable
+import android.text.InputType
 import android.text.TextUtils
+import android.text.TextWatcher
+import android.text.method.HideReturnsTransformationMethod
+import android.text.method.PasswordTransformationMethod
 import android.util.Log
 import android.util.Patterns
 import android.view.MenuItem
 import android.view.View
 import android.widget.ArrayAdapter
+import android.widget.EditText
 import android.widget.Toast
 import br.com.moip.validators.CreditCard
 import com.myetherwallet.mewconnect.BuildConfig
@@ -48,11 +57,46 @@ class UserRegisterFragment : BaseDiFragment(), Toolbar.OnMenuItemClickListener {
     private var userWallet: String = ""
     private var userPassword: String = ""
 
+    private var isCardMasked: Boolean = true
+
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        /*ViewCompat.setOnApplyWindowInsetsListener(container) { view, insets ->
+            insets.replaceSystemWindowInsets(0, 0, 0, insets.systemWindowInsetBottom).apply {
+                ViewCompat.onApplyWindowInsets(view, this)
+            }
+        }*/
 
         setupCountry()
+
+
+        user_credit_card.addTextChangedListener(object : TextWatcher {
+            override fun afterTextChanged(p0: Editable?) {
+            }
+
+            override fun beforeTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {
+            }
+
+            override fun onTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {
+                view_button.isEnabled = p0?.length != 0
+            }
+        })
+
+
+        view_button.setOnClickListener {
+            isCardMasked = !isCardMasked
+
+            if(isCardMasked){
+                view_button.setText(activity!!.getText(R.string.update_register_user_view))
+                user_credit_card.transformationMethod = PasswordTransformationMethod.getInstance()
+            } else {
+                view_button.setText(activity!!.getText(R.string.update_register_user_hide))
+                user_credit_card.transformationMethod = HideReturnsTransformationMethod.getInstance()
+            }
+
+
+        }
 
         register_button.setOnClickListener {
 
@@ -63,22 +107,53 @@ class UserRegisterFragment : BaseDiFragment(), Toolbar.OnMenuItemClickListener {
             userCountry = user_country.getSelectedItem().toString()
             userCreditCard = user_credit_card.text.toString()
             userWallet = "0x" + preferences.getCurrentWalletPreferences().getWalletAddress()
-            userPassword = user_password.text.toString()
 
             if(checkName(userName)){
                 if(checkPhone(userPhone)){
                     if(checkEmail(userEmail)){
 
                         if(checkCreditCard(userCreditCard)){
-                            val privateKey = StorageCryptHelper.decrypt(preferences.getCurrentWalletPreferences().getWalletPrivateKey(), userPassword)
-                            if (checkPrivateKey(privateKey)) {
 
-                                registerUser()
+                            val editText = EditText(activity!!)
 
-                            } else {
-                                displayToast(activity!!.getText(R.string.register_password_error).toString())
+                            editText.inputType = InputType.TYPE_CLASS_TEXT or InputType.TYPE_TEXT_VARIATION_PASSWORD
+
+                            val builder = AlertDialog.Builder(activity!!)
+
+                            builder.setTitle(activity!!.getText(R.string.update_register_user_continue))
+
+                            builder.setMessage(activity!!.getText(R.string.update_register_user_password_confirm))
+
+                            builder.setView(editText)
+
+                            builder.setPositiveButton("OK"){dialog, which ->
+                                userPassword = editText.text.toString()
+                                val privateKey = StorageCryptHelper.decrypt(preferences.getCurrentWalletPreferences().getWalletPrivateKey(), userPassword)
+
+                                if (checkPrivateKey(privateKey)) {
+
+                                    registerUser()
+
+                                } else {
+                                    displayToast(activity!!.getText(R.string.register_password_error).toString())
+                                }
 
                             }
+
+                            builder.setNegativeButton("Cancelar", null)
+
+                            val dialog: AlertDialog = builder.create()
+
+                            dialog.setOnShowListener(DialogInterface.OnShowListener {
+                                dialog.getButton(AlertDialog.BUTTON_POSITIVE).setBackgroundColor(resources.getColor(R.color.blue))
+                                dialog.getButton(AlertDialog.BUTTON_POSITIVE).setTextColor(resources.getColor(R.color.white))
+
+                                dialog.getButton(AlertDialog.BUTTON_NEGATIVE).setBackgroundColor(resources.getColor(R.color.blue))
+                                dialog.getButton(AlertDialog.BUTTON_NEGATIVE).setTextColor(resources.getColor(R.color.white))
+                            })
+
+                            dialog.show()
+
                         } else {
                             displayToast(activity!!.getText(R.string.register_card_error).toString())
                         }
