@@ -28,7 +28,8 @@
                             <td>{{transaction.destination}}</td>
                             <td>{{transaction.currency}}</td>
                             <td>{{transaction.amount.eth}}</td>
-                            <td>{{transaction.amount.currency | currency}}</td>
+                            <td *ngIf="transaction.amount.currency !=='N/A'">{{transaction.amount.currency | currency}}</td>
+                            <td *ngIf="transaction.amount.currency ==='N/A'">{{transaction.amount.currency}}</td>
                             <td>{{transaction.status}}</td>
                         </tr>
                     </ng-container>

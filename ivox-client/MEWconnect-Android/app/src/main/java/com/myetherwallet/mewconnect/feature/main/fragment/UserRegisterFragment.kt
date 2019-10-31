@@ -88,13 +88,12 @@ class UserRegisterFragment : BaseDiFragment(), Toolbar.OnMenuItemClickListener {
             isCardMasked = !isCardMasked
 
             if(isCardMasked){
-                view_button.setText(activity!!.getText(R.string.update_register_user_view))
+                view_button.setBackgroundResource(R.drawable.view_button_show)
                 user_credit_card.transformationMethod = PasswordTransformationMethod.getInstance()
             } else {
-                view_button.setText(activity!!.getText(R.string.update_register_user_hide))
+                view_button.setBackgroundResource(R.drawable.view_button_hide)
                 user_credit_card.transformationMethod = HideReturnsTransformationMethod.getInstance()
             }
-
 
         }
 

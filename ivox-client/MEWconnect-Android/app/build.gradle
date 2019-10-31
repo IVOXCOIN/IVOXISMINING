@@ -41,7 +41,7 @@ android {
         buildConfigField "String", "APICCSWAP_REFERER", "\"" + secretsProperties['apiccswapReferer'] + "\""
         buildConfigField "String", "RATES_API_END_POINT", "\"https://cryptorates.mewapi.io/\""
         buildConfigField "String", "IVOX_API_TOKEN_END_POINT", "\"https://ivoxis-backend.azurewebsites.net\""
-        //buildConfigField "String", "IVOX_API_TOKEN_END_POINT", "\"http://192.168.0.2:3000\""
+        //buildConfigField "String", "IVOX_API_TOKEN_END_POINT", "\"http://192.168.0.35:3000\""
 
     }
     buildTypes {

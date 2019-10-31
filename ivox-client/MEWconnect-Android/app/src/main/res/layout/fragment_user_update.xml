@@ -114,13 +114,13 @@
                     android:maxLength="16"
                     android:ems="10" />
 
-                <Button
+                <ImageButton
                     android:id="@+id/view_button"
-                    android:layout_gravity="left"
+                    android:background="@drawable/view_button_show"
+                    android:layout_gravity="right"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginLeft="50dp"
-                    android:text="@string/update_register_user_view" />
+                    android:layout_marginLeft="50dp" />
 
                 <Button
                     android:id="@+id/update_button"

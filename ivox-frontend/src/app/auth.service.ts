@@ -8,8 +8,8 @@ import { API_ENDPOINT_URL } from './apiUrl'
 })
 export class AuthService {
 
-  private _registerUrl = `${API_ENDPOINT_URL}/api/register`;
-  private _loginUrl = `${API_ENDPOINT_URL}/api/login`;
+  private _registerUrl = `${API_ENDPOINT_URL}/api/admin/register`;
+  private _loginUrl = `${API_ENDPOINT_URL}/api/admin/login`;
 
   constructor(private http: HttpClient,
               private _router: Router) {}

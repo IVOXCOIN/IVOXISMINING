@@ -89,10 +89,10 @@ class UserUpdateFragment : BaseDiFragment(), Toolbar.OnMenuItemClickListener {
             isCardMasked = !isCardMasked
 
             if(isCardMasked){
-                view_button.setText(activity!!.getText(R.string.update_register_user_view))
+                view_button.setBackgroundResource(R.drawable.view_button_show)
                 user_credit_card.transformationMethod = PasswordTransformationMethod.getInstance()
             } else {
-                view_button.setText(activity!!.getText(R.string.update_register_user_hide))
+                view_button.setBackgroundResource(R.drawable.view_button_hide)
                 user_credit_card.transformationMethod = HideReturnsTransformationMethod.getInstance()
             }
 
@@ -127,8 +127,8 @@ class UserUpdateFragment : BaseDiFragment(), Toolbar.OnMenuItemClickListener {
                             builder.setView(editText)
 
                             builder.setPositiveButton("OK"){dialog, which ->
-                                val password = editText.text.toString()
-                                val privateKey = StorageCryptHelper.decrypt(preferences.getCurrentWalletPreferences().getWalletPrivateKey(), password)
+                                userPassword = editText.text.toString()
+                                val privateKey = StorageCryptHelper.decrypt(preferences.getCurrentWalletPreferences().getWalletPrivateKey(), userPassword)
 
                                 if (checkPrivateKey(privateKey)) {
 
@@ -294,6 +294,8 @@ class UserUpdateFragment : BaseDiFragment(), Toolbar.OnMenuItemClickListener {
 
                     } else if(response.code() == 401){
                         displayToast(activity!!.getText(R.string.register_user_error).toString())
+
+                        //displayToast(response.message())
 
                     } else if(response.code() == 500){
                         displayToast(activity!!.getText(R.string.register_server_error).toString())

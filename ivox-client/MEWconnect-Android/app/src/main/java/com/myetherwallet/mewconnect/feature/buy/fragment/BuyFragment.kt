@@ -85,7 +85,7 @@ class BuyFragment : BaseViewModelFragment() {
         private val CONFIG_ENVIRONMENT = PayPalConfiguration.ENVIRONMENT_SANDBOX
 
         // note that these credentials will differ between live & sandbox environments.
-        private val CONFIG_CLIENT_ID = "AXL5V4cY1Max_pu3I2_4W9XAWnAWNa30aBshR6v4Cpzn4T8Q_RsNHGEOSgCT3b1X9dmmQjGnPqU6AHkg"
+        private val CONFIG_CLIENT_ID = "ASosyN8Aysi9PUiOYvBkHlJxgiVsYzp-V7fbfb_7uxkaPkl2BSqSxt-AIiw7S-qaRd75-INVS_hyKjeB"
 
         private val REQUEST_CODE_PAYMENT = 1
         private val REQUEST_CODE_FUTURE_PAYMENT = 2
@@ -94,7 +94,7 @@ class BuyFragment : BaseViewModelFragment() {
         private val config = PayPalConfiguration()
                 .environment(CONFIG_ENVIRONMENT)
                 .clientId(CONFIG_CLIENT_ID)
-                .merchantName("ETHConsumer")
+                .merchantName("ivoxis")
                 .merchantPrivacyPolicyUri(Uri.parse("https://www.example.com/privacy"))
                 .merchantUserAgreementUri(Uri.parse("https://www.example.com/legal"))
 
@@ -379,11 +379,7 @@ class BuyFragment : BaseViewModelFragment() {
 
             val method = context!!.getString(preferences.applicationPreferences.getBalanceMethod().shortName)
 
-            if(method == "ETHER"){
-                buy_button_point.isEnabled = true
-            } else {
-                buy_button_point.isEnabled = false
-            }
+            buy_button_point.isEnabled = method == "ETHER"
 
             buy_button_delete.isEnabled = true
             buy_toggle_currency.isEnabled = true
