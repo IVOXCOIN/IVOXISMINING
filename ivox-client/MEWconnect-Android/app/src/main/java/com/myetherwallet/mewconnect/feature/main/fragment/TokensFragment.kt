@@ -120,12 +120,12 @@ class TokensFragment : BaseDiFragment(), Toolbar.OnMenuItemClickListener {
                         var total = BigDecimal("0")
 
                         if(purchase != "N/A"){
-                            total = BigDecimal(purchase)
+                            total = BigDecimal(purchase) - BigDecimal(25)
                         }
 
                         val eth = BigDecimal(value)
 
-                        val rate = total / eth
+                        val rate = total.divide(eth, 2, BigDecimal.ROUND_HALF_UP)
 
                         val status = item.getString("status")
 
@@ -193,21 +193,24 @@ class TokensFragment : BaseDiFragment(), Toolbar.OnMenuItemClickListener {
                                                         paypalIds,
                                                         R.drawable.tokens_logo)
 
-            tokens_list.adapter = tokensListAdapter
+            if(tokens_list != null){
+                tokens_list.adapter = tokensListAdapter
 
-            tokens_list.setOnItemClickListener{ parent, view, position, id ->
-                val token = balances?.get(position)
-                addFragment(TokenFragment.newInstance(token?.paypalId!!,
-                                                        token?.id!!,
-                                                        token?.wallet!!,
-                                                        token?.currency!!,
-                                                        token?.date!!,
-                                                        token?.source!!,
-                                                        token?.destination!!,
-                                                        token?.value!!,
-                                                        token?.purchase!!,
-                                                        token?.status!!))
+                tokens_list.setOnItemClickListener{ parent, view, position, id ->
+                    val token = balances?.get(position)
+                    addFragment(TokenFragment.newInstance(token?.paypalId!!,
+                                                            token?.id!!,
+                                                            token?.wallet!!,
+                                                            token?.currency!!,
+                                                            token?.date!!,
+                                                            token?.source!!,
+                                                            token?.destination!!,
+                                                            token?.value!!,
+                                                            token?.purchase!!,
+                                                            token?.status!!))
+                }
             }
+
         })
 
     }

@@ -85,7 +85,7 @@ class BuyFragment : BaseViewModelFragment() {
         private val CONFIG_ENVIRONMENT = PayPalConfiguration.ENVIRONMENT_SANDBOX
 
         // note that these credentials will differ between live & sandbox environments.
-        private val CONFIG_CLIENT_ID = "ASosyN8Aysi9PUiOYvBkHlJxgiVsYzp-V7fbfb_7uxkaPkl2BSqSxt-AIiw7S-qaRd75-INVS_hyKjeB"
+        private val CONFIG_CLIENT_ID = "AT9bbsd8BR0a3fJoasIcSjAVo0av2HCRbZYRYEoJoy97khQWV3vKa-txCP3FE4zq-NexrxtinZmZBOKh"
 
         private val REQUEST_CODE_PAYMENT = 1
         private val REQUEST_CODE_FUTURE_PAYMENT = 2

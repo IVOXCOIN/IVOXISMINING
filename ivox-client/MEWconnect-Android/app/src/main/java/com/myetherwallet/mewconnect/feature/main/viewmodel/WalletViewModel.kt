@@ -203,6 +203,7 @@ class WalletViewModel
 
         private fun onWalletBalanceSuccess(result: BigDecimal) {
             walletBalance = result
+            //walletBalance = BigDecimal(520) // mock value
             collect()
         }
 

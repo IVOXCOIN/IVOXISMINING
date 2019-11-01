@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">Ivox Wallet</string>
+    <string name="app_name">Ivoxis</string>
 
     <string name="password">Contraseña</string>
     <string name="decline">Declinar</string>
@@ -38,7 +38,7 @@
 
     <string name="wallet_backed_up_title">Su cartera está\nrespaldada</string>
     <string name="wallet_backed_up_description">Proteja su frase con recelo, en un mundo des-centralizado la seguridad es primero</string>
-    <string name="wallet_status_connected">Conectado a MyEtherWallet</string>
+    <string name="wallet_status_connected">Conectado a Ivox</string>
     <string name="wallet_status_disconnect">Desconectar</string>
     <string name="wallet_header_search_hint">Buscar %d tokens</string>
     <string name="wallet_empty">Esta cartera no tiene\nningun token</string>
@@ -52,10 +52,10 @@
     <string name="intro_page_footer3">De manera sencilla compre\ny gestione sus tokens\nde forma segura</string>
     <string name="intro_page_footer4">Incluya en sus planes\nla inversión en energía sustentable\nde alto impacto.</string>
     <string name="intro_page_footer5">Sin colección de datos:\nIvox no puede\ncolectar sus datos privados\nsin su consentimiento.</string>
-    <string name="intro_page_footer6">Tecnología de punta\n\nIvox Wallet de\nIvox Coin cuenta con la\nmejor tecnología.</string>
+    <string name="intro_page_footer6">Tecnología de punta\n\nIvoxis de\nIvox Coin cuenta con la\nmejor tecnología.</string>
     <string name="intro_page_footer7">Transparente, claro y \nconciso. Aprobado por\nla comunidad.</string>
 
-    <string name="generating_start_using">Comenzar a usar Ivox Wallet</string>
+    <string name="generating_start_using">Comenzar a usar Ivoxis</string>
 
     <string name="wallet_card_currency_eth">IVOX TOKEN</string>
     <string name="wallet_card_currency_usd">USD</string>

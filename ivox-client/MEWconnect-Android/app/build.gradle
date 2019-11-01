@@ -53,6 +53,11 @@ android {
 
     }
 
+    packagingOptions {
+        exclude 'lib/x86_64/darwin/libscrypt.dylib'
+        exclude 'lib/x86_64/freebsd/libscrypt.so'
+        exclude 'lib/x86_64/linux/libscrypt.so'
+    }
 
     kotlinOptions {
         jvmTarget = '1.8'

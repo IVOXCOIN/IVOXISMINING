@@ -73,7 +73,7 @@ class MainActivity : BaseDiActivity() {
                 .withSelectionListEnabledForSingleProfile(false)
                 .addProfiles(
                     ProfileDrawerItem()
-                            .withName("Ivox Wallet")
+                            .withName("Ivoxis")
                             .withIcon(getResources().getDrawable(R.drawable.ethereum_logo))
                 )
                 .build()
@@ -158,6 +158,7 @@ class MainActivity : BaseDiActivity() {
                 })
                 .build()
 
+        drawer!!.getActionBarDrawerToggle().drawerArrowDrawable.color = getResources().getColor(R.color.white)
     }
 
     override fun onResume() {
