@@ -6,6 +6,13 @@
     tools:context=".feature.main.activity.SplashActivity">
 
     <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:contentDescription="@null"
+        android:scaleType="centerCrop"
+        android:src="@drawable/default_window_background_help" />
+
+    <ImageView
         android:id="@+id/splash_logo"
         android:layout_width="@dimen/dimen_80dp"
         android:layout_height="@dimen/dimen_80dp"

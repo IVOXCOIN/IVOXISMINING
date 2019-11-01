@@ -20,7 +20,7 @@ androidExtensions {
 android {
     compileSdkVersion 28
     defaultConfig {
-        applicationId "com.ivox.wallet"
+        applicationId "com.ivox.ivoxis"
         minSdkVersion 23
         targetSdkVersion 28
 

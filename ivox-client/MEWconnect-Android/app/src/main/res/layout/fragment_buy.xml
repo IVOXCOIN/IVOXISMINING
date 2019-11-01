@@ -69,14 +69,14 @@
                         tools:text="IVOX" />
                 </LinearLayout>
 
-                <ImageView
+                <!--<ImageView
                     android:id="@+id/buy_toggle_currency"
                     android:layout_width="@dimen/dimen_36dp"
                     android:layout_height="@dimen/dimen_36dp"
                     android:layout_gravity="center_horizontal"
                     android:layout_margin="@dimen/dimen_16dp"
                     android:contentDescription="@null"
-                    android:src="@drawable/buy_toggle_currency" />
+                    android:src="@drawable/buy_toggle_currency" /> -->
 
                 <LinearLayout
                     android:layout_width="wrap_content"

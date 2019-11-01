@@ -94,9 +94,9 @@ class BuyFragment : BaseViewModelFragment() {
         private val config = PayPalConfiguration()
                 .environment(CONFIG_ENVIRONMENT)
                 .clientId(CONFIG_CLIENT_ID)
-                .merchantName("ivoxis")
-                .merchantPrivacyPolicyUri(Uri.parse("https://www.example.com/privacy"))
-                .merchantUserAgreementUri(Uri.parse("https://www.example.com/legal"))
+                .merchantName("IVOX")
+                .merchantPrivacyPolicyUri(Uri.parse("http://ivoxis.net/POLITICA_DE_PRIVACIDAD.pdf"))
+                .merchantUserAgreementUri(Uri.parse("http://ivoxis.net/TERMINOS_Y_CONDICIONES_DE_IVOX.pdf"))
 
         fun newInstance(stockPrice: BigDecimal): BuyFragment {
             val fragment = BuyFragment()
@@ -168,13 +168,13 @@ class BuyFragment : BaseViewModelFragment() {
             true
         }
 
-        buy_toggle_currency.setOnClickListener {
+        /*buy_toggle_currency.setOnClickListener {
             isInUsd = !isInUsd
             val tmp = buy_sum_1.text
             setRawText(buy_sum_2.text.toString())
             buy_sum_2.text = tmp
             populateSecondValue()
-        }
+        }*/
 
         buy_button.setOnClickListener {
             buy_loading.visibility = VISIBLE
@@ -382,7 +382,7 @@ class BuyFragment : BaseViewModelFragment() {
             buy_button_point.isEnabled = method == "ETHER"
 
             buy_button_delete.isEnabled = true
-            buy_toggle_currency.isEnabled = true
+            //buy_toggle_currency.isEnabled = true
         })
     }
 
@@ -402,7 +402,7 @@ class BuyFragment : BaseViewModelFragment() {
             buy_button_point.isEnabled = false
 
             buy_button_delete.isEnabled = false
-            buy_toggle_currency.isEnabled = false
+            //buy_toggle_currency.isEnabled = false
         })
     }
 
@@ -628,7 +628,7 @@ class BuyFragment : BaseViewModelFragment() {
 
         val method = context!!.getString(preferences.applicationPreferences.getBalanceMethod().shortName)
 
-        if (currentValue < LIMIT_MIN && method == "ANY") {
+        if (currentValue < LIMIT_MIN && method == "IVOX") {
             buy_button.setText(R.string.buy_minimum_warning)
             buy_button.isEnabled = false
         } else if(currentValue > BigDecimal(0)){
