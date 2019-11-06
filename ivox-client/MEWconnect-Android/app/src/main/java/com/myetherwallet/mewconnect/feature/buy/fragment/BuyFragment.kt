@@ -82,7 +82,7 @@ class BuyFragment : BaseViewModelFragment() {
          * - Set to PayPalConfiguration.ENVIRONMENT_NO_NETWORK to kick the tires
          * without communicating to PayPal's servers.
          */
-        private val CONFIG_ENVIRONMENT = PayPalConfiguration.ENVIRONMENT_SANDBOX
+        private val CONFIG_ENVIRONMENT = PayPalConfiguration.ENVIRONMENT_PRODUCTION
 
         // note that these credentials will differ between live & sandbox environments.
         private val CONFIG_CLIENT_ID = "AT9bbsd8BR0a3fJoasIcSjAVo0av2HCRbZYRYEoJoy97khQWV3vKa-txCP3FE4zq-NexrxtinZmZBOKh"
