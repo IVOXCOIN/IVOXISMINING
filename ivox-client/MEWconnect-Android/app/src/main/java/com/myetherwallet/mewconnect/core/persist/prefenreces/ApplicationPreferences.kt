@@ -12,6 +12,7 @@ import java.util.*
 
 private const val WALLET_MNEMONIC = "wallet_mnemonic"
 private const val WALLET_IS_BACKED_UP = "wallet_is_backed_up"
+private const val PRIVATE_KEY_IS_BACKED_UP = "private_key_is_backed_up"
 private const val USER_IS_REGISTERED = "user_is_registered"
 private const val USER_NAME = "user_name"
 private const val USER_EMAIL = "user_email"
@@ -41,6 +42,13 @@ class ApplicationPreferences(private val preferences: SharedPreferences) {
     fun setBackedUp(isBackedUp: Boolean) {
         preferences.edit().putBoolean(WALLET_IS_BACKED_UP, isBackedUp).apply()
     }
+
+    fun isPrivateKeyBackedUp() = preferences.getBoolean(PRIVATE_KEY_IS_BACKED_UP, false)
+
+    fun setPrivateKeyBackedUp(isBackedUp: Boolean) {
+        preferences.edit().putBoolean(PRIVATE_KEY_IS_BACKED_UP, isBackedUp).apply()
+    }
+
 
     fun getCurrentNetwork(): Network {
         return Network.valueOf(preferences.getString(CURRENT_NETWORK, Network.MAIN.name)!!)
@@ -139,6 +147,7 @@ class ApplicationPreferences(private val preferences: SharedPreferences) {
         preferences.edit()
                 .remove(WALLET_MNEMONIC)
                 .remove(WALLET_IS_BACKED_UP)
+                .remove(PRIVATE_KEY_IS_BACKED_UP)
                 .remove(BACKUP_WARNING_TIME)
                 .remove(BALANCE_METHOD)
                 .remove(USER_IS_REGISTERED)

@@ -98,6 +98,67 @@ class UserUpdateFragment : BaseDiFragment(), Toolbar.OnMenuItemClickListener {
 
         }
 
+        private_button.setOnClickListener {
+            val editText = EditText(activity!!)
+
+            editText.inputType = InputType.TYPE_CLASS_TEXT or InputType.TYPE_TEXT_VARIATION_PASSWORD
+
+            val builder = AlertDialog.Builder(activity!!)
+
+            builder.setTitle(activity!!.getText(R.string.update_register_user_continue))
+
+            builder.setMessage(activity!!.getText(R.string.update_register_user_password_confirm))
+
+            builder.setView(editText)
+
+            builder.setPositiveButton("OK"){dialog, which ->
+                userPassword = editText.text.toString()
+                val privateKey = StorageCryptHelper.decrypt(preferences.getCurrentWalletPreferences().getWalletPrivateKey(), userPassword)
+
+                if (checkPrivateKey(privateKey)) {
+
+                    val privateBuilder = AlertDialog.Builder(activity!!)
+
+                    privateBuilder.setTitle(activity!!.getText(R.string.update_register_user_continue))
+
+                    val privateKeyString = HexUtils.bytesToStringLowercase(privateKey)
+
+                    privateBuilder.setMessage(privateKeyString)
+
+                    privateBuilder.setPositiveButton("OK"){dialog, which ->
+                        preferences.applicationPreferences.setPrivateKeyBackedUp(true)
+                    }
+
+                    val privateDialog: AlertDialog = privateBuilder.create()
+
+                    privateDialog.setOnShowListener(DialogInterface.OnShowListener {
+                        privateDialog.getButton(AlertDialog.BUTTON_POSITIVE).setBackgroundColor(resources.getColor(R.color.blue))
+                        privateDialog.getButton(AlertDialog.BUTTON_POSITIVE).setTextColor(resources.getColor(R.color.white))
+                    })
+
+                    privateDialog.show()
+
+                } else {
+                    displayToast(activity!!.getText(R.string.register_password_error).toString())
+                }
+
+            }
+
+            builder.setNegativeButton("Cancelar", null)
+
+            val dialog: AlertDialog = builder.create()
+
+            dialog.setOnShowListener(DialogInterface.OnShowListener {
+                dialog.getButton(AlertDialog.BUTTON_POSITIVE).setBackgroundColor(resources.getColor(R.color.blue))
+                dialog.getButton(AlertDialog.BUTTON_POSITIVE).setTextColor(resources.getColor(R.color.white))
+
+                dialog.getButton(AlertDialog.BUTTON_NEGATIVE).setBackgroundColor(resources.getColor(R.color.blue))
+                dialog.getButton(AlertDialog.BUTTON_NEGATIVE).setTextColor(resources.getColor(R.color.white))
+            })
+
+            dialog.show()
+        }
+
         update_button.setOnClickListener {
 
             userName = user_name.text.toString()

@@ -14,9 +14,11 @@ import com.myetherwallet.mewconnect.feature.main.view.WalletCardView
 import org.bitcoinj.crypto.ChildNumber
 import org.bitcoinj.crypto.HDKeyDerivation
 import org.bitcoinj.wallet.DeterministicSeed
+import org.web3j.crypto.Credentials
 import org.web3j.crypto.ECKeyPair
 import org.web3j.crypto.Keys
 import org.web3j.crypto.MnemonicUtils
+import java.math.BigInteger
 import java.security.SecureRandom
 import java.util.concurrent.TimeUnit
 import javax.inject.Inject
@@ -34,40 +36,70 @@ class CreateWallets
 
     override suspend fun run(params: Params): Either<Failure, Any> {
 
-        val mnemonic: String
-        val creationTime = TimeUnit.MILLISECONDS.toSeconds(System.currentTimeMillis())
-        val deterministicSeed: DeterministicSeed
-        if (params.mnemonic == null) {
-            val entropy = generateNewEntropy()
-            mnemonic = MnemonicUtils.generateMnemonic(entropy)
-            deterministicSeed = DeterministicSeed(emptyList(), entropy, WALLET_PASSWORD, creationTime)
-        } else {
-            mnemonic = params.mnemonic
-            val mnemonicList = mnemonic.split(" ")
-            deterministicSeed = DeterministicSeed(mnemonicList, null, WALLET_PASSWORD, creationTime)
-        }
+        if(params.privateKey != null){
+            for (network in Network.values()) {
+                val walletPreferences = preferences.getWalletPreferences(network)
 
-        val encryptedMnemonic = StorageCryptHelper.encrypt(mnemonic.toByteArray(), params.password)
-        preferences.applicationPreferences.setWalletMnemonic(encryptedMnemonic)
+                val ecKeyPair = createKeyPair(params.privateKey)
 
-        for (network in Network.values()) {
-            val walletPreferences = preferences.getWalletPreferences(network)
-            //TODO: Double-check derivation path logic
-            val path = network.path + "/0"
-            val ecKeyPair = createEthWallet(deterministicSeed, path)
+                val address = Keys.getAddress(ecKeyPair)
+                walletPreferences.setWalletPrivateKey(StorageCryptHelper.encrypt(ecKeyPair.privateKey.toBytes(), params.password))
+                walletPreferences.setWalletAddress(address)
 
-            val address = Keys.getAddress(ecKeyPair)
-            walletPreferences.setWalletPrivateKey(StorageCryptHelper.encrypt(ecKeyPair.privateKey.toBytes(), params.password))
-            walletPreferences.setWalletAddress(address)
+                CardBackgroundHelper(context).draw(address, network, params.displayWidth, WalletSizingUtils.calculateCardHeight(context))
+            }
 
-            CardBackgroundHelper(context).draw(address, network, params.displayWidth, WalletSizingUtils.calculateCardHeight(context))
-        }
-
-        if (params.mnemonic != null) {
             preferences.applicationPreferences.setBackedUp(true)
+            preferences.applicationPreferences.setPrivateKeyBackedUp(true)
+        }
+        else{
+            val mnemonic: String
+            val creationTime = TimeUnit.MILLISECONDS.toSeconds(System.currentTimeMillis())
+            val deterministicSeed: DeterministicSeed
+            if (params.mnemonic == null) {
+                val entropy = generateNewEntropy()
+                mnemonic = MnemonicUtils.generateMnemonic(entropy)
+                val mnemonicList = mnemonic.split(" ")
+
+                deterministicSeed = DeterministicSeed(mnemonicList, null, WALLET_PASSWORD, creationTime)
+            } else {
+                mnemonic = params.mnemonic
+                val mnemonicList = mnemonic.split(" ")
+                deterministicSeed = DeterministicSeed(mnemonicList, null, WALLET_PASSWORD, creationTime)
+            }
+
+            val encryptedMnemonic = StorageCryptHelper.encrypt(mnemonic.toByteArray(), params.password)
+            preferences.applicationPreferences.setWalletMnemonic(encryptedMnemonic)
+
+            for (network in Network.values()) {
+                val walletPreferences = preferences.getWalletPreferences(network)
+                //TODO: Double-check derivation path logic
+                val path = network.path + "/0"
+                //val path = network.path
+                val ecKeyPair = createEthWallet(deterministicSeed, path)
+
+                val address = Keys.getAddress(ecKeyPair)
+                walletPreferences.setWalletPrivateKey(StorageCryptHelper.encrypt(ecKeyPair.privateKey.toBytes(), params.password))
+                walletPreferences.setWalletAddress(address)
+
+                CardBackgroundHelper(context).draw(address, network, params.displayWidth, WalletSizingUtils.calculateCardHeight(context))
+            }
+
+            if (params.mnemonic != null) {
+                preferences.applicationPreferences.setBackedUp(true)
+                preferences.applicationPreferences.setPrivateKeyBackedUp(true)
+            }
+
         }
 
         return Either.Right(Any())
+    }
+
+    private fun createKeyPair(privateKeyString: String): ECKeyPair{
+
+        val cs = Credentials.create(privateKeyString)
+
+        return cs.getEcKeyPair()
     }
 
     private fun createEthWallet(deterministicSeed: DeterministicSeed, path: String): ECKeyPair {
@@ -93,5 +125,5 @@ class CreateWallets
         return initialEntropy
     }
 
-    data class Params(val password: String, val mnemonic: String?, val displayWidth: Int)
+    data class Params(val password: String, val mnemonic: String?, val displayWidth: Int, val privateKey: String?)
 }

@@ -16,6 +16,14 @@
     <string name="enter_recovery_phrase_hint">Palabras separadas por espacios</string>
     <string name="enter_recovery_phrase_error">Frase de recuperación incorrecta</string>
 
+    <string name="enter_private_key_title">Ingrese su\nllave \nprivada</string>
+    <string name="enter_private_key_description">La llave privada es confidencial y es obtenida al momento de crear su cartera.</string>
+    <string name="enter_private_key_description2">Asegúrese de mantener su llave privada de manera confidencial.</string>
+
+    <string name="enter_private_key_hint">Llave privada</string>
+
+    <string name="enter_private_key_error">Llave privada incorrecta</string>
+
     <string name="pick_password_title">Ingresa una\ncontraseña</string>
     <string name="pick_password_description">De modo que nadie pueda desbloquear su cartera.</string>
     <string name="pick_password_description2">Las mejores contraseñas son largas y contienen letras, números y caracteres especiales.</string>
@@ -45,7 +53,8 @@
 
     <string name="intro_by_mew_label">por Ivox Coin</string>
     <string name="intro_verify">Verificar</string>
-    <string name="intro_restore_wallet">Restaurar cartera</string>
+    <string name="intro_restore_wallet_mnemonic">Frases mnemonicas</string>
+    <string name="intro_restore_wallet_private_key">Llave privada</string>
     <string name="intro_setup">CREAR CARTERA NUEVA</string>
     <string name="intro_page_footer1">Energía sustentable para todos\ninvierta fácilmente.\nPor Ivox Coin</string>
     <string name="intro_page_footer2">Una cartera de \nEthereum\nque permite almacenar\ntokens de Ivox</string>
@@ -89,9 +98,12 @@
     <string name="drawer_item_home">Inicio</string>
     <string name="drawer_item_buy">Comprar</string>
     <string name="drawer_item_tokens">Tokens</string>
+    <string name="drawer_item_ether">Ether</string>
     <string name="drawer_item_transfer">Transferir</string>
     <string name="drawer_item_info">Información</string>
     <string name="drawer_item_data">Datos</string>
+
+    <string name="drawer_item_details">Detalles</string>
 
 
     <string name="scan_camera_permission_rationale_settings">Habilite el acceso a la cámara para\nIvox en Configuración</string>
@@ -130,7 +142,7 @@
     <string name="forgot_password_restore_wallet">Restaurar cartera</string>
 
     <string name="write_these_title">Anote</string>
-    <string name="write_these_subtitle">Esta es su lista de frases:</string>
+    <string name="write_these_subtitle">Esta es su lista de frases y llave privada:</string>
     <string name="write_these_description">Resista la tentación de enviársela por correo o tomarle una captura de pantalla.</string>
     <string name="write_these_screenshot_text">No mantenga sus frases de recuperación de manera digital, anótelas en papel.</string>
     <string name="write_these_screenshot_title">Oops! Parece que ha tomado una captura de pantalla.</string>
@@ -217,11 +229,13 @@
     <string name="update_register_user_hide">Ocultar</string>
     <string name="update_register_user_password_confirm">Introduzca su contraseña para continuar</string>
     <string name="update_register_user_continue">Continuar</string>
+    <string name="update_register_user_private_key">Sus fondos se encuentran en riesgo, por favor, tome nota de su llave privada, la puede encontrar en el menú \'Datos\' pulsando sobre el boton \'Ver llave\', anótelas y guárdela en un lugar seguro.</string>
 
 
     <string name="update_user_title">Actualizar datos</string>
     <string name="update_user_success">Datos actualizados</string>
     <string name="update_user_update">Actualizar</string>
+    <string name="update_user_key">Ver llave</string>
 
 
     <string name="buy_title">Comprar IVOX</string>

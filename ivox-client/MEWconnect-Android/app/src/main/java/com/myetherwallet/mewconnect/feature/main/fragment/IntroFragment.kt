@@ -6,6 +6,7 @@ import android.view.View
 import com.myetherwallet.mewconnect.R
 import com.myetherwallet.mewconnect.core.ui.fragment.BaseFragment
 import com.myetherwallet.mewconnect.core.utils.ApplicationUtils
+import com.myetherwallet.mewconnect.feature.auth.fragment.BaseEnterPrivateKeyFragment
 import com.myetherwallet.mewconnect.feature.auth.fragment.EnterRecoveryPhraseFragment
 import com.myetherwallet.mewconnect.feature.main.adapter.IntroPagerAdapter
 import com.myetherwallet.mewconnect.feature.register.fragment.password.PickPasswordFragment
@@ -51,7 +52,8 @@ class IntroFragment : BaseFragment() {
         })
 
         intro_setup.setOnClickListener { addFragment(PickPasswordFragment.newInstance()) }
-        intro_restore_wallet.setOnClickListener { addFragment(EnterRecoveryPhraseFragment.newInstance()) }
+        intro_restore_wallet_mnemonic.setOnClickListener { addFragment(EnterRecoveryPhraseFragment.newInstance()) }
+        intro_restore_wallet_private_key.setOnClickListener{addFragment(BaseEnterPrivateKeyFragment.newInstance())}
     }
 
     override fun layoutId() = R.layout.fragment_intro

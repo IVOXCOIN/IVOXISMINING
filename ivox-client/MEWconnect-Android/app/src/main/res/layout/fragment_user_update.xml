@@ -122,12 +122,25 @@
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="50dp" />
 
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="fill_parent">
+
+
                 <Button
                     android:id="@+id/update_button"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="50dp"
                     android:text="@string/update_user_update" />
+
+                <Button
+                    android:id="@+id/private_button"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/update_user_key" />
+                </LinearLayout>
+
 
             </LinearLayout>
         </ScrollView>

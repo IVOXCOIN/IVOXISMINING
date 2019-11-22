@@ -87,8 +87,10 @@ class InfoFragment : BaseDiFragment(), Toolbar.OnMenuItemClickListener {
 
                 val json = JSONObject()
 
+                val userWallet = "0x" + preferences.getCurrentWalletPreferences().getWalletAddress()
+
                 json.put("email", preferences.applicationPreferences.getUserEmail())
-                json.put("wallet", preferences.getCurrentWalletPreferences().getWalletAddress())
+                json.put("wallet", userWallet)
                 json.put("password", password)
 
                 val mediaType = MediaType.parse("application/json; charset=utf-8")

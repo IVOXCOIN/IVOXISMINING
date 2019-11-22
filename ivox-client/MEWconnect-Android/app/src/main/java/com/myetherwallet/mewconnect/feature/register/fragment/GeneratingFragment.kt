@@ -16,17 +16,23 @@ import kotlinx.android.synthetic.main.fragment_generating.*
 
 private const val EXTRA_PASSWORD = "password"
 private const val EXTRA_MNEMONIC = "mnemonic"
+private const val EXTRA_PRIVATE_KEY = "private_key"
 
 class GeneratingFragment : BaseViewModelFragment() {
 
     companion object {
-        fun newInstance(password: String, mnemonic: String?): GeneratingFragment {
+        fun newInstance(password: String, mnemonic: String?, privateKey: String?): GeneratingFragment {
             val fragment = GeneratingFragment()
             val arguments = Bundle()
             arguments.putString(EXTRA_PASSWORD, password)
             mnemonic?.let {
                 arguments.putString(EXTRA_MNEMONIC, mnemonic)
             }
+
+            privateKey?.let{
+                arguments.putString(EXTRA_PRIVATE_KEY, privateKey)
+            }
+
             fragment.arguments = arguments
             return fragment
         }
@@ -44,7 +50,7 @@ class GeneratingFragment : BaseViewModelFragment() {
 
         viewModel = viewModel(viewModelFactory)
         val displaySize = ApplicationUtils.getDisplaySize(requireContext())
-        viewModel.createWallets(getString(EXTRA_PASSWORD)!!, getString(EXTRA_MNEMONIC), displaySize.width)
+        viewModel.createWallets(getString(EXTRA_PASSWORD)!!, getString(EXTRA_MNEMONIC), displaySize.width, getString(EXTRA_PRIVATE_KEY))
     }
 
     override fun layoutId() = R.layout.fragment_generating

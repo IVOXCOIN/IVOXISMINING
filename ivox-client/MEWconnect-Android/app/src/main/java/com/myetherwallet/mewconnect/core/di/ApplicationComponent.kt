@@ -45,6 +45,8 @@ interface ApplicationComponent {
 
     fun inject(fragment: TokensFragment)
 
+    fun inject(fragment: EtherFragment)
+
     fun inject(fragment: TransactionFragment)
 
     fun inject(fragment: UserRegisterFragment)

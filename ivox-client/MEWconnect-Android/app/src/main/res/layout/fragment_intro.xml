@@ -53,7 +53,7 @@
             android:text="@string/intro_setup" />
 
         <TextView
-            android:id="@+id/intro_restore_wallet"
+            android:id="@+id/intro_restore_wallet_mnemonic"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal"
@@ -66,7 +66,25 @@
             android:paddingTop="@dimen/dimen_4dp"
             android:paddingEnd="@dimen/dimen_20dp"
             android:paddingBottom="@dimen/dimen_8dp"
-            android:text="@string/intro_restore_wallet"
+            android:text="@string/intro_restore_wallet_mnemonic"
+            android:textAllCaps="true"
+            android:textColor="@color/white"
+            android:textSize="@dimen/text_size_14sp" />
+        <TextView
+            android:id="@+id/intro_restore_wallet_private_key"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="@dimen/dimen_8dp"
+            android:layout_marginBottom="@dimen/dimen_16dp"
+            android:background="?attr/selectableItemBackground"
+            android:fontFamily="sans-serif-medium"
+            android:letterSpacing="0.09"
+            android:paddingStart="@dimen/dimen_20dp"
+            android:paddingTop="@dimen/dimen_4dp"
+            android:paddingEnd="@dimen/dimen_20dp"
+            android:paddingBottom="@dimen/dimen_8dp"
+            android:text="@string/intro_restore_wallet_private_key"
             android:textAllCaps="true"
             android:textColor="@color/white"
             android:textSize="@dimen/text_size_14sp" />

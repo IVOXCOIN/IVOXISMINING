@@ -10,6 +10,7 @@ import com.myetherwallet.mewconnect.R
 import com.myetherwallet.mewconnect.core.di.ApplicationComponent
 import com.myetherwallet.mewconnect.core.persist.prefenreces.PreferencesManager
 import com.myetherwallet.mewconnect.core.ui.fragment.BaseDiFragment
+import com.myetherwallet.mewconnect.core.utils.HexUtils
 import com.myetherwallet.mewconnect.core.utils.crypto.StorageCryptHelper
 import com.myetherwallet.mewconnect.feature.auth.callback.AuthCallback
 import com.myetherwallet.mewconnect.feature.auth.fragment.AuthFragment
@@ -49,6 +50,12 @@ class WriteTheseFragment : BaseDiFragment(), View.OnClickListener, Toolbar.OnMen
         write_these_words.adapter = adapter
         write_these_words.isNestedScrollingEnabled = false
         write_these_words.setHasFixedSize(false)
+
+        if(password != null){
+            val privateKey = StorageCryptHelper.decrypt(preferences.getCurrentWalletPreferences().getWalletPrivateKey(), password!!)
+            write_these_description.text = HexUtils.bytesToStringLowercase(privateKey)
+        }
+
     }
 
     override fun onResume() {
@@ -74,6 +81,7 @@ class WriteTheseFragment : BaseDiFragment(), View.OnClickListener, Toolbar.OnMen
             val mnemonic = String(it)
             adapter.setItems(mnemonic.split(" "))
         } ?: Toast.makeText(context, R.string.words_loading_error, Toast.LENGTH_LONG).show()
+
         close()
     }
 

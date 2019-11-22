@@ -123,6 +123,10 @@ class TokensFragment : BaseDiFragment(), Toolbar.OnMenuItemClickListener {
                             total = BigDecimal(purchase) - BigDecimal(25)
                         }
 
+                        if(paypalId == "N/A" && purchase != "N/A"){
+                            total = BigDecimal(purchase)
+                        }
+
                         val eth = BigDecimal(value)
 
                         val rate = total.divide(eth, 2, BigDecimal.ROUND_HALF_UP)

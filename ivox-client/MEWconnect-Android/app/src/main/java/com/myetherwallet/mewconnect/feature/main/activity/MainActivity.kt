@@ -91,14 +91,18 @@ class MainActivity : BaseDiActivity() {
 
         var item4 = PrimaryDrawerItem()
                     .withIdentifier(4)
-                    .withName(R.string.drawer_item_transfer)
+                    .withName(R.string.drawer_item_ether)
 
         var item5 = PrimaryDrawerItem()
                     .withIdentifier(5)
-                    .withName(R.string.drawer_item_data)
+                    .withName(R.string.drawer_item_transfer)
 
         var item6 = PrimaryDrawerItem()
                     .withIdentifier(6)
+                    .withName(R.string.drawer_item_data)
+
+        var item7 = PrimaryDrawerItem()
+                    .withIdentifier(7)
                     .withName(R.string.drawer_item_info)
 
 
@@ -118,7 +122,9 @@ class MainActivity : BaseDiActivity() {
                         DividerDrawerItem(),
                         item5,
                         DividerDrawerItem(),
-                        item6
+                        item6,
+                        DividerDrawerItem(),
+                        item7
                 )
                 .withOnDrawerItemClickListener(object : Drawer.OnDrawerItemClickListener {
                     override fun onItemClick(view: View,
@@ -137,15 +143,19 @@ class MainActivity : BaseDiActivity() {
 
                             replaceFragment(TokensFragment.newInstance())
 
-                        } else if(drawerItem!!.identifier == 4.toLong()){
+                        }  else if(drawerItem!!.identifier == 4.toLong()){
 
-                            replaceFragment(TransactionFragment.newInstance())
+                            replaceFragment(EtherFragment.newInstance())
 
                         } else if(drawerItem!!.identifier == 5.toLong()){
 
-                            replaceFragment(UserUpdateFragment.newInstance())
+                            replaceFragment(TransactionFragment.newInstance())
 
                         } else if(drawerItem!!.identifier == 6.toLong()){
+
+                            replaceFragment(UserUpdateFragment.newInstance())
+
+                        } else if(drawerItem!!.identifier == 7.toLong()){
 
                             replaceFragment(InfoFragment.newInstance())
 

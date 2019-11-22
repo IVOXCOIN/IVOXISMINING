@@ -11,7 +11,7 @@ import javax.inject.Inject
 class GeneratingViewModel
 @Inject constructor(application: Application, private val generatingWallets: CreateWallets) : AndroidViewModel(application) {
 
-    fun createWallets(password: String, mnemonic: String?, displayWidth: Int) {
-        generatingWallets.execute(CreateWallets.Params(password, mnemonic, displayWidth)) {}
+    fun createWallets(password: String, mnemonic: String?, displayWidth: Int, privateKey: String?) {
+        generatingWallets.execute(CreateWallets.Params(password, mnemonic, displayWidth, privateKey)) {}
     }
 }

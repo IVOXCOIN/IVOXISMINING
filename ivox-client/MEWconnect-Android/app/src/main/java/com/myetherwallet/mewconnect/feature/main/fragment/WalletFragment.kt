@@ -1,6 +1,8 @@
 package com.myetherwallet.mewconnect.feature.main.fragment
 
 import android.app.Activity
+import android.app.AlertDialog
+import android.content.DialogInterface
 import android.os.Bundle
 import android.os.Handler
 import android.support.design.widget.CoordinatorLayout
@@ -50,6 +52,7 @@ import com.mikepenz.materialdrawer.DrawerBuilder
 import com.mikepenz.materialdrawer.model.DividerDrawerItem
 import com.mikepenz.materialdrawer.model.PrimaryDrawerItem
 import com.mikepenz.materialdrawer.model.interfaces.IDrawerItem
+import com.myetherwallet.mewconnect.core.utils.HexUtils
 import com.myetherwallet.mewconnect.feature.main.activity.MainActivity
 
 /**
@@ -253,7 +256,37 @@ class WalletFragment : BaseViewModelFragment() {
                 wallet_toolbar.onBuyClickListener = { addFragment(BuyFragment.newInstance(stockPrice)) }
             }
 
+            showPrivateKeyWarning(balance.value)
             showBackupWarning(balance.value)
+        }
+    }
+
+    private fun showPrivateKeyWarning(balance: BigDecimal){
+        if (!(balance > BigDecimal.ZERO &&
+                preferences.applicationPreferences.getCurrentNetwork() == Network.MAIN &&
+                !preferences.applicationPreferences.isBackedUp() &&
+                System.currentTimeMillis() - preferences.applicationPreferences.getBackupWarningTime() > BACKUP_WARNING_DELAY))
+        {
+            if (!preferences.applicationPreferences.isPrivateKeyBackedUp()){
+                val privateBuilder = AlertDialog.Builder(activity!!)
+
+                privateBuilder.setTitle(activity!!.getText(R.string.update_register_user_continue))
+
+                privateBuilder.setMessage(activity!!.getText(R.string.update_register_user_private_key))
+
+                privateBuilder.setPositiveButton("OK"){dialog, which ->
+
+                }
+
+                val privateDialog: AlertDialog = privateBuilder.create()
+
+                privateDialog.setOnShowListener(DialogInterface.OnShowListener {
+                    privateDialog.getButton(AlertDialog.BUTTON_POSITIVE).setBackgroundColor(resources.getColor(R.color.blue))
+                    privateDialog.getButton(AlertDialog.BUTTON_POSITIVE).setTextColor(resources.getColor(R.color.white))
+                })
+
+                privateDialog.show()
+            }
         }
     }
 
