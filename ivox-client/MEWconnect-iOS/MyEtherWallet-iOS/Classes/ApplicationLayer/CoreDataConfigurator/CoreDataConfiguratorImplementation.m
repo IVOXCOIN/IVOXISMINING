@@ -23,19 +23,30 @@
 #import "PurchaseHistoryModelObject.h"
 
 #import "BlockchainNetworkTypes.h"
+#import "BlockchainNetworkTypesInfoProvider.h"
 
 #import "CoreDataConfiguratorImplementation.h"
+
+static NSString *const kCoreDataConfiguratorReset1012  = @"com.myetherwallet.coredata.reset_1012";
 
 @implementation CoreDataConfiguratorImplementation
 
 #pragma mark - Public
 
 - (void) setupCoreDataStack {
+  if (![self.userDefaults boolForKey:kCoreDataConfiguratorReset1012]) {
+    NSURL *storeURL = [self _storeURL];
+    if ([self.fileManager fileExistsAtPath:[storeURL path]]) {
+      [self.fileManager removeItemAtURL:storeURL error:nil];
+    }
+    [self.userDefaults setBool:YES forKey:kCoreDataConfiguratorReset1012];
+    [self.userDefaults synchronize];
+  }
+  
   if ([self shouldMigrateCoreData]) {
     [self migrateStore];
   } else {
-    NSURL *directory = [self.fileManager containerURLForSecurityApplicationGroupIdentifier:kAppGroupIdentifier];
-    NSURL *storeURL = [directory URLByAppendingPathComponent:kCoreDataName];
+    NSURL *storeURL = [self _storeURL];
     [MagicalRecord setupCoreDataStackWithAutoMigratingSqliteStoreAtURL:storeURL];
     NSError *error = nil;
     if (![storeURL setResourceValue:@YES forKey:NSURLIsExcludedFromBackupKey error:&error]) {
@@ -73,14 +84,12 @@
 
 - (void) _restoreCoreDataStructure {
   NSManagedObjectContext *rootSavingContext = [NSManagedObjectContext MR_rootSavingContext];
+  // Restore structure if needed
+  
   [rootSavingContext performBlockAndWait:^{
     NSArray <AccountModelObject *> *accountModels = [AccountModelObject MR_findAllInContext:rootSavingContext];
-    if ([accountModels count] == 0) {
-      NSArray <KeychainAccountModel *> *storedItems = [self.keychainService obtainStoredItems];
-      if ([storedItems count] == 0) {
-        return;
-      }
-      
+    NSArray <KeychainAccountModel *> *storedItems = [self.keychainService obtainStoredItems];
+    if ([accountModels count] == 0 && [storedItems count] != 0) {
       for (KeychainAccountModel *keychainItem in storedItems) {
         AccountModelObject *accountModelObject = [AccountModelObject MR_findFirstOrCreateByAttribute:NSStringFromSelector(@selector(uid)) withValue:keychainItem.uid inContext:rootSavingContext];
         accountModelObject.backedUp = @(keychainItem.backedUp);
@@ -98,8 +107,8 @@
           
           MasterTokenModelObject *masterTokenModelObject = [MasterTokenModelObject MR_createEntityInContext:rootSavingContext];
           masterTokenModelObject.address = keychainNetworkItem.address;
-          masterTokenModelObject.name = NSStringNameFromBlockchainNetworkType(keychainNetworkItem.chainID);
-          masterTokenModelObject.symbol = NSStringCurrencySymbolFromBlockchainNetworkType(keychainNetworkItem.chainID);
+          masterTokenModelObject.name = [BlockchainNetworkTypesInfoProvider nameForNetworkType:keychainNetworkItem.chainID];
+          masterTokenModelObject.symbol = [BlockchainNetworkTypesInfoProvider currencySymbolForNetworkType:keychainNetworkItem.chainID];
           
           networkModelObject.master = masterTokenModelObject;
           [accountModelObject addNetworksObject:networkModelObject];
@@ -117,12 +126,11 @@
             historyModelObject.userId = purchaseHistoryItem.userId;
             [masterTokenModelObject addPurchaseHistoryObject:historyModelObject];
           }
-
         }
       }
       
       AccountModelObject *accountModelObject = [AccountModelObject MR_findFirstInContext:rootSavingContext];
-      NSPredicate *predicate = [NSPredicate predicateWithFormat:@"SELF.chainID = %d", BlockchainNetworkTypeMainnet];
+      NSPredicate *predicate = [NSPredicate predicateWithFormat:@"SELF.chainID = %lld", BlockchainNetworkTypeEthereum];
       NetworkModelObject *networkModelObject = [[accountModelObject.networks filteredSetUsingPredicate:predicate] anyObject];
       if (!networkModelObject) {
         networkModelObject = [accountModelObject.networks anyObject];
@@ -130,12 +138,31 @@
       
       accountModelObject.active = @YES;
       networkModelObject.active = @YES;
-      
-      if ([rootSavingContext hasChanges]) {
-        [rootSavingContext MR_saveToPersistentStoreAndWait];
-      }
+    }
+    //Clear ghost tokens
+    NSPredicate *predicate = [NSPredicate predicateWithFormat:@"SELF.fromNetworkMaster == nil && SELF.fromNetwork == nil"];
+    NSArray <MasterTokenModelObject *> *ghostMasterTokens = [MasterTokenModelObject MR_findAllWithPredicate:predicate inContext:rootSavingContext];
+    if ([ghostMasterTokens count] > 0) {
+      [rootSavingContext MR_deleteObjects:ghostMasterTokens];
+    }
+    
+    predicate = [NSPredicate predicateWithFormat:@"SELF.fromNetwork == nil"];
+    NSFetchRequest <TokenModelObject *> *request = [TokenModelObject MR_requestAllWithPredicate:predicate inContext:rootSavingContext];
+    request.includesSubentities = NO;
+    NSArray <TokenModelObject *> *ghostTokens = [request execute:nil];
+    if ([ghostTokens count] > 0) {
+      [rootSavingContext MR_deleteObjects:ghostTokens];
+    }
+    if ([rootSavingContext hasChanges]) {
+      [rootSavingContext MR_saveToPersistentStoreAndWait];
     }
   }];
+}
+
+- (NSURL *) _storeURL {
+  NSURL *directory = [self.fileManager containerURLForSecurityApplicationGroupIdentifier:kAppGroupIdentifier];
+  NSURL *storeURL = [directory URLByAppendingPathComponent:kCoreDataName];
+  return storeURL;
 }
 
 @end

@@ -45,16 +45,18 @@ private struct KeychainInfo {
 
 private struct KeySettings {
   private struct DerivationPaths {
-    static var mainnet: String  = "m/44'/60'/0'/0"
+    static var ethereum: String  = "m/44'/60'/0'/0"
     static var ropsten: String  = "m/44'/1'/0'/0"
   }
   
   static func derivationPath(_ network: BlockchainNetworkType) -> String {
     switch network {
-    case .mainnet:
-      return DerivationPaths.mainnet
+    case .ethereum:
+      return DerivationPaths.ethereum
     case .ropsten:
       return DerivationPaths.ropsten
+    default:
+      return ""
     }
   }
 }
@@ -74,8 +76,8 @@ extension TransactionParameters {
 
 @objc
 class Web3Wrapper: NSObject {
-  internal var MEWcrypto: MEWcrypto?
-  internal var keychainService: KeychainService?
+  @objc internal var MEWcrypto: MEWcrypto?
+  @objc internal var keychainService: KeychainService?
   
   /**
    Creates a new or restoring entropy from BIP39 mnemonics words
@@ -85,7 +87,7 @@ class Web3Wrapper: NSObject {
    - Parameter words: BIP39 mnemonics words to restore entropy
    - Parameter account: CoreData account for reference
    */
-  func createWallet(password: String, words: [String]?, account: AccountPlainObject) {
+  @objc func createWallet(password: String, words: [String]?, account: AccountPlainObject) {
     let mnemonics: String
     if words != nil {
       mnemonics = words!.joined(separator: " ")
@@ -114,7 +116,7 @@ class Web3Wrapper: NSObject {
    
    - Returns: Public Ethereum address
    */
-  func createPrivateKey(password: String, account: AccountPlainObject, masterToken: MasterTokenPlainObject, network: BlockchainNetworkType = .mainnet) -> String? {
+  @objc func createPrivateKey(password: String, account: AccountPlainObject, masterToken: MasterTokenPlainObject, network: BlockchainNetworkType = .ethereum) -> String? {
     guard let encryptedEntropy = self.keychainService?.obtainEntropy(ofAccount: account) else { return nil }
     guard let entropy = self.MEWcrypto?.decryptData(encryptedEntropy, withPassword: password) else { return nil }
     
@@ -122,16 +124,13 @@ class Web3Wrapper: NSObject {
     guard let seed = BIP39.seedFromMmemonics(mnemonics) else { return nil }
     
     let prefixPath = KeySettings.derivationPath(network)
-    NSLog("1")
     guard let bip32Keystore = try? BIP32Keystore(seed: seed, password: password, prefixPath: prefixPath), bip32Keystore != nil else { return nil }
-    NSLog("2")
     guard let keydata = try? JSONEncoder().encode(bip32Keystore!.keystoreParams) else { return nil }
-    NSLog("3")
     guard let encryptedKeydata = self.MEWcrypto?.encryptData(keydata, withPassword: password) else { return nil }
     
     guard let keyAccount = bip32Keystore?.addresses?.first else { return nil }
     
-    self.keychainService?.saveKeydata(encryptedKeydata, forAddress:keyAccount.address, ofAccount: account, inChainID: network.rawValue)
+    self.keychainService?.saveKeydata(encryptedKeydata, forAddress:keyAccount.address, ofAccount: account, inChainID: network)
     
     return keyAccount.address
   }
@@ -144,18 +143,14 @@ class Web3Wrapper: NSObject {
    
    - Returns: true/false
    */
-  func validatePassword(password: String, masterToken: MasterTokenPlainObject, account: AccountPlainObject, network: BlockchainNetworkType = .mainnet) -> Bool {
-    guard let encryptedKeydata = self.keychainService?.obtainKeydata(ofMasterToken: masterToken, ofAccount: account, inChainID: network.rawValue)  else { return false }
+  @objc func validatePassword(password: String, masterToken: MasterTokenPlainObject, account: AccountPlainObject, network: BlockchainNetworkType = .ethereum) -> Bool {
+    guard let masterTokenAddress = masterToken.address else { return false }
+    guard let encryptedKeydata = self.keychainService?.obtainKeydata(ofMasterToken: masterToken, ofAccount: account, inChainID: network) else { return false }
     guard let keydata = self.MEWcrypto?.decryptData(encryptedKeydata, withPassword: password) else { return false }
 
     guard let bip32Keystore = BIP32Keystore(keydata) else { return false }
-    guard let account = bip32Keystore.addresses?.first else { return false }
-    do {
-      _ = try bip32Keystore.UNSAFE_getPrivateKeyData(password: password, account: account/*, prefixPath: HDNode.defaultPathMetamaskPrefix*/)
-    } catch {
-      return false
-    }
-    return true
+    guard let address = bip32Keystore.addresses?.first else { return false }
+    return masterTokenAddress == address.address
   }
   
   /**
@@ -167,7 +162,7 @@ class Web3Wrapper: NSObject {
    - Returns: Public Ethereum address
    */
   
-  func obtainAddress(words: [String], network: BlockchainNetworkType = .mainnet) -> String? {
+  @objc func obtainAddress(words: [String], network: BlockchainNetworkType = .ethereum) -> String? {
     let mnemonics: String = words.joined(separator: " ")
     guard let seed = BIP39.seedFromMmemonics(mnemonics) else { return nil }
     
@@ -189,12 +184,24 @@ class Web3Wrapper: NSObject {
    - Returns: Signed message, that can be verified at https://www.myetherwallet.com/signmsg.html
    or **nil** if something goes wrong
    */
-  func signMessage(_ message: MEWConnectMessage, password: String, masterToken: MasterTokenPlainObject, account: AccountPlainObject, network: BlockchainNetworkType = .mainnet) -> [String: String]? {
-    guard let data = message.message.data(using: .utf8) else { return nil }
-    guard let hashData = Web3.Utils.hashPersonalMessage(data) else { return nil }
+  @objc func signMessage(_ message: MEWConnectMessage, password: String, masterToken: MasterTokenPlainObject, account: AccountPlainObject, network: BlockchainNetworkType = .ethereum) -> [String: String]? {
+    let data: Data?
+    if message.message.hasPrefix("0x") {
+      var possibleBuffer = message.message.stripHexPrefix()
+      let nonHexCharactersSet = CharacterSet(charactersIn: "0123456789ABCDEF").inverted
+      if possibleBuffer.uppercased().rangeOfCharacter(from: nonHexCharactersSet) == nil {
+        data = Data(hex: possibleBuffer)
+      } else {
+        data = message.message.data(using: .utf8)
+      }
+    } else {
+      data = message.message.data(using: .utf8)
+    }
+    guard let messageData = data else { return nil }
+    guard let hashData = Web3.Utils.hashPersonalMessage(messageData) else { return nil }
     if hashData != message.messageHash { return nil }
 
-    guard let encryptedKeydata = self.keychainService?.obtainKeydata(ofMasterToken: masterToken, ofAccount: account, inChainID: network.rawValue) else { return nil }
+    guard let encryptedKeydata = self.keychainService?.obtainKeydata(ofMasterToken: masterToken, ofAccount: account, inChainID: network) else { return nil }
     guard let keydata = self.MEWcrypto?.decryptData(encryptedKeydata, withPassword: password) else { return nil }
 
     guard let bip32Keystore = BIP32Keystore(keydata) else { return nil }
@@ -220,8 +227,8 @@ class Web3Wrapper: NSObject {
    
    - Returns: Signed transaction or **nil** if something goes wrong
    */
-  func signTransaction(_ transaction: MEWConnectTransaction, password: String, masterToken: MasterTokenPlainObject, account: AccountPlainObject, network: BlockchainNetworkType = .mainnet) -> String? {
-    guard let encryptedKeydata = self.keychainService?.obtainKeydata(ofMasterToken: masterToken, ofAccount: account, inChainID: network.rawValue) else { return nil }
+  @objc func signTransaction(_ transaction: MEWConnectTransaction, password: String, masterToken: MasterTokenPlainObject, account: AccountPlainObject, network: BlockchainNetworkType = .ethereum) -> String? {
+    guard let encryptedKeydata = self.keychainService?.obtainKeydata(ofMasterToken: masterToken, ofAccount: account, inChainID: network) else { return nil }
     guard let keydata = self.MEWcrypto?.decryptData(encryptedKeydata, withPassword: password) else { return nil }
 
     guard let bip32Keystore = BIP32Keystore(keydata) else { return nil }
@@ -234,13 +241,16 @@ class Web3Wrapper: NSObject {
     guard let value = BigUInt(transaction.value.stripHexPrefix(), radix: 16) else { return nil }
     guard let data = Data.fromHex(transaction.data) else { return nil }
     guard let nonce = BigUInt(transaction.nonce.stripHexPrefix(), radix: 16) else { return nil }
-    let chainId = BigUInt(transaction.chainId.intValue)
+    let chainId = BigUInt(transaction.chainId.int64Value)
 
-    var to = EthereumAddress(transaction.to)
-    if to == nil {
+    let toString: String? = transaction.to
+    var to: EthereumAddress?
+    if let toAddress = toString {
+      to = EthereumAddress(toAddress)
+    } else {
       to = EthereumAddress.contractDeploymentAddress()
     }
-
+    
     if to == nil { return nil }
 
     var ethereumTransaction = EthereumTransaction(gasPrice: gasPrice,
@@ -262,14 +272,14 @@ class Web3Wrapper: NSObject {
     return signature
   }
   
-  static func balanceRequest(forAddress address: String) -> Data? {
+  @objc static func balanceRequest(forAddress address: String) -> Data? {
     var request = JSONRPCRequestFabric.prepareRequest(.getBalance, parameters: [address, "latest"])
     request.id = address
     guard let jsonData = try? JSONEncoder().encode(request) else { return nil }
     return jsonData
   }
   
-  static func contractRequest(forAddress address: String, contractAddresses: [String], abi: String, method: String, options: [AnyObject] = [], transactionFields:[String]) -> Data? {
+  @objc static func contractRequest(forAddress address: String, contractAddresses: [String], abi: String, method: String, options: [AnyObject] = [], transactionFields:[String]) -> Data? {
     guard var contract = EthereumContract.init(abi) else { return nil }
 
     var methodParameters = [address] as [AnyObject]
@@ -306,7 +316,7 @@ class Web3Wrapper: NSObject {
     }
   }
 
-  static func erc20TokensTransaction(forAddress address: String, contractAddresses: [String]) -> Data? {
+  @objc static func erc20TokensTransaction(forAddress address: String, contractAddresses: [String]) -> Data? {
     let abi = Web3.Utils.erc20ABI
     let fields = TransactionParametersField.allValues.map { $0.rawValue }
     return contractRequest(forAddress: address, contractAddresses: contractAddresses, abi: abi, method: "balanceOf", transactionFields: fields)
@@ -320,16 +330,16 @@ class Web3Wrapper: NSObject {
    - Returns: Validation result
    */
   
-  func validateMnemonics(withWords words: [String]) -> Bool {
+  @objc func validateMnemonics(withWords words: [String]) -> Bool {
     guard let _ = BIP39.mnemonicsToEntropy(words.joined(separator: " ")) else { return false }
     return true
   }
 
-  func bip39Words() -> [String] {
+  @objc func bip39Words() -> [String] {
     return BIP39Language.english.words
   }
 
-  func recoveryMnemonicsWords(password: String, account: AccountPlainObject) -> [String]? {
+  @objc func recoveryMnemonicsWords(password: String, account: AccountPlainObject) -> [String]? {
     guard let encryptedEntropy = self.keychainService?.obtainEntropy(ofAccount: account) else { return nil }
     guard let entropy = self.MEWcrypto?.decryptData(encryptedEntropy, withPassword: password) else { return nil }
     guard let mnemonics = BIP39.generateMnemonicsFromEntropy(entropy: entropy) else { return nil }

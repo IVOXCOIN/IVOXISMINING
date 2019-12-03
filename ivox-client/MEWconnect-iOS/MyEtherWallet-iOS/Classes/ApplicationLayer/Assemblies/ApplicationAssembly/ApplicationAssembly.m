@@ -81,6 +81,8 @@
                         configuration:^(TyphoonDefinition *definition) {
                           [definition injectProperty:@selector(keychainService)
                                                 with:[self.serviceComponents keychainService]];
+                          [definition injectProperty:@selector(rateService)
+                                                with:[self.serviceComponents rateService]];
                         }];
 }
 
@@ -97,6 +99,8 @@
                                                 with:[self.serviceComponents keychainService]];
                           [definition injectProperty:@selector(ponsomizer)
                                                 with:[self.ponsomizerAssembly ponsomizer]];
+                          [definition injectProperty:@selector(userDefaults)
+                                                with:[self.systemInfrastructureAssembly userDefaults]];
                         }];
 }
 
@@ -120,6 +124,8 @@
                                           }];
                           [definition injectProperty:@selector(accountsService)
                                                 with:[self.serviceComponents accountsService]];
+                          [definition injectProperty:@selector(whatsNewService)
+                                                with:[self.serviceComponents whatsNewService]];
                           [definition injectProperty:@selector(ponsomizer)
                                                 with:[self.ponsomizerAssembly ponsomizer]];
                           [definition injectProperty:@selector(splashPasswordFactory)

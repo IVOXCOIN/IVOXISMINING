@@ -19,7 +19,6 @@
 #import "BlockchainNetworkService.h"
 #import "AccountsService.h"
 #import "FiatPricesService.h"
-#import "ReachabilityServiceDelegate.h"
 #import "RateService.h"
 #import "MEWwallet.h"
 
@@ -59,6 +58,7 @@ static NSTimeInterval kHomeInteractorDefaultRefreshBalancesTime = 900.0;
 
 @implementation HomeInteractor {
   BOOL _configured;
+  BOOL _unlockedForUpdates;
 }
 
 - (instancetype) init {
@@ -88,6 +88,9 @@ static NSTimeInterval kHomeInteractorDefaultRefreshBalancesTime = 900.0;
 }
 
 - (void) reloadData {
+  if (!_unlockedForUpdates) {
+    return;
+  }
   if (!self.masterToken) {
     [self refreshMasterToken];
     return;
@@ -159,7 +162,7 @@ static NSTimeInterval kHomeInteractorDefaultRefreshBalancesTime = 900.0;
                                                NSStringFromSelector(@selector(tokens))];
   AccountPlainObject *account = [self.ponsomizer convertObject:accountModelObject ignoringProperties:ignoringProperties];
   
-  NetworkPlainObject *network = [account networkForNetworkType:BlockchainNetworkTypeMainnet];
+  NetworkPlainObject *network = [account networkForNetworkType:BlockchainNetworkTypeEthereum];
   if (network && ![network.active boolValue]) {
     [self.blockchainNetworkService selectNetwork:network inAccount:account];
     [self.output networkDidChanged];
@@ -205,12 +208,8 @@ static NSTimeInterval kHomeInteractorDefaultRefreshBalancesTime = 900.0;
   }
 }
 
-- (void) transactionDidSigned {
-  [self.rateService transactionSigned];
-}
-
-- (void) requestRaterIfNeeded {
-  [self.rateService requestReviewIfNeeded];
+- (void) unlockForUpdates {
+  _unlockedForUpdates = YES;
 }
 
 #pragma mark - Notifications
@@ -351,6 +350,8 @@ static NSTimeInterval kHomeInteractorDefaultRefreshBalancesTime = 900.0;
       [self.output didUpdateTokensBalance];
     }
     self.updatingStatus = HomeInteractorUpdatingStatusIdle;
+    [self.rateService balanceUpdated];
+    [self.rateService requestReviewIfNeeded];
   }];
 
 }
