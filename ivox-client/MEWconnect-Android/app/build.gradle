@@ -6,8 +6,8 @@ apply plugin: 'org.jetbrains.kotlin.android.extensions'
 
 int MAJOR_VERSION = 0
 int MINOR_VERSION = 0
-int MICRO_VERSION = 6
-int BUILD_FOR_TODAY = 6
+int MICRO_VERSION = 7
+int BUILD_FOR_TODAY = 7
 
 def secretsPropertiesFile = rootProject.file("secrets.properties");
 def secretsProperties = new Properties()

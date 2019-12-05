@@ -333,7 +333,7 @@ class TransactionFragment : BaseDiFragment(), Toolbar.OnMenuItemClickListener {
                                     method,
                                     "0x" + address,
                                     toAccount,
-                                    "MXN",
+                                    preferences.getWalletPreferences(preferences.applicationPreferences.getCurrentNetwork()).getWalletCurrency(),
                                     amount.toString(),
                                     "N/A",
                                     "0x" + address,

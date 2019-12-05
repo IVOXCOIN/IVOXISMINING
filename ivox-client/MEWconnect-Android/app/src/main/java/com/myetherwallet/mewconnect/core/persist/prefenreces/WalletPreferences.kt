@@ -16,6 +16,7 @@ private const val PREFIX = "wallet_"
 private const val WALLET_PRIVATE_KEY = "wallet_private_key"
 private const val WALLET_ADDRESS = "wallet_address"
 private const val WALLET_DATA_CACHE = "wallet_data_cache"
+private const val WALLET_CURRENCY = "wallet_currency"
 
 class WalletPreferences(context: Context, network: Network) {
 
@@ -35,6 +36,13 @@ class WalletPreferences(context: Context, network: Network) {
     fun setWalletAddress(address: String) {
         preferences.edit().putString(WALLET_ADDRESS, address).apply()
     }
+
+    fun getWalletCurrency(): String = preferences.getString(WALLET_CURRENCY, "USD")!!
+
+    fun setWalletCurrency(currency: String) {
+        preferences.edit().putString(WALLET_CURRENCY, currency).apply()
+    }
+
 
     fun getWalletDataCache(): WalletData? {
         val string = preferences.getString(WALLET_DATA_CACHE, null)

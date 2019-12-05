@@ -110,6 +110,7 @@ class WalletCardView @JvmOverloads constructor(
             wallet_card_value_eth.text = value.formatMoney(5)
             wallet_card_currency_eth.text = currency
             wallet_card_value_usd.text = valueUsd.formatUsd()
+            wallet_card_currency_usd.text = preferences.getWalletPreferences(preferences.applicationPreferences.getCurrentNetwork()).getWalletCurrency()
             wallet_card_stock_price.text = context.getString(R.string.wallet_card_stock_price, stockPrice?.stripTrailingZeros())
         }
     }

@@ -42,6 +42,7 @@ import org.json.JSONArray
 import org.json.JSONObject
 
 import java.io.IOException
+import java.util.*
 
 /**
  * Created by BArtWell on 28.08.2018.
@@ -100,7 +101,14 @@ class WalletViewModel
             it.isFromCache = true
             walletData.postValue(it)
         }
-        Collector(activity, network, walletAddress, balanceMethod, getWalletBalance, getAllBalances, getTickerData) { items, balance ->
+        Collector(activity,
+                    network,
+                    walletAddress,
+                    balanceMethod,
+                    getWalletBalance,
+                    getAllBalances,
+                    getTickerData,
+                    preferences) { items, balance ->
             val data = WalletData(false, items, balance)
             walletData.postValue(data)
             preferences.setWalletDataCache(data)
@@ -114,6 +122,7 @@ class WalletViewModel
                     private val getWalletBalance: GetWalletBalance,
                     private val getAllBalances: GetAllBalances,
                     private val getTickerData: GetTickerData,
+                    private val preferences: WalletPreferences,
                     private val callback: (List<WalletListItem>, WalletBalance) -> Unit) {
 
         private var balances: MutableList<Balance>? = null
@@ -299,11 +308,23 @@ class WalletViewModel
             getTicker()
         }
 
-        private fun getTicker(){
+        private fun getTicker(isUSD: Boolean = false){
             val json = JSONObject()
 
             json.put("method", balanceMethod)
-            json.put("tag", MXN_SYMBOL)
+
+            var currency = "USD"
+
+            if(!isUSD){
+                val currentLocale = activity!!.getResources().getConfiguration().locale
+                val code = Currency.getInstance(currentLocale).getCurrencyCode()
+
+                currency = code.toString()
+
+            }
+
+            json.put("tag", currency)
+
 
             val mediaType = MediaType.parse("application/json; charset=utf-8")
 
@@ -334,15 +355,22 @@ class WalletViewModel
                     try{
                         var responseData = response.body()?.string()
 
-                        var json = JSONArray(responseData)
+                        try{
+                            var json = JSONArray(responseData)
 
-                        val response = json.getJSONObject(0)
+                            val response = json.getJSONObject(0)
 
-                        val priceString = response.getString("rate")
+                            val priceString = response.getString("rate")
 
-                        val tickerResponse = mapOf(MXN_SYMBOL to BigDecimal(priceString))
+                            val tickerResponse = mapOf(currency to BigDecimal(priceString))
 
-                        onTickerDataSuccess(tickerResponse)
+                            preferences.setWalletCurrency(currency)
+
+                            onTickerDataSuccess(tickerResponse)
+
+                        } catch(e: Exception){
+                            getTicker(true)
+                        }
 
                     }catch (e: Exception) {
                         onTickerDataFail(e.message!!)
@@ -376,7 +404,7 @@ class WalletViewModel
             }
 
 
-            val stockPrice = tickerData!![MXN_SYMBOL]
+            val stockPrice = tickerData!![preferences.getWalletCurrency()]
             val valueUsd = stockPrice?.multiply(walletBalance)
             callback(items, WalletBalance(walletBalance!!, valueUsd, stockPrice))
         }

@@ -52,15 +52,12 @@ import com.paypal.android.sdk.payments.PaymentConfirmation
 import android.os.Handler
 
 import com.myetherwallet.mewconnect.BuildConfig
-import kotlinx.android.synthetic.main.fragment_tokens.*
 import okhttp3.*
 
 /**
  * Created by BArtWell on 12.09.2018.
  */
 
-const val CURRENCY_MXN = "MXN"
-const val CURRENCY_IVOX = "IVOX"
 private const val ETH_DECIMALS = 8
 private val LIMIT_MIN = BigDecimal(500)
 private val LIMIT_MAX = BigDecimal(1500000)
@@ -337,7 +334,7 @@ class BuyFragment : BaseViewModelFragment() {
         val paymentTotal = BigDecimal(paymentPrice) + gasPrice
 
         val payment = PayPalPayment(    paymentTotal,
-                                        "MXN",
+                preferences.getWalletPreferences(preferences.applicationPreferences.getCurrentNetwork()).getWalletCurrency(),
                                         paymentEthereum + " " + method,
                                         paymentIntent   )
 
@@ -351,7 +348,7 @@ class BuyFragment : BaseViewModelFragment() {
         customObject.put("source", formatedEthereumAddress)
         customObject.put("destination", formatedEthereumAddress)
         customObject.put("ether", paymentEthereum)
-        customObject.put("currency", "MXN")
+        customObject.put("currency", preferences.getWalletPreferences(preferences.applicationPreferences.getCurrentNetwork()).getWalletCurrency())
         customObject.put("amount", paymentTotal.toString())
 
         payment.custom(customObject.toString())
@@ -417,7 +414,7 @@ class BuyFragment : BaseViewModelFragment() {
         val json = JSONObject()
 
         json.put("method", method)
-        json.put("tag", CURRENCY_MXN)
+        json.put("tag", preferences.getWalletPreferences(preferences.applicationPreferences.getCurrentNetwork()).getWalletCurrency())
 
         val mediaType = MediaType.parse("application/json; charset=utf-8")
 
@@ -612,7 +609,7 @@ class BuyFragment : BaseViewModelFragment() {
         val method = context!!.getString(preferences.applicationPreferences.getBalanceMethod().shortName)
 
         if (isInUsd) {
-            buy_currency_1.text = CURRENCY_MXN
+            buy_currency_1.text = preferences.getWalletPreferences(preferences.applicationPreferences.getCurrentNetwork()).getWalletCurrency()
             buy_symbol_1.text = "$"
             buy_currency_2.text = method
             buy_symbol_2.text = ""
