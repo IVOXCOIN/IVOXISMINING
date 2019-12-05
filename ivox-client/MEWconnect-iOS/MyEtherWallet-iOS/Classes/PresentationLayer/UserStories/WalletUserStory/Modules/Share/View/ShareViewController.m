@@ -16,6 +16,11 @@
 
 #import "UIView+LockFrame.h"
 
+#import "ToastView.h"
+
+#import "WalletImageCatalog.h"
+#import "WalletUIStringList.h"
+
 @interface ShareViewController ()
 @property (nonatomic, weak) IBOutlet UILabel *titleLabel;
 @property (nonatomic, weak) IBOutlet UILabel *descriptionLabel;
@@ -41,7 +46,6 @@
 
 - (void)viewDidAppear:(BOOL)animated {
   [super viewDidAppear:animated];
-  self.view.lockFrame = YES;
 }
 
 - (void)viewDidDisappear:(BOOL)animated {
@@ -67,7 +71,7 @@
 
 #pragma mark - ShareViewInput
 
-- (void) setupInitialStateWithAddress:(NSString *)address qrCode:(UIImage *)qrCode {
+- (void) setupInitialStateWithAddress:(NSString *)address qrCode:(UIImage *)qrCode network:(BlockchainNetworkType)network {
   self.qrCodeImageView.image = qrCode;
   [self _updatePrefferedContentSize];
   
@@ -86,7 +90,13 @@
                                  NSForegroundColorAttributeName: self.titleLabel.textColor,
                                  NSParagraphStyleAttributeName: style,
                                  NSKernAttributeName: @(titleKern)};
-    self.titleLabel.attributedText = [[NSAttributedString alloc] initWithString:self.titleLabel.text attributes:attributes];
+    NSString *title = nil;
+    if (network == BlockchainNetworkTypeEthereum) {
+      title = NSLocalizedString(@"Your public Ethereum address", nil);
+    } else {
+      title = NSLocalizedString(@"Your public Ropsten testnet address", nil);
+    }
+    self.titleLabel.attributedText = [[NSAttributedString alloc] initWithString:title attributes:attributes];
   }
   { //Description
     NSArray *infoParts = [self.descriptionLabel.text componentsSeparatedByString:@"\n"];
@@ -130,6 +140,11 @@
 - (void) presentShareWithItems:(NSArray *)items {
   UIActivityViewController *activityController = [[UIActivityViewController alloc] initWithActivityItems:items applicationActivities:nil];
   [self presentViewController:activityController animated:YES completion:nil];
+}
+
+- (void) showToastAddressCopied {
+  [[ToastView shared] showWithImage:WalletImageCatalog.shareToastIcon
+                              title:WalletUIStringList.addressCopied];
 }
 
 #pragma mark - IBActions

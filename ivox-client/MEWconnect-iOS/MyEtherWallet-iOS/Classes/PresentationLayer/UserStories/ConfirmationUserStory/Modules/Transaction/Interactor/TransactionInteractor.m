@@ -39,11 +39,14 @@
   self.message = message;
   self.transaction = [message transaction];
   if ([self.transaction isTransfer]) {
-    TokenModelObject *tokenModelObject = [self.tokensService obtainTokenWithAddress:self.transaction.to
+    NSString *tokenAddress = self.transaction.token.address ?: self.transaction.to;
+    TokenModelObject *tokenModelObject = [self.tokensService obtainTokenWithAddress:tokenAddress
                                                                       ofMasterToken:masterToken];
-    NSArray <NSString *> *ignoringProperties = @[NSStringFromSelector(@selector(fromNetwork)),
-                                                 NSStringFromSelector(@selector(purchaseHistory))];
-    self.transaction.token = [self.ponsomizer convertObject:tokenModelObject ignoringProperties:ignoringProperties];
+    if (tokenModelObject) {
+      NSArray <NSString *> *ignoringProperties = @[NSStringFromSelector(@selector(fromNetwork)),
+                                                   NSStringFromSelector(@selector(purchaseHistory))];
+      self.transaction.token = [self.ponsomizer convertObject:tokenModelObject ignoringProperties:ignoringProperties];
+    }
   } else {
     self.transaction.token = self.masterToken;
   }
@@ -55,6 +58,15 @@
 
 - (MEWConnectTransaction *)obtainTransaction {
   return self.transaction;
+}
+
+- (NSString *) obtainNetworkToConfirm {
+  BlockchainNetworkType transactionNetwork = [self.transaction.chainId longLongValue];
+  BlockchainNetworkType accountNetwork = [self.masterToken.fromNetworkMaster network];
+  if (transactionNetwork != accountNetwork) {
+    return [BlockchainNetworkTypesInfoProvider nameForNetworkType:transactionNetwork];
+  }
+  return nil;
 }
 
 - (void)signTransactionWithPassword:(NSString *)password {

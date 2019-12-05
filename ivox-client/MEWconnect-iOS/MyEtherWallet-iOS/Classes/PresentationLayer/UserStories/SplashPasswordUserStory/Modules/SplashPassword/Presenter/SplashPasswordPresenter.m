@@ -15,6 +15,7 @@
 #import "SplashPasswordModuleOutput.h"
 
 @implementation SplashPasswordPresenter {
+  BOOL _launchState;
   BOOL _control;
 }
 
@@ -26,6 +27,7 @@
 }
 
 - (void) takeControlAfterLaunch {
+  _launchState = YES;
   _control = YES;
   [self.view becomePasswordInputActive];
 }
@@ -34,6 +36,9 @@
 
 - (void) didTriggerViewReadyEvent {
 	[self.view setupInitialStateWithAutoControl:_control];
+  if ([self.interactor isPasswordLocked]) {
+    [self.view lockPasswordField];
+  }
 }
 
 - (void) doneActionWithPassword:(NSString *)password {
@@ -49,11 +54,27 @@
 
 - (void) correctPassword:(NSString *)password {
   [self.moduleOutput passwordDidEntered:password];
-  [self.router close];
+  if (_launchState) {
+    [self.router unwindToHome];
+  } else {
+    [self.router close];
+  }
 }
 
 - (void) incorrectPassword {
+  if ([self.interactor isPasswordLocked]) {
+    [self.view lockPasswordField];
+  }
   [self.view shakeInput];
 }
+
+- (void) passwordDidUnlocked {
+  [self.view unlockPasswordField];
+}
+
+- (void) passwordWillBeUnlockedIn:(NSTimeInterval)unlockIn {
+  [self.view updateLockWithTimeInterval:unlockIn];
+}
+
 
 @end

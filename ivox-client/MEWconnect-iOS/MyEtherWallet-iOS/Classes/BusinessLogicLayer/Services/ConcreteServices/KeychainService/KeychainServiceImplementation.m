@@ -51,7 +51,7 @@
       for (NSString *networkKey in networks) {
         NSArray <NSString *> *networkComponents = [networkKey componentsSeparatedByString:@"_"];
         NSString *address = [networkComponents firstObject];
-        NSInteger chainID = [[networkComponents lastObject] integerValue];
+        BlockchainNetworkType chainID = [[networkComponents lastObject] longLongValue];
         KeychainNetworkModel *networkModel = [KeychainNetworkModel itemModelWithAddress:address chainID:chainID];
         [networkModels addObject:networkModel];
       }
@@ -64,7 +64,7 @@
   return [itemModels copy];
 }
 
-- (void) saveKeydata:(NSData *)keydata forAddress:(NSString *)address ofAccount:(AccountPlainObject *)account inChainID:(NSInteger)chainID {
+- (void) saveKeydata:(NSData *)keydata forAddress:(NSString *)address ofAccount:(AccountPlainObject *)account inChainID:(BlockchainNetworkType)chainID {
   NSString *key = [self _keyForUID:account.uid];
   NSString *keydataKey = [self _keyForAddress:address chainID:chainID];
   @synchronized (self) {
@@ -109,7 +109,7 @@
   }
 }
 
-- (NSData *) obtainKeydataOfMasterToken:(MasterTokenPlainObject *)token ofAccount:(AccountPlainObject *)account inChainID:(NSInteger)chainID {
+- (NSData *) obtainKeydataOfMasterToken:(MasterTokenPlainObject *)token ofAccount:(AccountPlainObject *)account inChainID:(BlockchainNetworkType)chainID {
   NSString *key = [self _keyForUID:account.uid];
   NSDictionary *item = [self _obtainItemWithKey:key];
   NSString *keydataKey = [self _keyForAddress:token.address chainID:chainID];
@@ -158,7 +158,7 @@
 
 - (void) resetKeychain {
   NSArray <NSString *> *keys = [self.keychainStore allKeys];
-  NSArray *ignoringKeys = @[kKeychainServiceRateAskedField, /*kKeychainServiceVersionField,*/ kKeychainServiceFirstLaunchField];
+  NSArray *ignoringKeys = @[kKeychainServiceVersionField, kKeychainServiceFirstLaunchField, kKeychainServiceWhatsNewVersionField];
   for (NSString *key in keys) {
     if (![ignoringKeys containsObject:key]) {
       [self _removeItemWithKey:key];
@@ -174,16 +174,47 @@
   }
 }
 
-- (NSString *)obtainFirstLaunchDate {
+- (NSString *)obtainFirstLaunchDateString {
   return [self.keychainStore stringForKey:kKeychainServiceFirstLaunchField];
 }
 
-- (void) rateDidAsked {
-  [self.keychainStore setString:kKeychainServiceRateAskedValue forKey:kKeychainServiceRateAskedField];
+- (NSDate * _Nullable) obtainFirstLaunchDate {
+  NSString *date = [self obtainFirstLaunchDateString];
+  if (!date) {
+    return nil;
+  }
+  return [self.dateFormatter dateFromString:date];
 }
 
-- (BOOL) obtainRateStatus {
-  return [self.keychainStore stringForKey:kKeychainServiceRateAskedField] != nil;
+- (NSInteger) obtainNumberOfPasswordAttempts {
+  NSString *attemptsValue = [self.keychainStore stringForKey:kKeychainServiceBruteForceNumberOfAttempts];
+  return [attemptsValue integerValue];
+}
+
+- (void) savePasswordAttempts:(NSInteger)attempts {
+  NSString *attemptsValue = [@(attempts) stringValue];
+  [self.keychainStore setString:attemptsValue forKey:kKeychainServiceBruteForceNumberOfAttempts];
+}
+
+- (NSDate *) obtainPasswordUnlockDate {
+  NSString *dateString = [self.keychainStore stringForKey:kKeychainServiceBruteForceLockDateField];
+  if (!dateString) {
+    return nil;
+  }
+  return [self.dateFormatter dateFromString:dateString];
+}
+
+- (void) savePasswordUnlockDate:(NSDate *)date {
+  NSString *dateString = [self.dateFormatter stringFromDate:date];
+  [self.keychainStore setString:dateString forKey:kKeychainServiceBruteForceLockDateField];
+}
+
+- (NSString *) obtainWhatsNewViewedVersion {
+  return [self.keychainStore stringForKey:kKeychainServiceWhatsNewVersionField];
+}
+
+- (void) saveWhatsNewViewedVersion:(NSString *)version {
+  [self.keychainStore setString:version forKey:kKeychainServiceWhatsNewVersionField];
 }
 
 #pragma mark - Protected
@@ -224,7 +255,7 @@
 
 - (NSArray *) _obtainRawKeys {
   NSMutableArray <NSString *> *keys = [[self.keychainStore allKeys] mutableCopy];
-  NSArray *ignoringKeys = @[kKeychainServiceRateAskedField, kKeychainServiceVersionField, kKeychainServiceFirstLaunchField];
+  NSArray *ignoringKeys = @[kKeychainServiceVersionField, kKeychainServiceFirstLaunchField, kKeychainServiceWhatsNewVersionField];
   [keys removeObjectsInArray:ignoringKeys];
   return [keys copy];
 }
@@ -236,12 +267,12 @@
   }
 }
 
-- (NSString *) _keyForAddress:(NSString *)address chainID:(NSInteger)chainID {
+- (NSString *) _keyForAddress:(NSString *)address chainID:(BlockchainNetworkType)chainID {
   NSString *key = [NSString stringWithFormat:kKeychainServiceV2KeyFormat, address, [@(chainID) stringValue]];
   return key;
 }
 
-- (NSString *) _historyKeyForAddress:(NSString *)address chainID:(NSInteger)chainID {
+- (NSString *) _historyKeyForAddress:(NSString *)address chainID:(BlockchainNetworkType)chainID {
   NSString *key = [NSString stringWithFormat:kKeychainServiceV2HistoryKeyFormat, address, [@(chainID) stringValue]];
   return key;
 }

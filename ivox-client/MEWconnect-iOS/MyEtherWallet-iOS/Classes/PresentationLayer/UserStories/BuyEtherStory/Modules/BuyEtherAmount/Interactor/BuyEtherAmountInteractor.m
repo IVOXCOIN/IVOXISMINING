@@ -25,6 +25,8 @@ static short const kBuyEtherAmountRoundingUSDScale        = 2;
 
 static NSDecimalNumber *kBuyEtherMinimumUSDAmount;
 static NSDecimalNumber *kBuyEtherMaximumUSDAmount;
+static NSDecimalNumber *kBuyEtherMidRangeFeeValue;
+static NSDecimalNumber *kBuyEtherMidRangeFee;
 
 static NSString *const kBuyEtherAmountDecimalSeparator    = @".";
 
@@ -32,6 +34,7 @@ static NSString *const kBuyEtherAmountDecimalSeparator    = @".";
 @property (nonatomic, strong) MasterTokenPlainObject *masterToken;
 @property (nonatomic) SimplexServiceCurrencyType currency;
 @property (nonatomic, strong) NSMutableString *amount;
+@property (nonatomic, strong) NSDecimalNumber *simplexPrice;
 @end
 
 @implementation BuyEtherAmountInteractor {
@@ -42,6 +45,8 @@ static NSString *const kBuyEtherAmountDecimalSeparator    = @".";
 + (void)initialize {
   kBuyEtherMinimumUSDAmount = [NSDecimalNumber decimalNumberWithString:@"50"];
   kBuyEtherMaximumUSDAmount = [NSDecimalNumber decimalNumberWithString:@"20000"];
+  kBuyEtherMidRangeFeeValue = [NSDecimalNumber decimalNumberWithString:@"210"];
+  kBuyEtherMidRangeFee      = [NSDecimalNumber decimalNumberWithString:@"0.0566"];
 }
 
 #pragma mark - BuyEtherAmountInteractorInput
@@ -49,7 +54,7 @@ static NSString *const kBuyEtherAmountDecimalSeparator    = @".";
 - (void) configurateWithMasterToken:(MasterTokenPlainObject *)masterToken {
   _masterToken = masterToken;
   _currency = SimplexServiceCurrencyTypeUSD;
-  _amount = [[NSMutableString alloc] initWithString:@"0"];
+  _amount = [[NSMutableString alloc] initWithString:@"100"];
   _ethRoundHandler = [NSDecimalNumberHandler decimalNumberHandlerWithRoundingMode:NSRoundPlain
                                                                             scale:kBuyEtherAmountRoundingETHScale
                                                                  raiseOnExactness:NO
@@ -64,18 +69,58 @@ static NSString *const kBuyEtherAmountDecimalSeparator    = @".";
                                                               raiseOnDivideByZero:NO];
 }
 
+- (void) updateEthPriceIfNeeded {
+  if (!self.simplexPrice) {
+    @weakify(self);
+    [self.simplexService quoteWithAmount:[NSDecimalNumber one]
+                                currency:SimplexServiceCurrencyTypeETH
+                                prequote:YES
+                              completion:^(SimplexQuote *quote, __unused NSError *error) {
+                                @strongify(self);
+                                if (quote) {
+                                  self.simplexPrice = quote.fiatBaseAmount;
+                                  NSDecimalNumber *convertedAmount = [self obtainConvertedAmount];
+                                  
+                                  BOOL minimumAmountReached = NO;
+                                  switch (self.currency) {
+                                    case SimplexServiceCurrencyTypeUSD: {
+                                      NSDecimalNumber *usd = [self _obtainEnteredAmountNumber];
+                                      minimumAmountReached = [usd compare:kBuyEtherMinimumUSDAmount] != NSOrderedAscending;
+                                      break;
+                                    }
+                                    case SimplexServiceCurrencyTypeETH: {
+                                      if (convertedAmount) {
+                                        minimumAmountReached = [convertedAmount compare:kBuyEtherMinimumUSDAmount] != NSOrderedAscending;
+                                      } else {
+                                        NSDecimalNumber *eth = [self _obtainEnteredAmountNumber];
+                                        minimumAmountReached = [eth compare:[NSDecimalNumber zero]] == NSOrderedDescending;
+                                      }
+                                      break;
+                                    }
+                                      
+                                    default:
+                                      break;
+                                  }
+                                  
+                                  [self.output updateInputPriceWithEnteredAmount:self.amount convertedAmount:convertedAmount];
+                                  [self.output minimumAmountDidReached:minimumAmountReached];
+                                }
+                                [self.output priceDidUpdated];
+                              }];
+  } else {
+    [self.output priceDidUpdated];
+  }
+}
+
 - (void) switchConverting {
   NSDecimalNumber *convertedAmount = [self obtainConvertedAmount];
-  NSDecimalNumberHandler *roundHandler = nil;
   switch (_currency) {
     case SimplexServiceCurrencyTypeETH: {
       _currency = SimplexServiceCurrencyTypeUSD;
-      roundHandler = _usdRoundHandler;
       break;
     }
     case SimplexServiceCurrencyTypeUSD: {
       _currency = SimplexServiceCurrencyTypeETH;
-      roundHandler = _ethRoundHandler;
       break;
     }
   }
@@ -84,6 +129,21 @@ static NSString *const kBuyEtherAmountDecimalSeparator    = @".";
   } else {
     [_amount replaceCharactersInRange:NSMakeRange(0, [_amount length]) withString:[convertedAmount stringValue]];
   }
+  BOOL minimumAmountReached = NO;
+  switch (_currency) {
+    case SimplexServiceCurrencyTypeETH: {
+      NSDecimalNumber *enteredAmount = [self _obtainEnteredAmountNumber];
+      NSDecimalNumber *convertedAmount = [self _obtainConvertedAmountWithCurrency:self.currency enteredAmount:enteredAmount];
+      minimumAmountReached = [convertedAmount compare:kBuyEtherMinimumUSDAmount] != NSOrderedAscending;
+      break;
+    }
+    case SimplexServiceCurrencyTypeUSD: {
+      NSDecimalNumber *enteredAmount = [self _obtainEnteredAmountNumber];
+      minimumAmountReached = [enteredAmount compare:kBuyEtherMinimumUSDAmount] != NSOrderedAscending;
+      break;
+    }
+  }
+  [self.output minimumAmountDidReached:minimumAmountReached];
 }
 
 - (void) appendSymbol:(NSString *)symbol {
@@ -119,7 +179,7 @@ static NSString *const kBuyEtherAmountDecimalSeparator    = @".";
       NSDecimalNumber *usd = [self _obtainEnteredAmountNumber];
       if ([usd compare:kBuyEtherMaximumUSDAmount] == NSOrderedDescending) {
         usd = kBuyEtherMaximumUSDAmount;
-        convertedAmount = [self _obtainConvertedAmountWithCurrency:SimplexServiceCurrencyTypeETH enteredAmount:usd];
+        convertedAmount = [self _obtainConvertedAmountWithCurrency:SimplexServiceCurrencyTypeUSD enteredAmount:usd];
         [_amount replaceCharactersInRange:NSMakeRange(0, [_amount length]) withString:[usd stringValue]];
       }
       minimumAmountReached = [usd compare:kBuyEtherMinimumUSDAmount] != NSOrderedAscending;
@@ -201,6 +261,7 @@ static NSString *const kBuyEtherAmountDecimalSeparator    = @".";
     @weakify(self);
     [self.simplexService quoteWithAmount:amount
                                 currency:self.currency
+                                prequote:NO
                               completion:^(SimplexQuote *quote, __unused NSError *error) {
                                 @strongify(self);
                                 if (quote) {
@@ -238,24 +299,58 @@ static NSString *const kBuyEtherAmountDecimalSeparator    = @".";
 }
 
 - (NSDecimalNumber *) _obtainConvertedAmountWithCurrency:(SimplexServiceCurrencyType)currency enteredAmount:(NSDecimalNumber *)enteredAmount {
-  NSDecimalNumber *usdPrice = self.masterToken.price.usdPrice;
+  NSDecimalNumber *usdPrice = self.simplexPrice ?: self.masterToken.price.usdPrice;
   NSDecimalNumber *convertedAmount = nil;
   if (usdPrice) {
     switch (currency) {
       case SimplexServiceCurrencyTypeETH: {
-        convertedAmount = [enteredAmount decimalNumberByMultiplyingBy:self.masterToken.price.usdPrice];
+        convertedAmount = [enteredAmount decimalNumberByMultiplyingBy:usdPrice];
+        convertedAmount = [convertedAmount decimalNumberByAdding:[self _calculateEstimatedFeeForAmount:convertedAmount]];
         convertedAmount = [convertedAmount decimalNumberByRoundingAccordingToBehavior:_usdRoundHandler];
         break;
       }
       case SimplexServiceCurrencyTypeUSD:
       default: {
-        convertedAmount = [enteredAmount decimalNumberByDividingBy:self.masterToken.price.usdPrice];
+        convertedAmount = [enteredAmount decimalNumberBySubtracting:[self _calculateEstimatedFeeForAmount:enteredAmount]];
+        convertedAmount = [convertedAmount decimalNumberByDividingBy:usdPrice];
         convertedAmount = [convertedAmount decimalNumberByRoundingAccordingToBehavior:_ethRoundHandler];
         break;
       }
     }
   }
+  if ([convertedAmount compare:[NSDecimalNumber zero]] == NSOrderedAscending) {
+    convertedAmount = [NSDecimalNumber zero];
+  }
   return convertedAmount;
+}
+
+- (NSDecimalNumber *) _calculateEstimatedFeeForAmount:(NSDecimalNumber *)amount {
+  if ([amount compare:[NSDecimalNumber zero]] == NSOrderedSame) {
+    return [NSDecimalNumber zero];
+  }
+  NSDecimalNumber *feePercent = nil;
+  NSDecimalNumber *correction = [NSDecimalNumber decimalNumberWithString:@"-0.03"];
+  BOOL applyCorrection = NO;
+  if ([amount compare:kBuyEtherMidRangeFeeValue] == NSOrderedDescending) {
+    feePercent = kBuyEtherMidRangeFee;
+  } else {
+    applyCorrection = YES;
+    NSDecimalNumber *k1 = [NSDecimalNumber decimalNumberWithString:@"10"];
+    NSDecimalNumber *k2 = [NSDecimalNumber decimalNumberWithString:@"-0.08"];
+    NSDecimalNumber *k3 = [NSDecimalNumber decimalNumberWithString:@"0.01"];
+    
+    NSDecimalNumber *p1 = [k1 decimalNumberByDividingBy:amount];
+    NSDecimalNumber *p2 = [k2 decimalNumberByDividingBy:amount];
+    
+    feePercent = [p1 decimalNumberByAdding:p2];
+    feePercent = [feePercent decimalNumberByAdding:k3];
+  }
+  
+  NSDecimalNumber *fee = [amount decimalNumberByMultiplyingBy:feePercent];
+  if (applyCorrection) {
+    fee = [fee decimalNumberByAdding:correction];
+  }
+  return fee;
 }
 
 @end

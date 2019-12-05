@@ -35,12 +35,14 @@ typedef NS_OPTIONS(short, HomeViewPresenterStatus) {
 @implementation HomePresenter {
   BOOL _viewVisible;
   BOOL _balancesRefreshing;
-  BOOL _transactionDidSigned;
 }
 
 #pragma mark - HomeModuleInput
 
-- (void) configureModule {
+- (void) configureModuleForNewWallet:(BOOL)newWallet {
+  if (newWallet) {
+    [self.interactor unlockForUpdates];
+  }
   [self.interactor refreshMasterToken];
   [self.interactor configurate];
   MasterTokenPlainObject *masterToken = [self.interactor obtainMasterToken];
@@ -48,9 +50,6 @@ typedef NS_OPTIONS(short, HomeViewPresenterStatus) {
 }
 
 - (void) configureBackupStatus {
-  [self.interactor refreshMasterToken];
-  MasterTokenPlainObject *masterToken = [self.interactor obtainMasterToken];
-  [self.view updateWithMasterToken:masterToken];
 }
 
 - (void) configureAfterChangingNetwork {
@@ -62,6 +61,11 @@ typedef NS_OPTIONS(short, HomeViewPresenterStatus) {
   NSDecimalNumber *tokensPrice = [self.interactor obtainTotalPriceOfTokens];
   [self.view updateWithTokensCount:count withTotalPrice:tokensPrice];
   
+  [self.interactor reloadData];
+}
+
+- (void) takeControlAfterLaunch {
+  [self.interactor unlockForUpdates];
   [self.interactor reloadData];
 }
 
@@ -83,10 +87,9 @@ typedef NS_OPTIONS(short, HomeViewPresenterStatus) {
 - (void) didTriggerViewWillAppear {
   _viewVisible = YES;
   [self _refreshViewStatusAnimated:NO];
-  if (_transactionDidSigned) {
-    [self.interactor requestRaterIfNeeded];
-    _transactionDidSigned = NO;
-  }
+  [self.interactor refreshMasterToken];
+  MasterTokenPlainObject *masterToken = [self.interactor obtainMasterToken];
+  [self.view updateWithMasterToken:masterToken];
 }
 
 - (void) didTriggerViewDidDisappear {
@@ -116,7 +119,8 @@ typedef NS_OPTIONS(short, HomeViewPresenterStatus) {
 }
 
 - (void) infoAction {
-  [self.router openInfo];
+  AccountPlainObject *account = [self.interactor obtainAccount];
+  [self.router openInfoWithAccount:account];
 }
 
 - (void) buyEtherAction {
@@ -204,6 +208,7 @@ typedef NS_OPTIONS(short, HomeViewPresenterStatus) {
 }
 
 - (void) networkDidChanged {
+  [self.view hideKeyboard];
   [self configureAfterChangingNetwork];
 }
 
@@ -230,8 +235,6 @@ typedef NS_OPTIONS(short, HomeViewPresenterStatus) {
 #pragma mark - ConfirmationStoryModuleOutput
 
 - (void) transactionDidSigned {
-  _transactionDidSigned = YES;
-  [self.interactor transactionDidSigned];
   [self.signModuleInput closeWithCompletion:nil];
 }
 

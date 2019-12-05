@@ -28,9 +28,7 @@
 @property (nonatomic, weak) IBOutlet NSLayoutConstraint *titleTopOffsetConstraint;
 @end
 
-@implementation InfoViewController {
-  NSTimer *_testnetTimer;
-}
+@implementation InfoViewController
 
 #pragma mark - LifeCycle
 
@@ -42,7 +40,6 @@
 
 - (void)viewDidAppear:(BOOL)animated {
   [super viewDidAppear:animated];
-  self.view.lockFrame = YES;
 }
 
 - (void)viewLayoutMarginsDidChange {
@@ -63,7 +60,7 @@
 
 #pragma mark - InfoViewInput
 
-- (void) setupInitialStateWithVersion:(NSString *)version {
+- (void)setupInitialStateWithVersion:(NSString *)version backupAvailability:(BOOL)available backedStatus:(BOOL)isBackedUp {
   switch ([UIScreen mainScreen].screenSizeType) {
     case ScreenSizeTypeInches35:
     case ScreenSizeTypeInches40: {
@@ -83,11 +80,16 @@
   } else {
     self.copyrightLabel.text = [NSString stringWithFormat:@"Copyright %zd MyEtherWallet Inc.", kStartDevelopmentYear];
   }
-  [self.dataDisplayManager updateDataDisplayManager];
+  [self.dataDisplayManager updateDataDisplayManagerWithBackupAvailability:available backedUpStatus:isBackedUp];
   self.tableView.dataSource = [self.dataDisplayManager dataSourceForTableView:self.tableView];
   self.tableView.delegate = [self.dataDisplayManager delegateForTableView:self.tableView
                                                          withBaseDelegate:self.dataDisplayManager];
   [self _updatePrefferedContentSize];
+}
+
+- (void) updateWithBackupAvailability:(BOOL)avaiable backupStatus:(BOOL)isBackedUp {
+  [self.dataDisplayManager updateDataDisplayManagerWithBackupAvailability:avaiable backedUpStatus:isBackedUp];
+  [self.tableView reloadData];
 }
 
 - (void) presentResetConfirmation {
@@ -133,6 +135,8 @@
   [self.output resetWalletAction];
 }
 
+- (IBAction) unwindToInfo:(__unused UIStoryboardSegue *)sender {}
+
 #pragma mark - Private
 
 - (void) _updatePrefferedContentSize {
@@ -174,6 +178,14 @@
 
 - (void) didTapAbout {
   [self.output aboutAction];
+}
+
+- (void) didTapViewBackupPhrase {
+  [self.output viewBackupPhraseAction];
+}
+
+- (void) didTapMakeBackup {
+  [self.output makeBackupAction];
 }
 
 #pragma mark - MFMailComposeViewControllerDelegate

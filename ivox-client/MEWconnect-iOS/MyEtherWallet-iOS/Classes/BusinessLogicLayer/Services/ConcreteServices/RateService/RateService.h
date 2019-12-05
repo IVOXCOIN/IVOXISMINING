@@ -11,7 +11,8 @@
 NS_ASSUME_NONNULL_BEGIN
 
 @protocol RateService <NSObject>
-- (void) transactionSigned;
+- (void) checkForUpdate;
+- (void) balanceUpdated;
 - (void) clearCount;
 - (void) requestReviewIfNeeded;
 @end
