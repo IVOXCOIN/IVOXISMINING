@@ -465,21 +465,31 @@ class BuyFragment : BaseViewModelFragment() {
     }
 
     private fun getGas(){
+
+        val json = JSONObject()
+
+        json.put("tag", preferences.getWalletPreferences(preferences.applicationPreferences.getCurrentNetwork()).getWalletCurrency())
+
+        val mediaType = MediaType.parse("application/json; charset=utf-8")
+
+        val formBody = RequestBody.create(mediaType, json.toString())
+
         val parsedUrl = HttpUrl.parse(BuildConfig.IVOX_API_TOKEN_END_POINT)
 
         var builtUrl = HttpUrl.Builder()
-                                .scheme(parsedUrl?.scheme())
-                                .host(parsedUrl?.host())
-                                .port(parsedUrl?.port()!!)
-                                .addPathSegment("api")
-                                .addPathSegment("gas")
-                                .addPathSegment("get")
-                                .build()
+                .scheme(parsedUrl?.scheme())
+                .host(parsedUrl?.host())
+                .port(parsedUrl?.port()!!)
+                .addPathSegment("api")
+                .addPathSegment("gas")
+                .addPathSegment("get")
+                .build()
 
         val request = Request.Builder()
-                                .url(builtUrl)
-                                .get()
-                                .build()
+                .url(builtUrl)
+                .post(formBody)
+                .build()
+
 
         client.newCall(request).enqueue(object : Callback {
             override fun onFailure(cliall: Call, e: IOException) {
@@ -623,6 +633,7 @@ class BuyFragment : BaseViewModelFragment() {
     }
 
     private fun setupBuyButton() {
+        val tokenvalue = BigDecimal(getCurrentValue())
         var currentValue = BigDecimal(getCurrentValue())
         if (!isInUsd) {
             currentValue = currentValue.multiply(price)
@@ -630,10 +641,10 @@ class BuyFragment : BaseViewModelFragment() {
 
         val method = context!!.getString(preferences.applicationPreferences.getBalanceMethod().shortName)
 
-        if (currentValue < LIMIT_MIN && method == "IVOX") {
+        if (tokenvalue < LIMIT_MIN && method == "IVOX") {
             buy_button.setText(R.string.buy_minimum_warning)
             buy_button.isEnabled = false
-        } else if(currentValue > BigDecimal(0)){
+        } else if(tokenvalue > BigDecimal(0)){
             buy_button.setText(R.string.buy_button)
             buy_button.isEnabled = true
         }
