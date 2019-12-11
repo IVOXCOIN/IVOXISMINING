@@ -23,6 +23,7 @@ private const val USER_CREDIT_CARD = "user_credit_card"
 private const val CURRENT_NETWORK = "current_network"
 private const val BALANCE_METHOD = "balance_method"
 private const val BACKUP_WARNING_TIME = "backup_warning_time"
+private const val PRIVATE_KEY_BACKUP_WARNING_TIME = "private_key_backup_warning_time"
 private const val INSTALL_TIME = "install_time"
 
 class ApplicationPreferences(private val preferences: SharedPreferences) {
@@ -128,6 +129,13 @@ class ApplicationPreferences(private val preferences: SharedPreferences) {
         preferences.edit().putLong(BACKUP_WARNING_TIME, System.currentTimeMillis()).apply()
     }
 
+    fun getPrivateKeyBackupWarningTime(): Long = preferences.getLong(PRIVATE_KEY_BACKUP_WARNING_TIME, 0L)
+
+    fun setPrivateKeyBackupWarningTime() {
+        preferences.edit().putLong(PRIVATE_KEY_BACKUP_WARNING_TIME, System.currentTimeMillis()).apply()
+    }
+
+
     fun getInstallTime(): Date {
         var timestamp = preferences.getLong(INSTALL_TIME, 0L)
         if (timestamp == 0L) {
@@ -148,6 +156,7 @@ class ApplicationPreferences(private val preferences: SharedPreferences) {
                 .remove(WALLET_MNEMONIC)
                 .remove(WALLET_IS_BACKED_UP)
                 .remove(PRIVATE_KEY_IS_BACKED_UP)
+                .remove(PRIVATE_KEY_BACKUP_WARNING_TIME)
                 .remove(BACKUP_WARNING_TIME)
                 .remove(BALANCE_METHOD)
                 .remove(USER_IS_REGISTERED)

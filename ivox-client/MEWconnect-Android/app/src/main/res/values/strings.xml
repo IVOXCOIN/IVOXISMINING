@@ -1,6 +1,10 @@
 <resources>
     <string name="app_name">Ivoxis</string>
 
+    <string name="update_app_error">"Actualización fallida, por favor reintente la próxima vez que lance la aplicación."</string>
+    <string name="update_app_downloaded">Una actualización ha sido descargada</string>
+    <string name="update_app_restart">REINICIAR</string>
+
     <string name="password">Contraseña</string>
     <string name="decline">Declinar</string>
     <string name="confirm">Confirmar</string>

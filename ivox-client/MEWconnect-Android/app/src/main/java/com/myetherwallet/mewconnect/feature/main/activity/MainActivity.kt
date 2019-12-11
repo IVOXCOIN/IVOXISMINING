@@ -3,6 +3,7 @@ package com.myetherwallet.mewconnect.feature.main.activity
 import android.app.Activity
 import android.content.Context
 import android.content.Intent
+import android.content.IntentSender
 import android.os.Bundle
 import android.support.v4.app.Fragment
 import android.support.v4.app.FragmentManager
@@ -30,13 +31,39 @@ import com.myetherwallet.mewconnect.feature.main.fragment.*
 import com.myetherwallet.mewconnect.feature.scan.service.SocketService
 import javax.inject.Inject
 
+import android.support.design.widget.Snackbar
+import android.support.v4.content.ContextCompat
+import android.widget.Toast
+import com.google.android.play.core.appupdate.AppUpdateManager
+import com.google.android.play.core.appupdate.AppUpdateManagerFactory
+import com.google.android.play.core.install.InstallState
+import com.google.android.play.core.install.InstallStateUpdatedListener
+import com.google.android.play.core.install.model.AppUpdateType
+import com.google.android.play.core.install.model.InstallStatus
+import com.google.android.play.core.install.model.UpdateAvailability
+
 /**
  * Created by BArtWell on 30.06.2018.
  */
 
 class MainActivity : BaseDiActivity() {
 
+    private val appUpdateManager: AppUpdateManager by lazy { AppUpdateManagerFactory.create(this) }
+    private val appUpdatedListener: InstallStateUpdatedListener by lazy {
+        object : InstallStateUpdatedListener {
+            override fun onStateUpdate(installState: InstallState) {
+                when {
+                    installState.installStatus() == InstallStatus.DOWNLOADED -> popupSnackbarForCompleteUpdate()
+                    installState.installStatus() == InstallStatus.INSTALLED -> appUpdateManager.unregisterListener(this)
+                    else -> Log.d("com.ivox.ivoxis","InstallStateUpdatedListener: state: " + installState.installStatus().toString())
+                }
+            }
+        }
+    }
+
     companion object {
+        private const val APP_UPDATE_REQUEST_CODE = 1991
+
         fun createIntent(context: Context) = Intent(context, MainActivity::class.java)
     }
 
@@ -63,6 +90,37 @@ class MainActivity : BaseDiActivity() {
 
         setStatusBarColor()
 
+        checkForAppUpdate()
+    }
+
+    private fun checkForAppUpdate() {
+        // Returns an intent object that you use to check for an update.
+        val appUpdateInfoTask = appUpdateManager.appUpdateInfo
+
+        // Checks that the platform will allow the specified type of update.
+        appUpdateInfoTask.addOnSuccessListener { appUpdateInfo ->
+
+            val updateAvailability = appUpdateInfo.updateAvailability()
+            if (updateAvailability == UpdateAvailability.UPDATE_AVAILABLE) {
+                // Request the update.
+                try {
+                    val installType = when {
+                        appUpdateInfo.isUpdateTypeAllowed(AppUpdateType.FLEXIBLE) -> AppUpdateType.FLEXIBLE
+                        appUpdateInfo.isUpdateTypeAllowed(AppUpdateType.IMMEDIATE) -> AppUpdateType.IMMEDIATE
+                        else -> null
+                    }
+                    if (installType == AppUpdateType.FLEXIBLE) appUpdateManager.registerListener(appUpdatedListener)
+
+                    appUpdateManager.startUpdateFlowForResult(
+                            appUpdateInfo,
+                            installType!!,
+                            this,
+                            APP_UPDATE_REQUEST_CODE)
+                } catch (e: IntentSender.SendIntentException) {
+                    e.printStackTrace()
+                }
+            }
+        }
     }
 
     fun setupDrawer(toolbar: Toolbar){
@@ -173,6 +231,30 @@ class MainActivity : BaseDiActivity() {
 
     override fun onResume() {
         super.onResume()
+        appUpdateManager
+                .appUpdateInfo
+                .addOnSuccessListener { appUpdateInfo ->
+
+                    // If the update is downloaded but not installed,
+                    // notify the user to complete the update.
+                    if (appUpdateInfo.installStatus() == InstallStatus.DOWNLOADED) {
+                        popupSnackbarForCompleteUpdate()
+                    }
+
+                    //Check if Immediate update is required
+                    try {
+                        if (appUpdateInfo.updateAvailability() == UpdateAvailability.DEVELOPER_TRIGGERED_UPDATE_IN_PROGRESS) {
+                            // If an in-app update is already running, resume the update.
+                            appUpdateManager.startUpdateFlowForResult(
+                                    appUpdateInfo,
+                                    AppUpdateType.IMMEDIATE,
+                                    this,
+                                    APP_UPDATE_REQUEST_CODE)
+                        }
+                    } catch (e: IntentSender.SendIntentException) {
+                        e.printStackTrace()
+                    }
+                }
         SocketService.start(this)
     }
 
@@ -224,10 +306,32 @@ class MainActivity : BaseDiActivity() {
     }
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+
+        super.onActivityResult(requestCode, resultCode, data)
+        if (requestCode == APP_UPDATE_REQUEST_CODE) {
+            if (resultCode != Activity.RESULT_OK) {
+                Toast.makeText(this,
+                        getText(R.string.update_app_error),
+                        Toast.LENGTH_SHORT)
+                        .show()
+            }
+        }
+
         for (fragment in supportFragmentManager.fragments) {
             fragment.onActivityResult(requestCode, resultCode, data)
         }
     }
+
+    private fun popupSnackbarForCompleteUpdate() {
+        val snackbar = Snackbar.make(
+                findViewById(R.id.main_fragment_container),
+                getText(R.string.update_app_downloaded),
+                Snackbar.LENGTH_INDEFINITE)
+        snackbar.setAction(getText(R.string.update_app_restart)) { appUpdateManager.completeUpdate() }
+        snackbar.setActionTextColor(ContextCompat.getColor(this, R.color.accent))
+        snackbar.show()
+    }
+
 
     override fun inject(appComponent: ApplicationComponent) {
         appComponent.inject(this)

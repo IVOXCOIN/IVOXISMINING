@@ -64,6 +64,7 @@ class WalletFragment : BaseViewModelFragment() {
     companion object {
 
         private val BACKUP_WARNING_DELAY = TimeUnit.HOURS.toMillis(12)
+        private val PRIVATE_KEY_BACKUP_WARNING_DELAY = TimeUnit.HOURS.toMillis(48)
 
         fun newInstance() = WalletFragment()
     }
@@ -267,7 +268,12 @@ class WalletFragment : BaseViewModelFragment() {
                 !preferences.applicationPreferences.isBackedUp() &&
                 System.currentTimeMillis() - preferences.applicationPreferences.getBackupWarningTime() > BACKUP_WARNING_DELAY))
         {
-            if (!preferences.applicationPreferences.isPrivateKeyBackedUp()){
+            if (!preferences.applicationPreferences.isPrivateKeyBackedUp() &&
+                    System.currentTimeMillis() - preferences.applicationPreferences.getPrivateKeyBackupWarningTime() > PRIVATE_KEY_BACKUP_WARNING_DELAY){
+
+                preferences.applicationPreferences.setPrivateKeyBackupWarningTime()
+
+
                 val privateBuilder = AlertDialog.Builder(activity!!)
 
                 privateBuilder.setTitle(activity!!.getText(R.string.update_register_user_continue))
