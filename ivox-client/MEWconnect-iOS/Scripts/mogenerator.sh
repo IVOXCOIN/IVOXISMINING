@@ -1,7 +1,7 @@
 
 echo "Removing old MogeneratorPONSO"
 cd "${SRCROOT}/MyEtherWallet-iOS/Classes/Models/GeneratedPONSO/"
-rm *.*
+rm -f *.*
 echo " "
 
 echo "Renaming old ponso to save custom logic"

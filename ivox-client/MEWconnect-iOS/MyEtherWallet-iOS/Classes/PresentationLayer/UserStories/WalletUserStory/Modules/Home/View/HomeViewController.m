@@ -267,12 +267,12 @@ static CGFloat kHomeViewControllerBottomDefaultOffset = 38.0;
 
 - (void)presentNetworkSelection {
   @weakify(self);
-  UIAlertController *alert = [UIAlertController alertControllerWithTitle:NSLocalizedString(@"Select network", @"Wallet. Network selection") message:nil preferredStyle:UIAlertControllerStyleActionSheet];
-  [alert addAction:[UIAlertAction actionWithTitle:@"Main Ethereum network" style:UIAlertActionStyleDefault handler:^(__unused UIAlertAction * _Nonnull action) {
+  UIAlertController *alert = [UIAlertController alertControllerWithTitle:NSLocalizedString(@"SELECT_CURRENCY", @"Wallet. Currency selection") message:nil preferredStyle:UIAlertControllerStyleActionSheet];
+  [alert addAction:[UIAlertAction actionWithTitle:@"IVOX" style:UIAlertActionStyleDefault handler:^(__unused UIAlertAction * _Nonnull action) {
     @strongify(self);
     [self.output mainnetAction];
   }]];
-  [alert addAction:[UIAlertAction actionWithTitle:@"Ropsten Test network" style:UIAlertActionStyleDefault handler:^(__unused UIAlertAction * _Nonnull action) {
+  [alert addAction:[UIAlertAction actionWithTitle:@"ETHEREUM" style:UIAlertActionStyleDefault handler:^(__unused UIAlertAction * _Nonnull action) {
     @strongify(self);
     [self.output ropstenAction];
   }]];

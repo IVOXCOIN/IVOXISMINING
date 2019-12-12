@@ -11,7 +11,17 @@
 <$foreach Relationship noninheritedRelationships do$>@class <$Relationship.destinationEntity.name$>PlainObject;
 <$endforeach do$>
 
+<$if hasSuperentity$>
+#import  "<$superentity.name$>PlainObject.h"
+<$endif$>
+
+
+<$if hasSuperentity$>
+@interface _<$name$>PlainObject : <$superentity.name$>PlainObject <NSCoding, NSCopying>
+<$else$>
 @interface _<$name$>PlainObject : <$customSuperentity$> <NSCoding, NSCopying>
+<$endif$>
+
 
 <$foreach Attribute noninheritedAttributes do$><$if Attribute.hasDefinedAttributeType$>@property (nonatomic, copy, readwrite) <$Attribute.objectAttributeClassName$> *<$Attribute.name$>;
 <$endif$><$endforeach do$>

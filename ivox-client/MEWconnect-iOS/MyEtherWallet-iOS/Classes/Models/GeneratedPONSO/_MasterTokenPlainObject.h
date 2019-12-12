@@ -9,7 +9,7 @@
 
 @class NetworkPlainObject;
 
-#import "TokenPlainObject.h"
+#import  "TokenPlainObject.h"
 
 @interface _MasterTokenPlainObject : TokenPlainObject <NSCoding, NSCopying>
 

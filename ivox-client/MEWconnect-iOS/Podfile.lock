@@ -1,0 +1,288 @@
+PODS:
+  - AFNetworking (3.2.1):
+    - AFNetworking/NSURLSession (= 3.2.1)
+    - AFNetworking/Reachability (= 3.2.1)
+    - AFNetworking/Security (= 3.2.1)
+    - AFNetworking/Serialization (= 3.2.1)
+    - AFNetworking/UIKit (= 3.2.1)
+  - AFNetworking/NSURLSession (3.2.1):
+    - AFNetworking/Reachability
+    - AFNetworking/Security
+    - AFNetworking/Serialization
+  - AFNetworking/Reachability (3.2.1)
+  - AFNetworking/Security (3.2.1)
+  - AFNetworking/Serialization (3.2.1)
+  - AFNetworking/UIKit (3.2.1):
+    - AFNetworking/NSURLSession
+  - BEMCheckBox (1.0.0)
+  - BigInt (3.1.0):
+    - SipHash (~> 1.2)
+  - BlockiesSwift (0.1.2)
+  - CHIPageControl/Chimayo (0.1.6)
+  - CocoaLumberjack (3.6.0):
+    - CocoaLumberjack/Core (= 3.6.0)
+  - CocoaLumberjack/Core (3.6.0)
+  - CryptoSwift (0.15.0)
+  - DZNWebViewController (3.2)
+  - EasyMapping (0.22.1):
+    - EasyMapping/Core (= 0.22.1)
+  - EasyMapping/Core (0.22.1)
+  - EthereumABI (1.1.1):
+    - BigInt (~> 3.1)
+    - CryptoSwift (~> 0.13)
+    - EthereumAddress (~> 1.0.0)
+  - EthereumAddress (1.0.0):
+    - CryptoSwift (~> 0.13)
+  - GoogleWebRTC (1.1.26675)
+  - GSKStretchyHeaderView (1.0.4)
+  - libextobjc (0.6):
+    - libextobjc/EXTADT (= 0.6)
+    - libextobjc/EXTConcreteProtocol (= 0.6)
+    - libextobjc/EXTKeyPathCoding (= 0.6)
+    - libextobjc/EXTNil (= 0.6)
+    - libextobjc/EXTSafeCategory (= 0.6)
+    - libextobjc/EXTScope (= 0.6)
+    - libextobjc/EXTSelectorChecking (= 0.6)
+    - libextobjc/EXTSynthesize (= 0.6)
+    - "libextobjc/NSInvocation+EXT (= 0.6)"
+    - "libextobjc/NSMethodSignature+EXT (= 0.6)"
+    - libextobjc/RuntimeExtensions (= 0.6)
+    - libextobjc/UmbrellaHeader (= 0.6)
+  - libextobjc/EXTADT (0.6):
+    - libextobjc/RuntimeExtensions
+  - libextobjc/EXTConcreteProtocol (0.6):
+    - libextobjc/RuntimeExtensions
+  - libextobjc/EXTKeyPathCoding (0.6):
+    - libextobjc/RuntimeExtensions
+  - libextobjc/EXTNil (0.6):
+    - libextobjc/RuntimeExtensions
+  - libextobjc/EXTSafeCategory (0.6):
+    - libextobjc/RuntimeExtensions
+  - libextobjc/EXTScope (0.6):
+    - libextobjc/RuntimeExtensions
+  - libextobjc/EXTSelectorChecking (0.6):
+    - libextobjc/RuntimeExtensions
+  - libextobjc/EXTSynthesize (0.6):
+    - libextobjc/RuntimeExtensions
+  - "libextobjc/NSInvocation+EXT (0.6)":
+    - libextobjc/RuntimeExtensions
+  - "libextobjc/NSMethodSignature+EXT (0.6)":
+    - libextobjc/RuntimeExtensions
+  - libextobjc/RuntimeExtensions (0.6)
+  - libextobjc/UmbrellaHeader (0.6)
+  - M13Checkbox (3.3.2)
+  - MagicalRecord (2.3.2):
+    - MagicalRecord/Core (= 2.3.2)
+  - MagicalRecord/Core (2.3.2)
+  - MnemonicsView (0.1.0)
+  - Nimbus/Collections (1.3.0):
+    - Nimbus/Core
+  - Nimbus/Core (1.3.0)
+  - Nimbus/Models (1.3.0):
+    - Nimbus/Core
+  - OCMock (3.3.1)
+  - PromiseKit (6.12.0):
+    - PromiseKit/CorePromise (= 6.12.0)
+    - PromiseKit/Foundation (= 6.12.0)
+    - PromiseKit/UIKit (= 6.12.0)
+  - PromiseKit/CorePromise (6.12.0)
+  - PromiseKit/Foundation (6.12.0):
+    - PromiseKit/CorePromise
+  - PromiseKit/UIKit (6.12.0):
+    - PromiseKit/CorePromise
+  - RamblerAppDelegateProxy (0.0.3)
+  - RamblerTyphoonUtils/AssemblyCollector (1.5.0)
+  - RamblerTyphoonUtils/AssemblyTesting (1.5.0)
+  - scrypt (2.0):
+    - CryptoSwift (~> 0.11)
+  - SDWebImage (3.8.3):
+    - SDWebImage/Core (= 3.8.3)
+  - SDWebImage/Core (3.8.3)
+  - secp256k1_swift (1.0.3)
+  - SipHash (1.2.2)
+  - Socket.IO-Client-Swift (15.2.0):
+    - Starscream (~> 3.1)
+  - Starscream (3.1.1)
+  - SwiftRLP (1.2):
+    - BigInt (~> 3.1)
+  - SwiftSelfAware (1.0.5)
+  - TOWebViewController (2.2.8):
+    - TOWebViewController/Core (= 2.2.8)
+  - TOWebViewController/Core (2.2.8)
+  - TrezorCrypto (0.0.9)
+  - TTTAttributedLabel (2.0.0)
+  - Typhoon (4.0.7):
+    - Typhoon/DeallocNotifier (= 4.0.7)
+    - Typhoon/IntrospectionUtils (= 4.0.7)
+    - Typhoon/no-arc (= 4.0.7)
+  - Typhoon/DeallocNotifier (4.0.7)
+  - Typhoon/IntrospectionUtils (4.0.7)
+  - Typhoon/no-arc (4.0.7):
+    - Typhoon/IntrospectionUtils
+  - UICKeyChainStore (2.1.2)
+  - "UITextView+Placeholder (1.2.1)"
+  - ViperMcFlurrySwiftFix (1.0.1):
+    - SwiftSelfAware
+  - ViperMcFlurryX (1.8.3):
+    - ViperMcFlurrySwiftFix
+  - web3swift (2.0.0):
+    - BigInt (~> 3.1)
+    - CryptoSwift (~> 0.13)
+    - EthereumABI (~> 1.1.1)
+    - EthereumAddress (~> 1.0.0)
+    - PromiseKit (~> 6.3)
+    - scrypt (~> 2.0)
+    - secp256k1_swift (~> 1.0.3)
+    - SwiftRLP (~> 1.1)
+  - YLProgressBar (3.10.2)
+  - zxcvbn-ios (1.0.4)
+
+DEPENDENCIES:
+  - AFNetworking
+  - BEMCheckBox (~> 1.0.0)
+  - BlockiesSwift
+  - CHIPageControl/Chimayo (= 0.1.6)
+  - CocoaLumberjack (~> 3.4)
+  - DZNWebViewController (from `https://github.com/Foboz/DZNWebViewController.git`)
+  - EasyMapping (~> 0.15)
+  - GoogleWebRTC (= 1.1.26675)
+  - GSKStretchyHeaderView (~> 1.0.4)
+  - libextobjc (from `https://github.com/jspahrsummers/libextobjc.git`)
+  - M13Checkbox (from `https://github.com/Foboz/M13Checkbox.git`)
+  - MagicalRecord (~> 2.3)
+  - MnemonicsView (from `DevelopPods/MnemonicsView`)
+  - Nimbus/Collections
+  - Nimbus/Models
+  - OCMock (= 3.3.1)
+  - RamblerAppDelegateProxy (= 0.0.3)
+  - RamblerTyphoonUtils/AssemblyCollector (= 1.5.0)
+  - RamblerTyphoonUtils/AssemblyTesting (= 1.5.0)
+  - SDWebImage (~> 3.7)
+  - Socket.IO-Client-Swift
+  - TOWebViewController
+  - TrezorCrypto
+  - TTTAttributedLabel (~> 2.0.0)
+  - Typhoon (= 4.0.7)
+  - UICKeyChainStore (~> 2.1)
+  - "UITextView+Placeholder (~> 1.2.0)"
+  - ViperMcFlurryX (from `https://github.com/Foboz/ViperMcFlurryX.git`)
+  - web3swift (from `https://github.com/Foboz/web3swift.git`, branch `v200_mew`)
+  - YLProgressBar (~> 3.10.2)
+  - zxcvbn-ios
+
+SPEC REPOS:
+  trunk:
+    - AFNetworking
+    - BEMCheckBox
+    - BigInt
+    - BlockiesSwift
+    - CHIPageControl
+    - CocoaLumberjack
+    - CryptoSwift
+    - EasyMapping
+    - EthereumABI
+    - EthereumAddress
+    - GoogleWebRTC
+    - GSKStretchyHeaderView
+    - MagicalRecord
+    - Nimbus
+    - OCMock
+    - PromiseKit
+    - RamblerAppDelegateProxy
+    - RamblerTyphoonUtils
+    - scrypt
+    - SDWebImage
+    - secp256k1_swift
+    - SipHash
+    - Socket.IO-Client-Swift
+    - Starscream
+    - SwiftRLP
+    - SwiftSelfAware
+    - TOWebViewController
+    - TrezorCrypto
+    - TTTAttributedLabel
+    - Typhoon
+    - UICKeyChainStore
+    - "UITextView+Placeholder"
+    - ViperMcFlurrySwiftFix
+    - YLProgressBar
+    - zxcvbn-ios
+
+EXTERNAL SOURCES:
+  DZNWebViewController:
+    :git: https://github.com/Foboz/DZNWebViewController.git
+  libextobjc:
+    :git: https://github.com/jspahrsummers/libextobjc.git
+  M13Checkbox:
+    :git: https://github.com/Foboz/M13Checkbox.git
+  MnemonicsView:
+    :path: DevelopPods/MnemonicsView
+  ViperMcFlurryX:
+    :git: https://github.com/Foboz/ViperMcFlurryX.git
+  web3swift:
+    :branch: v200_mew
+    :git: https://github.com/Foboz/web3swift.git
+
+CHECKOUT OPTIONS:
+  DZNWebViewController:
+    :commit: 2c4aabea8687452c01537fe0205a1b41fc824f63
+    :git: https://github.com/Foboz/DZNWebViewController.git
+  libextobjc:
+    :commit: bdec77056a38a52bc8f30a19cec52d66a70e7bf6
+    :git: https://github.com/jspahrsummers/libextobjc.git
+  M13Checkbox:
+    :commit: 43172f56ef4e08d00f199b15e14fdb13554368a3
+    :git: https://github.com/Foboz/M13Checkbox.git
+  ViperMcFlurryX:
+    :commit: 2355c70ac09cfd6614d7e18aaccb8de264e987b1
+    :git: https://github.com/Foboz/ViperMcFlurryX.git
+  web3swift:
+    :commit: 1ca5b9a20afca2dfc40f172ea65842ac012e26db
+    :git: https://github.com/Foboz/web3swift.git
+
+SPEC CHECKSUMS:
+  AFNetworking: b6f891fdfaed196b46c7a83cf209e09697b94057
+  BEMCheckBox: d6698c8b8aee8c9157d169f7c34bab3bd09fee11
+  BigInt: 76b5dfdfa3e2e478d4ffdf161aeede5502e2742f
+  BlockiesSwift: 22d8d56dd187e6bfd16cb8c8fbd4fd4896c3e65d
+  CHIPageControl: 21b85bb8c7d4d1d15fc4f353e1eb095eb75de5f1
+  CocoaLumberjack: 78b0c238666f4f58db069738ec176f4519557516
+  CryptoSwift: 769f58a9e89f64e8796c2e59ce5f002dc81a2438
+  DZNWebViewController: 8e927a5de637fe0c4104c001d5cccd4fa5621e50
+  EasyMapping: 52860151d1df5db1b245b1d1568e2e05a27a4689
+  EthereumABI: f040f5429e5a4366d028c88b88d9441e137593af
+  EthereumAddress: f476e1320dca3a0024431e713ede7a09c7eb7796
+  GoogleWebRTC: 7f97af97e0e88b368f5fc8bffc9efa18ec781c7a
+  GSKStretchyHeaderView: 9743704c12bdc9cf7c7947bad3af8bf24f7061e3
+  libextobjc: aed8b7d2b07f511c1a7ecaacb33ea03e327c69b7
+  M13Checkbox: afcf0cb829a8727fb727957fe27b3dcb81d1a230
+  MagicalRecord: 53bed74b4323b930992a725be713e53b37d19755
+  MnemonicsView: 51c276b1402b423b31beb5c4cdd8508839a31ccc
+  Nimbus: e7f33bc6d6cb4fe5ea0aee0c7e0883696123422c
+  OCMock: f3f61e6eaa16038c30caa5798c5e49d3307b6f22
+  PromiseKit: c06835ba442ce5454ce3cdde470232804a6e4ff8
+  RamblerAppDelegateProxy: a29284f46e8711663f0d279f5023469a96b27529
+  RamblerTyphoonUtils: 08a6b5592e045a490cd4550aa9ea4a581308d482
+  scrypt: 3fe5b1a3b0976f97cd87488673a8f7c65708cc84
+  SDWebImage: a72e880a8fe0f7fc31efe15aaed443c074d2a80c
+  secp256k1_swift: 4fc5c4b2d2c6d21ee8ccb868cdc92da12f38bed9
+  SipHash: fad90a4683e420c52ef28063063dbbce248ea6d4
+  Socket.IO-Client-Swift: 1e3e3a1f09f3312a167f0d781eb2f383d477357c
+  Starscream: 4bb2f9942274833f7b4d296a55504dcfc7edb7b0
+  SwiftRLP: 98a02b2210128353ca02e4c2f4d83e2a9796db4f
+  SwiftSelfAware: a705d6c80fa1ad64e58274f82b74ffee9cdac2a8
+  TOWebViewController: 953a24619d32f7aa1d9d4098a74885a9236f7348
+  TrezorCrypto: bfeea47a052dca2c77d4a39e1e183865e52de14d
+  TTTAttributedLabel: 8cffe8e127e4e82ff3af1e5386d4cd0ad000b656
+  Typhoon: f89030797a7c8a23ee85aa7c7dbdfd2e5d8a8471
+  UICKeyChainStore: 85db518bb1d294366d15ec9b92a416c4e670518f
+  "UITextView+Placeholder": 0c3efd97f37ea64bde7f34cc6e90fe02e87b3909
+  ViperMcFlurrySwiftFix: e8590db8c97c431d834974e282549ab2bdb3e9b5
+  ViperMcFlurryX: ae1498906459763b1bbc79e029502ca1fe44a093
+  web3swift: f825963eda09459ae1af896921e8502acb5ad687
+  YLProgressBar: 365b6c5e934be18b661f79413db33c993c8e8251
+  zxcvbn-ios: fef98b7c80f1512ff0eec47ac1fa399fc00f7e3c
+
+PODFILE CHECKSUM: a3d5ee8355498291f2946b45befab292edb69419
+
+COCOAPODS: 1.8.4

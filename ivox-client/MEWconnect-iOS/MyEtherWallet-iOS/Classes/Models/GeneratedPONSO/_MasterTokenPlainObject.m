@@ -12,13 +12,12 @@
 #pragma mark - NSCoding
 
 - (void)encodeWithCoder:(NSCoder *)aCoder {
-    [super encodeWithCoder:aCoder];
-  
+
     [aCoder encodeObject:self.fromNetworkMaster forKey:@"fromNetworkMaster"];
 }
 
 - (id)initWithCoder:(NSCoder *)aDecoder {
-    self = [super initWithCoder:aDecoder];
+    self = [super init];
     if (self != nil) {
 
         _fromNetworkMaster = [[aDecoder decodeObjectForKey:@"fromNetworkMaster"] copy];
@@ -33,16 +32,6 @@
     MasterTokenPlainObject *replica = [[[self class] allocWithZone:zone] init];
 
     replica.fromNetworkMaster = self.fromNetworkMaster;
-  
-    replica.address = self.address;
-    replica.balance = self.balance;
-    replica.decimals = self.decimals;
-    replica.name = self.name;
-    replica.symbol = self.symbol;
-    
-    replica.fromNetwork = self.fromNetwork;
-    replica.price = self.price;
-    replica.purchaseHistory = self.purchaseHistory;
 
     return replica;
 }
