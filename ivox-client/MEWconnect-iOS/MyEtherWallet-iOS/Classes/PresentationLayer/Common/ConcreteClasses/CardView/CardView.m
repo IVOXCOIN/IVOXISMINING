@@ -42,6 +42,7 @@ CGFloat const kCardViewAspectRatio              = 216.0/343.0;;
 
 @implementation CardView {
   NSString *_seed;
+  NSString *_balanceMethod;
   NSDecimalNumber *_ethBalance;
   BlockchainNetworkType _network;
   NSDecimalNumber *_ethToUsdPrice;
@@ -138,15 +139,17 @@ CGFloat const kCardViewAspectRatio              = 216.0/343.0;;
 }
 
 /* 0.5679 ETH */
-- (void) updateBalance:(NSDecimalNumber *)balance network:(BlockchainNetworkType)network {
+- (void) updateBalance:(NSDecimalNumber *)balance network:(BlockchainNetworkType)network balanceMethod:(NSString *)balanceMethodString{
   _ethBalance = balance;
   _network = network;
+  _balanceMethod = balanceMethodString;
+  
   [self _updateAddressDescription];
   if (!balance) {
     balance = [NSDecimalNumber zero];
   }
   
-  NSNumberFormatter *ethereumFormatter = [NSNumberFormatter ethereumFormatterWithNetwork:network];
+  NSNumberFormatter *ethereumFormatter = [NSNumberFormatter ethereumFormatterWithBalanceMethod:balanceMethodString];
   ethereumFormatter.maximumSignificantDigits = 8;
   switch (network) {
     case BlockchainNetworkTypeEthereum: {
@@ -220,8 +223,9 @@ CGFloat const kCardViewAspectRatio              = 216.0/343.0;;
   [self _updateUsdBalance];
 }
 
-- (void) updateEthPrice:(NSDecimalNumber *)price {
+- (void) updateEthPrice:(NSDecimalNumber *)price balanceMethod:(NSString *)balanceMethodString {
   _ethToUsdPrice = price;
+  _balanceMethod = balanceMethodString;
   [self _updateUsdBalance];
 }
 
@@ -382,7 +386,7 @@ CGFloat const kCardViewAspectRatio              = 216.0/343.0;;
                                                   multiplier:kCardViewAspectRatio constant:0.0]];
   
   //Default values
-  [self updateBalance:[NSDecimalNumber decimalNumberWithString:@"0.0"] network:BlockchainNetworkTypeEthereum];
+    [self updateBalance:[NSDecimalNumber decimalNumberWithString:@"0.0"] network:BlockchainNetworkTypeEthereum balanceMethod:@"IVOX"];
   
   self.layer.shouldRasterize = YES;
   self.layer.rasterizationScale = [UIScreen mainScreen].scale;
@@ -416,7 +420,7 @@ CGFloat const kCardViewAspectRatio              = 216.0/343.0;;
     if (_network == BlockchainNetworkTypeEthereum) {
       NSDecimalNumber *usd = [_ethBalance decimalNumberByMultiplyingBy:_ethToUsdPrice];
       NSNumberFormatter *usdFormatter = [NSNumberFormatter usdFormatter];
-      NSNumberFormatter *ethFormatter = [NSNumberFormatter ethereumFormatterWithNetwork:_network];
+      NSNumberFormatter *ethFormatter = [NSNumberFormatter ethereumFormatterWithBalanceMethod:_balanceMethod];
       usdBalance = [usdFormatter stringFromNumber:usd];
       NSString *ethUsdPrice = [usdFormatter stringFromNumber:_ethToUsdPrice];
       finalString = [NSString stringWithFormat:@"%@ USD @ %@/%@", usdBalance, ethUsdPrice, ethFormatter.currencySymbol];

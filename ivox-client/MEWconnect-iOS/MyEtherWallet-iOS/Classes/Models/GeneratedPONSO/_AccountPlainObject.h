@@ -13,6 +13,7 @@
 
 @property (nonatomic, copy, readwrite) NSNumber *active;
 @property (nonatomic, copy, readwrite) NSNumber *backedUp;
+@property (nonatomic, copy, readwrite) NSString *balanceMethod;
 @property (nonatomic, copy, readwrite) NSString *name;
 @property (nonatomic, copy, readwrite) NSString *uid;
 

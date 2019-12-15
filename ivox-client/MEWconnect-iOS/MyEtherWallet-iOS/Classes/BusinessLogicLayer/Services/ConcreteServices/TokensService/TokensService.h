@@ -16,11 +16,13 @@
 typedef void(^TokensServiceCompletion)(NSError *error);
 
 @protocol TokensService <NSObject>
-- (void) updateBalanceOfMasterToken:(MasterTokenPlainObject *)masterToken withCompletion:(TokensServiceCompletion)completion;
+- (void) updateBalanceOfMasterToken:(MasterTokenPlainObject *)masterToken withCompletion:(TokensServiceCompletion)completion balanceMethod:(NSString *)balanceMethodString;
 - (void) updateTokenBalancesOfMasterToken:(MasterTokenPlainObject *)masterToken withCompletion:(TokensServiceCompletion)completion;
 - (NSUInteger) obtainNumberOfTokensOfMasterToken:(MasterTokenPlainObject *)masterToken;
 - (NSDecimalNumber *) obtainTokensTotalPriceOfMasterToken:(MasterTokenPlainObject *)masterToken;
 - (MasterTokenModelObject *) obtainActiveMasterToken;
 - (TokenModelObject *) obtainTokenWithAddress:(NSString *)address ofMasterToken:(MasterTokenPlainObject *)masterToken;
 - (void) resetTokens;
+- (void) resetTokensButMaster;
+- (void) resetBalances;
 @end

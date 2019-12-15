@@ -15,8 +15,8 @@
 
 @protocol HomeViewInput <NSObject>
 - (void) setupInitialStateWithNumberOfTokens:(NSUInteger)tokensCount totalPrice:(NSDecimalNumber *)totalPrice;
-- (void) updateWithMasterToken:(MasterTokenPlainObject *)masterToken;
-- (void) updateBalanceWithMasterToken:(MasterTokenPlainObject *)masterToken;
+- (void) updateWithMasterToken:(MasterTokenPlainObject *)masterToken networkTitle:(NSString *)title;
+- (void) updateBalanceWithMasterToken:(MasterTokenPlainObject *)masterToken balanceMethod:(NSString *)balanceMethodString;
 - (void) updateWithTransactionBatch:(CacheTransactionBatch *)transactionBatch;
 - (void) updateWithTokensCount:(NSUInteger)tokensCount withTotalPrice:(NSDecimalNumber *)totalPrice;
 - (void) startAnimatingRefreshing;

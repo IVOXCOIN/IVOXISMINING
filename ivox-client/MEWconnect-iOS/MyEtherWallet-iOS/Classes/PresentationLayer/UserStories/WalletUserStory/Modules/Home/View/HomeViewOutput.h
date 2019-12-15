@@ -21,6 +21,8 @@
 - (void) refreshTokensAction;
 - (void) shareAction;
 - (void) networkAction;
+- (void) ivoxAction;
+- (void) etherAction;
 - (void) mainnetAction;
 - (void) ropstenAction;
 @end

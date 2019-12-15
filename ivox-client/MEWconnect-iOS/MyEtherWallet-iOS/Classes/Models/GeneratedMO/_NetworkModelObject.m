@@ -83,6 +83,17 @@
 	[self setPrimitiveChainID:@(value_)];
 }
 
+@dynamic balances;
+
+- (NSMutableSet<BalanceModelObject*>*)balancesSet {
+	[self willAccessValueForKey:@"balances"];
+
+	NSMutableSet<BalanceModelObject*> *result = (NSMutableSet<BalanceModelObject*>*)[self mutableSetValueForKey:@"balances"];
+
+	[self didAccessValueForKey:@"balances"];
+	return result;
+}
+
 @dynamic fromAccount;
 
 @dynamic master;
@@ -110,6 +121,9 @@
 @end
 
 @implementation NetworkModelObjectRelationships 
++ (NSString *)balances {
+	return @"balances";
+}
 + (NSString *)fromAccount {
 	return @"fromAccount";
 }

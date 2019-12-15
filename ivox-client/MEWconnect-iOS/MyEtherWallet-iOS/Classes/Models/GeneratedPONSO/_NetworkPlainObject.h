@@ -7,6 +7,7 @@
 
 @import Foundation;
 
+@class BalancePlainObject;
 @class AccountPlainObject;
 @class MasterTokenPlainObject;
 @class TokenPlainObject;
@@ -15,6 +16,8 @@
 
 @property (nonatomic, copy, readwrite) NSNumber *active;
 @property (nonatomic, copy, readwrite) NSNumber *chainID;
+
+@property (nonatomic, copy, readwrite) NSSet<BalancePlainObject *> *balances;
 
 @property (nonatomic, copy, readwrite) AccountPlainObject *fromAccount;
 

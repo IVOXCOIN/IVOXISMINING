@@ -11,6 +11,11 @@
 
 @implementation NSNumberFormatter (Ethereum)
 
++ (instancetype) ethereumFormatterWithBalanceMethod:(NSString*)balanceMethodString{
+  return [self ethereumFormatterWithCurrencySymbol:[BlockchainNetworkTypesInfoProvider currencySymbolForBalanceMethod:balanceMethodString]];
+}
+
+
 + (instancetype) ethereumFormatterWithNetwork:(BlockchainNetworkType)network {
   return [self ethereumFormatterWithCurrencySymbol:[BlockchainNetworkTypesInfoProvider currencySymbolForNetworkType:network]];
 }

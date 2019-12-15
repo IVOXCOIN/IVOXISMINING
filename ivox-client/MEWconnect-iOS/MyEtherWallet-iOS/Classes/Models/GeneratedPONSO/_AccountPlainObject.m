@@ -15,6 +15,7 @@
 
     [aCoder encodeObject:self.active forKey:@"active"];
     [aCoder encodeObject:self.backedUp forKey:@"backedUp"];
+    [aCoder encodeObject:self.balanceMethod forKey:@"balanceMethod"];
     [aCoder encodeObject:self.name forKey:@"name"];
     [aCoder encodeObject:self.uid forKey:@"uid"];
     [aCoder encodeObject:self.networks forKey:@"networks"];
@@ -26,6 +27,7 @@
 
         _active = [[aDecoder decodeObjectForKey:@"active"] copy];
         _backedUp = [[aDecoder decodeObjectForKey:@"backedUp"] copy];
+        _balanceMethod = [[aDecoder decodeObjectForKey:@"balanceMethod"] copy];
         _name = [[aDecoder decodeObjectForKey:@"name"] copy];
         _uid = [[aDecoder decodeObjectForKey:@"uid"] copy];
         _networks = [[aDecoder decodeObjectForKey:@"networks"] copy];
@@ -41,6 +43,7 @@
 
     replica.active = self.active;
     replica.backedUp = self.backedUp;
+    replica.balanceMethod = self.balanceMethod;
     replica.name = self.name;
     replica.uid = self.uid;
 

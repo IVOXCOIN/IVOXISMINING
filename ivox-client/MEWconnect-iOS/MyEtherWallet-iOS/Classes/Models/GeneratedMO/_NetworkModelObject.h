@@ -11,6 +11,7 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
+@class BalanceModelObject;
 @class AccountModelObject;
 @class MasterTokenModelObject;
 @class TokenModelObject;
@@ -36,12 +37,23 @@ NS_ASSUME_NONNULL_BEGIN
 - (int64_t)chainIDValue;
 - (void)setChainIDValue:(int64_t)value_;
 
+@property (nonatomic, strong, nullable) NSSet<BalanceModelObject*> *balances;
+- (nullable NSMutableSet<BalanceModelObject*>*)balancesSet;
+
 @property (nonatomic, strong, nullable) AccountModelObject *fromAccount;
 
 @property (nonatomic, strong) MasterTokenModelObject *master;
 
 @property (nonatomic, strong, nullable) NSSet<TokenModelObject*> *tokens;
 - (nullable NSMutableSet<TokenModelObject*>*)tokensSet;
+
+@end
+
+@interface _NetworkModelObject (BalancesCoreDataGeneratedAccessors)
+- (void)addBalances:(NSSet<BalanceModelObject*>*)value_;
+- (void)removeBalances:(NSSet<BalanceModelObject*>*)value_;
+- (void)addBalancesObject:(BalanceModelObject*)value_;
+- (void)removeBalancesObject:(BalanceModelObject*)value_;
 
 @end
 
@@ -67,6 +79,9 @@ NS_ASSUME_NONNULL_BEGIN
 - (int64_t)primitiveChainIDValue;
 - (void)setPrimitiveChainIDValue:(int64_t)value_;
 
+- (NSMutableSet<BalanceModelObject*>*)primitiveBalances;
+- (void)setPrimitiveBalances:(NSMutableSet<BalanceModelObject*>*)value;
+
 - (nullable AccountModelObject*)primitiveFromAccount;
 - (void)setPrimitiveFromAccount:(nullable AccountModelObject*)value;
 
@@ -84,6 +99,7 @@ NS_ASSUME_NONNULL_BEGIN
 @end
 
 @interface NetworkModelObjectRelationships: NSObject
++ (NSString *)balances;
 + (NSString *)fromAccount;
 + (NSString *)master;
 + (NSString *)tokens;

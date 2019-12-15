@@ -20,6 +20,8 @@ typedef void(^AccountsServiceCreateCompletionBlock)(AccountModelObject *accountM
 - (AccountModelObject *) obtainActiveAccount;
 - (AccountModelObject *) obtainOrCreateActiveAccount;
 - (void) resetAccounts;
+- (NSString *) getBalanceMethod:(AccountPlainObject *)account;
+- (void) setBalanceMethod:(AccountPlainObject *)account balanceMethod:(NSString *)method;
 - (void) accountBackedUp:(AccountPlainObject *)account;
 - (void) deleteAccount:(AccountPlainObject *)account;
 @end

@@ -28,6 +28,7 @@ NS_ASSUME_NONNULL_BEGIN
 //Save
 - (void) saveKeydata:(NSData *)keydata forAddress:(NSString *)address ofAccount:(AccountPlainObject *)account inChainID:(BlockchainNetworkType)chainID;
 - (void) saveEntropy:(NSData *)entropyData ofAccount:(AccountPlainObject *)account;
+- (void) saveBalanceMethod:(NSString *)method forAccount:(AccountPlainObject *)account;
 - (void) saveBackupStatus:(BOOL)backup forAccount:(AccountPlainObject *)account;
 - (void) savePurchaseUserId:(NSString *)userId forMasterToken:(MasterTokenPlainObject *)token;
 //Obtain

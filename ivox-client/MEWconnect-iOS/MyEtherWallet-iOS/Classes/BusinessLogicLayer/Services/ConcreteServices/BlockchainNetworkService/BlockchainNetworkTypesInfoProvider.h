@@ -13,6 +13,7 @@
 NS_ASSUME_NONNULL_BEGIN
 
 @interface BlockchainNetworkTypesInfoProvider : NSObject
++ (NSString *) currencySymbolForBalanceMethod:(NSString*)balanceMethod;
 + (NSString *) currencySymbolForNetworkType:(BlockchainNetworkType)type;
 + (NSString *) nameForNetworkType:(BlockchainNetworkType)type;
 + (NSString *) stringFromNetworkType:(BlockchainNetworkType)type;

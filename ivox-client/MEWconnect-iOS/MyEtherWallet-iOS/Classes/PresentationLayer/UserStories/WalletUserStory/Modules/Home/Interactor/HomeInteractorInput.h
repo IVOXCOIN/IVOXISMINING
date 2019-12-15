@@ -28,6 +28,9 @@
 - (void) searchTokensWithTerm:(NSString *)term;
 - (void) disconnect;
 - (BOOL) isConnected;
+- (NSString *) getBalanceMethod;
+- (void) selectIvoxCurrency;
+- (void) selectEtherCurrency;
 - (void) selectMainnetNetwork;
 - (void) selectRopstenNetwork;
 - (void) generateMissedKeysWithPassword:(NSString *)password;

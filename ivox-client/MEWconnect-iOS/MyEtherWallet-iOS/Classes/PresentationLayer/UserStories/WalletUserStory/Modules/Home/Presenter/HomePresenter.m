@@ -46,7 +46,9 @@ typedef NS_OPTIONS(short, HomeViewPresenterStatus) {
   [self.interactor refreshMasterToken];
   [self.interactor configurate];
   MasterTokenPlainObject *masterToken = [self.interactor obtainMasterToken];
-  [self.view updateWithMasterToken:masterToken];
+  NSString *networkTitle = [self.interactor getBalanceMethod];
+  
+  [self.view updateWithMasterToken:masterToken networkTitle: networkTitle];
 }
 
 - (void) configureBackupStatus {
@@ -55,8 +57,10 @@ typedef NS_OPTIONS(short, HomeViewPresenterStatus) {
 - (void) configureAfterChangingNetwork {
   [self.interactor refreshMasterToken];
   MasterTokenPlainObject *masterToken = [self.interactor obtainMasterToken];
-  [self.view updateWithMasterToken:masterToken];
+  NSString *networkTitle = [self.interactor getBalanceMethod];
   
+  [self.view updateWithMasterToken:masterToken networkTitle: networkTitle];
+
   NSUInteger count = [self.interactor obtainNumberOfTokens];
   NSDecimalNumber *tokensPrice = [self.interactor obtainTotalPriceOfTokens];
   [self.view updateWithTokensCount:count withTotalPrice:tokensPrice];
@@ -76,7 +80,10 @@ typedef NS_OPTIONS(short, HomeViewPresenterStatus) {
   NSDecimalNumber *tokensPrice = [self.interactor obtainTotalPriceOfTokens];
   [self.view setupInitialStateWithNumberOfTokens:count totalPrice:tokensPrice];
   MasterTokenPlainObject *masterToken = [self.interactor obtainMasterToken];
-  [self.view updateWithMasterToken:masterToken];
+
+    NSString *networkTitle = [self.interactor getBalanceMethod];
+    
+    [self.view updateWithMasterToken:masterToken networkTitle: networkTitle];
   
   [self _refreshViewStatusAnimated:NO];
   if (_balancesRefreshing) {
@@ -89,7 +96,9 @@ typedef NS_OPTIONS(short, HomeViewPresenterStatus) {
   [self _refreshViewStatusAnimated:NO];
   [self.interactor refreshMasterToken];
   MasterTokenPlainObject *masterToken = [self.interactor obtainMasterToken];
-  [self.view updateWithMasterToken:masterToken];
+  NSString *networkTitle = [self.interactor getBalanceMethod];
+  
+  [self.view updateWithMasterToken:masterToken networkTitle: networkTitle];
 }
 
 - (void) didTriggerViewDidDisappear {
@@ -141,6 +150,12 @@ typedef NS_OPTIONS(short, HomeViewPresenterStatus) {
   [self.view presentNetworkSelection];
 }
 
+- (void) ivoxAction {
+  [self.interactor selectIvoxCurrency];
+}
+- (void) etherAction {
+  [self.interactor selectEtherCurrency];
+}
 - (void) mainnetAction {
   [self.interactor selectMainnetNetwork];
 }
@@ -181,7 +196,7 @@ typedef NS_OPTIONS(short, HomeViewPresenterStatus) {
 
 - (void) didUpdateEthereumBalance {
   MasterTokenPlainObject *masterToken = [self.interactor obtainMasterToken];
-  [self.view updateBalanceWithMasterToken:masterToken];
+    [self.view updateBalanceWithMasterToken:masterToken balanceMethod:[self.interactor getBalanceMethod]];
 }
 
 - (void) mewConnectionStatusChanged {

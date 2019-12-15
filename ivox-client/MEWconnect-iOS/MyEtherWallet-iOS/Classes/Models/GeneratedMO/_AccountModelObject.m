@@ -83,6 +83,8 @@
 	[self setPrimitiveBackedUp:@(value_)];
 }
 
+@dynamic balanceMethod;
+
 @dynamic name;
 
 @dynamic uid;
@@ -106,6 +108,9 @@
 }
 + (NSString *)backedUp {
 	return @"backedUp";
+}
++ (NSString *)balanceMethod {
+	return @"balanceMethod";
 }
 + (NSString *)name {
 	return @"name";

@@ -34,6 +34,8 @@ NS_ASSUME_NONNULL_BEGIN
 - (BOOL)backedUpValue;
 - (void)setBackedUpValue:(BOOL)value_;
 
+@property (nonatomic, strong, nullable) NSString* balanceMethod;
+
 @property (nonatomic, strong, nullable) NSString* name;
 
 @property (nonatomic, strong, nullable) NSString* uid;
@@ -65,6 +67,9 @@ NS_ASSUME_NONNULL_BEGIN
 - (BOOL)primitiveBackedUpValue;
 - (void)setPrimitiveBackedUpValue:(BOOL)value_;
 
+- (nullable NSString*)primitiveBalanceMethod;
+- (void)setPrimitiveBalanceMethod:(nullable NSString*)value;
+
 - (nullable NSString*)primitiveName;
 - (void)setPrimitiveName:(nullable NSString*)value;
 
@@ -79,6 +84,7 @@ NS_ASSUME_NONNULL_BEGIN
 @interface AccountModelObjectAttributes: NSObject 
 + (NSString *)active;
 + (NSString *)backedUp;
++ (NSString *)balanceMethod;
 + (NSString *)name;
 + (NSString *)uid;
 @end

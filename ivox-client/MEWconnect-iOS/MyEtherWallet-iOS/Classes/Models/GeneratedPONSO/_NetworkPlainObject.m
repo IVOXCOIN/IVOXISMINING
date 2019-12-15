@@ -15,6 +15,7 @@
 
     [aCoder encodeObject:self.active forKey:@"active"];
     [aCoder encodeObject:self.chainID forKey:@"chainID"];
+    [aCoder encodeObject:self.balances forKey:@"balances"];
     [aCoder encodeObject:self.fromAccount forKey:@"fromAccount"];
     [aCoder encodeObject:self.master forKey:@"master"];
     [aCoder encodeObject:self.tokens forKey:@"tokens"];
@@ -26,6 +27,7 @@
 
         _active = [[aDecoder decodeObjectForKey:@"active"] copy];
         _chainID = [[aDecoder decodeObjectForKey:@"chainID"] copy];
+        _balances = [[aDecoder decodeObjectForKey:@"balances"] copy];
         _fromAccount = [[aDecoder decodeObjectForKey:@"fromAccount"] copy];
         _master = [[aDecoder decodeObjectForKey:@"master"] copy];
         _tokens = [[aDecoder decodeObjectForKey:@"tokens"] copy];
@@ -42,6 +44,7 @@
     replica.active = self.active;
     replica.chainID = self.chainID;
 
+    replica.balances = self.balances;
     replica.fromAccount = self.fromAccount;
     replica.master = self.master;
     replica.tokens = self.tokens;

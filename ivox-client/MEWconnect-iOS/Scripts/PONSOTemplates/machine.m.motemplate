@@ -33,10 +33,24 @@
 - (id)copyWithZone:(NSZone *)zone {
     <$name$>PlainObject *replica = [[[self class] allocWithZone:zone] init];
 
+
+<$if hasSuperentity$>
+<$foreach Attribute allAttributes do$>    replica.<$Attribute.name$> = self.<$Attribute.name$>;
+<$endforeach do$>
+<$else$>
 <$foreach Attribute noninheritedAttributes do$>    replica.<$Attribute.name$> = self.<$Attribute.name$>;
 <$endforeach do$>
+<$endif$>
+
+
+
+<$if hasSuperentity$>
+<$foreach Relationship allRelationships do$>    replica.<$Relationship.name$> = self.<$Relationship.name$>;
+<$endforeach do$>
+<$else$>
 <$foreach Relationship noninheritedRelationships do$>    replica.<$Relationship.name$> = self.<$Relationship.name$>;
 <$endforeach do$>
+<$endif$>
     return replica;
 }
 

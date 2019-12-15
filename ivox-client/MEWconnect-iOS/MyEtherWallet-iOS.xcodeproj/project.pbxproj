@@ -27,6 +27,14 @@
 		0530718878D5DD21A54FDF89 /* RestoreOptionsInteractor.m in Sources */ = {isa = PBXBuildFile; fileRef = C3CF270EFCBD491B804E5192 /* RestoreOptionsInteractor.m */; };
 		0A4DA5A913C4B14DD728715E /* SettingsAssembly.m in Sources */ = {isa = PBXBuildFile; fileRef = 2DC186D6BEC0F27C6062DB73 /* SettingsAssembly.m */; };
 		0AE3DBD823A1E5A900C30078 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 0AE3DBD623A1E5A900C30078 /* Localizable.strings */; };
+		0AE3DBE623A48C2900C30078 /* _IvoxTokenModelObject.m in Sources */ = {isa = PBXBuildFile; fileRef = 0AE3DBE223A48C2200C30078 /* _IvoxTokenModelObject.m */; };
+		0AE3DBE723A48C2900C30078 /* _BalanceModelObject.m in Sources */ = {isa = PBXBuildFile; fileRef = 0AE3DBE423A48C2300C30078 /* _BalanceModelObject.m */; };
+		0AE3DBEC23A48C3A00C30078 /* _BalancePlainObject.m in Sources */ = {isa = PBXBuildFile; fileRef = 0AE3DBEA23A48C3900C30078 /* _BalancePlainObject.m */; };
+		0AE3DBED23A48C3B00C30078 /* _IvoxTokenPlainObject.m in Sources */ = {isa = PBXBuildFile; fileRef = 0AE3DBEB23A48C3A00C30078 /* _IvoxTokenPlainObject.m */; };
+		0AE3DBF423A48D4900C30078 /* IvoxTokenModelObject.m in Sources */ = {isa = PBXBuildFile; fileRef = 0AE3DBF223A48D4800C30078 /* IvoxTokenModelObject.m */; };
+		0AE3DBF523A48D4900C30078 /* BalanceModelObject.m in Sources */ = {isa = PBXBuildFile; fileRef = 0AE3DBF323A48D4900C30078 /* BalanceModelObject.m */; };
+		0AE3DBFA23A4940100C30078 /* IvoxTokenPlainObject.m in Sources */ = {isa = PBXBuildFile; fileRef = 0AE3DBF723A4940000C30078 /* IvoxTokenPlainObject.m */; };
+		0AE3DBFB23A4940100C30078 /* BalancePlainObject.m in Sources */ = {isa = PBXBuildFile; fileRef = 0AE3DBF923A4940100C30078 /* BalancePlainObject.m */; };
 		0EAB1B3BAE104F2ED13AFBDA /* BackupDonePresenter.m in Sources */ = {isa = PBXBuildFile; fileRef = B09B136F402D65EFE52F21A2 /* BackupDonePresenter.m */; };
 		10DC5C17C1A92CD39162B5A9 /* PasswordRouter.m in Sources */ = {isa = PBXBuildFile; fileRef = 515D2B05CC2A2949F2A326C1 /* PasswordRouter.m */; };
 		1188B19E148E0E631C68A394 /* BuyEtherHistoryAssembly.m in Sources */ = {isa = PBXBuildFile; fileRef = 09DE127DE4DB0B484F57897B /* BuyEtherHistoryAssembly.m */; };
@@ -919,7 +927,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
-		0AE3DBD223A1E50500C30078 /* PBXContainerItemProxy */ = {
+		0AE3DBEE23A48C7A00C30078 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 56FE2B6520817F1100DB39D5 /* Project object */;
 			proxyType = 1;
@@ -965,6 +973,22 @@
 		0AE3DBD423A1E57900C30078 /* es-419 */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "es-419"; path = "es-419.lproj/LaunchScreen.strings"; sourceTree = "<group>"; };
 		0AE3DBD523A1E57A00C30078 /* es-419 */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "es-419"; path = "es-419.lproj/Main.strings"; sourceTree = "<group>"; };
 		0AE3DBD723A1E5A900C30078 /* Base */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = Base; path = Base.lproj/Localizable.strings; sourceTree = "<group>"; };
+		0AE3DBE223A48C2200C30078 /* _IvoxTokenModelObject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = _IvoxTokenModelObject.m; sourceTree = "<group>"; };
+		0AE3DBE323A48C2300C30078 /* _BalanceModelObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = _BalanceModelObject.h; sourceTree = "<group>"; };
+		0AE3DBE423A48C2300C30078 /* _BalanceModelObject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = _BalanceModelObject.m; sourceTree = "<group>"; };
+		0AE3DBE523A48C2600C30078 /* _IvoxTokenModelObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = _IvoxTokenModelObject.h; sourceTree = "<group>"; };
+		0AE3DBE823A48C3900C30078 /* _IvoxTokenPlainObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = _IvoxTokenPlainObject.h; sourceTree = "<group>"; };
+		0AE3DBE923A48C3900C30078 /* _BalancePlainObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = _BalancePlainObject.h; sourceTree = "<group>"; };
+		0AE3DBEA23A48C3900C30078 /* _BalancePlainObject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = _BalancePlainObject.m; sourceTree = "<group>"; };
+		0AE3DBEB23A48C3A00C30078 /* _IvoxTokenPlainObject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = _IvoxTokenPlainObject.m; sourceTree = "<group>"; };
+		0AE3DBF023A48D4800C30078 /* BalanceModelObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BalanceModelObject.h; sourceTree = "<group>"; };
+		0AE3DBF123A48D4800C30078 /* IvoxTokenModelObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IvoxTokenModelObject.h; sourceTree = "<group>"; };
+		0AE3DBF223A48D4800C30078 /* IvoxTokenModelObject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IvoxTokenModelObject.m; sourceTree = "<group>"; };
+		0AE3DBF323A48D4900C30078 /* BalanceModelObject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BalanceModelObject.m; sourceTree = "<group>"; };
+		0AE3DBF623A493FF00C30078 /* IvoxTokenPlainObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IvoxTokenPlainObject.h; sourceTree = "<group>"; };
+		0AE3DBF723A4940000C30078 /* IvoxTokenPlainObject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IvoxTokenPlainObject.m; sourceTree = "<group>"; };
+		0AE3DBF823A4940100C30078 /* BalancePlainObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BalancePlainObject.h; sourceTree = "<group>"; };
+		0AE3DBF923A4940100C30078 /* BalancePlainObject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BalancePlainObject.m; sourceTree = "<group>"; };
 		0C851C669DBD4B29FCB3E7F5 /* BuyEtherWebInteractor.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = BuyEtherWebInteractor.h; sourceTree = "<group>"; };
 		0C896714DB459DBA50487E98 /* HomeAssemblyTests.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = HomeAssemblyTests.m; sourceTree = "<group>"; };
 		0D09DB75E3DD72CC287CED9D /* StartPresenterTests.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = StartPresenterTests.m; sourceTree = "<group>"; };
@@ -4898,6 +4922,10 @@
 		5677C5522181226400477ACD /* GeneratedMO */ = {
 			isa = PBXGroup;
 			children = (
+				0AE3DBE323A48C2300C30078 /* _BalanceModelObject.h */,
+				0AE3DBE423A48C2300C30078 /* _BalanceModelObject.m */,
+				0AE3DBE523A48C2600C30078 /* _IvoxTokenModelObject.h */,
+				0AE3DBE223A48C2200C30078 /* _IvoxTokenModelObject.m */,
 				5677C5532181226400477ACD /* _AccountModelObject.h */,
 				5677C5542181226400477ACD /* _AccountModelObject.m */,
 				5677C5552181226400477ACD /* _FiatPriceModelObject.h */,
@@ -4917,6 +4945,10 @@
 		5677C55F2181226400477ACD /* PlainObjects */ = {
 			isa = PBXGroup;
 			children = (
+				0AE3DBF823A4940100C30078 /* BalancePlainObject.h */,
+				0AE3DBF923A4940100C30078 /* BalancePlainObject.m */,
+				0AE3DBF623A493FF00C30078 /* IvoxTokenPlainObject.h */,
+				0AE3DBF723A4940000C30078 /* IvoxTokenPlainObject.m */,
 				5677C5602181226400477ACD /* AccountPlainObject.h */,
 				5677C5612181226400477ACD /* AccountPlainObject.m */,
 				5677C5622181226400477ACD /* FiatPricePlainObject.h */,
@@ -4936,6 +4968,10 @@
 		5677C56C2181226400477ACD /* ManagedObjects */ = {
 			isa = PBXGroup;
 			children = (
+				0AE3DBF023A48D4800C30078 /* BalanceModelObject.h */,
+				0AE3DBF323A48D4900C30078 /* BalanceModelObject.m */,
+				0AE3DBF123A48D4800C30078 /* IvoxTokenModelObject.h */,
+				0AE3DBF223A48D4800C30078 /* IvoxTokenModelObject.m */,
 				5677C56D2181226400477ACD /* AccountModelObject.h */,
 				5677C56E2181226400477ACD /* AccountModelObject.m */,
 				5677C56F2181226400477ACD /* FiatPriceModelObject.h */,
@@ -4955,6 +4991,10 @@
 		5677C5792181226500477ACD /* GeneratedPONSO */ = {
 			isa = PBXGroup;
 			children = (
+				0AE3DBE923A48C3900C30078 /* _BalancePlainObject.h */,
+				0AE3DBEA23A48C3900C30078 /* _BalancePlainObject.m */,
+				0AE3DBE823A48C3900C30078 /* _IvoxTokenPlainObject.h */,
+				0AE3DBEB23A48C3A00C30078 /* _IvoxTokenPlainObject.m */,
 				5677C57A2181226500477ACD /* _AccountPlainObject.h */,
 				5677C57B2181226500477ACD /* _AccountPlainObject.m */,
 				5677C57C2181226500477ACD /* _FiatPricePlainObject.h */,
@@ -10109,7 +10149,7 @@
 			buildRules = (
 			);
 			dependencies = (
-				0AE3DBD323A1E50500C30078 /* PBXTargetDependency */,
+				0AE3DBEF23A48C7A00C30078 /* PBXTargetDependency */,
 			);
 			name = "MyEtherWallet-iOS";
 			productName = "MyEtherWallet-iOS";
@@ -11068,6 +11108,7 @@
 				56E9D3652170ADF10004AC61 /* CardViewSeedButton.m in Sources */,
 				3E29FA4D9347F0A161AF1AB8 /* HomeViewController.m in Sources */,
 				563CF2EB20EFAB3D005467AE /* BuyEtherHistoryDataDisplayManager.m in Sources */,
+				0AE3DBE623A48C2900C30078 /* _IvoxTokenModelObject.m in Sources */,
 				56FB39F320B3586C007776C8 /* QueryTransformerBase.m in Sources */,
 				563C6AD820AC696300E85B8B /* MEWSearchBar.m in Sources */,
 				4BECCB3B960C486BF2D02A9C /* HomePresenter.m in Sources */,
@@ -11094,6 +11135,7 @@
 				56E14BE720EBCE8A00C41F83 /* SimplexQueryTransformer.m in Sources */,
 				56FFD7F12192204500341D96 /* SecurityAppDelegate.m in Sources */,
 				5649CC27216FF1320009D982 /* CacheTransactionSection.m in Sources */,
+				0AE3DBED23A48C3B00C30078 /* _IvoxTokenPlainObject.m in Sources */,
 				56FB39FF20B35B33007776C8 /* OperationFactoriesAssembly.m in Sources */,
 				5645258B2164C63A004D23C4 /* TokensResponseValidator.m in Sources */,
 				563DF38520986F8500F740FF /* PasswordTextField.m in Sources */,
@@ -11176,8 +11218,10 @@
 				7879FEAD66BF19CB8B3E2E9C /* ConfirmPasswordInteractor.m in Sources */,
 				56FB39C420B23143007776C8 /* ManyResponseValidator.m in Sources */,
 				2AEB8DA7B32B3CA7AA47C202 /* ConfirmPasswordRouter.m in Sources */,
+				0AE3DBE723A48C2900C30078 /* _BalanceModelObject.m in Sources */,
 				3AFFA21DF27C931992B4A54C /* MessageSignerAssembly.m in Sources */,
 				3BBADB73833FE4F61E032A06 /* MessageSignerViewController.m in Sources */,
+				0AE3DBF523A48D4900C30078 /* BalanceModelObject.m in Sources */,
 				56FB396920B22091007776C8 /* RequestDataModel.m in Sources */,
 				5658513E2242CA81006AEC7E /* BlockchainNetworkTypesInfoProvider.m in Sources */,
 				9EA12B8253010D67DED815C9 /* MessageSignerPresenter.m in Sources */,
@@ -11209,6 +11253,7 @@
 				5B6327A009EB7A4F0688D269 /* BackupInfoInteractor.m in Sources */,
 				56E14BE320EBCCB600C41F83 /* SimplexOperationFactory.m in Sources */,
 				56FFD7EC2192200F00341D96 /* SecurityRouter.m in Sources */,
+				0AE3DBFA23A4940100C30078 /* IvoxTokenPlainObject.m in Sources */,
 				56C7757420DFEB4F00451EEF /* InfoCellObjectBuilder.m in Sources */,
 				56A29C9420E04B7500D05FF1 /* AccessoryTableViewAction.m in Sources */,
 				A489564CB7B7EA7DD2D3BE4A /* BackupInfoRouter.m in Sources */,
@@ -11237,9 +11282,11 @@
 				30FAFE2FAB76ABF95C9DF392 /* BackupConfirmationAssembly.m in Sources */,
 				CCFC0575BB50C7E834628489 /* BackupConfirmationViewController.m in Sources */,
 				F592C64842F3C8DB2FE294ED /* BackupConfirmationPresenter.m in Sources */,
+				0AE3DBEC23A48C3A00C30078 /* _BalancePlainObject.m in Sources */,
 				56E14BBA20E979CD00C41F83 /* FiatPricesServiceImplementation.m in Sources */,
 				A331D98C4632BFC6A2D43C90 /* BackupConfirmationInteractor.m in Sources */,
 				583EB1E3327B02D20E3F8A56 /* BackupConfirmationRouter.m in Sources */,
+				0AE3DBF423A48D4900C30078 /* IvoxTokenModelObject.m in Sources */,
 				EDBE94BE7A73B811AA563C8B /* BackupDoneAssembly.m in Sources */,
 				560D773A20B5A258009A3D6D /* BackupConfirmationQuiz.m in Sources */,
 				455E984869FF61535DEF1FE7 /* BackupDoneViewController.m in Sources */,
@@ -11277,6 +11324,7 @@
 				12C5912C4ED7EA669EA3326B /* BuyEtherAmountAssembly.m in Sources */,
 				9802AA6716A921197A8E3688 /* BuyEtherAmountViewController.m in Sources */,
 				1EF453B24AD43CAD23B43051 /* BuyEtherAmountPresenter.m in Sources */,
+				0AE3DBFB23A4940100C30078 /* BalancePlainObject.m in Sources */,
 				5C11FB249B0F3CDE7C466126 /* BuyEtherAmountInteractor.m in Sources */,
 				56335F812187663600C07E2B /* KeychainServiceConstantsV2.m in Sources */,
 				5677C5902181226500477ACD /* _TokenModelObject.m in Sources */,
@@ -11350,10 +11398,10 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
-		0AE3DBD323A1E50500C30078 /* PBXTargetDependency */ = {
+		0AE3DBEF23A48C7A00C30078 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = 56FB3A3020B45969007776C8 /* Mogenerator */;
-			targetProxy = 0AE3DBD223A1E50500C30078 /* PBXContainerItemProxy */;
+			targetProxy = 0AE3DBEE23A48C7A00C30078 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 

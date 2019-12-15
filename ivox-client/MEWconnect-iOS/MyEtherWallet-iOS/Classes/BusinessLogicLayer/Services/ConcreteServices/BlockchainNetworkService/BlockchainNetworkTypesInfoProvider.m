@@ -59,6 +59,10 @@ static NSDictionary *BlockchainNetworkInfoNames = nil;
   });
 }
 
++ (NSString *) currencySymbolForBalanceMethod:(NSString *)balanceMethod {
+    return [balanceMethod isEqualToString:@"IVOX"] ? @"IVOX" : @"ETH";
+}
+
 + (NSString *) currencySymbolForNetworkType:(BlockchainNetworkType)type {
   return BlockchainNetworkInfoCurrencySymbols[@(type)] ?: @"Unknown Token";
 }

@@ -22,8 +22,8 @@ FOUNDATION_EXPORT CGFloat const kCardViewAspectRatio;
 @property (nonatomic) BOOL backedUp;
 @property (nonatomic, strong, readonly) UIImage *backgroundImage;
 - (void) updateWithSeed:(NSString *)seed;
-- (void) updateBalance:(NSDecimalNumber *)balance network:(BlockchainNetworkType)network;
-- (void) updateEthPrice:(NSDecimalNumber *)price;
+- (void) updateBalance:(NSDecimalNumber *)balance network:(BlockchainNetworkType)network balanceMethod:(NSString *)balanceMethodString;
+- (void) updateEthPrice:(NSDecimalNumber *)price balanceMethod:(NSString *)balanceMethodString;
 @end
 
 @protocol CardViewDelegate <NSObject>

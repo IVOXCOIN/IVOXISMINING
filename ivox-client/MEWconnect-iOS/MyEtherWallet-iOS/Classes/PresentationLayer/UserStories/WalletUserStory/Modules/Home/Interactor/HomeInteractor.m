@@ -155,6 +155,44 @@ static NSTimeInterval kHomeInteractorDefaultRefreshBalancesTime = 900.0;
   [self _updateTokensBalance];
 }
 
+- (NSString *) getBalanceMethod {
+    AccountModelObject *accountModelObject = [self.accountsService obtainAccountWithAccount:[self obtainAccount]];
+    NSArray <NSString *> *ignoringProperties = @[];
+    AccountPlainObject *account = [self.ponsomizer convertObject:accountModelObject ignoringProperties:ignoringProperties];
+
+    return [self.accountsService getBalanceMethod:account];
+}
+
+- (void)selectIvoxCurrency {
+  AccountModelObject *accountModelObject = [self.accountsService obtainAccountWithAccount:[self obtainAccount]];
+  NSArray <NSString *> *ignoringProperties = @[];
+  AccountPlainObject *account = [self.ponsomizer convertObject:accountModelObject ignoringProperties:ignoringProperties];
+    
+    [self.accountsService setBalanceMethod:account balanceMethod:@"IVOX"];
+  
+  NetworkPlainObject *network = [account networkForNetworkType:BlockchainNetworkTypeEthereum];
+  if (network) {
+    [self.blockchainNetworkService selectNetwork:network inAccount:account];
+    [self.output networkDidChanged];
+  }
+}
+
+- (void)selectEtherCurrency {
+  AccountModelObject *accountModelObject = [self.accountsService obtainAccountWithAccount:[self obtainAccount]];
+  NSArray <NSString *> *ignoringProperties = @[];
+  AccountPlainObject *account = [self.ponsomizer convertObject:accountModelObject ignoringProperties:ignoringProperties];
+    
+    [self.accountsService setBalanceMethod:account balanceMethod:@"ETHER"];
+  
+  NetworkPlainObject *network = [account networkForNetworkType:BlockchainNetworkTypeEthereum];
+  if (network) {
+    [self.blockchainNetworkService selectNetwork:network inAccount:account];
+    [self.output networkDidChanged];
+  }
+}
+
+
+
 - (void)selectMainnetNetwork {
   AccountModelObject *accountModelObject = [self.accountsService obtainAccountWithAccount:[self obtainAccount]];
   NSArray <NSString *> *ignoringProperties = @[NSStringFromSelector(@selector(master)),
@@ -311,7 +349,7 @@ static NSTimeInterval kHomeInteractorDefaultRefreshBalancesTime = 900.0;
                                       if ((self.updatingStatus & HomeInteractorUpdatingStatusAnyUpdating) == HomeInteractorUpdatingStatusIdle) {
                                         [self _updateFiatPrices];
                                       }
-                                    }];
+                                    } balanceMethod: [self getBalanceMethod]];
   }
 }
 

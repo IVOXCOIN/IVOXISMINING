@@ -194,31 +194,38 @@ static CGFloat kHomeViewControllerBottomDefaultOffset = 38.0;
   [self _updateTableViewFooterIfNeeded];
 }
 
-- (void) updateWithMasterToken:(MasterTokenPlainObject *)masterToken {
+- (void) updateWithMasterToken:(MasterTokenPlainObject *)masterToken networkTitle:(NSString *)title {
   if ([self isViewLoaded]) {
     NetworkPlainObject *network = masterToken.fromNetworkMaster;
     AccountPlainObject *account = network.fromAccount;
     
-    BlockchainNetworkType networkType = [network network];
-    NSString *networkTitle = [BlockchainNetworkTypesInfoProvider stringFromNetworkType:networkType];
-    [self.headerView.networkButton setTitle:networkTitle forState:UIControlStateNormal];
+    //BlockchainNetworkType networkType = [network network];
+    //NSString *networkTitle = [BlockchainNetworkTypesInfoProvider stringFromNetworkType:networkType];
+      
+      NSString *networkTitleString = @"IVOX";
+      
+      if([title isEqualToString:@"ETHER"]){
+          networkTitleString = @"ETHEREUM";
+      }
+      
+    [self.headerView.networkButton setTitle:networkTitleString forState:UIControlStateNormal];
     [self.headerView.cardView updateWithSeed:masterToken.address];
     
     [self.headerView refreshContentIfNeeded];
     
     self.headerView.cardView.backedUp = [account.backedUp boolValue];
-    [self updateBalanceWithMasterToken:masterToken];
+    [self updateBalanceWithMasterToken:masterToken balanceMethod:title];
   }
 }
 
-- (void) updateBalanceWithMasterToken:(MasterTokenPlainObject *)masterToken {
+- (void) updateBalanceWithMasterToken:(MasterTokenPlainObject *)masterToken balanceMethod:(NSString*)balanceMethodString {
   NetworkPlainObject *network = masterToken.fromNetworkMaster;
   
   if (network.network == BlockchainNetworkTypeEthereum) {
-    [self.headerView.cardView updateEthPrice:masterToken.price.usdPrice];
+      [self.headerView.cardView updateEthPrice:masterToken.price.usdPrice balanceMethod:balanceMethodString];
   }
-  
-  NSNumberFormatter *ethereumFormatter = [NSNumberFormatter ethereumFormatterWithNetwork:[network network]];
+    
+  NSNumberFormatter *ethereumFormatter = [NSNumberFormatter ethereumFormatterWithBalanceMethod:balanceMethodString];
   switch ([UIScreen mainScreen].screenSizeType) {
     case ScreenSizeTypeInches40: { ethereumFormatter.maximumSignificantDigits = 9; break; }
     case ScreenSizeTypeInches58:
@@ -229,7 +236,7 @@ static CGFloat kHomeViewControllerBottomDefaultOffset = 38.0;
   }
   
   NSDecimalNumber *balance = masterToken.amount;
-  [self.headerView.cardView updateBalance:balance network:[network network]];
+    [self.headerView.cardView updateBalance:balance network:[network network] balanceMethod:balanceMethodString];
   self.headerView.titleBalanceLabel.text = [ethereumFormatter stringFromNumber:balance];
 }
 
@@ -270,11 +277,11 @@ static CGFloat kHomeViewControllerBottomDefaultOffset = 38.0;
   UIAlertController *alert = [UIAlertController alertControllerWithTitle:NSLocalizedString(@"SELECT_CURRENCY", @"Wallet. Currency selection") message:nil preferredStyle:UIAlertControllerStyleActionSheet];
   [alert addAction:[UIAlertAction actionWithTitle:@"IVOX" style:UIAlertActionStyleDefault handler:^(__unused UIAlertAction * _Nonnull action) {
     @strongify(self);
-    [self.output mainnetAction];
+    [self.output ivoxAction];
   }]];
   [alert addAction:[UIAlertAction actionWithTitle:@"ETHEREUM" style:UIAlertActionStyleDefault handler:^(__unused UIAlertAction * _Nonnull action) {
     @strongify(self);
-    [self.output ropstenAction];
+    [self.output etherAction];
   }]];
   [alert addAction:[UIAlertAction actionWithTitle:UIStringList.cancel
                                             style:UIAlertActionStyleCancel

@@ -100,6 +100,15 @@
   }
 }
 
+- (void) saveBalanceMethod:(NSString *)method forAccount:(AccountPlainObject *)account{
+  NSString *key = [self _keyForUID:account.uid];
+  @synchronized (self) {
+    NSMutableDictionary *item = [[self _obtainItemWithKey:key] mutableCopy];
+    item[kKeychainServiceBalanceMethodField] = (method);
+    [self _storeItem:item withKey:key];
+  }
+}
+
 - (void) saveBackupStatus:(BOOL)backup forAccount:(AccountPlainObject *)account {
   NSString *key = [self _keyForUID:account.uid];
   @synchronized (self) {

@@ -11,6 +11,7 @@
 #import "BlockchainNetworkTypes.h"
 
 @interface NSNumberFormatter (Ethereum)
++ (instancetype)ethereumFormatterWithBalanceMethod:(NSString *)balanceMethodString;
 + (instancetype)ethereumFormatterWithNetwork:(BlockchainNetworkType)network;
 + (instancetype)ethereumFormatterWithCurrencySymbol:(NSString *)currencySymbol;
 @end

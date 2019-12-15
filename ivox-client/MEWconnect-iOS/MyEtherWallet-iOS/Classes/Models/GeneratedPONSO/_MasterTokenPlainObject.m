@@ -31,7 +31,16 @@
 - (id)copyWithZone:(NSZone *)zone {
     MasterTokenPlainObject *replica = [[[self class] allocWithZone:zone] init];
 
+    replica.address = self.address;
+    replica.balance = self.balance;
+    replica.decimals = self.decimals;
+    replica.name = self.name;
+    replica.symbol = self.symbol;
+
+    replica.fromNetwork = self.fromNetwork;
     replica.fromNetworkMaster = self.fromNetworkMaster;
+    replica.price = self.price;
+    replica.purchaseHistory = self.purchaseHistory;
 
     return replica;
 }
