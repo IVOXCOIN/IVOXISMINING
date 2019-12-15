@@ -1,0 +1,24 @@
+//
+//  _IvoxToken.h
+//
+//
+// DO NOT EDIT. This file is machine-generated and constantly overwritten.
+//
+
+@import Foundation;
+
+@interface _IvoxTokenPlainObject : NSObject <NSCoding, NSCopying>
+
+@property (nonatomic, copy, readwrite) NSString *currency;
+@property (nonatomic, copy, readwrite) NSString *date;
+@property (nonatomic, copy, readwrite) NSString *destination;
+@property (nonatomic, copy, readwrite) NSString *identifier;
+@property (nonatomic, copy, readwrite) NSString *paypal;
+@property (nonatomic, copy, readwrite) NSString *purchase;
+@property (nonatomic, copy, readwrite) NSString *rate;
+@property (nonatomic, copy, readwrite) NSString *source;
+@property (nonatomic, copy, readwrite) NSString *status;
+@property (nonatomic, copy, readwrite) NSString *value;
+@property (nonatomic, copy, readwrite) NSString *wallet;
+
+@end
