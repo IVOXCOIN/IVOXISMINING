@@ -20,6 +20,8 @@ typedef void(^AccountsServiceCreateCompletionBlock)(AccountModelObject *accountM
 - (AccountModelObject *) obtainActiveAccount;
 - (AccountModelObject *) obtainOrCreateActiveAccount;
 - (void) resetAccounts;
+- (NSString *) getCurrency:(AccountPlainObject *)account;
+- (void) setCurrency:(AccountPlainObject *)account currency:(NSString *)currencyString;
 - (NSString *) getBalanceMethod:(AccountPlainObject *)account;
 - (void) setBalanceMethod:(AccountPlainObject *)account balanceMethod:(NSString *)method;
 - (void) accountBackedUp:(AccountPlainObject *)account;

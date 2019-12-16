@@ -13,6 +13,9 @@
 @protocol BuyEtherNavigationViewOutput;
 
 @interface BuyEtherNavigationController : UINavigationController <BuyEtherNavigationViewInput>
+
 @property (nonatomic, strong) id <BuyEtherNavigationViewOutput> output;
 @property (nonatomic, strong) id <UIViewControllerTransitioningDelegate> customTransitioningDelegate;
+
+
 @end

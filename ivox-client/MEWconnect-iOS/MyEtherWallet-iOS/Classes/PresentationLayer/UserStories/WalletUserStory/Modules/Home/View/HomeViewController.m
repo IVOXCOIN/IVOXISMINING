@@ -235,7 +235,7 @@ static CGFloat kHomeViewControllerBottomDefaultOffset = 38.0;
       break;
   }
   
-  NSDecimalNumber *balance = masterToken.amount;
+  NSDecimalNumber *balance = masterToken.balance;
     [self.headerView.cardView updateBalance:balance network:[network network] balanceMethod:balanceMethodString];
   self.headerView.titleBalanceLabel.text = [ethereumFormatter stringFromNumber:balance];
 }

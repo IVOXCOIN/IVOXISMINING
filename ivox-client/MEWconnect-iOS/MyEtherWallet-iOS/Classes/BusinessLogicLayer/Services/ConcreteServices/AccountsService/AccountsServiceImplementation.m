@@ -48,6 +48,21 @@
   return [self.MEWwallet obtainBIP32Words];
 }
 
+- (NSString *) getCurrency:(AccountPlainObject *)account{
+    AccountModelObject *accountModelObject = [self obtainAccountWithAccount:account];
+    return accountModelObject.currency;
+}
+
+- (void) setCurrency:(AccountPlainObject *)account currency:(NSString *)currencyString{
+  [self.keychainService saveCurrency:currencyString forAccount:account];
+  NSManagedObjectContext *rootSavingContext = [NSManagedObjectContext MR_rootSavingContext];
+  [rootSavingContext performBlockAndWait:^{
+    AccountModelObject *accountModelObject = [AccountModelObject MR_findFirstByAttribute:NSStringFromSelector(@selector(uid)) withValue:account.uid inContext:rootSavingContext];
+    accountModelObject.currency = currencyString;
+    [rootSavingContext MR_saveToPersistentStoreAndWait];
+  }];
+}
+
 - (NSString *) getBalanceMethod:(AccountPlainObject *)account{
     AccountModelObject *accountModelObject = [self obtainAccountWithAccount:account];
     return accountModelObject.balanceMethod;
@@ -104,6 +119,7 @@
     accountModelObject.uid = [[NSUUID UUID] UUIDString];
     accountModelObject.active = @YES;
     accountModelObject.balanceMethod = @"IVOX";
+    accountModelObject.currency = @"USD";
     [rootSavingContext MR_saveToPersistentStoreAndWait];
     
     createdAccount = [context objectWithID:accountModelObject.objectID];

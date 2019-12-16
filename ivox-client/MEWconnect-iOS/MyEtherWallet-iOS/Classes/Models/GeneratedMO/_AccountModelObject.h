@@ -36,6 +36,8 @@ NS_ASSUME_NONNULL_BEGIN
 
 @property (nonatomic, strong, nullable) NSString* balanceMethod;
 
+@property (nonatomic, strong, nullable) NSString* currency;
+
 @property (nonatomic, strong, nullable) NSString* name;
 
 @property (nonatomic, strong, nullable) NSString* uid;
@@ -70,6 +72,9 @@ NS_ASSUME_NONNULL_BEGIN
 - (nullable NSString*)primitiveBalanceMethod;
 - (void)setPrimitiveBalanceMethod:(nullable NSString*)value;
 
+- (nullable NSString*)primitiveCurrency;
+- (void)setPrimitiveCurrency:(nullable NSString*)value;
+
 - (nullable NSString*)primitiveName;
 - (void)setPrimitiveName:(nullable NSString*)value;
 
@@ -85,6 +90,7 @@ NS_ASSUME_NONNULL_BEGIN
 + (NSString *)active;
 + (NSString *)backedUp;
 + (NSString *)balanceMethod;
++ (NSString *)currency;
 + (NSString *)name;
 + (NSString *)uid;
 @end

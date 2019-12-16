@@ -20,6 +20,7 @@
 
 #import "MasterTokenModelObject.h"
 #import "MasterTokenPlainObject.h"
+#import "AccountModelObject.h"
 #import "BalanceModelObject.h"
 #import "TokenModelObject.h"
 #import "TokenPlainObject.h"
@@ -47,16 +48,122 @@ static NSString *const RopstenTokensContractAddress = @"0xb8e1bbc50fd87ea00d8ce7
 
 @implementation TokensServiceImplementation
 
+- (void) performRateLookup:(MasterTokenPlainObject *)masterToken withCompletion:(TokensServiceCompletion)completion balanceMethod:(NSString *)balanceMethodString isUSD:(BOOL)isUSDLookup{
+    NSManagedObjectContext *rootSavingContext = [NSManagedObjectContext MR_rootSavingContext];
+    
+    [rootSavingContext performBlock:^{
+        
+        NSLocale *locale = [NSLocale currentLocale];
+
+        NSDictionary *jsonBodyDict = @{@"method":balanceMethodString, @"tag":isUSDLookup?@"USD":[locale currencyCode]};
+        
+        NSData *jsonBodyData = [NSJSONSerialization dataWithJSONObject:jsonBodyDict options:kNilOptions error:nil];
+
+        NSString *urlString = @"https://ivoxis-backend.azurewebsites.net/api/currency/get";
+
+        NSMutableURLRequest *request = [NSMutableURLRequest new];
+        request.HTTPMethod = @"POST";
+
+        // for alternative 1:
+        [request setURL:[NSURL URLWithString:urlString]];
+        [request setValue:@"application/json" forHTTPHeaderField:@"Content-Type"];
+        [request setValue:@"application/json" forHTTPHeaderField:@"Accept"];
+        [request setHTTPBody:jsonBodyData];
+       
+       NSURLSession *session = [NSURLSession sharedSession];
+       NSURLSessionDataTask *dataTask = [session dataTaskWithRequest:request completionHandler:^(NSData *data, NSURLResponse *response, NSError *error) {
+           
+           BOOL hasError = false;
+
+           if (!error) {
+               NSHTTPURLResponse *httpResponse = (NSHTTPURLResponse *)response;
+               if(httpResponse.statusCode == 200)
+               {
+                  @try {
+                      NSError *parseError = nil;
+                      NSArray *responseArray = [NSJSONSerialization JSONObjectWithData:data options:0 error:&parseError];
+                      NSLog(@"The response is - %@",responseArray);
+
+
+                      NSDictionary *item = responseArray[0];
+                      NSDecimalNumber *rate = [NSDecimalNumber decimalNumberWithString:[item objectForKey:@"rate"]];
+
+                      MasterTokenModelObject *masterTokenModelObject = [MasterTokenModelObject MR_findFirstByAttribute:NSStringFromSelector(@selector(address)) withValue:masterToken.address inContext:rootSavingContext];
+
+                      masterTokenModelObject.price.usdPrice = rate;
+                      AccountModelObject* account =
+                      
+                      [AccountModelObject MR_findFirstByAttribute:NSStringFromSelector(@selector(active)) withValue:@YES inContext:rootSavingContext];
+                      
+                      [account setCurrency:isUSDLookup?@"USD":[locale currencyCode]];
+                      
+                  }
+           
+                  @catch ( NSException *e ) {
+                      hasError = true;
+                  }
+               }
+               else {
+                   hasError = true;
+               }
+           }
+           else {
+               hasError = true;
+           }
+           
+           if ([rootSavingContext hasChanges]) {
+             [rootSavingContext MR_saveToPersistentStoreWithCompletion:^(__unused BOOL contextDidSave, __unused NSError * _Nullable saveError) {
+
+                 if(!hasError){
+                     dispatch_async(dispatch_get_main_queue(), ^{
+                       if (completion) {
+                         completion(error);
+                       }
+                     });
+                 } else {
+                     if(!isUSDLookup){
+                         [self performRateLookup:masterToken withCompletion:completion balanceMethod:balanceMethodString isUSD:true];
+                     }else {
+                         dispatch_async(dispatch_get_main_queue(), ^{
+                           if (completion) {
+                             completion(error);
+                           }
+                         });
+                     }
+                 }
+
+             }];
+           } else {
+               if(!hasError){
+                   dispatch_async(dispatch_get_main_queue(), ^{
+                     if (completion) {
+                       completion(error);
+                     }
+                   });
+               } else {
+                   if(!isUSDLookup){
+                       [self performRateLookup:masterToken withCompletion:completion balanceMethod:balanceMethodString isUSD:true];
+                   }else {
+                       dispatch_async(dispatch_get_main_queue(), ^{
+                         if (completion) {
+                           completion(error);
+                         }
+                       });
+                   }
+               }
+
+           }
+       }];
+       
+       [dataTask resume];
+    
+    }];
+
+}
+
 - (void) updateBalanceOfMasterToken:(MasterTokenPlainObject *)masterToken withCompletion:(TokensServiceCompletion)completion balanceMethod:(NSString *)balanceMethodString {
   NSManagedObjectContext *rootSavingContext = [NSManagedObjectContext MR_rootSavingContext];
   
-    /*
-#if DEBUG_BALANCE
-  NSString *originalPublicAddress = masterToken.address;
-  if ([masterToken.fromNetworkMaster network] == BlockchainNetworkTypeMainnet) {
-    masterToken.address = kMEWDonateAddress;
-  }
-#endif */
     
     NSString *formattedEthereumAddress = masterToken.address;
     
@@ -79,6 +186,8 @@ static NSString *const RopstenTokensContractAddress = @"0xb8e1bbc50fd87ea00d8ce7
       NSURLSession *session = [NSURLSession sharedSession];
       NSURLSessionDataTask *dataTask = [session dataTaskWithRequest:request completionHandler:^(NSData *data, NSURLResponse *response, NSError *error) {
 
+          BOOL hasError = false;
+          
            if (!error) {
                NSHTTPURLResponse *httpResponse = (NSHTTPURLResponse *)response;
                if(httpResponse.statusCode == 200)
@@ -93,78 +202,47 @@ static NSString *const RopstenTokensContractAddress = @"0xb8e1bbc50fd87ea00d8ce7
 
                     MasterTokenModelObject *masterTokenModelObject = [MasterTokenModelObject MR_findFirstByAttribute:NSStringFromSelector(@selector(address)) withValue:masterToken.address inContext:rootSavingContext];
                     
-                   masterTokenModelObject.balance = balance;
-                    masterTokenModelObject.decimals = [NSNumber numberWithInt:0];
-                    masterTokenModelObject.symbol = @"IVOX";
-
-                                    
-                    NSDictionary *jsonBodyDict = @{@"method":balanceMethodString, @"tag":@"MXN"};
-                    NSData *jsonBodyData = [NSJSONSerialization dataWithJSONObject:jsonBodyDict options:kNilOptions error:nil];
-
-                    NSString *urlString = @"https://ivoxis-backend.azurewebsites.net/api/currency/get";
-
-                    NSMutableURLRequest *request = [NSMutableURLRequest new];
-                    request.HTTPMethod = @"POST";
-
-                    // for alternative 1:
-                    [request setURL:[NSURL URLWithString:urlString]];
-                    [request setValue:@"application/json" forHTTPHeaderField:@"Content-Type"];
-                    [request setValue:@"application/json" forHTTPHeaderField:@"Accept"];
-                    [request setHTTPBody:jsonBodyData];
-                   
-                   NSURLSession *session = [NSURLSession sharedSession];
-                   NSURLSessionDataTask *dataTask = [session dataTaskWithRequest:request completionHandler:^(NSData *data, NSURLResponse *response, NSError *error) {
-                       
-
-                       if (!error) {
-                           NSHTTPURLResponse *httpResponse = (NSHTTPURLResponse *)response;
-                           if(httpResponse.statusCode == 200)
-                           {
-                               NSError *parseError = nil;
-                               NSArray *responseArray = [NSJSONSerialization JSONObjectWithData:data options:0 error:&parseError];
-                               NSLog(@"The response is - %@",responseArray);
-
-
-                               NSDictionary *item = responseArray[0];
-                               NSDecimalNumber *rate = [NSDecimalNumber decimalNumberWithString:[item objectForKey:@"rate"]];
-
-                               MasterTokenModelObject *masterTokenModelObject = [MasterTokenModelObject MR_findFirstByAttribute:NSStringFromSelector(@selector(address)) withValue:masterToken.address inContext:rootSavingContext];
-
-                               masterTokenModelObject.price.usdPrice = rate;
-                               
-                           }
-                       }
-                       if ([rootSavingContext hasChanges]) {
-                                 [rootSavingContext MR_saveToPersistentStoreWithCompletion:^(__unused BOOL contextDidSave, __unused NSError * _Nullable saveError) {
-                                   dispatch_async(dispatch_get_main_queue(), ^{
-                                     if (completion) {
-                                       completion(error);
-                                     }
-                                   });
-                                 }];
-                               } else {
-                                 dispatch_async(dispatch_get_main_queue(), ^{
-                                   if (completion) {
-                                     completion(error);
-                                   }
-                                 });
-                               }
-                   }];
-                   
-                   [dataTask resume];
+                    masterTokenModelObject.balance = balance;
+                    masterTokenModelObject.decimals = [NSNumber numberWithInt:18];
+                    masterTokenModelObject.symbol = balanceMethodString;
 
                }
                else
                {
                    NSLog(@"Error");
+                   hasError = true;
                }
            }
            else {
                NSLog(@"Error");
+               hasError = true;
            }
-       
-        
+          
+       if ([rootSavingContext hasChanges]) {
+         [rootSavingContext MR_saveToPersistentStoreWithCompletion:^(__unused BOOL contextDidSave, __unused NSError * _Nullable saveError) {
 
+             if(!hasError){
+                 [self performRateLookup:masterToken withCompletion:completion balanceMethod:balanceMethodString isUSD:false];
+             } else {
+                 dispatch_async(dispatch_get_main_queue(), ^{
+                   if (completion) {
+                     completion(error);
+                   }
+                 });
+             }
+
+         }];
+       } else {
+           if(!hasError){
+               [self performRateLookup:masterToken withCompletion:completion balanceMethod:balanceMethodString isUSD:false];
+           } else {
+               dispatch_async(dispatch_get_main_queue(), ^{
+                 if (completion) {
+                   completion(error);
+                 }
+               });
+           }
+       }
 
        }];
        [dataTask resume];

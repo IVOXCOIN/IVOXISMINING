@@ -12,8 +12,8 @@
 #import "SimplexServiceCurrencyTypes.h"
 
 @protocol BuyEtherAmountViewInput <NSObject>
-- (void) setupInitialStateWithCurrency:(SimplexServiceCurrencyType)currency minimumAmount:(NSDecimalNumber *)minimumAmount;
-- (void) updateWithEnteredAmount:(NSString *)enteredAmount convertedAmount:(NSDecimalNumber *)convertedAmount;
+- (void) setupInitialStateWithCurrency:(SimplexServiceCurrencyType)currency minimumAmount:(NSDecimalNumber *)minimumAmount localeCurrency:(NSString *)localeCurrencyString;
+- (void) updateWithEnteredAmount:(NSString *)enteredAmount convertedAmount:(NSDecimalNumber *)convertedAmount balanceMethod:(NSString *)balanceMethodString;
 - (void) updateCurrency:(SimplexServiceCurrencyType)currency;
 - (void) enableContinue;
 - (void) disableContinue;

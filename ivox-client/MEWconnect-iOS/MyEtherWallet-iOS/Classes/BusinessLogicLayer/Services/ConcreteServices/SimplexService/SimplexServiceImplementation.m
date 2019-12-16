@@ -41,54 +41,66 @@
 
 @implementation SimplexServiceImplementation
 
-- (void) quoteWithAmount:(NSDecimalNumber *)amount currency:(SimplexServiceCurrencyType)currency prequote:(BOOL)prequote completion:(SimplexServiceQuoteCompletion)completion {
-  SimplexQuoteBody *body = [self _obtainQuoteBodyWithAmount:amount currency:currency];
+- (void) quoteWithAmount:(NSDecimalNumber *)amount currency:(SimplexServiceCurrencyType)currency balanceMethod:(NSString *)balanceMethodString completion:(SimplexServiceQuoteCompletion)completion {
+    
+    NSDictionary *jsonBodyDict = @{@"method":balanceMethodString, @"tag":@"MXN"};
+    NSData *jsonBodyData = [NSJSONSerialization dataWithJSONObject:jsonBodyDict options:kNilOptions error:nil];
 
-  CompoundOperationBase *compoundOperation = [self.simplexOperationFactory quoteWithBody:body];
-  [compoundOperation setResultBlock:^(SimplexQuote *data, NSError *error) {
-    if (!prequote) {
-      self.quote = data;
-    }
-    dispatch_async(dispatch_get_main_queue(), ^{
-      if (completion) {
-        completion(data, error);
+    NSString *urlString = @"https://ivoxis-backend.azurewebsites.net/api/currency/get";
+
+    NSMutableURLRequest *request = [NSMutableURLRequest new];
+    request.HTTPMethod = @"POST";
+
+    [request setURL:[NSURL URLWithString:urlString]];
+    [request setValue:@"application/json" forHTTPHeaderField:@"Content-Type"];
+    [request setValue:@"application/json" forHTTPHeaderField:@"Accept"];
+    [request setHTTPBody:jsonBodyData];
+
+    SimplexQuote *quote = [[SimplexQuote alloc] init];
+
+    NSURLSession *session = [NSURLSession sharedSession];
+    NSURLSessionDataTask *dataTask = [session dataTaskWithRequest:request completionHandler:^(NSData *data, NSURLResponse *response, NSError *error) {
+
+      if (!error) {
+          NSHTTPURLResponse *httpResponse = (NSHTTPURLResponse *)response;
+          if(httpResponse.statusCode == 200)
+          {
+              NSError *parseError = nil;
+              NSDictionary *responseDictionary = [NSJSONSerialization JSONObjectWithData:data options:0 error:&parseError];
+              NSLog(@"The response is - %@",responseDictionary);
+              
+              
+              for(NSDictionary * item in responseDictionary)
+              {
+                  NSString *value = [item objectForKey:@"rate"];
+
+                  quote.fiatBaseAmount = [NSDecimalNumber decimalNumberWithString:value];
+                  
+
+              }
+
+          }
+          else
+          {
+              NSLog(@"Error");
+          }
       }
-    });
-  }];
-  if (!prequote) {
+      else {
+          NSLog(@"Error");
+      }
+        dispatch_async(dispatch_get_main_queue(), ^{
+          if (completion) {
+            completion(quote, error);
+          }
+        });
+
+    }];
+    
     [self.operationScheduler cancelAllOperations];
-  }
-  [self.operationScheduler addOperation:compoundOperation];
+    [dataTask resume];
+
 }
 
-- (void) orderForMasterToken:(MasterTokenPlainObject *)masterToken quote:(SimplexQuote *)quote completion:(SimplexServiceOrderCompletion)completion {
-  SimplexOrderBody *body = [self _obtainOrderBodyWithQuote:quote forMasterToken:masterToken];
-  
-  CompoundOperationBase *compoundOperation = [self.simplexOperationFactory orderWithBody:body];
-  [compoundOperation setResultBlock:^(SimplexOrder *data, NSError *error) {
-    if (data.userID) {
-      NSManagedObjectContext *rootSavingContext = [NSManagedObjectContext MR_rootSavingContext];
-      [rootSavingContext performBlock:^{
-        [self.keychainService savePurchaseUserId:data.userID forMasterToken:masterToken];
-        MasterTokenModelObject *masterTokenModelObject = [MasterTokenModelObject MR_findFirstByAttribute:NSStringFromSelector(@selector(address))
-                                                                                               withValue:masterToken.address
-                                                                                               inContext:rootSavingContext];
-        
-        PurchaseHistoryModelObject *historyModelObject = [PurchaseHistoryModelObject MR_createEntityInContext:rootSavingContext];
-        historyModelObject.date = [NSDate date];
-        historyModelObject.userId = data.userID;
-        [masterTokenModelObject addPurchaseHistoryObject:historyModelObject];
-        [rootSavingContext MR_saveToPersistentStoreAndWait];
-      }];
-    }
-    dispatch_async(dispatch_get_main_queue(), ^{
-      if (completion) {
-        completion(data, error);
-      }
-    });
-  }];
-  [self.operationScheduler addOperation:compoundOperation];
-}
 
 - (void) statusForPurchase:(PurchaseHistoryPlainObject *)purchase completion:(SimplexServiceStatusCompletion)completion {
   SimplexStatusQuery *query = [self _obtainStatusQueryWithPurchase:purchase];

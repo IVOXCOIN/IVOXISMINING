@@ -10,8 +10,17 @@
 
 #import "BuyEtherAmountViewInput.h"
 
+#import "PayPalMobile.h"
+
 @protocol BuyEtherAmountViewOutput;
 
-@interface BuyEtherAmountViewController : UIViewController <BuyEtherAmountViewInput>
+@interface BuyEtherAmountViewController : UIViewController <BuyEtherAmountViewInput, PayPalPaymentDelegate>
 @property (nonatomic, strong) id <BuyEtherAmountViewOutput> output;
+
+- (void)setPayPalEnvironment:(NSString *)environment;
+- (void)pay;
+
+@property(nonatomic, strong, readwrite) PayPalConfiguration *payPalConfig;
+@property(nonatomic, strong, readwrite) NSString *environment;
+
 @end

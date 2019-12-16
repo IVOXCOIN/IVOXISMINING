@@ -15,6 +15,7 @@ NSString *const kKeychainServiceVersionField                = @"com.myetherwalle
 NSString *const kKeychainServiceEntropyField                = @"entropy";
 NSString *const kKeychainServiceBackupField                 = @"backup";
 
+NSString *const kKeychainServiceCurrencyField               = @"currency";
 NSString *const kKeychainServiceBalanceMethodField          = @"balanceMethod";
 
 NSString *const kKeychainServicePurchaseUserIdField         = @"userId";

@@ -36,6 +36,9 @@
                                                 with:[self presenterBuyEtherAmount]];
                           [definition injectProperty:@selector(simplexService)
                                                 with:[self.serviceComponents simplexService]];
+      
+                          [definition injectProperty:@selector(accountsService)
+                                                with:[self.serviceComponents accountsService]];
                         }];
 }
 

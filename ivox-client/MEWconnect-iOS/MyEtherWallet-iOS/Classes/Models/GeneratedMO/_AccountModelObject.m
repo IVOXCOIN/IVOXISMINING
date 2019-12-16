@@ -85,6 +85,8 @@
 
 @dynamic balanceMethod;
 
+@dynamic currency;
+
 @dynamic name;
 
 @dynamic uid;
@@ -111,6 +113,9 @@
 }
 + (NSString *)balanceMethod {
 	return @"balanceMethod";
+}
++ (NSString *)currency {
+	return @"currency";
 }
 + (NSString *)name {
 	return @"name";

@@ -34,7 +34,7 @@
     ethereumFormatter.positiveFormat = [positiveFormat copy];
   }
   ethereumFormatter.usesSignificantDigits = YES;
-  ethereumFormatter.maximumFractionDigits = 18;
+  ethereumFormatter.maximumFractionDigits = 8;
   ethereumFormatter.maximumIntegerDigits = 18;
   ethereumFormatter.maximumSignificantDigits = ethereumFormatter.maximumFractionDigits + ethereumFormatter.maximumIntegerDigits;
   ethereumFormatter.currencySymbol = currencySymbol;

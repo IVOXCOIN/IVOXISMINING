@@ -21,12 +21,15 @@
 - (void)viewDidLoad {
   [super viewDidLoad];
   self.modalPresentationCapturesStatusBarAppearance = YES;
+    
   [self.output didTriggerViewReadyEvent];
 }
 
 - (void)viewWillAppear:(BOOL)animated {
   [super viewWillAppear:animated];
+
 }
+
 
 - (void) viewDidAppear:(BOOL)animated {
   [super viewDidAppear:animated];
@@ -40,6 +43,7 @@
 - (UIStatusBarStyle)preferredStatusBarStyle {
   return UIStatusBarStyleLightContent;
 }
+
 
 #pragma mark - Override
 

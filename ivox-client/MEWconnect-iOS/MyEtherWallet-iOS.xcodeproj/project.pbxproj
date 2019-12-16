@@ -10331,7 +10331,7 @@
 				"${BUILT_PRODUCTS_DIR}/secp256k1_swift/secp256k1_swift.framework",
 				"${BUILT_PRODUCTS_DIR}/web3swift/Web3swift.framework",
 				"${BUILT_PRODUCTS_DIR}/zxcvbn-ios/zxcvbn_ios.framework",
-				"${BUILT_PRODUCTS_DIR}/RamblerTyphoonUtils-AssemblyCollector/RamblerTyphoonUtils.framework",
+				"${BUILT_PRODUCTS_DIR}/RamblerTyphoonUtils/RamblerTyphoonUtils.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
@@ -10462,7 +10462,7 @@
 				"${BUILT_PRODUCTS_DIR}/secp256k1_swift/secp256k1_swift.framework",
 				"${BUILT_PRODUCTS_DIR}/web3swift/Web3swift.framework",
 				"${BUILT_PRODUCTS_DIR}/zxcvbn-ios/zxcvbn_ios.framework",
-				"${BUILT_PRODUCTS_DIR}/RamblerTyphoonUtils-AssemblyCollector/RamblerTyphoonUtils.framework",
+				"${BUILT_PRODUCTS_DIR}/RamblerTyphoonUtils/RamblerTyphoonUtils.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (

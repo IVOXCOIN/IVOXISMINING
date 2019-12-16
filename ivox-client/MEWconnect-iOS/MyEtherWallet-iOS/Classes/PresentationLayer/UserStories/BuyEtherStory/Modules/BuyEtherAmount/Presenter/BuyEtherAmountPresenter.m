@@ -25,10 +25,14 @@
 - (void) didTriggerViewReadyEvent {
   SimplexServiceCurrencyType currency = [self.interactor obtainCurrencyType];
   NSDecimalNumber *minimumAmount = [self.interactor obtainMinimumAmount];
-	[self.view setupInitialStateWithCurrency:currency minimumAmount:minimumAmount];
+    NSString *localeCurrency = [self.interactor getCurrency];
+
+    [self.view setupInitialStateWithCurrency:currency minimumAmount:minimumAmount localeCurrency:localeCurrency];
+    
   NSString *enteredAmount = [self.interactor obtainEnteredAmount];
-  NSDecimalNumber *convertedAmount = [self.interactor obtainConvertedAmount];
-  [self.view updateWithEnteredAmount:enteredAmount convertedAmount:convertedAmount];
+  NSDecimalNumber *convertedAmount = [self.interactor obtainInputAmount];
+  NSString *balanceMethod = [self.interactor getBalanceMethod];
+    [self.view updateWithEnteredAmount:enteredAmount convertedAmount:convertedAmount balanceMethod: balanceMethod];
 }
 
 - (void) didTriggerViewDidAppearEvent {
@@ -56,19 +60,12 @@
   [self.interactor prepareQuote];
 }
 
-- (void) switchConvertingAction {
-  [self.interactor switchConverting];
-  SimplexServiceCurrencyType currency = [self.interactor obtainCurrencyType];
-  [self.view updateCurrency:currency];
-  NSString *enteredAmount = [self.interactor obtainEnteredAmount];
-  NSDecimalNumber *convertedAmount = [self.interactor obtainConvertedAmount];
-  [self.view updateWithEnteredAmount:enteredAmount convertedAmount:convertedAmount];
-}
-
 #pragma mark - BuyEtherAmountInteractorOutput
 
 - (void) updateInputPriceWithEnteredAmount:(NSString *)enteredAmount convertedAmount:(NSDecimalNumber *)convertedAmount {
-  [self.view updateWithEnteredAmount:enteredAmount convertedAmount:convertedAmount];
+    
+    NSString *balanceMethod = [self.interactor getBalanceMethod];
+      [self.view updateWithEnteredAmount:enteredAmount convertedAmount:convertedAmount balanceMethod: balanceMethod];
 }
 
 - (void)orderDidCreated:(SimplexOrder *)order forMasterToken:(MasterTokenPlainObject *)masterToken {

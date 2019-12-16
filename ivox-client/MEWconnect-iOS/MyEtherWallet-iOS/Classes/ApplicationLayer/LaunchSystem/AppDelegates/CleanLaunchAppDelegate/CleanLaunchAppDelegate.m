@@ -15,6 +15,9 @@
 #import "CoreDataConfigurator.h"
 #import "CrashCatcherConfigurator.h"
 
+#import "PayPalMobile.h"
+
+
 @implementation CleanLaunchAppDelegate
 
 - (BOOL) application:(__unused UIApplication *)application didFinishLaunchingWithOptions:(__unused NSDictionary *)launchOptions {
@@ -37,6 +40,11 @@
   [self.applicationConfigurator configureInitialSettings];
   [self.applicationConfigurator configurateAppearance];
   [self.cleanStartRouter openInitialScreen];
+    #warning "Enter your credentials"
+    [PayPalMobile initializeWithClientIdsForEnvironments:@{PayPalEnvironmentProduction : @"YOUR_CLIENT_ID_FOR_PRODUCTION",
+                                                           PayPalEnvironmentSandbox : @"YOUR_CLIENT_ID_FOR_SANDBOX"}];
+
+    
   return YES;
 }
 

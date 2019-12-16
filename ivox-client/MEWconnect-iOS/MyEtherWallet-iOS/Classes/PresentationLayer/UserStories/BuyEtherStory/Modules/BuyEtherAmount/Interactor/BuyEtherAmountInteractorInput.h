@@ -18,10 +18,11 @@
 - (void) updateEthPriceIfNeeded;
 - (void) appendSymbol:(NSString *)symbol;
 - (void) eraseSymbol;
-- (void) switchConverting;
 - (SimplexServiceCurrencyType) obtainCurrencyType;
+- (NSString *) getCurrency;
+- (NSString *) getBalanceMethod;
 - (NSString *) obtainEnteredAmount;
-- (NSDecimalNumber *) obtainConvertedAmount;
+- (NSDecimalNumber *) obtainInputAmount;
 - (void) prepareQuote;
 - (MasterTokenPlainObject *) obtainMasterToken;
 - (NSDecimalNumber *) obtainMinimumAmount;

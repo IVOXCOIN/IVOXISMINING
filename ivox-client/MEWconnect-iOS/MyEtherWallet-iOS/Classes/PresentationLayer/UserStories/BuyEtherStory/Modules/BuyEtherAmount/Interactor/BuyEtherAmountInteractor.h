@@ -10,9 +10,12 @@
 
 @protocol BuyEtherAmountInteractorOutput;
 @protocol SimplexService;
+@protocol AccountsService;
+
 
 @interface BuyEtherAmountInteractor : NSObject <BuyEtherAmountInteractorInput>
 
 @property (nonatomic, weak) id <BuyEtherAmountInteractorOutput> output;
 @property (nonatomic, strong) id <SimplexService> simplexService;
+@property (nonatomic, strong) id <AccountsService> accountsService;
 @end
