@@ -33,6 +33,8 @@
   NSDecimalNumber *convertedAmount = [self.interactor obtainInputAmount];
   NSString *balanceMethod = [self.interactor getBalanceMethod];
     [self.view updateWithEnteredAmount:enteredAmount convertedAmount:convertedAmount balanceMethod: balanceMethod];
+    
+    
 }
 
 - (void) didTriggerViewDidAppearEvent {

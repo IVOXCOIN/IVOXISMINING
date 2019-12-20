@@ -38,6 +38,14 @@
 
 #import "UIStringList.h"
 
+#import "MaterialNavigationDrawer.h"
+
+#import "AccountModelObject.h"
+#import "NSManagedObjectContext+MagicalRecord.h"
+#import "NSManagedObject+MagicalFinders.h"
+
+#import "MyEtherWallet-iOS-Bridging-Header.h"
+
 static CGFloat kHomeViewControllerBottomDefaultOffset = 38.0;
 
 @interface HomeViewController () <UIScrollViewDelegate, GSKStretchyHeaderViewStretchDelegate, HomeStretchyHeaderDelegate, CardViewDelegate, UISearchBarDelegate>
@@ -69,6 +77,11 @@ static CGFloat kHomeViewControllerBottomDefaultOffset = 38.0;
 
 - (void)viewWillAppear:(BOOL)animated {
   [super viewWillAppear:animated];
+    
+    self.bottomDrawerViewController = [[MDCBottomDrawerViewController alloc] init];
+    self.bottomDrawerViewController.contentViewController =  [UIViewController new];
+    self.bottomDrawerViewController.headerViewController = [UIViewController new];
+    
   [self.output didTriggerViewWillAppear];
   self.tableViewAnimator.animated = YES;
   
@@ -112,6 +125,13 @@ static CGFloat kHomeViewControllerBottomDefaultOffset = 38.0;
 }
 
 #pragma mark - HomeViewInput
+
+- (void) setBuyEtherEnabled:(BOOL)enabled{
+    self.headerView.buyEtherButton.enabled = enabled? YES : NO;
+    self.headerView.buyEtherButton.userInteractionEnabled = enabled?YES:NO;
+
+    [self presentViewController:self.bottomDrawerViewController animated:YES completion:nil];
+}
 
 - (void) setupInitialStateWithNumberOfTokens:(NSUInteger)tokensCount totalPrice:(NSDecimalNumber *)totalPrice {
   UITapGestureRecognizer *dismissTapGesture = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(dismissTap:)];
@@ -194,13 +214,16 @@ static CGFloat kHomeViewControllerBottomDefaultOffset = 38.0;
   [self _updateTableViewFooterIfNeeded];
 }
 
-- (void) updateWithMasterToken:(MasterTokenPlainObject *)masterToken networkTitle:(NSString *)title {
+- (void) updateWithMasterToken:(MasterTokenPlainObject *)masterToken {
   if ([self isViewLoaded]) {
     NetworkPlainObject *network = masterToken.fromNetworkMaster;
     AccountPlainObject *account = network.fromAccount;
     
     //BlockchainNetworkType networkType = [network network];
     //NSString *networkTitle = [BlockchainNetworkTypesInfoProvider stringFromNetworkType:networkType];
+      
+      NSString *title = account.balanceMethod;
+
       
       NSString *networkTitleString = @"IVOX";
       
@@ -214,13 +237,23 @@ static CGFloat kHomeViewControllerBottomDefaultOffset = 38.0;
     [self.headerView refreshContentIfNeeded];
     
     self.headerView.cardView.backedUp = [account.backedUp boolValue];
-    [self updateBalanceWithMasterToken:masterToken balanceMethod:title];
+    [self updateBalanceWithMasterToken:masterToken];
   }
 }
 
-- (void) updateBalanceWithMasterToken:(MasterTokenPlainObject *)masterToken balanceMethod:(NSString*)balanceMethodString {
+- (void) updateBalanceWithMasterToken:(MasterTokenPlainObject *)masterToken{
   NetworkPlainObject *network = masterToken.fromNetworkMaster;
   
+    
+    NSManagedObjectContext *defaultContext = [NSManagedObjectContext MR_defaultContext];
+
+    AccountModelObject* account =
+    
+    [AccountModelObject MR_findFirstByAttribute:NSStringFromSelector(@selector(active)) withValue:@YES inContext:defaultContext];
+    
+    NSString *balanceMethodString = account.balanceMethod;
+
+    
   if (network.network == BlockchainNetworkTypeEthereum) {
       [self.headerView.cardView updateEthPrice:masterToken.price.usdPrice balanceMethod:balanceMethodString];
   }

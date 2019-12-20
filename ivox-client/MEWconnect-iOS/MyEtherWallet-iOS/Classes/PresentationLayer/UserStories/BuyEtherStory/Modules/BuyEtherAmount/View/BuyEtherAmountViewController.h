@@ -23,4 +23,10 @@
 @property(nonatomic, strong, readwrite) PayPalConfiguration *payPalConfig;
 @property(nonatomic, strong, readwrite) NSString *environment;
 
+@property(nonatomic, strong, readwrite) NSDecimalNumber *_purchaseUnits;
+@property(nonatomic, strong, readwrite) NSDecimalNumber *_purchaseValue;
+@property(nonatomic, strong, readwrite) NSString *_balanceMethod;
+@property(nonatomic, strong, readwrite) NSString *_currency;
+
+
 @end

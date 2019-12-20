@@ -21,6 +21,11 @@
 
 #import "SimplexQuote.h"
 
+#import "AccountModelObject.h"
+#import "NSManagedObjectContext+MagicalRecord.h"
+#import "NSManagedObject+MagicalFinders.h"
+
+
 static short const kBuyEtherAmountRoundingETHScale        = 8;
 static short const kBuyEtherAmountRoundingUSDScale        = 2;
 
@@ -55,7 +60,21 @@ static NSString *const kBuyEtherAmountDecimalSeparator    = @".";
 - (void) configurateWithMasterToken:(MasterTokenPlainObject *)masterToken {
   _masterToken = masterToken;
   _currency = SimplexServiceCurrencyTypeUSD;
-  _amount = [[NSMutableString alloc] initWithString:@"100"];
+    
+    NSManagedObjectContext *defaultContext = [NSManagedObjectContext MR_defaultContext];
+
+    AccountModelObject* accountModelObject = [AccountModelObject MR_findFirstByAttribute:NSStringFromSelector(@selector(active)) withValue:@YES inContext:defaultContext];
+
+    NSString* balanceMethod = accountModelObject.balanceMethod;
+
+    if([balanceMethod isEqualToString:@"IVOX"]){
+        
+        NSDecimalNumber* tokensInitialValue = [masterToken.price.usdPrice decimalNumberByMultiplyingBy:[[NSDecimalNumber alloc] initWithInt:500]];
+        
+        _amount = [[NSMutableString alloc] initWithString:[tokensInitialValue stringValue]];
+    } else {
+        _amount = [[NSMutableString alloc] initWithString:@"0"];
+    }
   _ethRoundHandler = [NSDecimalNumberHandler decimalNumberHandlerWithRoundingMode:NSRoundPlain
                                                                             scale:kBuyEtherAmountRoundingETHScale
                                                                  raiseOnExactness:NO

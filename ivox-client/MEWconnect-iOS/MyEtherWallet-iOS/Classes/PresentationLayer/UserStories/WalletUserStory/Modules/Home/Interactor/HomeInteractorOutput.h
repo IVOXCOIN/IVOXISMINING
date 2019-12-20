@@ -16,6 +16,7 @@
 @protocol HomeInteractorOutput <NSObject>
 - (void) openMessageSignerWithMessage:(MEWConnectCommand *)command masterToken:(MasterTokenPlainObject *)masterToken;
 - (void) openTransactionSignerWithMessage:(MEWConnectCommand *)command masterToken:(MasterTokenPlainObject *)masterToken;
+- (void) setBuyEtherEnabled:(BOOL)enabled;
 - (void) didProcessCacheTransaction:(CacheTransactionBatch *)transactionBatch;
 - (void) didUpdateTokens;
 - (void) didUpdateEthereumBalance;

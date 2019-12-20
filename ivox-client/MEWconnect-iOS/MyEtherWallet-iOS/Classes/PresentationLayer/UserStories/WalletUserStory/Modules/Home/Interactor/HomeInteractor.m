@@ -155,14 +155,6 @@ static NSTimeInterval kHomeInteractorDefaultRefreshBalancesTime = 900.0;
   [self _updateTokensBalance];
 }
 
-- (NSString *) getBalanceMethod {
-    AccountModelObject *accountModelObject = [self.accountsService obtainAccountWithAccount:[self obtainAccount]];
-    NSArray <NSString *> *ignoringProperties = @[];
-    AccountPlainObject *account = [self.ponsomizer convertObject:accountModelObject ignoringProperties:ignoringProperties];
-
-    return [self.accountsService getBalanceMethod:account];
-}
-
 - (void)selectIvoxCurrency {
   AccountModelObject *accountModelObject = [self.accountsService obtainAccountWithAccount:[self obtainAccount]];
   NSArray <NSString *> *ignoringProperties = @[];
@@ -336,20 +328,27 @@ static NSTimeInterval kHomeInteractorDefaultRefreshBalancesTime = 900.0;
   if ((self.updatingStatus & HomeInteractorUpdatingStatusBalance) != HomeInteractorUpdatingStatusBalance) {
     self.updatingStatus |= HomeInteractorUpdatingStatusBalance;
     self.updatingStatus |= HomeInteractorUpdatingStatusBalanceUpdating;
+      [self.output setBuyEtherEnabled:false];
+      
     @weakify(self);
     [self.tokensService updateBalanceOfMasterToken:[self obtainMasterToken]
                                     withCompletion:^(NSError *error) {
                                       @strongify(self);
                                       if (!error) {
-                                        self.updatingStatus &= ~HomeInteractorUpdatingStatusBalanceUpdating;
-                                        [self.output didUpdateEthereumBalance];
-                                      } else {
-                                        self.updatingStatus &= ~HomeInteractorUpdatingStatusBalanceReset;
+
+                                    [self refreshMasterToken];
+                                    [self.output didUpdateEthereumBalance];
+                                    [self.output didUpdateTokensBalance];
+
+                                    self.updatingStatus = HomeInteractorUpdatingStatusIdle;
+                                    [self.rateService balanceUpdated];
+                                    [self.rateService requestReviewIfNeeded];
+                                    [self.output setBuyEtherEnabled:true];
+                                    //[self _updateFiatPrices];
+
+                                    
                                       }
-                                      if ((self.updatingStatus & HomeInteractorUpdatingStatusAnyUpdating) == HomeInteractorUpdatingStatusIdle) {
-                                        [self _updateFiatPrices];
-                                      }
-                                    } balanceMethod: [self getBalanceMethod]];
+                                    }];
   }
 }
 
@@ -368,7 +367,7 @@ static NSTimeInterval kHomeInteractorDefaultRefreshBalancesTime = 900.0;
                                               self.updatingStatus &= ~HomeInteractorUpdatingStatusTokensReset;
                                             }
                                             if ((self.updatingStatus & HomeInteractorUpdatingStatusAnyUpdating) == HomeInteractorUpdatingStatusIdle) {
-                                              [self _updateFiatPrices];
+                                              //[self _updateFiatPrices];
                                             }
                                           }];
   }
@@ -381,15 +380,10 @@ static NSTimeInterval kHomeInteractorDefaultRefreshBalancesTime = 900.0;
     @strongify(self);
     self.updatingStatus &= ~HomeInteractorUpdatingStatusFiatUpdating;
     if ((self.updatingStatus & HomeInteractorUpdatingStatusBalance) == HomeInteractorUpdatingStatusBalance) {
-      [self refreshMasterToken];
-      [self.output didUpdateEthereumBalance];
     }
     if ((self.updatingStatus & HomeInteractorUpdatingStatusTokens) == HomeInteractorUpdatingStatusTokens) {
-      [self.output didUpdateTokensBalance];
     }
-    self.updatingStatus = HomeInteractorUpdatingStatusIdle;
-    [self.rateService balanceUpdated];
-    [self.rateService requestReviewIfNeeded];
+      
   }];
 
 }

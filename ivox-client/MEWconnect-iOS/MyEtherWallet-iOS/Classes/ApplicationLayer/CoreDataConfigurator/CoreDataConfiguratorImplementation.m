@@ -94,6 +94,8 @@ static NSString *const kCoreDataConfiguratorReset1012  = @"com.myetherwallet.cor
         AccountModelObject *accountModelObject = [AccountModelObject MR_findFirstOrCreateByAttribute:NSStringFromSelector(@selector(uid)) withValue:keychainItem.uid inContext:rootSavingContext];
         accountModelObject.backedUp = @(keychainItem.backedUp);
         accountModelObject.name = @"Account";
+          accountModelObject.balanceMethod = (keychainItem.balanceMethod);
+          accountModelObject.currency = (keychainItem.currency);
         
         for (KeychainNetworkModel *keychainNetworkItem in keychainItem.networks) {
           NSPredicate *predicate = [NSPredicate predicateWithFormat:@"SELF.master.address = %@", keychainNetworkItem.address];

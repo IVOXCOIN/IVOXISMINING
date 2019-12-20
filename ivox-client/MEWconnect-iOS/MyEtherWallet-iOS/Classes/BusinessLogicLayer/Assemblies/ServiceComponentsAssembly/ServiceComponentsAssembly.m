@@ -167,6 +167,8 @@ static NSString *const kReachabilityURLString   = @"API.ReachabilityURLString";
                                                 with:[self.operationFactoriesAssembly tokensOperationFactory]];
                           [definition injectProperty:@selector(operationScheduler)
                                                 with:[self operationScheduler]];
+                          [definition injectProperty:@selector(accountsService)
+                                                with:[self accountsService]];
                         }];
 }
 

@@ -4,6 +4,9 @@ use_frameworks!
 inhibit_all_warnings!
 
 abstract_target 'MEWconnect' do
+
+  #Drawer
+  pod 'MaterialComponents/NavigationDrawer'
   
   # PayPal
   pod 'PayPal-iOS-SDK'

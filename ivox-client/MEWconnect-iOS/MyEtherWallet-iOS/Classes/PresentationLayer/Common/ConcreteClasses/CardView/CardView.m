@@ -21,6 +21,11 @@
 
 #import "UIScreen+ScreenSizeType.h"
 
+#import "AccountModelObject.h"
+#import "NSManagedObjectContext+MagicalRecord.h"
+#import "NSManagedObject+MagicalFinders.h"
+
+
 static CGFloat kCardViewSmallOffset             = 6.0;
 static CGFloat kCardViewEthereumTitleTopOffset  = 87.0;
 
@@ -416,6 +421,10 @@ CGFloat const kCardViewAspectRatio              = 216.0/343.0;;
   if ((_ethBalance && _ethToUsdPrice) || _network == BlockchainNetworkTypeRopsten) {
     NSString *finalString = nil;
     NSString *usdBalance = nil;
+      
+      NSManagedObjectContext *defaultContext = [NSManagedObjectContext MR_defaultContext];
+
+      AccountModelObject* accountModelObject = [AccountModelObject MR_findFirstByAttribute:NSStringFromSelector(@selector(active)) withValue:@YES inContext:defaultContext];
     
     if (_network == BlockchainNetworkTypeEthereum) {
       NSDecimalNumber *usd = [_ethBalance decimalNumberByMultiplyingBy:_ethToUsdPrice];
@@ -423,7 +432,7 @@ CGFloat const kCardViewAspectRatio              = 216.0/343.0;;
       NSNumberFormatter *ethFormatter = [NSNumberFormatter ethereumFormatterWithBalanceMethod:_balanceMethod];
       usdBalance = [usdFormatter stringFromNumber:usd];
       NSString *ethUsdPrice = [usdFormatter stringFromNumber:_ethToUsdPrice];
-      finalString = [NSString stringWithFormat:@"%@ USD @ %@/%@", usdBalance, ethUsdPrice, ethFormatter.currencySymbol];
+      finalString = [NSString stringWithFormat:@"%@ %@ @ %@/%@", usdBalance, accountModelObject.currency, ethUsdPrice, ethFormatter.currencySymbol];
     } else {
       finalString = NSLocalizedString(@"Test network", nil);
     }

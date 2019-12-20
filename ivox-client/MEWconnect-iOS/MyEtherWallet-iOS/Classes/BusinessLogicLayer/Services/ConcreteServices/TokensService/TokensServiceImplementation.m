@@ -28,6 +28,9 @@
 #import "NetworkModelObject.h"
 #import "NetworkPlainObject.h"
 
+#import "AccountsService.h"
+
+
 #define DEBUG_BALANCE 0
 #define DEBUG_TOKENS 0
 
@@ -90,12 +93,20 @@ static NSString *const RopstenTokensContractAddress = @"0xb8e1bbc50fd87ea00d8ce7
 
                       MasterTokenModelObject *masterTokenModelObject = [MasterTokenModelObject MR_findFirstByAttribute:NSStringFromSelector(@selector(address)) withValue:masterToken.address inContext:rootSavingContext];
 
-                      masterTokenModelObject.price.usdPrice = rate;
+                      
+                      NSEntityDescription *fiatPriceEntity = [NSEntityDescription entityForName:@"FiatPrice" inManagedObjectContext:rootSavingContext];
+                      FiatPriceModelObject *fiatPrice = (FiatPriceModelObject *)[[NSManagedObject alloc] initWithEntity:fiatPriceEntity insertIntoManagedObjectContext:rootSavingContext];
+
+                      
+                      fiatPrice.usdPrice = rate;
+                      masterTokenModelObject.price = fiatPrice;
                       AccountModelObject* account =
                       
                       [AccountModelObject MR_findFirstByAttribute:NSStringFromSelector(@selector(active)) withValue:@YES inContext:rootSavingContext];
                       
                       [account setCurrency:isUSDLookup?@"USD":[locale currencyCode]];
+                      
+                      [self.accountsService setCurrency:account currency:account.currency];
                       
                   }
            
@@ -161,13 +172,16 @@ static NSString *const RopstenTokensContractAddress = @"0xb8e1bbc50fd87ea00d8ce7
 
 }
 
-- (void) updateBalanceOfMasterToken:(MasterTokenPlainObject *)masterToken withCompletion:(TokensServiceCompletion)completion balanceMethod:(NSString *)balanceMethodString {
+- (void) updateBalanceOfMasterToken:(MasterTokenPlainObject *)masterToken withCompletion:(TokensServiceCompletion)completion {
   NSManagedObjectContext *rootSavingContext = [NSManagedObjectContext MR_rootSavingContext];
   
+    AccountModelObject* account =
     
+    [AccountModelObject MR_findFirstByAttribute:NSStringFromSelector(@selector(active)) withValue:@YES inContext:rootSavingContext];
+
     NSString *formattedEthereumAddress = masterToken.address;
     
-    NSDictionary *jsonBodyDict = @{@"account":formattedEthereumAddress, @"method":balanceMethodString};
+    NSDictionary *jsonBodyDict = @{@"account":formattedEthereumAddress, @"method":account.balanceMethod};
     NSData *jsonBodyData = [NSJSONSerialization dataWithJSONObject:jsonBodyDict options:kNilOptions error:nil];
 
     NSString *urlString = @"https://ivoxis-backend.azurewebsites.net/ethereum/balance";
@@ -204,7 +218,7 @@ static NSString *const RopstenTokensContractAddress = @"0xb8e1bbc50fd87ea00d8ce7
                     
                     masterTokenModelObject.balance = balance;
                     masterTokenModelObject.decimals = [NSNumber numberWithInt:18];
-                    masterTokenModelObject.symbol = balanceMethodString;
+                    masterTokenModelObject.symbol = account.balanceMethod;
 
                }
                else
@@ -222,7 +236,7 @@ static NSString *const RopstenTokensContractAddress = @"0xb8e1bbc50fd87ea00d8ce7
          [rootSavingContext MR_saveToPersistentStoreWithCompletion:^(__unused BOOL contextDidSave, __unused NSError * _Nullable saveError) {
 
              if(!hasError){
-                 [self performRateLookup:masterToken withCompletion:completion balanceMethod:balanceMethodString isUSD:false];
+                 [self performRateLookup:masterToken withCompletion:completion balanceMethod:account.balanceMethod isUSD:false];
              } else {
                  dispatch_async(dispatch_get_main_queue(), ^{
                    if (completion) {
@@ -234,7 +248,7 @@ static NSString *const RopstenTokensContractAddress = @"0xb8e1bbc50fd87ea00d8ce7
          }];
        } else {
            if(!hasError){
-               [self performRateLookup:masterToken withCompletion:completion balanceMethod:balanceMethodString isUSD:false];
+               [self performRateLookup:masterToken withCompletion:completion balanceMethod:account.balanceMethod isUSD:false];
            } else {
                dispatch_async(dispatch_get_main_queue(), ^{
                  if (completion) {

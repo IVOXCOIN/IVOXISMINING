@@ -278,6 +278,7 @@ static CGFloat const kHomeStretcyHeaderTitleBalanceTopMaxOffset         = 26.0;
     [self.contentView addSubview:buyEtherButton];
     [self.contentView.rightAnchor constraintEqualToAnchor:buyEtherButton.rightAnchor constant:kHomeStretchyHeaderDefaultOffset].active = YES;
     _buyEtherButton = buyEtherButton;
+    _buyEtherButton.enabled = false;
   }
 #if BETA
   {

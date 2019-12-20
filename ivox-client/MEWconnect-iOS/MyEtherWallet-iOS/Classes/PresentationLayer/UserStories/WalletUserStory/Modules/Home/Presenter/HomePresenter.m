@@ -21,6 +21,12 @@
 #import "ContextPasswordModuleOutput.h"
 #import "RestoreSeedModuleOutput.h"
 
+#import "AccountModelObject.h"
+#import "NSManagedObjectContext+MagicalRecord.h"
+#import "NSManagedObject+MagicalFinders.h"
+
+
+
 typedef NS_OPTIONS(short, HomeViewPresenterStatus) {
   HomeViewPresenterStatusUnknown              =   0 << 0,
   HomeViewPresenterStatusInternetConnection   =   1 << 0,
@@ -46,9 +52,8 @@ typedef NS_OPTIONS(short, HomeViewPresenterStatus) {
   [self.interactor refreshMasterToken];
   [self.interactor configurate];
   MasterTokenPlainObject *masterToken = [self.interactor obtainMasterToken];
-  NSString *networkTitle = [self.interactor getBalanceMethod];
   
-  [self.view updateWithMasterToken:masterToken networkTitle: networkTitle];
+  [self.view updateWithMasterToken:masterToken];
 }
 
 - (void) configureBackupStatus {
@@ -57,9 +62,9 @@ typedef NS_OPTIONS(short, HomeViewPresenterStatus) {
 - (void) configureAfterChangingNetwork {
   [self.interactor refreshMasterToken];
   MasterTokenPlainObject *masterToken = [self.interactor obtainMasterToken];
-  NSString *networkTitle = [self.interactor getBalanceMethod];
   
-  [self.view updateWithMasterToken:masterToken networkTitle: networkTitle];
+    
+  [self.view updateWithMasterToken:masterToken];
 
   NSUInteger count = [self.interactor obtainNumberOfTokens];
   NSDecimalNumber *tokensPrice = [self.interactor obtainTotalPriceOfTokens];
@@ -80,10 +85,8 @@ typedef NS_OPTIONS(short, HomeViewPresenterStatus) {
   NSDecimalNumber *tokensPrice = [self.interactor obtainTotalPriceOfTokens];
   [self.view setupInitialStateWithNumberOfTokens:count totalPrice:tokensPrice];
   MasterTokenPlainObject *masterToken = [self.interactor obtainMasterToken];
-
-    NSString *networkTitle = [self.interactor getBalanceMethod];
     
-    [self.view updateWithMasterToken:masterToken networkTitle: networkTitle];
+    [self.view updateWithMasterToken:masterToken];
   
   [self _refreshViewStatusAnimated:NO];
   if (_balancesRefreshing) {
@@ -96,9 +99,9 @@ typedef NS_OPTIONS(short, HomeViewPresenterStatus) {
   [self _refreshViewStatusAnimated:NO];
   [self.interactor refreshMasterToken];
   MasterTokenPlainObject *masterToken = [self.interactor obtainMasterToken];
-  NSString *networkTitle = [self.interactor getBalanceMethod];
+
   
-  [self.view updateWithMasterToken:masterToken networkTitle: networkTitle];
+  [self.view updateWithMasterToken:masterToken];
 }
 
 - (void) didTriggerViewDidDisappear {
@@ -113,6 +116,12 @@ typedef NS_OPTIONS(short, HomeViewPresenterStatus) {
   [self.interactor disconnect];
   [self _refreshViewStatusAnimated:YES];
 }
+
+- (void) setBuyEtherEnabled:(BOOL)enabled;
+{
+    [self.view setBuyEtherEnabled:enabled];
+}
+
 
 - (void) didProcessCacheTransaction:(CacheTransactionBatch *)transactionBatch {
   [self.view updateWithTransactionBatch:transactionBatch];
@@ -196,7 +205,9 @@ typedef NS_OPTIONS(short, HomeViewPresenterStatus) {
 
 - (void) didUpdateEthereumBalance {
   MasterTokenPlainObject *masterToken = [self.interactor obtainMasterToken];
-    [self.view updateBalanceWithMasterToken:masterToken balanceMethod:[self.interactor getBalanceMethod]];
+    
+
+    [self.view updateBalanceWithMasterToken:masterToken];
 }
 
 - (void) mewConnectionStatusChanged {
@@ -275,6 +286,7 @@ typedef NS_OPTIONS(short, HomeViewPresenterStatus) {
   [self.view updateStatusWithInternetConnection:(self.connectionStatus & HomeViewPresenterStatusInternetConnection) == HomeViewPresenterStatusInternetConnection
                            mewConnectConnection:(self.connectionStatus & HomeViewPresenterStatusMEWconnectConnection) == HomeViewPresenterStatusMEWconnectConnection
                                        animated:animated];
+    
 }
 
 - (void) _closePresentedSignModulesIfNeededWithCompletion:(void(^)(void))completion {

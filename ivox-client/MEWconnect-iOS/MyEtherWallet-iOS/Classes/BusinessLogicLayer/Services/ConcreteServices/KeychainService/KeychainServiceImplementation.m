@@ -56,8 +56,12 @@
         [networkModels addObject:networkModel];
       }
       
+        NSString *balanceMethod = item[kKeychainServiceBalanceMethodField];
+        
+        NSString *currency = item[kKeychainServiceCurrencyField];
+        
       BOOL backedUp = [item[kKeychainServiceBackupField] boolValue];
-      KeychainAccountModel *accountModel = [KeychainAccountModel itemWithUID:uid backedUp:backedUp networks:[networkModels copy]];
+        KeychainAccountModel *accountModel = [KeychainAccountModel itemWithUID:uid backedUp:backedUp balanceMethod:balanceMethod currency:currency networks:[networkModels copy]];
       [itemModels addObject:accountModel];
     }
   }

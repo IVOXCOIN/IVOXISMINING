@@ -14,10 +14,12 @@
 
 @class HomeTableViewAnimator;
 @class HomeDataDisplayManager;
+@class MDCBottomDrawerViewController;
 
 @interface HomeViewController : UIViewController <HomeViewInput>
 @property (nonatomic, strong) id<HomeViewOutput> output;
 @property (nonatomic, strong) HomeTableViewAnimator *tableViewAnimator;
 @property (nonatomic, strong) HomeDataDisplayManager *dataDisplayManager;
 @property (nonatomic, strong) UIViewPropertyAnimator *animator;
+@property (nonatomic, strong) MDCBottomDrawerViewController *bottomDrawerViewController;
 @end

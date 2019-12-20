@@ -35,6 +35,8 @@
 		0AE3DBF523A48D4900C30078 /* BalanceModelObject.m in Sources */ = {isa = PBXBuildFile; fileRef = 0AE3DBF323A48D4900C30078 /* BalanceModelObject.m */; };
 		0AE3DBFA23A4940100C30078 /* IvoxTokenPlainObject.m in Sources */ = {isa = PBXBuildFile; fileRef = 0AE3DBF723A4940000C30078 /* IvoxTokenPlainObject.m */; };
 		0AE3DBFB23A4940100C30078 /* BalancePlainObject.m in Sources */ = {isa = PBXBuildFile; fileRef = 0AE3DBF923A4940100C30078 /* BalancePlainObject.m */; };
+		0AE7049223AC6547004B6E77 /* DrawerContentController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AE7049123AC6547004B6E77 /* DrawerContentController.swift */; };
+		0AE7049423AC6C25004B6E77 /* DrawerHeaderController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AE7049323AC6C25004B6E77 /* DrawerHeaderController.swift */; };
 		0EAB1B3BAE104F2ED13AFBDA /* BackupDonePresenter.m in Sources */ = {isa = PBXBuildFile; fileRef = B09B136F402D65EFE52F21A2 /* BackupDonePresenter.m */; };
 		10DC5C17C1A92CD39162B5A9 /* PasswordRouter.m in Sources */ = {isa = PBXBuildFile; fileRef = 515D2B05CC2A2949F2A326C1 /* PasswordRouter.m */; };
 		1188B19E148E0E631C68A394 /* BuyEtherHistoryAssembly.m in Sources */ = {isa = PBXBuildFile; fileRef = 09DE127DE4DB0B484F57897B /* BuyEtherHistoryAssembly.m */; };
@@ -989,6 +991,8 @@
 		0AE3DBF723A4940000C30078 /* IvoxTokenPlainObject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IvoxTokenPlainObject.m; sourceTree = "<group>"; };
 		0AE3DBF823A4940100C30078 /* BalancePlainObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BalancePlainObject.h; sourceTree = "<group>"; };
 		0AE3DBF923A4940100C30078 /* BalancePlainObject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BalancePlainObject.m; sourceTree = "<group>"; };
+		0AE7049123AC6547004B6E77 /* DrawerContentController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DrawerContentController.swift; sourceTree = "<group>"; };
+		0AE7049323AC6C25004B6E77 /* DrawerHeaderController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DrawerHeaderController.swift; sourceTree = "<group>"; };
 		0C851C669DBD4B29FCB3E7F5 /* BuyEtherWebInteractor.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = BuyEtherWebInteractor.h; sourceTree = "<group>"; };
 		0C896714DB459DBA50487E98 /* HomeAssemblyTests.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = HomeAssemblyTests.m; sourceTree = "<group>"; };
 		0D09DB75E3DD72CC287CED9D /* StartPresenterTests.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = StartPresenterTests.m; sourceTree = "<group>"; };
@@ -2463,6 +2467,15 @@
 				5627B6FC210B5272009787F7 /* AboutPresenterTests.m */,
 			);
 			path = Presenter;
+			sourceTree = "<group>";
+		};
+		0AE7048E23AC6405004B6E77 /* NavigationDrawer */ = {
+			isa = PBXGroup;
+			children = (
+				0AE7049123AC6547004B6E77 /* DrawerContentController.swift */,
+				0AE7049323AC6C25004B6E77 /* DrawerHeaderController.swift */,
+			);
+			path = NavigationDrawer;
 			sourceTree = "<group>";
 		};
 		0B1397CF987CDD4477613797 /* ConfirmedTransaction */ = {
@@ -4630,6 +4643,7 @@
 		5668E4E12083D9430070A402 /* UserStories */ = {
 			isa = PBXGroup;
 			children = (
+				0AE7048E23AC6405004B6E77 /* NavigationDrawer */,
 				56E14BD520EA836000C41F83 /* BuyEtherStory */,
 				56A4EAA520B8BBF60042A358 /* SplashPasswordUserStory */,
 				560D772E20B4F0A0009A3D6D /* BackupUserStory */,
@@ -10307,6 +10321,7 @@
 				"${PODS_ROOT}/GoogleWebRTC/Frameworks/frameworks/WebRTC.framework",
 				"${BUILT_PRODUCTS_DIR}/M13Checkbox/M13Checkbox.framework",
 				"${BUILT_PRODUCTS_DIR}/MagicalRecord/MagicalRecord.framework",
+				"${BUILT_PRODUCTS_DIR}/MaterialComponents/MaterialComponents.framework",
 				"${BUILT_PRODUCTS_DIR}/MnemonicsView/MnemonicsView.framework",
 				"${BUILT_PRODUCTS_DIR}/Nimbus/Nimbus.framework",
 				"${BUILT_PRODUCTS_DIR}/PromiseKit/PromiseKit.framework",
@@ -10350,6 +10365,7 @@
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/WebRTC.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/M13Checkbox.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/MagicalRecord.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/MaterialComponents.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/MnemonicsView.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Nimbus.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/PromiseKit.framework",
@@ -10438,6 +10454,7 @@
 				"${PODS_ROOT}/GoogleWebRTC/Frameworks/frameworks/WebRTC.framework",
 				"${BUILT_PRODUCTS_DIR}/M13Checkbox/M13Checkbox.framework",
 				"${BUILT_PRODUCTS_DIR}/MagicalRecord/MagicalRecord.framework",
+				"${BUILT_PRODUCTS_DIR}/MaterialComponents/MaterialComponents.framework",
 				"${BUILT_PRODUCTS_DIR}/MnemonicsView/MnemonicsView.framework",
 				"${BUILT_PRODUCTS_DIR}/Nimbus/Nimbus.framework",
 				"${BUILT_PRODUCTS_DIR}/PromiseKit/PromiseKit.framework",
@@ -10481,6 +10498,7 @@
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/WebRTC.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/M13Checkbox.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/MagicalRecord.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/MaterialComponents.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/MnemonicsView.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Nimbus.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/PromiseKit.framework",
@@ -11203,6 +11221,7 @@
 				6A58F7B29733D102F927B25F /* SettingsViewController.m in Sources */,
 				6AD10E186DC461DCE0E19B5F /* SettingsPresenter.m in Sources */,
 				52A492997EC1ED6D0217C3EC /* SettingsInteractor.m in Sources */,
+				0AE7049223AC6547004B6E77 /* DrawerContentController.swift in Sources */,
 				56FB393F20B1A686007776C8 /* CompoundOperationDebugDescriptionFormatter.m in Sources */,
 				EE773E901ADEDD4ECF600760 /* SettingsRouter.m in Sources */,
 				5643879A20A492570017790F /* String+RandSeed.swift in Sources */,
@@ -11278,6 +11297,7 @@
 				A39D3E3D0B23DA6C0306F774 /* BackupWordsRouter.m in Sources */,
 				563CF30120EFAD8A005467AE /* BuyEtherHistoryEmptyTableViewCell.m in Sources */,
 				56F3EF672163F95E00C40804 /* MEWconnectServiceStateMachine.m in Sources */,
+				0AE7049423AC6C25004B6E77 /* DrawerHeaderController.swift in Sources */,
 				56896B9F221B6B0B00B78FF6 /* RestoreOptionsEmptyTableViewCellObject.m in Sources */,
 				30FAFE2FAB76ABF95C9DF392 /* BackupConfirmationAssembly.m in Sources */,
 				CCFC0575BB50C7E834628489 /* BackupConfirmationViewController.m in Sources */,
@@ -11483,6 +11503,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
+				SWIFT_VERSION = 4.0;
 				VALIDATE_PRODUCT = YES;
 			};
 			name = AppStore;
@@ -11683,6 +11704,7 @@
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
+				SWIFT_VERSION = 4.0;
 			};
 			name = Debug;
 		};
@@ -11735,6 +11757,7 @@
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
 				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_VERSION = 4.0;
 				VALIDATE_PRODUCT = YES;
 			};
 			name = Release;

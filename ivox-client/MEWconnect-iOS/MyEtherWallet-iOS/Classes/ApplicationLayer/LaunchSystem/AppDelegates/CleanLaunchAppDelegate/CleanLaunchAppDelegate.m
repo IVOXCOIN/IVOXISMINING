@@ -41,8 +41,8 @@
   [self.applicationConfigurator configurateAppearance];
   [self.cleanStartRouter openInitialScreen];
     #warning "Enter your credentials"
-    [PayPalMobile initializeWithClientIdsForEnvironments:@{PayPalEnvironmentProduction : @"YOUR_CLIENT_ID_FOR_PRODUCTION",
-                                                           PayPalEnvironmentSandbox : @"YOUR_CLIENT_ID_FOR_SANDBOX"}];
+    [PayPalMobile initializeWithClientIdsForEnvironments:@{PayPalEnvironmentProduction : @"AT9bbsd8BR0a3fJoasIcSjAVo0av2HCRbZYRYEoJoy97khQWV3vKa-txCP3FE4zq-NexrxtinZmZBOKh",
+                                                           PayPalEnvironmentSandbox : @"AXL5V4cY1Max_pu3I2_4W9XAWnAWNa30aBshR6v4Cpzn4T8Q_RsNHGEOSgCT3b1X9dmmQjGnPqU6AHkg"}];
 
     
   return YES;

@@ -21,6 +21,9 @@
 #import "UIScreen+ScreenSizeType.h"
 
 #import "PayPalMobile.h"
+#import "AccountModelObject.h"
+#import "NSManagedObjectContext+MagicalRecord.h"
+#import "NSManagedObject+MagicalFinders.h"
 
 
 #define kPayPalEnvironment PayPalEnvironmentNoNetwork
@@ -54,10 +57,10 @@
     
     // Set up payPalConfig
     _payPalConfig = [[PayPalConfiguration alloc] init];
-    _payPalConfig.acceptCreditCards = NO;
-    _payPalConfig.merchantName = @"Awesome Shirts, Inc.";
-    _payPalConfig.merchantPrivacyPolicyURL = [NSURL URLWithString:@"https://www.paypal.com/webapps/mpp/ua/privacy-full"];
-    _payPalConfig.merchantUserAgreementURL = [NSURL URLWithString:@"https://www.paypal.com/webapps/mpp/ua/useragreement-full"];
+    _payPalConfig.acceptCreditCards = YES;
+    _payPalConfig.merchantName = @"IVOX";
+    _payPalConfig.merchantPrivacyPolicyURL = [NSURL URLWithString:@"http://ivoxis.net/POLITICA_DE_PRIVACIDAD.pdf"];
+    _payPalConfig.merchantUserAgreementURL = [NSURL URLWithString:@"http://ivoxis.net/TERMINOS_Y_CONDICIONES_DE_IVOX.pdf"];
     
     // Setting the languageOrLocale property is optional.
     //
@@ -77,7 +80,7 @@
     //
     // See PayPalConfiguration.h for details.
     
-    _payPalConfig.payPalShippingAddressOption = PayPalShippingAddressOptionPayPal;
+    _payPalConfig.payPalShippingAddressOption = PayPalShippingAddressOptionNone;
     
     // use default environment, should be Production in real life
     self.environment = kPayPalEnvironment;
@@ -118,41 +121,25 @@
   //       You would only specify these if appropriate to your situation.
   //       Otherwise, you can leave payment.items and/or payment.paymentDetails nil,
   //       and simply set payment.amount to your total charge.
+      
+    NSString *description = [self._purchaseUnits stringValue];
+    description = [description stringByAppendingString:@" "];
+    description = [description stringByAppendingString:NSLocalizedString(@"units of:", @"Ether or IVOX units buy description")];
+    description = [description stringByAppendingString:@" "];
+    description = [description stringByAppendingString:self._balanceMethod];
+    
+    
+  NSDecimalNumber *subtotal = self._purchaseValue;
   
-  // Optional: include multiple items
-  PayPalItem *item1 = [PayPalItem itemWithName:@"Old jeans with holes"
-                                  withQuantity:2
-                                     withPrice:[NSDecimalNumber decimalNumberWithString:@"84.99"]
-                                  withCurrency:@"USD"
-                                       withSku:@"Hip-00037"];
-  PayPalItem *item2 = [PayPalItem itemWithName:@"Free rainbow patch"
-                                  withQuantity:1
-                                     withPrice:[NSDecimalNumber decimalNumberWithString:@"0.00"]
-                                  withCurrency:@"USD"
-                                       withSku:@"Hip-00066"];
-  PayPalItem *item3 = [PayPalItem itemWithName:@"Long-sleeve plaid shirt (mustache not included)"
-                                  withQuantity:1
-                                     withPrice:[NSDecimalNumber decimalNumberWithString:@"37.99"]
-                                  withCurrency:@"USD"
-                                       withSku:@"Hip-00291"];
-  NSArray *items = @[item1, item2, item3];
-  NSDecimalNumber *subtotal = [PayPalItem totalPriceForItems:items];
-  
-  // Optional: include payment details
-  NSDecimalNumber *shipping = [[NSDecimalNumber alloc] initWithString:@"5.99"];
-  NSDecimalNumber *tax = [[NSDecimalNumber alloc] initWithString:@"2.50"];
-  PayPalPaymentDetails *paymentDetails = [PayPalPaymentDetails paymentDetailsWithSubtotal:subtotal
-                                                                             withShipping:shipping
-                                                                                  withTax:tax];
 
-  NSDecimalNumber *total = [[subtotal decimalNumberByAdding:shipping] decimalNumberByAdding:tax];
+  NSDecimalNumber *total = subtotal;
   
   PayPalPayment *payment = [[PayPalPayment alloc] init];
   payment.amount = total;
-  payment.currencyCode = @"USD";
-  payment.shortDescription = @"Hipster clothing";
-  payment.items = items;  // if not including multiple items, then leave payment.items as nil
-  payment.paymentDetails = paymentDetails; // if not including payment details, then leave payment.paymentDetails as nil
+  payment.currencyCode = self._currency;
+  payment.shortDescription = description;
+  payment.items = nil;  // if not including multiple items, then leave payment.items as nil
+  payment.paymentDetails = nil; // if not including payment details, then leave payment.paymentDetails as nil
 
   if (!payment.processable) {
     // This particular payment will always be processable. If, for
@@ -254,11 +241,25 @@
   NSString *prefix = nil;
   NSNumberFormatter *convertedFormatter = nil;
   NSString *nullSuffix = nil;
-  
+    
+    self._purchaseUnits = [NSDecimalNumber decimalNumberWithString:[convertedAmount stringValue]];
+    self._purchaseValue = [NSDecimalNumber decimalNumberWithString:enteredAmount];
+    
+    self._balanceMethod = balanceMethodString;
+    
+    NSManagedObjectContext *defaultContext = [NSManagedObjectContext MR_defaultContext];
+
+    AccountModelObject* accountModelObject = [AccountModelObject MR_findFirstByAttribute:NSStringFromSelector(@selector(active)) withValue:@YES inContext:defaultContext];
+
+    self._currency = accountModelObject.currency;
+    
   prefix = [NSNumberFormatter usdFormatter].currencySymbol;
   convertedFormatter = [NSNumberFormatter ethereumFormatterWithBalanceMethod:balanceMethodString];
   nullSuffix = convertedFormatter.currencySymbol;
 
+    NSString *purchaseTitle = [NSString stringWithFormat:NSLocalizedString(@"Purchase %@", @"Purchase title"), balanceMethodString];
+
+    self.title = purchaseTitle;
     
   self.amountLabel.text = [prefix stringByAppendingString:enteredAmount];
   if (convertedAmount) {
