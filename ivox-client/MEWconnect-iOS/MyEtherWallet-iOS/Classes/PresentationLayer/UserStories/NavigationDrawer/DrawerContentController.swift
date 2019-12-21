@@ -11,6 +11,20 @@ import UIKit
 
 @objc class DrawerContentController: UIViewController {
 
+   private var onInfo: (() -> Void)?
+   private var onBuy: (() -> Void)?
+
+    @objc public func onInfoClick(_ function: @escaping @autoclosure () -> Void) {
+        // Store the function
+        onInfo = function
+    }
+
+    @objc public func onBuyClick(_ function: @escaping @autoclosure () -> Void) {
+        // Store the function
+        onBuy = function
+    }
+
+        
    let collectionView: UICollectionView = {
        let layout = UICollectionViewFlowLayout()
        layout.minimumLineSpacing = 0
@@ -43,7 +57,7 @@ import UIKit
 }
 
 extension DrawerContentController: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
-   
+    
    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
        return 4
    }
@@ -62,20 +76,44 @@ extension DrawerContentController: UICollectionViewDelegate, UICollectionViewDat
        switch index {
        case 0:
            cell.cellIcon.image = UIImage(named: "mail_black_24dp")
-           cell.cellName.text = "Inbox"
+           cell.cellName.text = "Buy"
        case 1:
            cell.cellIcon.image = UIImage(named: "send_black_24dp")
-           cell.cellName.text = "Outbox"
+           cell.cellName.text = "Tokens"
        case 2:
            cell.cellIcon.image = UIImage(named: "favorite_black_24dp")
-           cell.cellName.text = "Favorites"
+           cell.cellName.text = "Ether"
        case 3:
            cell.cellIcon.image = UIImage(named: "delete_black_24dp")
-           cell.cellName.text = "Trash"
+           cell.cellName.text = "Info"
        default:
            break
        }
    }
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath){
+        print(indexPath)
+        switch(indexPath.row){
+        case 0:
+            onBuy?();
+            break;
+            
+        case 1:
+            break;
+            
+        case 2:
+            break;
+            
+        case 3:
+           onInfo?();
+           break;
+            
+        default:
+            break;
+        }
+    }
+
+
 }
 
 class DrawerCollectionViewCell: UICollectionViewCell {

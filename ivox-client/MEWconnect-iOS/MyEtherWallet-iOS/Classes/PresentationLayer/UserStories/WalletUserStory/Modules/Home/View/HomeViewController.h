@@ -15,6 +15,8 @@
 @class HomeTableViewAnimator;
 @class HomeDataDisplayManager;
 @class MDCBottomDrawerViewController;
+@class DrawerContentController;
+
 
 @interface HomeViewController : UIViewController <HomeViewInput>
 @property (nonatomic, strong) id<HomeViewOutput> output;
@@ -22,4 +24,6 @@
 @property (nonatomic, strong) HomeDataDisplayManager *dataDisplayManager;
 @property (nonatomic, strong) UIViewPropertyAnimator *animator;
 @property (nonatomic, strong) MDCBottomDrawerViewController *bottomDrawerViewController;
+@property (nonatomic, strong) UIBarButtonItem *navigationButton;
+
 @end

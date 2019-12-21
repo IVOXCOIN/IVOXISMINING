@@ -44,7 +44,7 @@
 #import "NSManagedObjectContext+MagicalRecord.h"
 #import "NSManagedObject+MagicalFinders.h"
 
-#import "MyEtherWallet-iOS-Bridging-Header.h"
+#import "MyEtherWallet_iOS-Swift.h"
 
 static CGFloat kHomeViewControllerBottomDefaultOffset = 38.0;
 
@@ -71,7 +71,42 @@ static CGFloat kHomeViewControllerBottomDefaultOffset = 38.0;
 
 - (void)viewDidLoad {
 	[super viewDidLoad];
+    self.navigationButton = [[UIBarButtonItem alloc] initWithImage:[UIImage                                                     imageNamed:@"hamburger"]
+                                                       style:UIBarButtonItemStylePlain
+                                                       target:self
+                                                       action:@selector(menuAction:)];
 
+       CGFloat height = 75;
+       
+       CGFloat statusBarHeight = 0;
+       if (@available(iOS 13.0, *)) {
+           statusBarHeight = self.view.window.windowScene.statusBarManager.statusBarFrame.size.height ? self.view.window.windowScene.statusBarManager.statusBarFrame.size.height: 0;
+       } else {
+           statusBarHeight = UIApplication.sharedApplication.statusBarFrame.size.height;
+       }
+
+    
+      // UINavigationBar *navBar = [[UINavigationBar alloc] initWithFrame:CGRectMake(0, statusBarHeight, UIScreen.mainScreen.bounds.size.width, height)];
+       UINavigationBar *navBar = [[UINavigationBar alloc] init];
+        [self.view addSubview:navBar];
+
+    
+        [NSLayoutConstraint activateConstraints:@[
+        [navBar.leftAnchor constraintEqualToAnchor:self.view.leftAnchor],
+        [navBar.rightAnchor constraintEqualToAnchor:self.view.rightAnchor],
+        [navBar.topAnchor constraintEqualToAnchor:self.view.safeAreaLayoutGuide.topAnchor]]];
+    
+        navBar.translatesAutoresizingMaskIntoConstraints = false;
+    
+       navBar.backgroundColor = UIColor.whiteColor;
+       navBar.delegate = self;
+       
+       UINavigationItem *navItem = [[UINavigationItem alloc] init];
+       navItem.title = @"Home";
+       navItem.leftBarButtonItem = self.navigationButton;
+       
+       navBar.items = @[navItem];
+    
 	[self.output didTriggerViewReadyEvent];
 }
 
@@ -79,14 +114,16 @@ static CGFloat kHomeViewControllerBottomDefaultOffset = 38.0;
   [super viewWillAppear:animated];
     
     self.bottomDrawerViewController = [[MDCBottomDrawerViewController alloc] init];
-    self.bottomDrawerViewController.contentViewController =  [UIViewController new];
-    self.bottomDrawerViewController.headerViewController = [UIViewController new];
     
-  [self.output didTriggerViewWillAppear];
-  self.tableViewAnimator.animated = YES;
+
+    [self.output didTriggerViewWillAppear];
+
+    self.tableViewAnimator.animated = YES;
   
-  [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardWillShow:) name:UIKeyboardWillShowNotification object:nil];
-  [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardWillHide:) name:UIKeyboardWillHideNotification object:nil];
+
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardWillShow:) name:UIKeyboardWillShowNotification object:nil];
+  
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardWillHide:) name:UIKeyboardWillHideNotification object:nil];
 }
 
 - (void)viewDidAppear:(BOOL)animated {
@@ -129,8 +166,6 @@ static CGFloat kHomeViewControllerBottomDefaultOffset = 38.0;
 - (void) setBuyEtherEnabled:(BOOL)enabled{
     self.headerView.buyEtherButton.enabled = enabled? YES : NO;
     self.headerView.buyEtherButton.userInteractionEnabled = enabled?YES:NO;
-
-    [self presentViewController:self.bottomDrawerViewController animated:YES completion:nil];
 }
 
 - (void) setupInitialStateWithNumberOfTokens:(NSUInteger)tokensCount totalPrice:(NSDecimalNumber *)totalPrice {
@@ -505,6 +540,39 @@ static CGFloat kHomeViewControllerBottomDefaultOffset = 38.0;
 
 - (IBAction) disconnectAction:(__unused id)sender {
   [self.output disconnectAction];
+}
+- (IBAction) menuAction:(__unused id)sender {
+    DrawerContentController *contentViewController = [DrawerContentController new];
+    DrawerHeaderController *headerViewController = [DrawerHeaderController new];
+    self.bottomDrawerViewController.contentViewController =  contentViewController;
+    self.bottomDrawerViewController.headerViewController = headerViewController;
+    
+    contentViewController.preferredContentSize = CGSizeMake(contentViewController.preferredContentSize.width, 240);
+
+    headerViewController.preferredContentSize = CGSizeMake(contentViewController.preferredContentSize.width, 90);
+    
+    [contentViewController onInfoClick:^(){
+        
+        dispatch_async(dispatch_get_main_queue(), ^ {
+            [self.presentedViewController dismissViewControllerAnimated:YES completion:^(){
+                [self infoAction:nil];
+            }];
+
+        });
+    }];
+    
+    [contentViewController onBuyClick:^(){
+        
+        dispatch_async(dispatch_get_main_queue(), ^ {
+            [self.presentedViewController dismissViewControllerAnimated:YES completion:^(){
+                [self buyEtherAction:nil];
+            }];
+
+        });
+    }];
+
+    
+    [self presentViewController:self.bottomDrawerViewController animated:YES completion:nil];
 }
 
 - (IBAction) infoAction:(__unused id)sender {
