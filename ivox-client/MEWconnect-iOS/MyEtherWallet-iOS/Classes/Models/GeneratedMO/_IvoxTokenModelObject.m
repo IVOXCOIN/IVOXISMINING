@@ -54,6 +54,8 @@
 
 @dynamic wallet;
 
+@dynamic fromNetwork;
+
 @end
 
 @implementation IvoxTokenModelObjectAttributes 
@@ -89,6 +91,12 @@
 }
 + (NSString *)wallet {
 	return @"wallet";
+}
+@end
+
+@implementation IvoxTokenModelObjectRelationships 
++ (NSString *)fromNetwork {
+	return @"fromNetwork";
 }
 @end
 

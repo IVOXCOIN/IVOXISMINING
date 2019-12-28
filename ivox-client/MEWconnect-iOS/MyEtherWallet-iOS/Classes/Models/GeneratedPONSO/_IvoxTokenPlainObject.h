@@ -7,6 +7,8 @@
 
 @import Foundation;
 
+@class NetworkPlainObject;
+
 @interface _IvoxTokenPlainObject : NSObject <NSCoding, NSCopying>
 
 @property (nonatomic, copy, readwrite) NSString *currency;
@@ -20,5 +22,7 @@
 @property (nonatomic, copy, readwrite) NSString *status;
 @property (nonatomic, copy, readwrite) NSString *value;
 @property (nonatomic, copy, readwrite) NSString *wallet;
+
+@property (nonatomic, copy, readwrite) NetworkPlainObject *fromNetwork;
 
 @end

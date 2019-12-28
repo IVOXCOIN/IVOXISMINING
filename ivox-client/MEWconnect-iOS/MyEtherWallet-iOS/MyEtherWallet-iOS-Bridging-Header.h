@@ -13,3 +13,5 @@
 
 #import "MasterTokenPlainObject.h"
 #import "AccountPlainObject.h"
+
+#import "TokenHeadlineTableViewCell.h"

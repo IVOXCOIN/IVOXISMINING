@@ -26,6 +26,19 @@
 		0300F8A0DC179B5B8E58E3EC /* ForgotPasswordAssembly.m in Sources */ = {isa = PBXBuildFile; fileRef = 9AD5E93E2F918844127F0D5B /* ForgotPasswordAssembly.m */; };
 		0530718878D5DD21A54FDF89 /* RestoreOptionsInteractor.m in Sources */ = {isa = PBXBuildFile; fileRef = C3CF270EFCBD491B804E5192 /* RestoreOptionsInteractor.m */; };
 		0A4DA5A913C4B14DD728715E /* SettingsAssembly.m in Sources */ = {isa = PBXBuildFile; fileRef = 2DC186D6BEC0F27C6062DB73 /* SettingsAssembly.m */; };
+		0A7A331123B5B40F00F835FC /* TokenHeadlineTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A7A331023B5B40E00F835FC /* TokenHeadlineTableViewCell.m */; };
+		0A7A331423B70EFE00F835FC /* _EtherTokenPlainObject.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A7A331323B70EFE00F835FC /* _EtherTokenPlainObject.m */; };
+		0A7A331723B70F0F00F835FC /* _EtherTokenModelObject.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A7A331623B70F0E00F835FC /* _EtherTokenModelObject.m */; };
+		0A7A331A23B70F2100F835FC /* EtherTokenModelObject.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A7A331823B70F2100F835FC /* EtherTokenModelObject.m */; };
+		0A7A331D23B711D400F835FC /* EtherTokenPlainObject.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A7A331B23B711D300F835FC /* EtherTokenPlainObject.m */; };
+		0AC6EBD423B1A0D400320D7A /* GenericToken.m in Sources */ = {isa = PBXBuildFile; fileRef = 0AC6EBD323B1A0D300320D7A /* GenericToken.m */; };
+		0AC6EBD723B1A67400320D7A /* HeadlineTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 0AC6EBD623B1A67400320D7A /* HeadlineTableViewCell.m */; };
+		0AC6EBDC23B5734F00320D7A /* SingleTokenPopOverViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AC6EBDB23B5734F00320D7A /* SingleTokenPopOverViewController.swift */; };
+		0ACA4F3D23AEED4700DEC56A /* TokensAssembly.m in Sources */ = {isa = PBXBuildFile; fileRef = 0ACA4F2A23AEED4600DEC56A /* TokensAssembly.m */; };
+		0ACA4F3E23AEED4700DEC56A /* TokensPresenter.m in Sources */ = {isa = PBXBuildFile; fileRef = 0ACA4F2D23AEED4600DEC56A /* TokensPresenter.m */; };
+		0ACA4F3F23AEED4700DEC56A /* TokensViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0ACA4F3123AEED4600DEC56A /* TokensViewController.m */; };
+		0ACA4F4023AEED4700DEC56A /* TokensInteractor.m in Sources */ = {isa = PBXBuildFile; fileRef = 0ACA4F3823AEED4700DEC56A /* TokensInteractor.m */; };
+		0ACA4F4123AEED4700DEC56A /* TokensRouter.m in Sources */ = {isa = PBXBuildFile; fileRef = 0ACA4F3A23AEED4700DEC56A /* TokensRouter.m */; };
 		0AE3DBD823A1E5A900C30078 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 0AE3DBD623A1E5A900C30078 /* Localizable.strings */; };
 		0AE3DBE623A48C2900C30078 /* _IvoxTokenModelObject.m in Sources */ = {isa = PBXBuildFile; fileRef = 0AE3DBE223A48C2200C30078 /* _IvoxTokenModelObject.m */; };
 		0AE3DBE723A48C2900C30078 /* _BalanceModelObject.m in Sources */ = {isa = PBXBuildFile; fileRef = 0AE3DBE423A48C2300C30078 /* _BalanceModelObject.m */; };
@@ -972,6 +985,37 @@
 		09EB7C98CE8534C5D01E0A3B /* BuyEtherWebPresenterTests.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = BuyEtherWebPresenterTests.m; sourceTree = "<group>"; };
 		09F4BDD96C0A3695772EB465 /* ForgotPasswordViewInput.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = ForgotPasswordViewInput.h; sourceTree = "<group>"; };
 		0A49C491964372403C73647A /* RestorePrepareInteractorInput.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = RestorePrepareInteractorInput.h; sourceTree = "<group>"; };
+		0A7A330F23B5B40E00F835FC /* TokenHeadlineTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TokenHeadlineTableViewCell.h; sourceTree = "<group>"; };
+		0A7A331023B5B40E00F835FC /* TokenHeadlineTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TokenHeadlineTableViewCell.m; sourceTree = "<group>"; };
+		0A7A331223B70EFD00F835FC /* _EtherTokenPlainObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = _EtherTokenPlainObject.h; sourceTree = "<group>"; };
+		0A7A331323B70EFE00F835FC /* _EtherTokenPlainObject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = _EtherTokenPlainObject.m; sourceTree = "<group>"; };
+		0A7A331523B70F0E00F835FC /* _EtherTokenModelObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = _EtherTokenModelObject.h; sourceTree = "<group>"; };
+		0A7A331623B70F0E00F835FC /* _EtherTokenModelObject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = _EtherTokenModelObject.m; sourceTree = "<group>"; };
+		0A7A331823B70F2100F835FC /* EtherTokenModelObject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EtherTokenModelObject.m; sourceTree = "<group>"; };
+		0A7A331923B70F2100F835FC /* EtherTokenModelObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EtherTokenModelObject.h; sourceTree = "<group>"; };
+		0A7A331B23B711D300F835FC /* EtherTokenPlainObject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EtherTokenPlainObject.m; sourceTree = "<group>"; };
+		0A7A331C23B711D400F835FC /* EtherTokenPlainObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EtherTokenPlainObject.h; sourceTree = "<group>"; };
+		0AC6EBD223B197BC00320D7A /* GenericToken.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GenericToken.h; sourceTree = "<group>"; };
+		0AC6EBD323B1A0D300320D7A /* GenericToken.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GenericToken.m; sourceTree = "<group>"; };
+		0AC6EBD523B1A63900320D7A /* HeadlineTableViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HeadlineTableViewCell.h; sourceTree = "<group>"; };
+		0AC6EBD623B1A67400320D7A /* HeadlineTableViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HeadlineTableViewCell.m; sourceTree = "<group>"; };
+		0AC6EBDB23B5734F00320D7A /* SingleTokenPopOverViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SingleTokenPopOverViewController.swift; sourceTree = "<group>"; };
+		0ACA4F2923AEED4600DEC56A /* TokensAssembly.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TokensAssembly.h; sourceTree = "<group>"; };
+		0ACA4F2A23AEED4600DEC56A /* TokensAssembly.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TokensAssembly.m; sourceTree = "<group>"; };
+		0ACA4F2C23AEED4600DEC56A /* TokensPresenter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TokensPresenter.h; sourceTree = "<group>"; };
+		0ACA4F2D23AEED4600DEC56A /* TokensPresenter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TokensPresenter.m; sourceTree = "<group>"; };
+		0ACA4F2E23AEED4600DEC56A /* TokensModuleInput.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TokensModuleInput.h; sourceTree = "<group>"; };
+		0ACA4F3023AEED4600DEC56A /* TokensViewOutput.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TokensViewOutput.h; sourceTree = "<group>"; };
+		0ACA4F3123AEED4600DEC56A /* TokensViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TokensViewController.m; sourceTree = "<group>"; };
+		0ACA4F3223AEED4600DEC56A /* TokensViewInput.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TokensViewInput.h; sourceTree = "<group>"; };
+		0ACA4F3323AEED4600DEC56A /* TokensViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TokensViewController.h; sourceTree = "<group>"; };
+		0ACA4F3523AEED4700DEC56A /* TokensInteractorOutput.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TokensInteractorOutput.h; sourceTree = "<group>"; };
+		0ACA4F3623AEED4700DEC56A /* TokensInteractorInput.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TokensInteractorInput.h; sourceTree = "<group>"; };
+		0ACA4F3723AEED4700DEC56A /* TokensInteractor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TokensInteractor.h; sourceTree = "<group>"; };
+		0ACA4F3823AEED4700DEC56A /* TokensInteractor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TokensInteractor.m; sourceTree = "<group>"; };
+		0ACA4F3A23AEED4700DEC56A /* TokensRouter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TokensRouter.m; sourceTree = "<group>"; };
+		0ACA4F3B23AEED4700DEC56A /* TokensRouter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TokensRouter.h; sourceTree = "<group>"; };
+		0ACA4F3C23AEED4700DEC56A /* TokensRouterInput.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TokensRouterInput.h; sourceTree = "<group>"; };
 		0AE3DBD423A1E57900C30078 /* es-419 */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "es-419"; path = "es-419.lproj/LaunchScreen.strings"; sourceTree = "<group>"; };
 		0AE3DBD523A1E57A00C30078 /* es-419 */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "es-419"; path = "es-419.lproj/Main.strings"; sourceTree = "<group>"; };
 		0AE3DBD723A1E5A900C30078 /* Base */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = Base; path = Base.lproj/Localizable.strings; sourceTree = "<group>"; };
@@ -2467,6 +2511,76 @@
 				5627B6FC210B5272009787F7 /* AboutPresenterTests.m */,
 			);
 			path = Presenter;
+			sourceTree = "<group>";
+		};
+		0ACA4F2723AEED4600DEC56A /* Tokens */ = {
+			isa = PBXGroup;
+			children = (
+				0ACA4F2823AEED4600DEC56A /* Assembly */,
+				0ACA4F2B23AEED4600DEC56A /* Presenter */,
+				0ACA4F2F23AEED4600DEC56A /* View */,
+				0ACA4F3423AEED4700DEC56A /* Interactor */,
+				0ACA4F3923AEED4700DEC56A /* Router */,
+			);
+			path = Tokens;
+			sourceTree = "<group>";
+		};
+		0ACA4F2823AEED4600DEC56A /* Assembly */ = {
+			isa = PBXGroup;
+			children = (
+				0ACA4F2923AEED4600DEC56A /* TokensAssembly.h */,
+				0ACA4F2A23AEED4600DEC56A /* TokensAssembly.m */,
+			);
+			path = Assembly;
+			sourceTree = "<group>";
+		};
+		0ACA4F2B23AEED4600DEC56A /* Presenter */ = {
+			isa = PBXGroup;
+			children = (
+				0ACA4F2C23AEED4600DEC56A /* TokensPresenter.h */,
+				0ACA4F2D23AEED4600DEC56A /* TokensPresenter.m */,
+				0ACA4F2E23AEED4600DEC56A /* TokensModuleInput.h */,
+			);
+			path = Presenter;
+			sourceTree = "<group>";
+		};
+		0ACA4F2F23AEED4600DEC56A /* View */ = {
+			isa = PBXGroup;
+			children = (
+				0A7A330F23B5B40E00F835FC /* TokenHeadlineTableViewCell.h */,
+				0A7A331023B5B40E00F835FC /* TokenHeadlineTableViewCell.m */,
+				0ACA4F3023AEED4600DEC56A /* TokensViewOutput.h */,
+				0ACA4F3123AEED4600DEC56A /* TokensViewController.m */,
+				0ACA4F3223AEED4600DEC56A /* TokensViewInput.h */,
+				0ACA4F3323AEED4600DEC56A /* TokensViewController.h */,
+				0AC6EBD223B197BC00320D7A /* GenericToken.h */,
+				0AC6EBD323B1A0D300320D7A /* GenericToken.m */,
+				0AC6EBD523B1A63900320D7A /* HeadlineTableViewCell.h */,
+				0AC6EBD623B1A67400320D7A /* HeadlineTableViewCell.m */,
+				0AC6EBDB23B5734F00320D7A /* SingleTokenPopOverViewController.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		0ACA4F3423AEED4700DEC56A /* Interactor */ = {
+			isa = PBXGroup;
+			children = (
+				0ACA4F3523AEED4700DEC56A /* TokensInteractorOutput.h */,
+				0ACA4F3623AEED4700DEC56A /* TokensInteractorInput.h */,
+				0ACA4F3723AEED4700DEC56A /* TokensInteractor.h */,
+				0ACA4F3823AEED4700DEC56A /* TokensInteractor.m */,
+			);
+			path = Interactor;
+			sourceTree = "<group>";
+		};
+		0ACA4F3923AEED4700DEC56A /* Router */ = {
+			isa = PBXGroup;
+			children = (
+				0ACA4F3A23AEED4700DEC56A /* TokensRouter.m */,
+				0ACA4F3B23AEED4700DEC56A /* TokensRouter.h */,
+				0ACA4F3C23AEED4700DEC56A /* TokensRouterInput.h */,
+			);
+			path = Router;
 			sourceTree = "<group>";
 		};
 		0AE7048E23AC6405004B6E77 /* NavigationDrawer */ = {
@@ -4936,6 +5050,8 @@
 		5677C5522181226400477ACD /* GeneratedMO */ = {
 			isa = PBXGroup;
 			children = (
+				0A7A331523B70F0E00F835FC /* _EtherTokenModelObject.h */,
+				0A7A331623B70F0E00F835FC /* _EtherTokenModelObject.m */,
 				0AE3DBE323A48C2300C30078 /* _BalanceModelObject.h */,
 				0AE3DBE423A48C2300C30078 /* _BalanceModelObject.m */,
 				0AE3DBE523A48C2600C30078 /* _IvoxTokenModelObject.h */,
@@ -4959,6 +5075,8 @@
 		5677C55F2181226400477ACD /* PlainObjects */ = {
 			isa = PBXGroup;
 			children = (
+				0A7A331C23B711D400F835FC /* EtherTokenPlainObject.h */,
+				0A7A331B23B711D300F835FC /* EtherTokenPlainObject.m */,
 				0AE3DBF823A4940100C30078 /* BalancePlainObject.h */,
 				0AE3DBF923A4940100C30078 /* BalancePlainObject.m */,
 				0AE3DBF623A493FF00C30078 /* IvoxTokenPlainObject.h */,
@@ -4982,6 +5100,8 @@
 		5677C56C2181226400477ACD /* ManagedObjects */ = {
 			isa = PBXGroup;
 			children = (
+				0A7A331923B70F2100F835FC /* EtherTokenModelObject.h */,
+				0A7A331823B70F2100F835FC /* EtherTokenModelObject.m */,
 				0AE3DBF023A48D4800C30078 /* BalanceModelObject.h */,
 				0AE3DBF323A48D4900C30078 /* BalanceModelObject.m */,
 				0AE3DBF123A48D4800C30078 /* IvoxTokenModelObject.h */,
@@ -5005,6 +5125,8 @@
 		5677C5792181226500477ACD /* GeneratedPONSO */ = {
 			isa = PBXGroup;
 			children = (
+				0A7A331223B70EFD00F835FC /* _EtherTokenPlainObject.h */,
+				0A7A331323B70EFE00F835FC /* _EtherTokenPlainObject.m */,
 				0AE3DBE923A48C3900C30078 /* _BalancePlainObject.h */,
 				0AE3DBEA23A48C3900C30078 /* _BalancePlainObject.m */,
 				0AE3DBE823A48C3900C30078 /* _IvoxTokenPlainObject.h */,
@@ -5234,6 +5356,7 @@
 		569998402095178800D45153 /* Modules */ = {
 			isa = PBXGroup;
 			children = (
+				0ACA4F2723AEED4600DEC56A /* Tokens */,
 				53A0700A264E5B4E2D23FE3F /* Settings */,
 				5CDD6B7017DC5EB4A32EFFA4 /* QRScanner */,
 				EA5DD9EF8D3B90B2040E7B4E /* Home */,
@@ -11003,6 +11126,7 @@
 				5677BB742100A8260019E92D /* UIBezierPath+Morphing.m in Sources */,
 				560A866520E6539F00046B53 /* KeychainServiceImplementation.m in Sources */,
 				56E14BF420EBCFA000C41F83 /* SimplexQuery.m in Sources */,
+				0ACA4F3D23AEED4700DEC56A /* TokensAssembly.m in Sources */,
 				56335F852187664000C07E2B /* KeychainServiceSharedConstants.m in Sources */,
 				56FB38F720B092C3007776C8 /* MEWConnectFacadeImplementation.m in Sources */,
 				560D76FE20B48498009A3D6D /* CacheRequest.m in Sources */,
@@ -11013,6 +11137,7 @@
 				5668E4EA2083DA190070A402 /* CleanLaunchAppDelegate.m in Sources */,
 				5643879720A492240017790F /* UIColor+RandSeed.swift in Sources */,
 				5668E50C2083E7280070A402 /* StoryboardsAssembly.m in Sources */,
+				0ACA4F4023AEED4700DEC56A /* TokensInteractor.m in Sources */,
 				56AC9457208FACBA00E5BC2C /* NSData+Hexadecimal.m in Sources */,
 				5677C5942181226500477ACD /* FiatPricePlainObject.m in Sources */,
 				9545B03A6FC04B1766AA60BF /* StartPresenter.m in Sources */,
@@ -11058,6 +11183,7 @@
 				5677C5B02181226500477ACD /* _NetworkPlainObject.m in Sources */,
 				566BD36321389478007EC803 /* MEWConnectMessage.m in Sources */,
 				5668E5012083E4D70070A402 /* SystemInfrastructureAssembly.m in Sources */,
+				0ACA4F4123AEED4700DEC56A /* TokensRouter.m in Sources */,
 				56AC9449208FA77900E5BC2C /* MEWConnectConstants.m in Sources */,
 				56E14C1520ED16C900C41F83 /* SimplexOrderBody.m in Sources */,
 				563DF38120986B7900F740FF /* UIImage+Color.m in Sources */,
@@ -11077,6 +11203,7 @@
 				56AE727F20D706610047D51F /* MEWcryptoImplementation.m in Sources */,
 				5606B34B210FDAC500576C28 /* ReachabilityServiceImplementation.m in Sources */,
 				56428A7C20F9345E0049E8BC /* KeychainHistoryItemModel.m in Sources */,
+				0ACA4F3E23AEED4700DEC56A /* TokensPresenter.m in Sources */,
 				C68E10A4E1B3A9BF240DD0D5 /* NewWalletRouter.m in Sources */,
 				56307A94216F61AF00282602 /* UIScreen+AnimateBrightness.m in Sources */,
 				4B880994DD0B5F9B4F44203F /* RestoreWalletAssembly.m in Sources */,
@@ -11115,10 +11242,12 @@
 				560CAFFF209B428500BFF59C /* MEWConnectCommand.m in Sources */,
 				56FB394920B1A8CC007776C8 /* TokensOperationFactory.m in Sources */,
 				10DC5C17C1A92CD39162B5A9 /* PasswordRouter.m in Sources */,
+				0AC6EBD723B1A67400320D7A /* HeadlineTableViewCell.m in Sources */,
 				56C878B520BC199300343ADC /* HomeEmptyTableViewCell.m in Sources */,
 				56E14BD420EA687700C41F83 /* NSNumberFormatter+TokenPrice.m in Sources */,
 				56FB3A2320B441C8007776C8 /* UIImage+RandSeed.swift in Sources */,
 				5627B6F6210A81B7009787F7 /* EthereumResponseValidator.m in Sources */,
+				0A7A331423B70EFE00F835FC /* _EtherTokenPlainObject.m in Sources */,
 				560D76F020B48296009A3D6D /* PonsomizerAssembly.m in Sources */,
 				5677C5A82181226500477ACD /* TokenModelObject.m in Sources */,
 				5FEF304FAB4A717221A0C324 /* HomeAssembly.m in Sources */,
@@ -11131,6 +11260,7 @@
 				563C6AD820AC696300E85B8B /* MEWSearchBar.m in Sources */,
 				4BECCB3B960C486BF2D02A9C /* HomePresenter.m in Sources */,
 				56E14C0420EC0C8700C41F83 /* SimplexResponseConverterImplementation.m in Sources */,
+				0A7A331A23B70F2100F835FC /* EtherTokenModelObject.m in Sources */,
 				56E14C0D20EC0DD600C41F83 /* SimplexQuote.m in Sources */,
 				44AC20E9EB75F0CC836027E1 /* HomeInteractor.m in Sources */,
 				D9D754DAE5ADEDE854FC750F /* HomeRouter.m in Sources */,
@@ -11213,6 +11343,7 @@
 				560CAFF2209B0EC500BFF59C /* Web3Wrapper.swift in Sources */,
 				56FB3A2520B441DD007776C8 /* NSString+MEWTokens.m in Sources */,
 				564387A020A4932A0017790F /* UIColor+HSL.swift in Sources */,
+				0AC6EBDC23B5734F00320D7A /* SingleTokenPopOverViewController.swift in Sources */,
 				0A4DA5A913C4B14DD728715E /* SettingsAssembly.m in Sources */,
 				560CB013209B504700BFF59C /* MEWConnectResponseMapper.m in Sources */,
 				563DF38A209871AA00F740FF /* UIColor+Application.m in Sources */,
@@ -11238,6 +11369,7 @@
 				56FB39C420B23143007776C8 /* ManyResponseValidator.m in Sources */,
 				2AEB8DA7B32B3CA7AA47C202 /* ConfirmPasswordRouter.m in Sources */,
 				0AE3DBE723A48C2900C30078 /* _BalanceModelObject.m in Sources */,
+				0ACA4F3F23AEED4700DEC56A /* TokensViewController.m in Sources */,
 				3AFFA21DF27C931992B4A54C /* MessageSignerAssembly.m in Sources */,
 				3BBADB73833FE4F61E032A06 /* MessageSignerViewController.m in Sources */,
 				0AE3DBF523A48D4900C30078 /* BalanceModelObject.m in Sources */,
@@ -11271,6 +11403,8 @@
 				D5793D1E507610D0FFC818BD /* BackupInfoPresenter.m in Sources */,
 				5B6327A009EB7A4F0688D269 /* BackupInfoInteractor.m in Sources */,
 				56E14BE320EBCCB600C41F83 /* SimplexOperationFactory.m in Sources */,
+				0A7A331D23B711D400F835FC /* EtherTokenPlainObject.m in Sources */,
+				0A7A331723B70F0F00F835FC /* _EtherTokenModelObject.m in Sources */,
 				56FFD7EC2192200F00341D96 /* SecurityRouter.m in Sources */,
 				0AE3DBFA23A4940100C30078 /* IvoxTokenPlainObject.m in Sources */,
 				56C7757420DFEB4F00451EEF /* InfoCellObjectBuilder.m in Sources */,
@@ -11299,6 +11433,7 @@
 				56F3EF672163F95E00C40804 /* MEWconnectServiceStateMachine.m in Sources */,
 				0AE7049423AC6C25004B6E77 /* DrawerHeaderController.swift in Sources */,
 				56896B9F221B6B0B00B78FF6 /* RestoreOptionsEmptyTableViewCellObject.m in Sources */,
+				0A7A331123B5B40F00F835FC /* TokenHeadlineTableViewCell.m in Sources */,
 				30FAFE2FAB76ABF95C9DF392 /* BackupConfirmationAssembly.m in Sources */,
 				CCFC0575BB50C7E834628489 /* BackupConfirmationViewController.m in Sources */,
 				F592C64842F3C8DB2FE294ED /* BackupConfirmationPresenter.m in Sources */,
@@ -11396,6 +11531,7 @@
 				562DEFB7507802E60DDB1C47 /* RestoreSeedPresenter.m in Sources */,
 				95AC28C33E90E6CB75236EB0 /* RestoreSeedInteractor.m in Sources */,
 				8E5475167E0D8DD0FBB5B179 /* RestoreSeedRouter.m in Sources */,
+				0AC6EBD423B1A0D400320D7A /* GenericToken.m in Sources */,
 				FDD5D2E718848B2DBFCAC9D6 /* RestoreOptionsAssembly.m in Sources */,
 				1940DAA8D32E4F6713036DB9 /* RestoreOptionsViewController.m in Sources */,
 				F9AE433A1F3A0978357C28C0 /* RestoreOptionsPresenter.m in Sources */,

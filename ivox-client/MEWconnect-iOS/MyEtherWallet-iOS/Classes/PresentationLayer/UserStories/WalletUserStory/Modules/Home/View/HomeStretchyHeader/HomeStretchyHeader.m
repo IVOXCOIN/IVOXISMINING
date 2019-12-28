@@ -32,10 +32,10 @@ static CGFloat const kHomeStretchyHeaderMaximumContentHeight40Inches    = 172.0;
 NSTimeInterval const kHomeStretchyHeaderFadeDuration                    = 0.2;
 
 static CGFloat const kHomeStretchyHeaderDefaultOffset                   = 16.0;
-static CGFloat const kHomeStretchyHeaderTopDefaultOffset                = 48.0;
+static CGFloat const kHomeStretchyHeaderTopDefaultOffset                = 72.0;
 
-static CGFloat const kHomeStretchyHeaderTitleTopMinOffset               = 6.0;
-static CGFloat const kHomeStretchyHeaderTitleTopMaxOffset               = 9.0; //14
+static CGFloat const kHomeStretchyHeaderTitleTopMinOffset               = 32.0;
+static CGFloat const kHomeStretchyHeaderTitleTopMaxOffset               = 35.0; //14
 
 static CGFloat const kHomeStretchyHeaderMinSearchBarHeight              = 82.0;
 static CGFloat const kHomeStretchyHeaderMaxSearchBarHeight              = 104.0;
@@ -217,6 +217,7 @@ static CGFloat const kHomeStretcyHeaderTitleBalanceTopMaxOffset         = 26.0;
     centerXConstraint.active = YES;
     self.titleLabelTopConstraint = [titleLabel.topAnchor constraintEqualToAnchor:self.delegate.topLayoutGuide.bottomAnchor constant:kHomeStretchyHeaderTitleTopMinOffset];
     self.titleLabel = titleLabel;
+      self.titleLabel.hidden = YES;
   }
   UIButton *networkButton = [InlineButton inlineButtonWithChevron:YES];
   {
@@ -225,7 +226,7 @@ static CGFloat const kHomeStretcyHeaderTitleBalanceTopMaxOffset         = 26.0;
     [networkButton setTitleColor:[UIColor lightGreyTextColor] forState:UIControlStateNormal];
     networkButton.titleLabel.font = [UIFont systemFontOfSize:11.0 weight:UIFontWeightMedium];
     [networkButton setContentEdgeInsets:UIEdgeInsetsMake(17.0, 0.0, 0.0, 0.0)];
-    [networkButton setImageEdgeInsets:UIEdgeInsetsMake(0.0, 1.0, 0.0, 0.0)];
+    [networkButton setImageEdgeInsets:UIEdgeInsetsMake(0.0, networkButton.frame.size.width - 46, 0.0, 0.0)];
     [networkButton setImage:[UIImage imageNamed:@"inline_bottom_chevron"] forState:UIControlStateNormal];
     [self.contentView addSubview:networkButton];
     [networkButton.centerXAnchor constraintEqualToAnchor:self.titleLabel.centerXAnchor].active = YES;

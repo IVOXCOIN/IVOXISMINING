@@ -105,7 +105,10 @@ static CGFloat kHomeViewControllerBottomDefaultOffset = 38.0;
        navItem.title = @"Home";
        navItem.leftBarButtonItem = self.navigationButton;
        
+        self.navigationButton.enabled = false;
+    
        navBar.items = @[navItem];
+    
     
 	[self.output didTriggerViewReadyEvent];
 }
@@ -166,6 +169,11 @@ static CGFloat kHomeViewControllerBottomDefaultOffset = 38.0;
 - (void) setBuyEtherEnabled:(BOOL)enabled{
     self.headerView.buyEtherButton.enabled = enabled? YES : NO;
     self.headerView.buyEtherButton.userInteractionEnabled = enabled?YES:NO;
+
+    self.navigationButton.enabled = enabled? YES : NO;
+    
+
+    
 }
 
 - (void) setupInitialStateWithNumberOfTokens:(NSUInteger)tokensCount totalPrice:(NSDecimalNumber *)totalPrice {
@@ -263,10 +271,14 @@ static CGFloat kHomeViewControllerBottomDefaultOffset = 38.0;
       NSString *networkTitleString = @"IVOX";
       
       if([title isEqualToString:@"ETHER"]){
-          networkTitleString = @"ETHEREUM";
+          networkTitleString = @"ETHER";
       }
       
     [self.headerView.networkButton setTitle:networkTitleString forState:UIControlStateNormal];
+      
+      [self.headerView.networkButton setImageEdgeInsets:UIEdgeInsetsMake(0.0, 1.0, 0.0, 0.0)];
+
+      
     [self.headerView.cardView updateWithSeed:masterToken.address];
     
     [self.headerView refreshContentIfNeeded];
@@ -561,6 +573,26 @@ static CGFloat kHomeViewControllerBottomDefaultOffset = 38.0;
         });
     }];
     
+    [contentViewController onTokensClick:^(){
+        
+        dispatch_async(dispatch_get_main_queue(), ^ {
+            [self.presentedViewController dismissViewControllerAnimated:YES completion:^(){
+                [self tokensAction:nil];
+            }];
+
+        });
+    }];
+
+    [contentViewController onEtherClick:^(){
+        
+        dispatch_async(dispatch_get_main_queue(), ^ {
+            [self.presentedViewController dismissViewControllerAnimated:YES completion:^(){
+                [self etherAction:nil];
+            }];
+
+        });
+    }];
+
     [contentViewController onBuyClick:^(){
         
         dispatch_async(dispatch_get_main_queue(), ^ {
@@ -573,6 +605,16 @@ static CGFloat kHomeViewControllerBottomDefaultOffset = 38.0;
 
     
     [self presentViewController:self.bottomDrawerViewController animated:YES completion:nil];
+}
+
+- (IBAction) tokensAction:(__unused id)sender {
+  [self _hideKeyboardIfNeeded];
+  [self.output ivoxTokensAction];
+}
+
+- (IBAction) etherAction:(__unused id)sender {
+  [self _hideKeyboardIfNeeded];
+  [self.output etherTokensAction];
 }
 
 - (IBAction) infoAction:(__unused id)sender {

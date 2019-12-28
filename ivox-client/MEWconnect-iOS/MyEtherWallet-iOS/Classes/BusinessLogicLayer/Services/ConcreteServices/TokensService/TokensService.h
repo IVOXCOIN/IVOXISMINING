@@ -18,6 +18,8 @@ typedef void(^TokensServiceCompletion)(NSError *error);
 @protocol TokensService <NSObject>
 - (void) updateBalanceOfMasterToken:(MasterTokenPlainObject *)masterToken withCompletion:(TokensServiceCompletion)completion;
 - (void) updateTokenBalancesOfMasterToken:(MasterTokenPlainObject *)masterToken withCompletion:(TokensServiceCompletion)completion;
+- (void) obtainIvoxTokensFromMasterToken:(MasterTokenPlainObject *)masterToken withCompletion:(TokensServiceCompletion)completion;
+- (void) obtainEtherTokensFromMasterToken:(MasterTokenPlainObject *)masterToken withCompletion:(TokensServiceCompletion)completion;
 - (NSUInteger) obtainNumberOfTokensOfMasterToken:(MasterTokenPlainObject *)masterToken;
 - (NSDecimalNumber *) obtainTokensTotalPriceOfMasterToken:(MasterTokenPlainObject *)masterToken;
 - (MasterTokenModelObject *) obtainActiveMasterToken;
@@ -25,4 +27,6 @@ typedef void(^TokensServiceCompletion)(NSError *error);
 - (void) resetTokens;
 - (void) resetTokensButMaster;
 - (void) resetBalances;
+- (void) resetIvoxTokens;
+- (void) resetEtherTokens;
 @end

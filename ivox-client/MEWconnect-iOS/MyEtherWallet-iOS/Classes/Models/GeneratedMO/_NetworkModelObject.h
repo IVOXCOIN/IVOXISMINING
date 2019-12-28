@@ -12,7 +12,9 @@
 NS_ASSUME_NONNULL_BEGIN
 
 @class BalanceModelObject;
+@class EtherTokenModelObject;
 @class AccountModelObject;
+@class IvoxTokenModelObject;
 @class MasterTokenModelObject;
 @class TokenModelObject;
 
@@ -40,7 +42,13 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic, strong, nullable) NSSet<BalanceModelObject*> *balances;
 - (nullable NSMutableSet<BalanceModelObject*>*)balancesSet;
 
+@property (nonatomic, strong, nullable) NSSet<EtherTokenModelObject*> *etherTokens;
+- (nullable NSMutableSet<EtherTokenModelObject*>*)etherTokensSet;
+
 @property (nonatomic, strong, nullable) AccountModelObject *fromAccount;
+
+@property (nonatomic, strong, nullable) NSSet<IvoxTokenModelObject*> *ivoxTokens;
+- (nullable NSMutableSet<IvoxTokenModelObject*>*)ivoxTokensSet;
 
 @property (nonatomic, strong) MasterTokenModelObject *master;
 
@@ -54,6 +62,22 @@ NS_ASSUME_NONNULL_BEGIN
 - (void)removeBalances:(NSSet<BalanceModelObject*>*)value_;
 - (void)addBalancesObject:(BalanceModelObject*)value_;
 - (void)removeBalancesObject:(BalanceModelObject*)value_;
+
+@end
+
+@interface _NetworkModelObject (EtherTokensCoreDataGeneratedAccessors)
+- (void)addEtherTokens:(NSSet<EtherTokenModelObject*>*)value_;
+- (void)removeEtherTokens:(NSSet<EtherTokenModelObject*>*)value_;
+- (void)addEtherTokensObject:(EtherTokenModelObject*)value_;
+- (void)removeEtherTokensObject:(EtherTokenModelObject*)value_;
+
+@end
+
+@interface _NetworkModelObject (IvoxTokensCoreDataGeneratedAccessors)
+- (void)addIvoxTokens:(NSSet<IvoxTokenModelObject*>*)value_;
+- (void)removeIvoxTokens:(NSSet<IvoxTokenModelObject*>*)value_;
+- (void)addIvoxTokensObject:(IvoxTokenModelObject*)value_;
+- (void)removeIvoxTokensObject:(IvoxTokenModelObject*)value_;
 
 @end
 
@@ -82,8 +106,14 @@ NS_ASSUME_NONNULL_BEGIN
 - (NSMutableSet<BalanceModelObject*>*)primitiveBalances;
 - (void)setPrimitiveBalances:(NSMutableSet<BalanceModelObject*>*)value;
 
+- (NSMutableSet<EtherTokenModelObject*>*)primitiveEtherTokens;
+- (void)setPrimitiveEtherTokens:(NSMutableSet<EtherTokenModelObject*>*)value;
+
 - (nullable AccountModelObject*)primitiveFromAccount;
 - (void)setPrimitiveFromAccount:(nullable AccountModelObject*)value;
+
+- (NSMutableSet<IvoxTokenModelObject*>*)primitiveIvoxTokens;
+- (void)setPrimitiveIvoxTokens:(NSMutableSet<IvoxTokenModelObject*>*)value;
 
 - (MasterTokenModelObject*)primitiveMaster;
 - (void)setPrimitiveMaster:(MasterTokenModelObject*)value;
@@ -100,7 +130,9 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface NetworkModelObjectRelationships: NSObject
 + (NSString *)balances;
++ (NSString *)etherTokens;
 + (NSString *)fromAccount;
++ (NSString *)ivoxTokens;
 + (NSString *)master;
 + (NSString *)tokens;
 @end

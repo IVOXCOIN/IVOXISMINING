@@ -24,6 +24,7 @@
     [aCoder encodeObject:self.status forKey:@"status"];
     [aCoder encodeObject:self.value forKey:@"value"];
     [aCoder encodeObject:self.wallet forKey:@"wallet"];
+    [aCoder encodeObject:self.fromNetwork forKey:@"fromNetwork"];
 }
 
 - (id)initWithCoder:(NSCoder *)aDecoder {
@@ -41,6 +42,7 @@
         _status = [[aDecoder decodeObjectForKey:@"status"] copy];
         _value = [[aDecoder decodeObjectForKey:@"value"] copy];
         _wallet = [[aDecoder decodeObjectForKey:@"wallet"] copy];
+        _fromNetwork = [[aDecoder decodeObjectForKey:@"fromNetwork"] copy];
     }
 
     return self;
@@ -62,6 +64,8 @@
     replica.status = self.status;
     replica.value = self.value;
     replica.wallet = self.wallet;
+
+    replica.fromNetwork = self.fromNetwork;
 
     return replica;
 }

@@ -8,7 +8,9 @@
 @import Foundation;
 
 @class BalancePlainObject;
+@class EtherTokenPlainObject;
 @class AccountPlainObject;
+@class IvoxTokenPlainObject;
 @class MasterTokenPlainObject;
 @class TokenPlainObject;
 
@@ -19,7 +21,11 @@
 
 @property (nonatomic, copy, readwrite) NSSet<BalancePlainObject *> *balances;
 
+@property (nonatomic, copy, readwrite) NSSet<EtherTokenPlainObject *> *etherTokens;
+
 @property (nonatomic, copy, readwrite) AccountPlainObject *fromAccount;
+
+@property (nonatomic, copy, readwrite) NSSet<IvoxTokenPlainObject *> *ivoxTokens;
 
 @property (nonatomic, copy, readwrite) MasterTokenPlainObject *master;
 

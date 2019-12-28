@@ -12,11 +12,23 @@ import UIKit
 @objc class DrawerContentController: UIViewController {
 
    private var onInfo: (() -> Void)?
+   private var onTokens: (() -> Void)?
+   private var onEther: (() -> Void)?
    private var onBuy: (() -> Void)?
 
     @objc public func onInfoClick(_ function: @escaping @autoclosure () -> Void) {
         // Store the function
         onInfo = function
+    }
+    
+    @objc public func onTokensClick(_ function: @escaping @autoclosure () -> Void) {
+        // Store the function
+        onTokens = function
+    }
+    
+    @objc public func onEtherClick(_ function: @escaping @autoclosure () -> Void) {
+        // Store the function
+        onEther = function
     }
 
     @objc public func onBuyClick(_ function: @escaping @autoclosure () -> Void) {
@@ -99,9 +111,11 @@ extension DrawerContentController: UICollectionViewDelegate, UICollectionViewDat
             break;
             
         case 1:
+            onTokens?();
             break;
             
         case 2:
+            onEther?();
             break;
             
         case 3:

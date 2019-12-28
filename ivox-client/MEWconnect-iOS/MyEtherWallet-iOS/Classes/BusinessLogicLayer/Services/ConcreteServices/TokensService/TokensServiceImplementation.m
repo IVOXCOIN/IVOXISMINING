@@ -22,6 +22,8 @@
 #import "MasterTokenPlainObject.h"
 #import "AccountModelObject.h"
 #import "BalanceModelObject.h"
+#import "IvoxTokenModelObject.h"
+#import "EtherTokenModelObject.h"
 #import "TokenModelObject.h"
 #import "TokenPlainObject.h"
 #import "FiatPriceModelObject.h"
@@ -451,6 +453,276 @@ static NSString *const RopstenTokensContractAddress = @"0xb8e1bbc50fd87ea00d8ce7
     }];
 }
 
+
+- (void) obtainIvoxTokensFromMasterToken:(MasterTokenPlainObject *)masterToken withCompletion:(TokensServiceCompletion)completion {
+  
+    
+        NSManagedObjectContext *rootSavingContext = [NSManagedObjectContext MR_rootSavingContext];
+      
+ 
+      NSString *contractAddress = nil;
+      BlockchainNetworkType network = [masterToken.fromNetworkMaster network];
+      if (network == BlockchainNetworkTypeEthereum) {
+        contractAddress = MainnetTokensContractAddress;
+      } else {
+        contractAddress = RopstenTokensContractAddress;
+      }
+    
+    [self resetIvoxTokens];
+
+    [rootSavingContext performBlock:^{
+
+    NSString *formattedEthereumAddress = [masterToken.address lowercaseString];
+
+    NSDictionary *jsonBodyDict = @{@"source":formattedEthereumAddress};
+    NSData *jsonBodyData = [NSJSONSerialization dataWithJSONObject:jsonBodyDict options:kNilOptions error:nil];
+
+    NSString *urlString = @"https://ivoxis-backend.azurewebsites.net/api/balance/get";
+
+    NSMutableURLRequest *request = [NSMutableURLRequest new];
+    request.HTTPMethod = @"POST";
+
+    [request setURL:[NSURL URLWithString:urlString]];
+    [request setValue:@"application/json" forHTTPHeaderField:@"Content-Type"];
+    [request setValue:@"application/json" forHTTPHeaderField:@"Accept"];
+    [request setHTTPBody:jsonBodyData];
+
+
+    NSURLSession *session = [NSURLSession sharedSession];
+    NSURLSessionDataTask *dataTask = [session dataTaskWithRequest:request completionHandler:^(NSData *data, NSURLResponse *response, NSError *error) {
+
+      if (!error) {
+          NSHTTPURLResponse *httpResponse = (NSHTTPURLResponse *)response;
+          if(httpResponse.statusCode == 200)
+          {
+              NSPredicate *predicate = [NSPredicate predicateWithFormat:@"SELF.master.address ==[c] %@", masterToken.address];
+              NetworkModelObject *networkModelObject = [NetworkModelObject MR_findFirstWithPredicate:predicate inContext:rootSavingContext];
+
+              NSError *parseError = nil;
+              NSDictionary *responseDictionary = [NSJSONSerialization JSONObjectWithData:data options:0 error:&parseError];
+              NSLog(@"The response is - %@",responseDictionary);
+              
+              NSMutableArray *tokensToAdd = [[NSMutableArray alloc] initWithCapacity:0];
+              
+              for(NSDictionary * item in responseDictionary)
+              {
+                  NSString *paypal = [item objectForKey:@"paypal"];
+                  NSString *wallet = [item objectForKey:@"wallet"];
+                  NSString *source = [item objectForKey:@"source"];
+                  NSString *identifier = [item objectForKey:@"id"];
+                  NSString *destination = [item objectForKey:@"destination"];
+                  NSString *purchase = [item objectForKey:@"purchase"];
+                  NSString *date = [item objectForKey:@"date"];
+                  NSString *status = [item objectForKey:@"status"];
+                  NSString *value = [item objectForKey:@"value"];
+                  NSString *currency = [item objectForKey:@"currency"];
+                  
+                  
+                  NSEntityDescription *IvoxTokenEntity = [NSEntityDescription entityForName:@"IvoxToken" inManagedObjectContext:rootSavingContext];
+                  IvoxTokenModelObject *ivoxToken = (IvoxTokenModelObject *)[[NSManagedObject alloc] initWithEntity:IvoxTokenEntity insertIntoManagedObjectContext:rootSavingContext];
+                  
+                  NSDecimalNumber* total = [NSDecimalNumber decimalNumberWithString:@"0"];
+                  
+                  if(![purchase isEqualToString:@"N/A"]){
+                      total = [total decimalNumberBySubtracting:[NSDecimalNumber decimalNumberWithString:@"25"]];
+                  }
+                  
+                  if([paypal isEqualToString:@"N/A"] && ![purchase isEqualToString:@"N/A"]){
+                      total = [NSDecimalNumber decimalNumberWithString:purchase];
+                  }
+                  
+                  NSDecimalNumber* eth = [NSDecimalNumber decimalNumberWithString:value];
+                  
+                  NSDecimalNumber* rate = [total decimalNumberByDividingBy:eth];
+                  
+                  ivoxToken.fromNetwork = (NetworkModelObject *) masterToken.fromNetwork;
+                  ivoxToken.paypal = paypal;
+                  ivoxToken.wallet = wallet;
+                  ivoxToken.source = source;
+                  ivoxToken.identifier = identifier;
+                  ivoxToken.destination = destination;
+                  ivoxToken.purchase = purchase;
+                  ivoxToken.date = date;
+                  ivoxToken.status = status;
+                  ivoxToken.value = value;
+                  ivoxToken.rate = [rate stringValue];
+                  ivoxToken.currency = currency;
+                  
+                  [tokensToAdd addObject:ivoxToken];
+
+              }
+
+              if ([tokensToAdd count] > 0) {
+                [networkModelObject addIvoxTokens:[NSSet setWithArray:tokensToAdd]];
+              }
+
+
+          }
+          else
+          {
+              NSLog(@"Error");
+          }
+      }
+      else {
+          NSLog(@"Error");
+      }
+      
+      if ([rootSavingContext hasChanges]) {
+        [rootSavingContext MR_saveToPersistentStoreWithCompletion:^(__unused BOOL contextDidSave, __unused NSError * _Nullable saveError) {
+          dispatch_async(dispatch_get_main_queue(), ^{
+            if (completion) {
+              completion(error);
+            }
+          });
+        }];
+      } else {
+        dispatch_async(dispatch_get_main_queue(), ^{
+          if (completion) {
+            completion(error);
+          }
+        });
+      }
+      
+    }];
+    [dataTask resume];
+    }];
+}
+
+- (void) obtainEtherTokensFromMasterToken:(MasterTokenPlainObject *)masterToken withCompletion:(TokensServiceCompletion)completion {
+  
+    
+        NSManagedObjectContext *rootSavingContext = [NSManagedObjectContext MR_rootSavingContext];
+      
+ 
+      NSString *contractAddress = nil;
+      BlockchainNetworkType network = [masterToken.fromNetworkMaster network];
+      if (network == BlockchainNetworkTypeEthereum) {
+        contractAddress = MainnetTokensContractAddress;
+      } else {
+        contractAddress = RopstenTokensContractAddress;
+      }
+    
+    [self resetEtherTokens];
+
+    [rootSavingContext performBlock:^{
+
+    NSString *formattedEthereumAddress = [masterToken.address lowercaseString];
+
+    NSDictionary *jsonBodyDict = @{@"source":formattedEthereumAddress};
+    NSData *jsonBodyData = [NSJSONSerialization dataWithJSONObject:jsonBodyDict options:kNilOptions error:nil];
+
+    NSString *urlString = @"https://ivoxis-backend.azurewebsites.net/api/balance/ethereum/get";
+
+    NSMutableURLRequest *request = [NSMutableURLRequest new];
+    request.HTTPMethod = @"POST";
+
+    [request setURL:[NSURL URLWithString:urlString]];
+    [request setValue:@"application/json" forHTTPHeaderField:@"Content-Type"];
+    [request setValue:@"application/json" forHTTPHeaderField:@"Accept"];
+    [request setHTTPBody:jsonBodyData];
+
+
+    NSURLSession *session = [NSURLSession sharedSession];
+    NSURLSessionDataTask *dataTask = [session dataTaskWithRequest:request completionHandler:^(NSData *data, NSURLResponse *response, NSError *error) {
+
+      if (!error) {
+          NSHTTPURLResponse *httpResponse = (NSHTTPURLResponse *)response;
+          if(httpResponse.statusCode == 200)
+          {
+              NSPredicate *predicate = [NSPredicate predicateWithFormat:@"SELF.master.address ==[c] %@", masterToken.address];
+              NetworkModelObject *networkModelObject = [NetworkModelObject MR_findFirstWithPredicate:predicate inContext:rootSavingContext];
+
+              NSError *parseError = nil;
+              NSDictionary *responseDictionary = [NSJSONSerialization JSONObjectWithData:data options:0 error:&parseError];
+              NSLog(@"The response is - %@",responseDictionary);
+              
+              NSMutableArray *tokensToAdd = [[NSMutableArray alloc] initWithCapacity:0];
+              
+              for(NSDictionary * item in responseDictionary)
+              {
+                  NSString *paypal = [item objectForKey:@"paypal"];
+                  NSString *wallet = [item objectForKey:@"wallet"];
+                  NSString *source = [item objectForKey:@"source"];
+                  NSString *identifier = [item objectForKey:@"id"];
+                  NSString *destination = [item objectForKey:@"destination"];
+                  NSString *purchase = [item objectForKey:@"purchase"];
+                  NSString *date = [item objectForKey:@"date"];
+                  NSString *status = [item objectForKey:@"status"];
+                  NSString *value = [item objectForKey:@"value"];
+                  NSString *currency = [item objectForKey:@"currency"];
+                  
+                  
+                  NSEntityDescription *etherTokenEntity = [NSEntityDescription entityForName:@"IvoxToken" inManagedObjectContext:rootSavingContext];
+                  EtherTokenModelObject *etherToken = (EtherTokenModelObject *)[[NSManagedObject alloc] initWithEntity:etherTokenEntity insertIntoManagedObjectContext:rootSavingContext];
+                  
+                  NSDecimalNumber* total = [NSDecimalNumber decimalNumberWithString:@"0"];
+                  
+                  if(![purchase isEqualToString:@"N/A"]){
+                      total = [total decimalNumberBySubtracting:[NSDecimalNumber decimalNumberWithString:@"25"]];
+                  }
+                  
+                  if([paypal isEqualToString:@"N/A"] && ![purchase isEqualToString:@"N/A"]){
+                      total = [NSDecimalNumber decimalNumberWithString:purchase];
+                  }
+                  
+                  NSDecimalNumber* eth = [NSDecimalNumber decimalNumberWithString:value];
+                  
+                  NSDecimalNumber* rate = [total decimalNumberByDividingBy:eth];
+                  
+                  etherToken.fromNetwork = (NetworkModelObject *) masterToken.fromNetwork;
+                  etherToken.paypal = paypal;
+                  etherToken.wallet = wallet;
+                  etherToken.source = source;
+                  etherToken.identifier = identifier;
+                  etherToken.destination = destination;
+                  etherToken.purchase = purchase;
+                  etherToken.date = date;
+                  etherToken.status = status;
+                  etherToken.value = value;
+                  etherToken.rate = [rate stringValue];
+                  etherToken.currency = currency;
+                  
+                  [tokensToAdd addObject:etherToken];
+
+              }
+
+              if ([tokensToAdd count] > 0) {
+                [networkModelObject addEtherTokens:[NSSet setWithArray:tokensToAdd]];
+              }
+
+
+          }
+          else
+          {
+              NSLog(@"Error");
+          }
+      }
+      else {
+          NSLog(@"Error");
+      }
+      
+      if ([rootSavingContext hasChanges]) {
+        [rootSavingContext MR_saveToPersistentStoreWithCompletion:^(__unused BOOL contextDidSave, __unused NSError * _Nullable saveError) {
+          dispatch_async(dispatch_get_main_queue(), ^{
+            if (completion) {
+              completion(error);
+            }
+          });
+        }];
+      } else {
+        dispatch_async(dispatch_get_main_queue(), ^{
+          if (completion) {
+            completion(error);
+          }
+        });
+      }
+      
+    }];
+    [dataTask resume];
+    }];
+}
+
+
 - (NSUInteger) obtainNumberOfTokensOfMasterToken:(MasterTokenPlainObject *)masterToken {
   NSManagedObjectContext *context = [NSManagedObjectContext MR_defaultContext];
   NSPredicate *predicate = [NSPredicate predicateWithFormat:@"SELF.fromNetwork.master.address ==[c] %@", masterToken.address];
@@ -522,6 +794,26 @@ static NSString *const RopstenTokensContractAddress = @"0xb8e1bbc50fd87ea00d8ce7
     [rootSavingContext performBlockAndWait:^{
       NSArray <BalanceModelObject *> *balances = [BalanceModelObject MR_findAllInContext:rootSavingContext];
       [rootSavingContext MR_deleteObjects:balances];
+      [rootSavingContext MR_saveToPersistentStoreAndWait];
+    }];
+
+}
+
+- (void) resetIvoxTokens {
+    NSManagedObjectContext *rootSavingContext = [NSManagedObjectContext MR_rootSavingContext];
+    [rootSavingContext performBlockAndWait:^{
+      NSArray <IvoxTokenModelObject *> *tokens = [IvoxTokenModelObject MR_findAllInContext:rootSavingContext];
+      [rootSavingContext MR_deleteObjects:tokens];
+      [rootSavingContext MR_saveToPersistentStoreAndWait];
+    }];
+
+}
+
+- (void) resetEtherTokens {
+    NSManagedObjectContext *rootSavingContext = [NSManagedObjectContext MR_rootSavingContext];
+    [rootSavingContext performBlockAndWait:^{
+      NSArray <EtherTokenModelObject *> *tokens = [EtherTokenModelObject MR_findAllInContext:rootSavingContext];
+      [rootSavingContext MR_deleteObjects:tokens];
       [rootSavingContext MR_saveToPersistentStoreAndWait];
     }];
 

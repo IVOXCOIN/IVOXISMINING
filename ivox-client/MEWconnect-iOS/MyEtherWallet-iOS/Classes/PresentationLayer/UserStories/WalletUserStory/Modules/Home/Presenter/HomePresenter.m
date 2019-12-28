@@ -135,6 +135,20 @@ typedef NS_OPTIONS(short, HomeViewPresenterStatus) {
 - (void) searchTermDidChanged:(NSString *)searchTerm {
   [self.interactor searchTokensWithTerm:searchTerm];
 }
+- (void) ivoxTokensAction {
+  AccountPlainObject *account = [self.interactor obtainAccount];
+  MasterTokenPlainObject *masterToken = [self.interactor obtainMasterToken];
+
+    [self.router openTokensWithAccountAndMasterToken:account masterToken:masterToken isEther:NO];
+}
+
+- (void) etherTokensAction {
+    AccountPlainObject *account = [self.interactor obtainAccount];
+    MasterTokenPlainObject *masterToken = [self.interactor obtainMasterToken];
+
+    [self.router openTokensWithAccountAndMasterToken:account masterToken:masterToken isEther:YES];
+
+}
 
 - (void) infoAction {
   AccountPlainObject *account = [self.interactor obtainAccount];

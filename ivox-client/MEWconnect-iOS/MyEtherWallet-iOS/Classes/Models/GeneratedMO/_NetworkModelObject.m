@@ -94,7 +94,29 @@
 	return result;
 }
 
+@dynamic etherTokens;
+
+- (NSMutableSet<EtherTokenModelObject*>*)etherTokensSet {
+	[self willAccessValueForKey:@"etherTokens"];
+
+	NSMutableSet<EtherTokenModelObject*> *result = (NSMutableSet<EtherTokenModelObject*>*)[self mutableSetValueForKey:@"etherTokens"];
+
+	[self didAccessValueForKey:@"etherTokens"];
+	return result;
+}
+
 @dynamic fromAccount;
+
+@dynamic ivoxTokens;
+
+- (NSMutableSet<IvoxTokenModelObject*>*)ivoxTokensSet {
+	[self willAccessValueForKey:@"ivoxTokens"];
+
+	NSMutableSet<IvoxTokenModelObject*> *result = (NSMutableSet<IvoxTokenModelObject*>*)[self mutableSetValueForKey:@"ivoxTokens"];
+
+	[self didAccessValueForKey:@"ivoxTokens"];
+	return result;
+}
 
 @dynamic master;
 
@@ -124,8 +146,14 @@
 + (NSString *)balances {
 	return @"balances";
 }
++ (NSString *)etherTokens {
+	return @"etherTokens";
+}
 + (NSString *)fromAccount {
 	return @"fromAccount";
+}
++ (NSString *)ivoxTokens {
+	return @"ivoxTokens";
 }
 + (NSString *)master {
 	return @"master";

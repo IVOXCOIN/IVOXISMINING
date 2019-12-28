@@ -11,6 +11,8 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
+@class NetworkModelObject;
+
 @interface IvoxTokenModelObjectID : NSManagedObjectID {}
 @end
 
@@ -41,6 +43,8 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic, strong, nullable) NSString* value;
 
 @property (nonatomic, strong, nullable) NSString* wallet;
+
+@property (nonatomic, strong, nullable) NetworkModelObject *fromNetwork;
 
 @end
 
@@ -79,6 +83,9 @@ NS_ASSUME_NONNULL_BEGIN
 - (nullable NSString*)primitiveWallet;
 - (void)setPrimitiveWallet:(nullable NSString*)value;
 
+- (nullable NetworkModelObject*)primitiveFromNetwork;
+- (void)setPrimitiveFromNetwork:(nullable NetworkModelObject*)value;
+
 @end
 
 @interface IvoxTokenModelObjectAttributes: NSObject 
@@ -93,6 +100,10 @@ NS_ASSUME_NONNULL_BEGIN
 + (NSString *)status;
 + (NSString *)value;
 + (NSString *)wallet;
+@end
+
+@interface IvoxTokenModelObjectRelationships: NSObject
++ (NSString *)fromNetwork;
 @end
 
 NS_ASSUME_NONNULL_END

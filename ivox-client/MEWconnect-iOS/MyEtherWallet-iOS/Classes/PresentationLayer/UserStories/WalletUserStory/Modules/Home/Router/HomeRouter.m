@@ -19,6 +19,7 @@
 #import "ConfirmationNavigationModuleInput.h"
 #import "StartModuleInput.h"
 #import "ShareModuleInput.h"
+#import "TokensModuleInput.h"
 #import "QRScannerModuleInput.h"
 #import "ContextPasswordModuleInput.h"
 #import "RestoreSeedModuleInput.h"
@@ -29,6 +30,7 @@
 
 #import "UIViewController+Hierarchy.h"
 
+static NSString *const kHomeToTokensSegueIdentifier          = @"HomeToTokensSegueIdentifier";
 static NSString *const kHomeToScannerSegueIdentifier          = @"HomeToScannerSegueIdentifier";
 static NSString *const kHomeToMessageSignerSegueIdentifier    = @"HomeToMessageSignerSegueIdentifier";
 static NSString *const kHomeToTransactionSegueIdentifier      = @"HomeToTransactionSegueIdentifier";
@@ -47,6 +49,13 @@ static NSString *const kHomeToRestoreSeedSegueIdentifier      = @"HomeToRestoreS
 - (void) unwindToStart {
   [[self.transitionHandler openModuleUsingSegue:kHomeToStartUnwindSegueIdentifier] thenChainUsingBlock:^id<RamblerViperModuleOutput>(id<StartModuleInput> moduleInput) {
     [moduleInput configureModule];
+    return nil;
+  }];
+}
+
+- (void) openTokensWithAccountAndMasterToken:(AccountPlainObject *)account masterToken:(MasterTokenPlainObject*)masterToken isEther:(BOOL)isEther{
+  [[self.transitionHandler openModuleUsingSegue:kHomeToTokensSegueIdentifier] thenChainUsingBlock:^id<RamblerViperModuleOutput>(id<TokensModuleInput> moduleInput) {
+      [moduleInput configureModuleWithAccountAndMasterToken:account masterToken:masterToken isEther:isEther];
     return nil;
   }];
 }

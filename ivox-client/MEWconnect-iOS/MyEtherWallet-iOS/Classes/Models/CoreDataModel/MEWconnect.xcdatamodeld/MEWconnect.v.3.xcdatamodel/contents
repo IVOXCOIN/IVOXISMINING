@@ -13,6 +13,20 @@
         <attribute name="total" optional="YES" attributeType="Decimal" defaultValueString="0.0"/>
         <relationship name="fromNetwork" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Network" inverseName="balances" inverseEntity="Network"/>
     </entity>
+    <entity name="EtherToken" representedClassName="EtherTokenModelObject" syncable="YES">
+        <attribute name="currency" optional="YES" attributeType="String"/>
+        <attribute name="date" optional="YES" attributeType="String"/>
+        <attribute name="destination" optional="YES" attributeType="String"/>
+        <attribute name="identifier" optional="YES" attributeType="String"/>
+        <attribute name="paypal" optional="YES" attributeType="String"/>
+        <attribute name="purchase" optional="YES" attributeType="String"/>
+        <attribute name="rate" optional="YES" attributeType="String"/>
+        <attribute name="source" optional="YES" attributeType="String"/>
+        <attribute name="status" optional="YES" attributeType="String"/>
+        <attribute name="value" optional="YES" attributeType="String"/>
+        <attribute name="wallet" optional="YES" attributeType="String"/>
+        <relationship name="fromNetwork" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Network" inverseName="etherTokens" inverseEntity="Network"/>
+    </entity>
     <entity name="FiatPrice" representedClassName="FiatPriceModelObject" syncable="YES">
         <attribute name="usdPrice" optional="YES" attributeType="Decimal" defaultValueString="0.0"/>
         <relationship name="fromToken" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Token" inverseName="price" inverseEntity="Token"/>
@@ -29,6 +43,7 @@
         <attribute name="status" optional="YES" attributeType="String"/>
         <attribute name="value" optional="YES" attributeType="String"/>
         <attribute name="wallet" optional="YES" attributeType="String"/>
+        <relationship name="fromNetwork" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Network" inverseName="ivoxTokens" inverseEntity="Network"/>
     </entity>
     <entity name="MasterToken" representedClassName="MasterTokenModelObject" parentEntity="Token" syncable="YES">
         <relationship name="fromNetworkMaster" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Network" inverseName="master" inverseEntity="Network"/>
@@ -37,7 +52,9 @@
         <attribute name="active" optional="YES" attributeType="Boolean" defaultValueString="NO" usesScalarValueType="YES"/>
         <attribute name="chainID" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES"/>
         <relationship name="balances" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Balance" inverseName="fromNetwork" inverseEntity="Balance"/>
+        <relationship name="etherTokens" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="EtherToken" inverseName="fromNetwork" inverseEntity="EtherToken"/>
         <relationship name="fromAccount" optional="YES" maxCount="1" deletionRule="Nullify" ordered="YES" destinationEntity="Account" inverseName="networks" inverseEntity="Account"/>
+        <relationship name="ivoxTokens" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="IvoxToken" inverseName="fromNetwork" inverseEntity="IvoxToken"/>
         <relationship name="master" maxCount="1" deletionRule="Cascade" destinationEntity="MasterToken" inverseName="fromNetworkMaster" inverseEntity="MasterToken"/>
         <relationship name="tokens" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="Token" inverseName="fromNetwork" inverseEntity="Token"/>
     </entity>
@@ -62,10 +79,11 @@
     <elements>
         <element name="Account" positionX="-1379.0234375" positionY="-6297.203125" width="128" height="148"/>
         <element name="Balance" positionX="-1161" positionY="-6255" width="128" height="73"/>
+        <element name="EtherToken" positionX="-1170" positionY="-6264" width="128" height="223"/>
         <element name="FiatPrice" positionX="-788.19140625" positionY="-6267.05859375" width="128" height="73"/>
-        <element name="IvoxToken" positionX="-1170" positionY="-6264" width="128" height="208"/>
+        <element name="IvoxToken" positionX="-1170" positionY="-6264" width="128" height="223"/>
         <element name="MasterToken" positionX="-1012.55078125" positionY="-6419" width="128" height="60"/>
-        <element name="Network" positionX="-1192.65234375" positionY="-6297.08203125" width="128" height="133"/>
+        <element name="Network" positionX="-1192.65234375" positionY="-6297.08203125" width="128" height="163"/>
         <element name="PurchaseHistory" positionX="-789.89453125" positionY="-6127.15625" width="128" height="135"/>
         <element name="Token" positionX="-954.703125" positionY="-6326.3359375" width="128" height="163"/>
     </elements>
