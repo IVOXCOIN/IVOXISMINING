@@ -18,6 +18,7 @@
 
 @protocol HomeRouterInput <NSObject>
 - (void) openTokensWithAccountAndMasterToken:(AccountPlainObject *)account masterToken:(MasterTokenPlainObject*)masterToken isEther:(BOOL)isEther;
+- (void) openTransactionsWithAccountAndMasterToken:(AccountPlainObject *)account masterToken:(MasterTokenPlainObject*)masterToken;
 - (void) openScanner;
 - (void) openShareWithMasterToken:(MasterTokenPlainObject *)masterToken;
 - (void) openContextPasswordWithOutput:(id <ContextPasswordModuleOutput>)output account:(AccountPlainObject *)account;

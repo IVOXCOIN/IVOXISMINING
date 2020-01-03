@@ -81,7 +81,7 @@
   [self.router close:YES];
 }
 
-- (void) incorrectPassword {
+- (void) lockPasswordField {
   if ([self.interactor isPasswordLocked]) {
     [self.view lockPasswordField];
   }

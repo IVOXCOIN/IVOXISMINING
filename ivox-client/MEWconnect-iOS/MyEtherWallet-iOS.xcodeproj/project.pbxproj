@@ -25,6 +25,10 @@
 		0200A429F6FF43815C7B2AFD /* QRScannerRouter.m in Sources */ = {isa = PBXBuildFile; fileRef = 10704F14617B1B50992AA214 /* QRScannerRouter.m */; };
 		0300F8A0DC179B5B8E58E3EC /* ForgotPasswordAssembly.m in Sources */ = {isa = PBXBuildFile; fileRef = 9AD5E93E2F918844127F0D5B /* ForgotPasswordAssembly.m */; };
 		0530718878D5DD21A54FDF89 /* RestoreOptionsInteractor.m in Sources */ = {isa = PBXBuildFile; fileRef = C3CF270EFCBD491B804E5192 /* RestoreOptionsInteractor.m */; };
+		0A4C8F1223BC2C8100385FC4 /* TransfersAssembly.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A4C8F1123BC2C8100385FC4 /* TransfersAssembly.m */; };
+		0A4C8F1523BC386100385FC4 /* TransfersViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A4C8F1423BC386100385FC4 /* TransfersViewController.swift */; };
+		0A4C8F1A23BC5C1800385FC4 /* TransfersRouter.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A4C8F1923BC5C1800385FC4 /* TransfersRouter.m */; };
+		0A4C8F1F23BC615700385FC4 /* TransfersPresenter.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A4C8F1E23BC615600385FC4 /* TransfersPresenter.m */; };
 		0A4DA5A913C4B14DD728715E /* SettingsAssembly.m in Sources */ = {isa = PBXBuildFile; fileRef = 2DC186D6BEC0F27C6062DB73 /* SettingsAssembly.m */; };
 		0A7A331123B5B40F00F835FC /* TokenHeadlineTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A7A331023B5B40E00F835FC /* TokenHeadlineTableViewCell.m */; };
 		0A7A331423B70EFE00F835FC /* _EtherTokenPlainObject.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A7A331323B70EFE00F835FC /* _EtherTokenPlainObject.m */; };
@@ -985,6 +989,16 @@
 		09EB7C98CE8534C5D01E0A3B /* BuyEtherWebPresenterTests.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = BuyEtherWebPresenterTests.m; sourceTree = "<group>"; };
 		09F4BDD96C0A3695772EB465 /* ForgotPasswordViewInput.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = ForgotPasswordViewInput.h; sourceTree = "<group>"; };
 		0A49C491964372403C73647A /* RestorePrepareInteractorInput.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = RestorePrepareInteractorInput.h; sourceTree = "<group>"; };
+		0A4C8F1023BC2C6B00385FC4 /* TransfersAssembly.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TransfersAssembly.h; sourceTree = "<group>"; };
+		0A4C8F1123BC2C8100385FC4 /* TransfersAssembly.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TransfersAssembly.m; sourceTree = "<group>"; };
+		0A4C8F1423BC386100385FC4 /* TransfersViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransfersViewController.swift; sourceTree = "<group>"; };
+		0A4C8F1723BC58AA00385FC4 /* TransfersRouterInput.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TransfersRouterInput.h; sourceTree = "<group>"; };
+		0A4C8F1823BC5BE800385FC4 /* TransfersRouter.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TransfersRouter.h; sourceTree = "<group>"; };
+		0A4C8F1923BC5C1800385FC4 /* TransfersRouter.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TransfersRouter.m; sourceTree = "<group>"; };
+		0A4C8F1C23BC613600385FC4 /* TransfersPresenter.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TransfersPresenter.h; sourceTree = "<group>"; };
+		0A4C8F1D23BC614600385FC4 /* TransfersModuleInput.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TransfersModuleInput.h; sourceTree = "<group>"; };
+		0A4C8F1E23BC615600385FC4 /* TransfersPresenter.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TransfersPresenter.m; sourceTree = "<group>"; };
+		0A4C8F2023BC621300385FC4 /* TransfersViewInput.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TransfersViewInput.h; sourceTree = "<group>"; };
 		0A7A330F23B5B40E00F835FC /* TokenHeadlineTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TokenHeadlineTableViewCell.h; sourceTree = "<group>"; };
 		0A7A331023B5B40E00F835FC /* TokenHeadlineTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TokenHeadlineTableViewCell.m; sourceTree = "<group>"; };
 		0A7A331223B70EFD00F835FC /* _EtherTokenPlainObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = _EtherTokenPlainObject.h; sourceTree = "<group>"; };
@@ -2509,6 +2523,55 @@
 			isa = PBXGroup;
 			children = (
 				5627B6FC210B5272009787F7 /* AboutPresenterTests.m */,
+			);
+			path = Presenter;
+			sourceTree = "<group>";
+		};
+		0A4C8F0E23BC2BB400385FC4 /* Transfers */ = {
+			isa = PBXGroup;
+			children = (
+				0A4C8F1B23BC612400385FC4 /* Presenter */,
+				0A4C8F1623BC582200385FC4 /* Router */,
+				0A4C8F1323BC373C00385FC4 /* View */,
+				0A4C8F0F23BC2C4A00385FC4 /* Assembly */,
+			);
+			path = Transfers;
+			sourceTree = "<group>";
+		};
+		0A4C8F0F23BC2C4A00385FC4 /* Assembly */ = {
+			isa = PBXGroup;
+			children = (
+				0A4C8F1023BC2C6B00385FC4 /* TransfersAssembly.h */,
+				0A4C8F1123BC2C8100385FC4 /* TransfersAssembly.m */,
+			);
+			path = Assembly;
+			sourceTree = "<group>";
+		};
+		0A4C8F1323BC373C00385FC4 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				0A4C8F1423BC386100385FC4 /* TransfersViewController.swift */,
+				0A4C8F2023BC621300385FC4 /* TransfersViewInput.h */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		0A4C8F1623BC582200385FC4 /* Router */ = {
+			isa = PBXGroup;
+			children = (
+				0A4C8F1723BC58AA00385FC4 /* TransfersRouterInput.h */,
+				0A4C8F1823BC5BE800385FC4 /* TransfersRouter.h */,
+				0A4C8F1923BC5C1800385FC4 /* TransfersRouter.m */,
+			);
+			path = Router;
+			sourceTree = "<group>";
+		};
+		0A4C8F1B23BC612400385FC4 /* Presenter */ = {
+			isa = PBXGroup;
+			children = (
+				0A4C8F1C23BC613600385FC4 /* TransfersPresenter.h */,
+				0A4C8F1D23BC614600385FC4 /* TransfersModuleInput.h */,
+				0A4C8F1E23BC615600385FC4 /* TransfersPresenter.m */,
 			);
 			path = Presenter;
 			sourceTree = "<group>";
@@ -5356,6 +5419,7 @@
 		569998402095178800D45153 /* Modules */ = {
 			isa = PBXGroup;
 			children = (
+				0A4C8F0E23BC2BB400385FC4 /* Transfers */,
 				0ACA4F2723AEED4600DEC56A /* Tokens */,
 				53A0700A264E5B4E2D23FE3F /* Settings */,
 				5CDD6B7017DC5EB4A32EFFA4 /* QRScanner */,
@@ -11237,6 +11301,7 @@
 				56FB3A2F20B45741007776C8 /* MEWconnect.xcdatamodeld in Sources */,
 				5677C5A62181226500477ACD /* PurchaseHistoryModelObject.m in Sources */,
 				56E684A420A5F7250058AA38 /* InlineButton.m in Sources */,
+				0A4C8F1F23BC615700385FC4 /* TransfersPresenter.m in Sources */,
 				56E14BC320E97C8400C41F83 /* FiatPricesOperationFactory.m in Sources */,
 				563DF3922098AF0500F740FF /* BordlessNavigationBar.m in Sources */,
 				560CAFFF209B428500BFF59C /* MEWConnectCommand.m in Sources */,
@@ -11367,6 +11432,7 @@
 				56FB39F020B35862007776C8 /* BodyTransformerBase.m in Sources */,
 				7879FEAD66BF19CB8B3E2E9C /* ConfirmPasswordInteractor.m in Sources */,
 				56FB39C420B23143007776C8 /* ManyResponseValidator.m in Sources */,
+				0A4C8F1223BC2C8100385FC4 /* TransfersAssembly.m in Sources */,
 				2AEB8DA7B32B3CA7AA47C202 /* ConfirmPasswordRouter.m in Sources */,
 				0AE3DBE723A48C2900C30078 /* _BalanceModelObject.m in Sources */,
 				0ACA4F3F23AEED4700DEC56A /* TokensViewController.m in Sources */,
@@ -11405,6 +11471,7 @@
 				56E14BE320EBCCB600C41F83 /* SimplexOperationFactory.m in Sources */,
 				0A7A331D23B711D400F835FC /* EtherTokenPlainObject.m in Sources */,
 				0A7A331723B70F0F00F835FC /* _EtherTokenModelObject.m in Sources */,
+				0A4C8F1A23BC5C1800385FC4 /* TransfersRouter.m in Sources */,
 				56FFD7EC2192200F00341D96 /* SecurityRouter.m in Sources */,
 				0AE3DBFA23A4940100C30078 /* IvoxTokenPlainObject.m in Sources */,
 				56C7757420DFEB4F00451EEF /* InfoCellObjectBuilder.m in Sources */,
@@ -11465,6 +11532,7 @@
 				564952FB20E3F20D00CF2348 /* AccountsServiceImplementation.m in Sources */,
 				BFE229932CEED582B99472F2 /* SplashPasswordRouter.m in Sources */,
 				5659448322417EDA00C9BD82 /* WalletImageCatalog.m in Sources */,
+				0A4C8F1523BC386100385FC4 /* TransfersViewController.swift in Sources */,
 				0300F8A0DC179B5B8E58E3EC /* ForgotPasswordAssembly.m in Sources */,
 				A423000337866A1DB124671A /* ForgotPasswordViewController.m in Sources */,
 				010EC2BA658F3F6E97F548A3 /* ForgotPasswordPresenter.m in Sources */,

@@ -592,6 +592,16 @@ static CGFloat kHomeViewControllerBottomDefaultOffset = 38.0;
 
         });
     }];
+    
+    [contentViewController onTransactionsClick:^(){
+        
+        dispatch_async(dispatch_get_main_queue(), ^ {
+            [self.presentedViewController dismissViewControllerAnimated:YES completion:^(){
+                [self transactionsAction:nil];
+            }];
+
+        });
+    }];
 
     [contentViewController onBuyClick:^(){
         
@@ -616,6 +626,12 @@ static CGFloat kHomeViewControllerBottomDefaultOffset = 38.0;
   [self _hideKeyboardIfNeeded];
   [self.output etherTokensAction];
 }
+
+- (IBAction) transactionsAction:(__unused id)sender {
+  [self _hideKeyboardIfNeeded];
+  [self.output transactionsAction];
+}
+
 
 - (IBAction) infoAction:(__unused id)sender {
   [self _hideKeyboardIfNeeded];

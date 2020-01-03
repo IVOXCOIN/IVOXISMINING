@@ -12,6 +12,7 @@ import UIKit
 @objc class DrawerContentController: UIViewController {
 
    private var onInfo: (() -> Void)?
+   private var onTransactions: (() -> Void)?
    private var onTokens: (() -> Void)?
    private var onEther: (() -> Void)?
    private var onBuy: (() -> Void)?
@@ -29,6 +30,11 @@ import UIKit
     @objc public func onEtherClick(_ function: @escaping @autoclosure () -> Void) {
         // Store the function
         onEther = function
+    }
+    
+    @objc public func onTransactionsClick(_ function: @escaping @autoclosure () -> Void) {
+        // Store the function
+        onTransactions = function
     }
 
     @objc public func onBuyClick(_ function: @escaping @autoclosure () -> Void) {
@@ -71,7 +77,7 @@ import UIKit
 extension DrawerContentController: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
     
    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-       return 4
+       return 5
    }
    
    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
@@ -96,6 +102,9 @@ extension DrawerContentController: UICollectionViewDelegate, UICollectionViewDat
            cell.cellIcon.image = UIImage(named: "favorite_black_24dp")
            cell.cellName.text = "Ether"
        case 3:
+           cell.cellIcon.image = UIImage(named: "favorite_black_24dp")
+           cell.cellName.text = "Transactions"
+       case 4:
            cell.cellIcon.image = UIImage(named: "delete_black_24dp")
            cell.cellName.text = "Info"
        default:
@@ -119,6 +128,11 @@ extension DrawerContentController: UICollectionViewDelegate, UICollectionViewDat
             break;
             
         case 3:
+            onTransactions?();
+            break;
+
+            
+        case 4:
            onInfo?();
            break;
             

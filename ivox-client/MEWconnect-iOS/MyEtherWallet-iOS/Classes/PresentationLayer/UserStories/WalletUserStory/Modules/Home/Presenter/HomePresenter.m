@@ -147,6 +147,13 @@ typedef NS_OPTIONS(short, HomeViewPresenterStatus) {
     MasterTokenPlainObject *masterToken = [self.interactor obtainMasterToken];
 
     [self.router openTokensWithAccountAndMasterToken:account masterToken:masterToken isEther:YES];
+}
+
+- (void) transactionsAction {
+    AccountPlainObject *account = [self.interactor obtainAccount];
+    MasterTokenPlainObject *masterToken = [self.interactor obtainMasterToken];
+
+    [self.router openTransactionsWithAccountAndMasterToken:account masterToken:masterToken];
 
 }
 

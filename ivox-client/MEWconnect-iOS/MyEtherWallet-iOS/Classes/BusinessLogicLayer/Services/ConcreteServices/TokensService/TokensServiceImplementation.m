@@ -652,7 +652,7 @@ static NSString *const RopstenTokensContractAddress = @"0xb8e1bbc50fd87ea00d8ce7
                   NSString *currency = [item objectForKey:@"currency"];
                   
                   
-                  NSEntityDescription *etherTokenEntity = [NSEntityDescription entityForName:@"IvoxToken" inManagedObjectContext:rootSavingContext];
+                  NSEntityDescription *etherTokenEntity = [NSEntityDescription entityForName:@"EtherToken" inManagedObjectContext:rootSavingContext];
                   EtherTokenModelObject *etherToken = (EtherTokenModelObject *)[[NSManagedObject alloc] initWithEntity:etherTokenEntity insertIntoManagedObjectContext:rootSavingContext];
                   
                   NSDecimalNumber* total = [NSDecimalNumber decimalNumberWithString:@"0"];

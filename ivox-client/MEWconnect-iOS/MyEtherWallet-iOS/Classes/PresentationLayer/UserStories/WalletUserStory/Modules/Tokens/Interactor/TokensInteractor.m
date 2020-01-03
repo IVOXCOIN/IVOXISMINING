@@ -24,7 +24,7 @@
 @interface TokensInteractor ()
 @property (nonatomic, strong) AccountPlainObject *account;
 @property (nonatomic, strong) MasterTokenPlainObject *masterToken;
-@property (nonatomic) BOOL isEther;
+@property (nonatomic) BOOL displayIsEther;
 @end
 
 @implementation TokensInteractor
@@ -33,7 +33,7 @@
 - (void) configureWithAccountAndMasterToken:(AccountPlainObject *)account masterToken:(MasterTokenPlainObject*)masterToken isEther:(BOOL)isEther{
     self.account = account;
     self.masterToken = masterToken;
-    self.isEther = isEther;
+    self.displayIsEther = isEther;
 }
 
 -(MasterTokenPlainObject*)obtainMasterToken{
@@ -41,7 +41,7 @@
 }
 
 -(BOOL) isEther{
-    return self.isEther;
+    return self.displayIsEther;
 }
 
 @end
