@@ -11,6 +11,7 @@ import Web3swift
 import EthereumAddress
 import PromiseKit
 
+
 @objc class TransfersViewController: UIViewController, TransfersViewInput, UITextViewDelegate {
     
     var CONTRACT_ABI: String = "[{\"constant\":true,\"inputs\":[],\"name\":\"name\",\"outputs\":[{\"name\":\"\",\"type\":\"string\"}],\"payable\":false,\"stateMutability\":\"view\",\"type\":\"function\"},{\"constant\":false,\"inputs\":[{\"name\":\"_spender\",\"type\":\"address\"},{\"name\":\"_value\",\"type\":\"uint256\"}],\"name\":\"approve\",\"outputs\":[{\"name\":\"success\",\"type\":\"bool\"}],\"payable\":false,\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"constant\":true,\"inputs\":[],\"name\":\"totalSupply\",\"outputs\":[{\"name\":\"\",\"type\":\"uint256\"}],\"payable\":false,\"stateMutability\":\"view\",\"type\":\"function\"},{\"constant\":false,\"inputs\":[{\"name\":\"_from\",\"type\":\"address\"},{\"name\":\"_to\",\"type\":\"address\"},{\"name\":\"_value\",\"type\":\"uint256\"}],\"name\":\"transferFrom\",\"outputs\":[{\"name\":\"success\",\"type\":\"bool\"}],\"payable\":false,\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"constant\":true,\"inputs\":[],\"name\":\"decimals\",\"outputs\":[{\"name\":\"\",\"type\":\"uint8\"}],\"payable\":false,\"stateMutability\":\"view\",\"type\":\"function\"},{\"constant\":false,\"inputs\":[{\"name\":\"_value\",\"type\":\"uint256\"}],\"name\":\"burn\",\"outputs\":[{\"name\":\"success\",\"type\":\"bool\"}],\"payable\":false,\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"constant\":true,\"inputs\":[{\"name\":\"\",\"type\":\"address\"}],\"name\":\"balanceOf\",\"outputs\":[{\"name\":\"\",\"type\":\"uint256\"}],\"payable\":false,\"stateMutability\":\"view\",\"type\":\"function\"},{\"constant\":false,\"inputs\":[{\"name\":\"_from\",\"type\":\"address\"},{\"name\":\"_value\",\"type\":\"uint256\"}],\"name\":\"burnFrom\",\"outputs\":[{\"name\":\"success\",\"type\":\"bool\"}],\"payable\":false,\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"constant\":true,\"inputs\":[],\"name\":\"symbol\",\"outputs\":[{\"name\":\"\",\"type\":\"string\"}],\"payable\":false,\"stateMutability\":\"view\",\"type\":\"function\"},{\"constant\":false,\"inputs\":[{\"name\":\"_to\",\"type\":\"address\"},{\"name\":\"_value\",\"type\":\"uint256\"}],\"name\":\"transfer\",\"outputs\":[],\"payable\":false,\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"constant\":false,\"inputs\":[{\"name\":\"_spender\",\"type\":\"address\"},{\"name\":\"_value\",\"type\":\"uint256\"},{\"name\":\"_extraData\",\"type\":\"bytes\"}],\"name\":\"approveAndCall\",\"outputs\":[{\"name\":\"success\",\"type\":\"bool\"}],\"payable\":false,\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"constant\":true,\"inputs\":[{\"name\":\"\",\"type\":\"address\"},{\"name\":\"\",\"type\":\"address\"}],\"name\":\"allowance\",\"outputs\":[{\"name\":\"\",\"type\":\"uint256\"}],\"payable\":false,\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"name\":\"initialSupply\",\"type\":\"uint256\"},{\"name\":\"tokenName\",\"type\":\"string\"},{\"name\":\"tokenSymbol\",\"type\":\"string\"}],\"payable\":false,\"stateMutability\":\"nonpayable\",\"type\":\"constructor\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":true,\"name\":\"from\",\"type\":\"address\"},{\"indexed\":true,\"name\":\"to\",\"type\":\"address\"},{\"indexed\":false,\"name\":\"value\",\"type\":\"uint256\"}],\"name\":\"Transfer\",\"type\":\"event\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":true,\"name\":\"from\",\"type\":\"address\"},{\"indexed\":false,\"name\":\"value\",\"type\":\"uint256\"}],\"name\":\"Burn\",\"type\":\"event\"}]"
@@ -29,6 +30,11 @@ import PromiseKit
     @objc var customTransitioningDelegate: UIViewControllerTransitioningDelegate!
 
     @objc var wrapper: Web3Wrapper!
+    
+    var web3: web3!
+    var contract: web3.web3contract!
+    var promise: Promise<TransactionSendingResult>!
+    var transaction: WriteTransaction!
 
     @IBOutlet weak var addressTextView: UITextView!
     @IBOutlet weak var addressSwitch: UISwitch!
@@ -73,7 +79,7 @@ import PromiseKit
                 if self.wrapper.validatePassword(password: password!, masterToken: self.masterToken, account: self.account) {
                     
                     let endpoint = self.INFURA_URL
-                    let web3 = Web3.new(URL(string: endpoint)!)
+                    self.web3 = Web3.new(URL(string: endpoint)!)
 
                     
                     let encryptedKeydata = self.wrapper.keychainService?.obtainKeydata(ofMasterToken: self.masterToken, ofAccount: self.account, inChainID: BlockchainNetworkType.ethereum)
@@ -93,13 +99,13 @@ import PromiseKit
 
                     let keystoreManager = KeystoreManager([keystoreV3])
                     
-                    web3?.addKeystoreManager(keystoreManager);
+                    self.web3?.addKeystoreManager(keystoreManager);
 
                     let value: String = "1.0" // In Tokens
                     let walletAddress = EthereumAddress(self.masterToken.address)! // Your wallet address
                     let toAddress = EthereumAddress(self.addressTextView.text!)!
                     let erc20ContractAddress = EthereumAddress(self.CONTRACT_ADDRESS)!
-                    let contract = web3!.contract(self.CONTRACT_ABI, at: erc20ContractAddress)!
+                    self.contract = self.web3!.contract(self.CONTRACT_ABI, at: erc20ContractAddress)!
                     let amount = Web3.Utils.parseToBigUInt(value, units: .eth)
                         
                     do{
@@ -111,19 +117,31 @@ import PromiseKit
                         options.nonce = .latest
                         options.callOnBlock = .latest
                         
-                        contract.transactionOptions = options
+                        self.contract.transactionOptions = options
                         
                         let method = "transfer"
-                        let promise = contract.write(
+                        self.transaction = self.contract.write(
                             method,
                             parameters: [toAddress, amount] as [AnyObject],
                             extraData: Data(),
-                            transactionOptions: options)!.sendPromise(password: password!, transactionOptions: options)
+                            transactionOptions: options)!
                         
-                        _ = promise.done(on: DispatchQueue.main, {(results) in
-                            print(results)
+                        self.promise = self.transaction.sendPromise(password: password!, transactionOptions: options)
+                        
+                        
+                        let promiseDoneResult = self.promise.done(on: .global(), { result in
+                            
+                            let link = "https://etherscan.io/tx/" + result.hash
+                                
+                            self.showInfoMessage("Operation completed: You can view the transaction status on Etherscan", link: link)
+                            
                         })
-
+                        
+                        promiseDoneResult.catch({error in
+                            let web3Error = error as! Web3Error
+                            self.showErrorMessage(web3Error.description)
+                        })
+                        
                         /*var transaction = tx.transaction
                                                 
                         try Web3Signer.EIP155Signer.sign(transaction: &transaction, privateKey: privateKey!!, useExtraEntropy: false)
@@ -154,6 +172,50 @@ import PromiseKit
 
         }
     }
+    
+    func showInfoMessage(_ info: String, link: String){
+        let alertController = UIAlertController(title: "Info", message: info, preferredStyle: .alert)
+               
+               let OKAction = UIAlertAction(title: "Close", style: .default) { (action:UIAlertAction!) in
+                                           
+               }
+                let ViewAction = UIAlertAction(title: "View", style: .default) { (action:UIAlertAction!) in
+                    UIApplication.shared.open(NSURL(string: link)! as URL)
+
+                }
+
+                alertController.addAction(OKAction)
+                alertController.addAction(ViewAction)
+
+              if(self.presentedViewController == nil){
+               self.present(alertController, animated: true, completion:nil)
+              } else {
+                  self.presentedViewController?.dismiss(animated: true, completion: {
+                      self.present(alertController, animated: true, completion:nil)
+                  })
+              }
+
+    }
+        
+    func showErrorMessage(_ error: String){
+
+         let alertController = UIAlertController(title: "Error", message: "An error occurred: " +  error, preferredStyle: .alert)
+         
+         let OKAction = UIAlertAction(title: "OK", style: .default) { (action:UIAlertAction!) in
+                                     
+         }
+         alertController.addAction(OKAction)
+         
+        if(self.presentedViewController == nil){
+         self.present(alertController, animated: true, completion:nil)
+        } else {
+            self.presentedViewController?.dismiss(animated: true, completion: {
+                self.present(alertController, animated: true, completion:nil)
+            })
+        }
+
+    }
+        
     
     override func viewDidLoad() {
         super.viewDidLoad()
