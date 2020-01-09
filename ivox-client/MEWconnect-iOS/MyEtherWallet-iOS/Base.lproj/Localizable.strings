@@ -140,7 +140,7 @@
 
 "Contact support" = "Contact support";
 
-"Knowledge base" = "Knowledge base";
+"Knowledge base" = "";
 
 "MyEtherWallet.com" = "MyEtherWallet.com";
 
@@ -155,6 +155,9 @@
 "Back up my wallet" = "Back up my wallet";
 
 "Version %@" = "Version %@";
+
+"Copyright %zd-%zd MyEtherWallet Inc." = "Copyright %zd-%zd Ivox Coin SAPI";
+
 
 "Your public Ethereum address" = "Your public Ethereum address";
 

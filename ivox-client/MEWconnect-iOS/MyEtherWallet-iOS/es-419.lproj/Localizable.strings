@@ -156,7 +156,7 @@
 
 "Version %@" = "Version %@";
 
-"Copyright %zd-%zd MyEtherWallet Inc." = "Derechos de copia %zd-%zd Ivox Coin SAPI"
+"Copyright %zd-%zd MyEtherWallet Inc." = "Derechos de copia %zd-%zd Ivox Coin SAPI";
 
 "Your public Ethereum address" = "Su dirección pública de Ethereum";
 
