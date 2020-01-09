@@ -130,7 +130,7 @@ static float const kSplashPasswordShakeAnimationRepeatCount = 3.0;
   CGRect bounds = self.presentingViewController.view.window.bounds;
   CGSize size = bounds.size;
   size.height -= CGRectGetHeight(statusBarFrame);
-  size.height -= kCustomRepresentationTopBigOffset;
+  //size.height -= kCustomRepresentationTopBigOffset;
   if (!CGSizeEqualToSize(self.preferredContentSize, size)) {
     self.preferredContentSize = size;
   }

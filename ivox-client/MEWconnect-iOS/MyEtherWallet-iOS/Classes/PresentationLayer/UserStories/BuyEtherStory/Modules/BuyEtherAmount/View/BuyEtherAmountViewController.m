@@ -184,8 +184,7 @@
       self.amountTopOffsetConstraint.constant = -4.0;
       self.keypadToContainerTopOffsetConstraint.constant = 17.0;
       self.buttonBottomOffsetConstraint.constant = 22.0;
-      self.approximateFeeLabel.text = NSLocalizedString(@"Approx. Simplex fee included in rate", @"BuyEther. Approximate fee");
-      break;
+            break;
     }
     case ScreenSizeTypeInches47: {
       self.amountTopOffsetConstraint.constant = 13.0;
@@ -200,7 +199,8 @@
       break;
     }
   }
-  
+  self.approximateFeeLabel.text = NSLocalizedString(@"Approximated fee included in rate", @"BuyEther. Approximate fee");
+
   {
     NSDictionary *attributes = @{NSFontAttributeName: self.approximateFeeLabel.font,
                                  NSForegroundColorAttributeName: self.approximateFeeLabel.textColor};

@@ -6,3 +6,203 @@
   Copyright © 2019 MyEtherWallet, Inc. All rights reserved.
 */
 "BUY_TITLE"="Purchase";
+"No internet connection" = "No internet connection";
+"What's new" = "What's new";
+"units of:" = "units of:";
+"Cancel" = "Cancel";
+"Approximated fee included in rate" = "Approximated fee included in rate";
+
+"%@ MINIMUM PURCHASE" = "%@ MINIMUM PURCHASE";
+"Purchase %@" = "Purchase %@";
+"Successful" = "Successful";
+"Failed" = "Failed";
+"In progress" = "In progress";
+"Your credit card purchases\nwill be displayed here" = "Your credit card purchases\nwill be displayed here";
+
+"Simplex checkout" = "Simplex checkout";
+"Enter password to start" = "Enter password to start";
+"Enter password to sign" = "Enter password to sign";
+"Enter password to confirm" = "Enter password to confirm";
+"Enter password to generate" = "Enter password to generate";
+"Enter password to view" = "Enter password to view";
+"backup" = "backup";
+"⚠️\nWarning: you can lose your account and funds forever" = "⚠️\nWarning: you can lose your account and funds forever";
+
+"Don't reset if you didn't make a backup, as there will be no way to restore your account after that. Resetting wallet will remove all keys saved in the local vault and bring you back to the app's start screen." = "Don't reset if you didn't make a backup, as there will be no way to restore your account after that. Resetting wallet will remove all keys saved in the local vault and bring you back to the app's start screen.";
+
+"Reset wallet" = "Reset wallet";
+
+"unless" = "unless";
+
+"Close" = "Close";
+
+"Your recovery phrase" = "Your recovery phrase";
+
+"Write these down" = "Write these down";
+
+"Oops! It looks like you've just taken a screenshot." = "Oops! It looks like you've just taken a screenshot.";
+
+"Please remember NOT to keep your passphrase anywhere digitally, otherwise you can lose all your funds.\nWe strongly suggest to delete the screenshot you've just taken and write down the passphrase using pen and paper." = "Please remember NOT to keep your passphrase anywhere digitally, otherwise you can lose all your funds.\nWe strongly suggest to delete the screenshot you've just taken and write down the passphrase using pen and paper.";
+
+"Select word #%tu" = "Select word #%tu";
+
+"Weak" = "Weak";
+
+"So-so" = "So-so";
+
+"Good" = "Good";
+
+"Great!" = "Great!";
+
+"Generating your Ethereum address\n" = "Generating your Ethereum address\n";
+
+"Ethereum address" = "Ethereum address";
+
+"Encrypting your private key using your password\n" = "Encrypting your private key using your password\n";
+
+"private key" = "private key";
+
+"Saving your encrypted keys to a local secure vault on this device\n" = "Saving your encrypted keys to a local secure vault on this device\n";
+
+"local secure vault" = "local secure vault";
+
+"All done!" = "All done!";
+
+"Use recovery phrase" = "Use recovery phrase";
+
+"Please check your recovery phrase." = "Please check your recovery phrase.";
+
+"The recovery phrase you entered doesn't seem to be valid." = "The recovery phrase you entered doesn't seem to be valid.";
+
+"Words separated by spaces…" = "Words separated by spaces…";
+
+"Please enter the exact passphrase you used to back up MEWconnect app." = "Please enter the exact passphrase you used to back up MEWconnect app.";
+
+"Finally, a ‘hardware wallet’ without all the hardware. Officially by MyEtherWallet" = "Finally, a ‘hardware wallet’ without all the hardware. Officially by MyEtherWallet";
+
+"Secure your every MyEtherWallet transaction with two-factor verification" = "Secure your every MyEtherWallet transaction with two-factor verification";
+
+"Store your private keys safely in a local isolated secure vault on your device" = "Store your private keys safely in a local isolated secure vault on your device";
+
+"Protect yourself from phishers and malware. No one can obtain your private key." = "Protect yourself from phishers and malware. No one can obtain your private key.";
+
+"No data collection: MyEtherWallet can’t collect your personal data even if we wanted to." = "No data collection: MyEtherWallet can’t collect your personal data even if we wanted to.";
+
+"No centralized servers for communication.\nNo databases. MEWconnect uses P2P instead." = "No centralized servers for communication.\nNo databases. MEWconnect uses P2P instead.";
+
+"Transparent, free and open source. Audited by the community" = "Transparent, free and open source. Audited by the community";
+
+"Creating a local connection\nwith MyEtherWallet" = "Creating a local connection\nwith MyEtherWallet";
+
+"Can't connect" = "Can't connect";
+
+"Connected to MyEtherWallet" = "Connected to MyEtherWallet";
+
+"Via encrypted peer-to-peer\nconnection" = "Via encrypted peer-to-peer\nconnection";
+
+"Try again" = "Try again";
+
+"Contact support" = "Contact support";
+
+"Please enable camera access\nfor MEWconnect in Settings" = "Please enable camera access\nfor MEWconnect in Settings";
+
+"Settings" = "Settings";
+
+"Address Copied" = "Address Copied";
+
+"Error" = "Error";
+
+"Can't send email" = "Can't send email";
+
+"Go to MyEtherWallet.com on your computer and choose Access My Wallet option."
+
+= "Go to MyEtherWallet.com on your computer and choose Access My Wallet option.";
+
+"MyEtherWallet.com|Access My Wallet" = "MyEtherWallet.com|Access My Wallet";
+
+"Select MEWconnect option on the screen that follows." = "Select MEWconnect option on the screen that follows.";
+
+"MEWconnect" = "MEWconnect";
+
+"Scan the QR code." = "Scan the QR code.";
+
+"BUY ETHER" = "BUY ETHER";
+
+"Tokens" = "Tokens";
+
+"MEWconnect" = "MEWconnect";
+
+"Search %tu token(s)" = "Search %tu token(s)";
+
+"SELECT_CURRENCY" = "SELECT_CURRENCY";
+
+"Connected to MyEtherWallet" = "Connected to MyEtherWallet";
+
+"Contact support" = "Contact support";
+
+"Knowledge base" = "Knowledge base";
+
+"MyEtherWallet.com" = "MyEtherWallet.com";
+
+"Privacy and terms" = "Privacy and terms";
+
+"User guide" = "User guide";
+
+"About" = "About";
+
+"View my recovery phrase" = "View my recovery phrase";
+
+"Back up my wallet" = "Back up my wallet";
+
+"Version %@" = "Version %@";
+
+"Your public Ethereum address" = "Your public Ethereum address";
+
+"Your public Ropsten testnet address" = "Your public Ropsten testnet address";
+
+"Unknown Token" = "Unknown Token";
+
+"Amount in fractional units" = "Amount in fractional units";
+
+"Check address:" = "Check address:";
+
+"Check address you’re sending to:" = "Check address you’re sending to:";
+
+"Check the amount:" = "Check the amount:";
+
+"Check network:" = "Check network:";
+
+"You declined the transaction and it was cancelled. If you have security concerns, please contact MEW Support" = "You declined the transaction and it was cancelled. If you have security concerns, please contact MEW Support";
+
+"MEW Support" = "MEW Support";
+
+
+"The message is signed. Please continue in MyEtherWallet in your browser." = "The message is signed. Please continue in MyEtherWallet in your browser.";
+
+"Transaction is generated and signed. Please continue in MyEtherWallet in your browser in order to send it." = "Transaction is generated and signed. Please continue in MyEtherWallet in your browser in order to send it.";
+
+"Action required" = "Action required";
+
+"Action required: not backed up" = "Action required: not backed up";
+
+"If you lose this device you\nlose your account forever." = "If you lose this device you\nlose your account forever.";
+
+"If you lose this device you will lose\nyour account and all your funds forever." = "If you lose this device you will lose\nyour account and all your funds forever.";
+
+"BACK UP" = "BACK UP";
+
+"Backed up" = "Backed up";
+
+"Password" = "Password";
+
+"Please wait" = "Please wait";
+
+"No models found" = "No models found";
+
+"No mapping model found" = "No mapping model found";
+
+"Incorrect format" = "Incorrect format";
+
+"DONE" = "DONE";
+
+"NEXT WORD" = "NEXT WORD";

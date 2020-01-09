@@ -1009,6 +1009,7 @@
 		0A7A331923B70F2100F835FC /* EtherTokenModelObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EtherTokenModelObject.h; sourceTree = "<group>"; };
 		0A7A331B23B711D300F835FC /* EtherTokenPlainObject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EtherTokenPlainObject.m; sourceTree = "<group>"; };
 		0A7A331C23B711D400F835FC /* EtherTokenPlainObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EtherTokenPlainObject.h; sourceTree = "<group>"; };
+		0A89C5C623C56ED500C88CD5 /* es-419 */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "es-419"; path = "es-419.lproj/Localizable.strings"; sourceTree = "<group>"; };
 		0AC6EBD223B197BC00320D7A /* GenericToken.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GenericToken.h; sourceTree = "<group>"; };
 		0AC6EBD323B1A0D300320D7A /* GenericToken.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GenericToken.m; sourceTree = "<group>"; };
 		0AC6EBD523B1A63900320D7A /* HeadlineTableViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HeadlineTableViewCell.h; sourceTree = "<group>"; };
@@ -11634,6 +11635,7 @@
 			isa = PBXVariantGroup;
 			children = (
 				0AE3DBD723A1E5A900C30078 /* Base */,
+				0A89C5C623C56ED500C88CD5 /* es-419 */,
 			);
 			name = Localizable.strings;
 			sourceTree = "<group>";

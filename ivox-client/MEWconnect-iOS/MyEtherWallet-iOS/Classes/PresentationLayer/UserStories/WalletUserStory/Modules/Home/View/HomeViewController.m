@@ -108,8 +108,7 @@ static CGFloat kHomeViewControllerBottomDefaultOffset = 38.0;
         self.navigationButton.enabled = false;
     
        navBar.items = @[navItem];
-    
-    
+
 	[self.output didTriggerViewReadyEvent];
 }
 
@@ -207,12 +206,25 @@ static CGFloat kHomeViewControllerBottomDefaultOffset = 38.0;
   self.tableView.dataSource = [self.dataDisplayManager dataSourceForTableView:self.tableView];
   self.tableView.delegate = [self.dataDisplayManager delegateForTableView:self.tableView
                                                          withBaseDelegate:self.dataDisplayManager];
-  UIView *tableViewBackgroundView = [[UIView alloc] init];
-  tableViewBackgroundView.backgroundColor = [UIColor whiteColor];
-  tableViewBackgroundView.alpha = 0.0;
+    
+    UIImage* background = [UIImage imageNamed:@"wallet"];
+    UIImageView *tableViewBackgroundView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0 +  background.size.height, background.size.width, background.size.height)];
+    
+    tableViewBackgroundView.image = background;
+//  tableViewBackgroundView.backgroundColor = [UIColor colorWithPatternImage:background];
+  tableViewBackgroundView.alpha = 1;
+    
+    tableViewBackgroundView.contentMode = UIViewContentModeScaleAspectFit;
+    
   self.tableView.backgroundView = tableViewBackgroundView;
   
+    self.headerView.userInteractionEnabled = true;
+    
+    self.headerView.cardView.backgroundColor = [UIColor whiteColor];
+        
   /* Fix GSKStretchyHeaderView issue: [UIScrollView gsk_fixZPositionsForStretchyHeaderView:]; */
+    
+
   self.tableView.backgroundView.layer.zPosition = 0.0;
   self.tableView.backgroundView.layer.lockZPosition = YES;
   
@@ -240,9 +252,12 @@ static CGFloat kHomeViewControllerBottomDefaultOffset = 38.0;
                                                                              forState:UIControlStateNormal];
     [self.connectButton setImage:[[self.connectButton imageForState:UIControlStateNormal] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal]
                         forState:UIControlStateDisabled];
+      
+      self.connectButton.hidden = true;
+      self.connectButton.userInteractionEnabled = false;
   }
   {
-    UIImage *disconnectBackgroundImage = [[UIImage imageWithColor:[UIColor mainApplicationColor]
+    UIImage *disconnectBackgroundImage = [[UIImage imageWithColor:[UIColor blueColor]
                                                              size:CGSizeMake(20.0, 28.0)
                                                      cornerRadius:8.0
                                                           corners:UIRectCornerTopLeft|UIRectCornerTopRight]

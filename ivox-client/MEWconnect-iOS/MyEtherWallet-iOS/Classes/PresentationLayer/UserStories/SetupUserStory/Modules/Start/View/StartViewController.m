@@ -141,9 +141,9 @@ static NSUInteger kStartViewIconMinimumCorners  = 4;
                             NSLocalizedString(@"Transparent, free and open source. Audited by the community", @"Intro. Page 7 description")];
   
   NSArray *descriptionBoldParts = @[NSLocalizedString(@"", @"Intro. Page 1 description bold part"),
-                                    NSLocalizedString(@"Secure", @"Intro. Page 2 description bold part"),
-                                    NSLocalizedString(@"Store", @"Intro. Page 3 description bold part"),
-                                    NSLocalizedString(@"Protect", @"Intro. Page 4 description bold part"),
+                                    NSLocalizedString(@"", @"Intro. Page 2 description bold part"),
+                                    NSLocalizedString(@"", @"Intro. Page 3 description bold part"),
+                                    NSLocalizedString(@"", @"Intro. Page 4 description bold part"),
                                     NSLocalizedString(@"", @"Intro. Page 5 description bold part"),
                                     NSLocalizedString(@"", @"Intro. Page 6 description bold part"),
                                     NSLocalizedString(@"", @"Intro. Page 7 description bold part")];

@@ -156,7 +156,7 @@
                     <viewLayoutGuide key="safeArea" id="bTk-JB-Ufa"/>
                 </view>
             </objects>
-            <point key="canvasLocation" x="338" y="-40"/>
+            <point key="canvasLocation" x="336.80000000000001" y="-40.029985007496258"/>
         </scene>
         <!--Confirmation-->
         <scene sceneID="dj3-hi-jot">
@@ -420,7 +420,7 @@
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" text="0" textAlignment="right" translatesAutoresizingMaskIntoConstraints="NO" id="d6O-bg-zkY">
+                                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" text="1" textAlignment="right" translatesAutoresizingMaskIntoConstraints="NO" id="d6O-bg-zkY">
                                                 <rect key="frame" x="151" y="48" width="113" height="33"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
@@ -428,7 +428,7 @@
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences" keyboardType="numberPad"/>
                                             </textView>
-                                            <stepper opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" maximumValue="1000000" translatesAutoresizingMaskIntoConstraints="NO" id="eRf-zM-87z">
+                                            <stepper opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="1" minimumValue="1" maximumValue="1000000" translatesAutoresizingMaskIntoConstraints="NO" id="eRf-zM-87z">
                                                 <rect key="frame" x="49" y="49" width="94" height="32"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                 <connections>
@@ -550,7 +550,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cNF-dj-yZ6">
-                                <rect key="frame" x="323" y="16" width="36" height="36"/>
+                                <rect key="frame" x="295" y="16" width="64" height="64"/>
                                 <inset key="contentEdgeInsets" minX="6" minY="2" maxX="2" maxY="6"/>
                                 <state key="normal" image="close_button"/>
                                 <connections>
@@ -578,7 +578,7 @@
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ui4-Nu-eAE" customClass="InlineButton">
-                                            <rect key="frame" x="24" y="71" width="129" height="31"/>
+                                            <rect key="frame" x="24" y="71" width="135" height="31"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                             <color key="tintColor" red="0.43137254899999999" green="0.45098039220000002" blue="0.51764705879999995" alpha="1" colorSpace="deviceRGB"/>
                                             <inset key="contentEdgeInsets" minX="0.0" minY="10" maxX="30" maxY="0.0"/>
@@ -1055,7 +1055,7 @@ With added layers of security, MEWconnect puts you in total control of your cryp
         <image name="scan_focus_tl" width="38" height="38"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="gma-Fq-rkZ"/>
-        <segue reference="r9z-sj-bX3"/>
+        <segue reference="sgz-ig-KhO"/>
+        <segue reference="r2z-jI-6VM"/>
     </inferredMetricsTieBreakers>
 </document>

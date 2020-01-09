@@ -42,7 +42,6 @@
   [self.tableViewModel addObject:[self.cellObjectBuilder buildEmptyCellObject]];
   [self.tableViewModel addObject:[self.cellObjectBuilder buildContactCellObjectWithCompactSize:compact]];
   [self.tableViewModel addObject:[self.cellObjectBuilder buildUserGuideCellObjectWithCompactSize:compact]];
-  [self.tableViewModel addObject:[self.cellObjectBuilder buildKnowledgeBaseCellObjectWithCompactSize:compact]];
   [self.tableViewModel addObject:[self.cellObjectBuilder buildPrivacyAndTermsCellObjectWithCompactSize:compact]];
   [self.tableViewModel addObject:[self.cellObjectBuilder buildMyetherwalletComCellObjectWithCompactSize:compact]];
   if (avaiable) {

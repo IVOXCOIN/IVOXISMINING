@@ -76,9 +76,9 @@
   self.versionLabel.text = [NSString stringWithFormat:NSLocalizedString(@"Version %@", @"Info screen. Version format"), version];
   NSInteger year = [[NSCalendar currentCalendar] component:NSCalendarUnitYear fromDate:[NSDate date]];
   if (kStartDevelopmentYear < year) {
-    self.copyrightLabel.text = [NSString stringWithFormat:@"Copyright %zd-%zd MyEtherWallet Inc.", kStartDevelopmentYear, year];
+    self.copyrightLabel.text = [NSString stringWithFormat:NSLocalizedString(@"Copyright %zd-%zd MyEtherWallet Inc.", @"Info screen. Copyright format"), kStartDevelopmentYear, year];
   } else {
-    self.copyrightLabel.text = [NSString stringWithFormat:@"Copyright %zd MyEtherWallet Inc.", kStartDevelopmentYear];
+    self.copyrightLabel.text = [NSString stringWithFormat:NSLocalizedString(@"Copyright %zd-%zd MyEtherWallet Inc.", @"Info screen. Copyright format"), kStartDevelopmentYear];
   }
   [self.dataDisplayManager updateDataDisplayManagerWithBackupAvailability:available backedUpStatus:isBackedUp];
   self.tableView.dataSource = [self.dataDisplayManager dataSourceForTableView:self.tableView];

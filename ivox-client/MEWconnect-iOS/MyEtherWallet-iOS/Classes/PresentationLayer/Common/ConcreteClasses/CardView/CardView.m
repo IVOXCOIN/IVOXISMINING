@@ -141,6 +141,8 @@ CGFloat const kCardViewAspectRatio              = 216.0/343.0;;
   }
   
   [self.seedLabelButton setAttributedTitle:attributedSeedString forState:UIControlStateNormal];
+    
+    self.backgroundImageView.image = [UIImage imageNamed:@"background_wallet"];
 }
 
 /* 0.5679 ETH */

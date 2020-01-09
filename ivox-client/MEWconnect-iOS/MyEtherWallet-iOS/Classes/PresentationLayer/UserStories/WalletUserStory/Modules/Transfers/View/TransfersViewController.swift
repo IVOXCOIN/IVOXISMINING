@@ -234,8 +234,20 @@ import PromiseKit
                 
                 if self.amountTextView.text.isEmpty {
                     self.amountStepper.value = Double(0)
+                    self.amountTextView.text = "1"
                 } else {
-                    self.amountStepper.value = Double(self.amountTextView.text)!
+                    let value = Int(self.amountTextView.text)
+                    if (value == nil){
+                        self.amountStepper.value = Double(1.0)
+                        self.amountTextView.text = "1"
+                    } else if(value! < 1){
+                        self.amountStepper.value = Double(1.0)
+                        self.amountTextView.text = "1"
+                    }
+                    else {
+                        self.amountStepper.value = Double(self.amountTextView.text)!
+                    }
+                     
                 }
             break
         default: break

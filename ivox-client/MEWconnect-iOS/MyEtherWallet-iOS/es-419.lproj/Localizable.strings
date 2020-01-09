@@ -1,0 +1,210 @@
+/*
+  Localizable.strings
+  MyEtherWallet-iOS
+
+  Created by Victor Lopez on 11/12/19.
+  Copyright © 2019 MyEtherWallet, Inc. All rights reserved.
+*/
+"BUY_TITLE"="Comprar";
+"No internet connection" = "Sin conexión a internet";
+"What's new" = "Qué hay de nuevo";
+"units of:" = "unidades de:";
+"Cancel" = "Cancelar";
+"Approximated fee included in rate" = "Comisión aproximada incluida en el monto";
+
+"%@ MINIMUM PURCHASE" = "%@ COMPRA MÍNIMA";
+"Purchase %@" = "Comprar %@";
+"Successful" = "Satisfactorio";
+"Failed" = "Fallido";
+"In progress" = "En progreso";
+"Your credit card purchases\nwill be displayed here" = "Su tarjeta de crédito/compras\nserán mostradas aquí";
+
+"Simplex checkout" = "Compra Simplex";
+"Enter password to start" = "Ingrese contraseña para empezar";
+"Enter password to sign" = "Ingrese contraseña para firmar";
+"Enter password to confirm" = "Ingrese contraseña para confirmar";
+"Enter password to generate" = "Ingrese contraseña para generar";
+"Enter password to view" = "Ingrese contraseña para ver";
+"backup" = "respaldo";
+"⚠️\nWarning: you can lose your account and funds forever" = "⚠️\nPrecaución: Usted puede perder sus fondos por siempre";
+
+"Don't reset if you didn't make a backup, as there will be no way to restore your account after that. Resetting wallet will remove all keys saved in the local vault and bring you back to the app's start screen." = "No reinicie si no realizó un respaldo de su cartera, debido a que no habrá forma de recuperarla sin el respaldo. Reiniciar la cartera eliminará todas las llaves en la bóveda segura y mostrará la pantalla de inicio de la aplicación.";
+
+"Reset wallet" = "Reiniciar cartera";
+
+"unless" = "a menos";
+
+"Close" = "Cerrar";
+
+"Your recovery phrase" = "Su frase de recuperación";
+
+"Write these down" = "Anote lo siguiente";
+
+"Oops! It looks like you've just taken a screenshot." = "Oops! Parece que acaba de tomar una captura de pantalla.";
+
+"Please remember NOT to keep your passphrase anywhere digitally, otherwise you can lose all your funds.\nWe strongly suggest to delete the screenshot you've just taken and write down the passphrase using pen and paper." = "Por favor recuerde NO almacenar su frase en ningún medio digital, de lo contrario podría perder sus fondos.\nRecomendamos encarecidamente que elimine la captura de pantalla que tomó y que anote su frase con pluma y papel.";
+
+"Select word #%tu" = "Seleccione la palabra #%tu";
+
+"Weak" = "Débil";
+
+"So-so" = "So-so";
+
+"Good" = "Bien";
+
+"Great!" = "¡Genial!";
+
+"Generating your Ethereum address\n" = "Generando su dirección de Ethereum\n";
+
+"Ethereum address" = "Dirección de Ethereum";
+
+"Encrypting your private key using your password\n" = "Encriptando su llave privada usando su contraseña\n";
+
+"private key" = "llave privada";
+
+"Saving your encrypted keys to a local secure vault on this device\n" = "Guardando sus llaves encriptadas en una bóveda segura en este dispositivo\n";
+
+"local secure vault" = "bóveda local segura";
+
+"All done!" = "¡Todo listo!";
+
+"Use recovery phrase" = "Usar frase de recuperación";
+
+"Please check your recovery phrase." = "Por favor revise su frase de recuperación.";
+
+"The recovery phrase you entered doesn't seem to be valid." = "La frase de recuperación introducida no parece ser válida.";
+
+"Words separated by spaces…" = "Palabras separadas por espacios…";
+
+"Please enter the exact passphrase you used to back up MEWconnect app." = "Por favor introduzca la frase de recuperación que usó para respaldar Ivoxis.";
+
+"Finally, a ‘hardware wallet’ without all the hardware. Officially by MyEtherWallet" = "Energía sustentable para todos\ninvierta fácilmente.\nPor Ivox Coin";
+
+"Secure your every MyEtherWallet transaction with two-factor verification" = "Una cartera de \nEthereum\nque permite almacenar\ntokens de Ivox";
+
+"Store your private keys safely in a local isolated secure vault on your device" = "De manera sencilla compre\ny gestione sus tokens\nde forma segura";
+
+"Protect yourself from phishers and malware. No one can obtain your private key." = "Incluya en sus planes\nla inversión en energía sustentable\nde alto impacto.";
+
+"No data collection: MyEtherWallet can’t collect your personal data even if we wanted to." = "Sin colección de datos:\nIvox no puede\ncolectar sus datos privados\nsin su consentimiento.";
+
+"No centralized servers for communication.\nNo databases. MEWconnect uses P2P instead." = "Tecnología de punta\n\nIvoxis de\nIvox Coin cuenta con la\nmejor tecnología.";
+
+"Transparent, free and open source. Audited by the community" = "Transparente, claro y \nconciso. Aprobado por\nla comunidad";
+
+"Creating a local connection\nwith MyEtherWallet" = "Creando una conexión local\ncon Ivoxis";
+
+"Can't connect" = "No se puede conectar";
+
+"Connected to MyEtherWallet" = "Conectado a Ivoxis";
+
+"Via encrypted peer-to-peer\nconnection" = "Via conexión\npeer-to-peer";
+
+"Try again" = "Intente de nuevo";
+
+"Contact support" = "Contacte soporte";
+
+"Please enable camera access\nfor MEWconnect in Settings" = "Por favor habilite la cámara\npara Ivoxis en Configuración";
+
+"Settings" = "Configuración";
+
+"Address Copied" = "Dirección copiada";
+
+"Error" = "Error";
+
+"Can't send email" = "No se puede enviar email";
+
+"Go to MyEtherWallet.com on your computer and choose Access My Wallet option."
+
+= "";
+
+"MyEtherWallet.com|Access My Wallet" = "Ivoxis|Acceder Mi Cartera";
+
+"Select MEWconnect option on the screen that follows." = "Seleccione la opción Ivoxis en la pantalla que sigue.";
+
+"MEWconnect" = "Ivoxis";
+
+"Scan the QR code." = "Escanear el codigo QR.";
+
+"BUY ETHER" = "COMPRAR ETHER";
+
+"Tokens" = "Tokens";
+
+"MEWconnect" = "Ivoxis";
+
+"Search %tu token(s)" = "Buscar %tu token(s)";
+
+"SELECT_CURRENCY" = "SELECCIONE MONEDA";
+
+"Connected to MyEtherWallet" = "Conectado a Ivoxis";
+
+"Contact support" = "Contacte soporte";
+
+"Knowledge base" = "";
+
+"MyEtherWallet.com" = "Ivoxis.com";
+
+"User guide" = "Términos y condiciones";
+
+"Privacy and terms" = "Política de privacidad";
+
+"About" = "Acerca de";
+
+"View my recovery phrase" = "Ver mi frase de recuperación";
+
+"Back up my wallet" = "Respaldar mi cartera";
+
+"Version %@" = "Version %@";
+
+"Copyright %zd-%zd MyEtherWallet Inc." = "Derechos de copia %zd-%zd Ivox Coin SAPI"
+
+"Your public Ethereum address" = "Su dirección pública de Ethereum";
+
+"Your public Ropsten testnet address" = "";
+
+"Unknown Token" = "Token desconocido";
+
+"Amount in fractional units" = "Cantidad en unidades fraccionarias";
+
+"Check address:" = "Verificar dirección:";
+
+"Check address you’re sending to:" = "Verifique la dirección a donde hace el envío:";
+
+"Check the amount:" = "Verifique la cantidad:";
+
+"Check network:" = "Verifique la red:";
+
+"You declined the transaction and it was cancelled. If you have security concerns, please contact MEW Support" = "Ha declinado la transacción y ha sido cancelada. Si tiene preocupaciones con respecto a la seguridad, por favor contacte el soporte de Ivoxis";
+
+"MEW Support" = "Soporte de Ivoxis";
+
+
+"The message is signed. Please continue in MyEtherWallet in your browser." = "El mensaje está firmado. Por favor continúe en su navegador.";
+
+"Transaction is generated and signed. Please continue in MyEtherWallet in your browser in order to send it." = "La transacción fue generada y firmada. Por favor continúe en su navegador para enviarla.";
+
+"Action required" = "Acción requerida";
+
+"Action required: not backed up" = "Acción requerida: sin respaldar;
+
+"If you lose this device you\nlose your account forever." = "Si pierde este dispositivo usted\nperderá su cuenta por siempre.";
+
+"If you lose this device you will lose\nyour account and all your funds forever." = "Si pierde este dispositivo usted perderá\nsu cuenta y fondos por siempre.";
+
+"BACK UP" = "RESPALDAR";
+
+"Backed up" = "Respaldado";
+
+"Password" = "Contraseña";
+
+"Please wait" = "Por favor espere";
+
+"No models found" = "No se encontraron modelos";
+
+"No mapping model found" = "No se encontró modelo de mapeo";
+
+"Incorrect format" = "Formato incorrecto";
+
+"DONE" = "LISTO";
+
+"NEXT WORD" = "SIGUIENTE PALABRA";

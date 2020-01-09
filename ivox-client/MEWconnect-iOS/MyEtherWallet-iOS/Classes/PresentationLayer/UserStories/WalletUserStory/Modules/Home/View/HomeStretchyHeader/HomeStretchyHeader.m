@@ -509,15 +509,16 @@ static CGFloat const kHomeStretcyHeaderTitleBalanceTopMaxOffset         = 26.0;
   
   self.cardTopConstraint.constant = CGFloatInterpolate(scrollFactor, kHomeStretchyHeaderTopDefaultOffset + _safeHeight, 0.0);
   self.cardRightConstraint.constant = self.cardLeftConstraint.constant = CGFloatInterpolate(lrFactor, kHomeStretchyHeaderDefaultOffset, 0.0);
-  self.cardView.alpha = alphaFactor;
+  self.cardView.alpha = 1.0;
   self.cardView.layer.shadowOpacity = CGFloatInterpolate(shadowFactor, kCardViewDefaultShadowOpacity, 0.0);
-  self.patternImageView.layer.cornerRadius = CGFloatInterpolate(cornerRadiusFactor, kCardViewDefaultCornerRadius, 0.0);
+    
+  /*self.patternImageView.layer.cornerRadius = CGFloatInterpolate(cornerRadiusFactor, kCardViewDefaultCornerRadius, 0.0); */
   
   self.searchBarContainerHeightConstraints.constant = CGFloatInterpolate(searchBarContainerStretchFactor, kHomeStretchyHeaderMinSearchBarHeight, kHomeStretchyHeaderMaxSearchBarHeight);
   CGFloat fontSize = CGFloatInterpolate(searchBarContainerStretchFactor, kHomeStretchyHeaderTokensTitleMinFontSize, kHomeStretchyHeaderTokensTitleMaxFontSize);
   self.tokenBalancesTitleLabel.font = [UIFont systemFontOfSize:fontSize weight:UIFontWeightBold];
   self.tokenBalancesLabel.font = [UIFont systemFontOfSize:fontSize weight:UIFontWeightRegular];
-  self.searchBarBackgroundImageView.alpha = searchBarBackgroundAlphaFactor;
+  self.searchBarBackgroundImageView.alpha = 0.0;
   self.tokenBalancesTitleTopConstraints.constant = self.tokenBalancesTopConstraints.constant = CGFloatInterpolate(searchBarContainerStretchFactor, kHomeStretchyHeaderTokensTitleTopMinOffset, _tokensTitleTopMaxOffset);
   self.searchBarBottomConstraint.constant = CGFloatInterpolate(searchBarContainerStretchFactor, kHomeStretchyHeaderSearchBarBMinOffset, kHomeStretchyHeaderSearchBarBMaxOffset);
   
@@ -531,7 +532,8 @@ static CGFloat const kHomeStretcyHeaderTitleBalanceTopMaxOffset         = 26.0;
   self.networkButton.alpha = titleBarContentStretchFactor;
   
   
-  [self.delegate homeStretchyHeaderViewDidChangeBackgroundAlpha:searchBarBackgroundAlphaFactor];
+    /*
+  [self.delegate homeStretchyHeaderViewDidChangeBackgroundAlpha:searchBarBackgroundAlphaFactor]; */
 }
    
 @end

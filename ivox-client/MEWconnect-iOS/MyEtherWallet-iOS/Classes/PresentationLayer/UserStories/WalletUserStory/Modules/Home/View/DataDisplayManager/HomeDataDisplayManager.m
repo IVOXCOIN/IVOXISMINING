@@ -20,6 +20,8 @@
 
 #import "CellFactory.h"
 
+#import "HomeEmptyTableViewCellObject.h"
+
 @interface HomeDataDisplayManager ()
 @property (nonatomic, strong) NIMutableTableViewModel *tableViewModel;
 @property (nonatomic, strong) NITableViewActions *tableViewActions;
@@ -37,6 +39,7 @@
   if (!self.tableViewModel) {
     [self updateTableViewModel];
   }
+    
   if ([transactionBatch.insertTransactions count] > 0 && _empty) {
     if ([self.tableViewModel tableView:self.animator.tableView numberOfRowsInSection:0] == 1) { //empty
       [self.tableViewModel removeObjectAtIndexPath:[NSIndexPath indexPathForRow:0 inSection:0]];
@@ -73,7 +76,12 @@
 
   if ([self.tableViewModel tableView:self.animator.tableView numberOfRowsInSection:0] == 0 && maximumCount == 0) {
     _empty = YES;
-    [self.tableViewModel addObject:[self.cellObjectBuilder buildEmptyCellObject]];
+    
+      /*
+      HomeEmptyTableViewCellObject* object = [self.cellObjectBuilder buildEmptyCellObject];
+      
+      [self.tableViewModel addObject:object];*/
+      
     [self.animator reloadData];
   }
 }
