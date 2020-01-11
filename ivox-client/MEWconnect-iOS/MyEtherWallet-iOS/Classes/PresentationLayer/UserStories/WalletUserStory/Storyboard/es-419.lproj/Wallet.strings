@@ -60,7 +60,7 @@
 "VmI-iZ-Ky7.text" = "Derechos reservados 2018 Ivoxis SAPI";
 
 /* Class = "UILabel"; text = "Share your public address to receive Ether and ERC-20 tokens"; ObjectID = "WH0-kx-j8V"; */
-"WH0-kx-j8V.text" = "Comparta dirección pública para recibir Ether y tokens ERC-20";
+"WH0-kx-j8V.text" = "Comparta su dirección pública para recibir Ether y tokens ERC-20";
 
 /* Class = "UITextView"; text = "0xed8dae31dac49c9fc3aeee086f59e894be6b9329"; ObjectID = "YKr-qN-kjj"; */
 "YKr-qN-kjj.text" = "0xed8dae31dac49c9fc3aeee086f59e894be6b9329";
