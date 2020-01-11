@@ -1,0 +1,60 @@
+
+/* Class = "UITableViewController"; title = "Purchase history"; ObjectID = "1Tc-De-PwT"; */
+"1Tc-De-PwT.title" = "Historial de compras";
+
+/* Class = "UIBarButtonItem"; title = "History"; ObjectID = "1a9-x4-fYf"; */
+"1a9-x4-fYf.title" = "Historial";
+
+/* Class = "UIButton"; normalTitle = "."; ObjectID = "8Oa-xN-1qB"; */
+"8Oa-xN-1qB.normalTitle" = ".";
+
+/* Class = "UIButton"; normalTitle = "0"; ObjectID = "B0H-md-ELH"; */
+"B0H-md-ELH.normalTitle" = "0";
+
+/* Class = "UIButton"; normalTitle = "2"; ObjectID = "EBj-gl-mA0"; */
+"EBj-gl-mA0.normalTitle" = "2";
+
+/* Class = "UINavigationItem"; title = "Buy Ether"; ObjectID = "GAW-ss-dGD"; */
+"GAW-ss-dGD.title" = "Comprar";
+
+/* Class = "UIButton"; normalTitle = "3"; ObjectID = "IsK-be-TFY"; */
+"IsK-be-TFY.normalTitle" = "3";
+
+/* Class = "UIButton"; normalTitle = "5"; ObjectID = "Ldm-Fi-Jhc"; */
+"Ldm-Fi-Jhc.normalTitle" = "5";
+
+/* Class = "UIButton"; normalTitle = "4"; ObjectID = "LjV-cI-Aub"; */
+"LjV-cI-Aub.normalTitle" = "4";
+
+/* Class = "UIButton"; normalTitle = "1"; ObjectID = "Pvu-IF-7OS"; */
+"Pvu-IF-7OS.normalTitle" = "1";
+
+/* Class = "UIButton"; normalTitle = "7"; ObjectID = "Vcx-q0-m4L"; */
+"Vcx-q0-m4L.normalTitle" = "7";
+
+/* Class = "UIButton"; normalTitle = "9"; ObjectID = "VfW-vw-Nr2"; */
+"VfW-vw-Nr2.normalTitle" = "9";
+
+/* Class = "UIButton"; normalTitle = "8"; ObjectID = "Xv4-Qz-SIj"; */
+"Xv4-Qz-SIj.normalTitle" = "8";
+
+/* Class = "UIBarButtonItem"; title = "Close"; ObjectID = "f55-dF-n2z"; */
+"f55-dF-n2z.title" = "Close";
+
+/* Class = "UILabel"; text = "$150.25"; ObjectID = "gwV-jF-T3l"; */
+"gwV-jF-T3l.text" = "$150.25";
+
+/* Class = "UIButton"; normalTitle = "6"; ObjectID = "hFS-N2-dLY"; */
+"hFS-N2-dLY.normalTitle" = "6";
+
+/* Class = "UIButton"; normalTitle = "BUY WITH CREDIT CARD"; ObjectID = "jGA-nU-jau"; */
+"jGA-nU-jau.normalTitle" = "COMPRAR CON TARJETA";
+
+/* Class = "UILabel"; text = "0.31121 ETH"; ObjectID = "l32-qR-w0g"; */
+"l32-qR-w0g.text" = "0.31121 ETH";
+
+/* Class = "UILabel"; text = "USD"; ObjectID = "nJ8-dO-0p9"; */
+"nJ8-dO-0p9.text" = "USD";
+
+/* Class = "UILabel"; text = "Purchase will be done via Simplex\nApproximate fee is already\nincluded in this rate"; ObjectID = "s9i-8F-Rvw"; */
+"s9i-8F-Rvw.text" = "La comisión por compra viene incluída en el monto";

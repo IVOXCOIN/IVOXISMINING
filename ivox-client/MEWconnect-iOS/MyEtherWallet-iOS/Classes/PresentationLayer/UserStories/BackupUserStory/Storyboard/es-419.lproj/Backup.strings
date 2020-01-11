@@ -1,0 +1,102 @@
+
+/* Class = "UILabel"; text = "Prepare to write down your recovery phrase"; ObjectID = "1bU-yg-ZEA"; */
+"1bU-yg-ZEA.text" = "Prepárese para escribir su frase de recuperación";
+
+/* Class = "UISegmentedControl"; 4fM-g5-ulU.segmentTitles[0] = "witch"; ObjectID = "4fM-g5-ulU"; */
+"4fM-g5-ulU.segmentTitles[0]" = "witch";
+
+/* Class = "UISegmentedControl"; 4fM-g5-ulU.segmentTitles[1] = "practice"; ObjectID = "4fM-g5-ulU"; */
+"4fM-g5-ulU.segmentTitles[1]" = "practice";
+
+/* Class = "UISegmentedControl"; 4fM-g5-ulU.segmentTitles[2] = "monk"; ObjectID = "4fM-g5-ulU"; */
+"4fM-g5-ulU.segmentTitles[2]" = "monk";
+
+/* Class = "UIButton"; normalTitle = "BACK UP NOW"; ObjectID = "Be2-Mt-G8h"; */
+"Be2-Mt-G8h.normalTitle" = "RESPALDAR AHORA";
+
+/* Class = "UISegmentedControl"; DeQ-ST-6sx.segmentTitles[0] = "least"; ObjectID = "DeQ-ST-6sx"; */
+"DeQ-ST-6sx.segmentTitles[0]" = "least";
+
+/* Class = "UISegmentedControl"; DeQ-ST-6sx.segmentTitles[1] = "opera"; ObjectID = "DeQ-ST-6sx"; */
+"DeQ-ST-6sx.segmentTitles[1]" = "opera";
+
+/* Class = "UISegmentedControl"; DeQ-ST-6sx.segmentTitles[2] = "paper"; ObjectID = "DeQ-ST-6sx"; */
+"DeQ-ST-6sx.segmentTitles[2]" = "paper";
+
+/* Class = "UILabel"; text = "Once you finish, you won’t be able to view your recovery phrase again."; ObjectID = "K7y-Yj-orU"; */
+"K7y-Yj-orU.text" = "Una vez que termine no volverá a ver su frase de recuperación.";
+
+/* Class = "UISegmentedControl"; Nbu-zt-FoO.segmentTitles[0] = "witch"; ObjectID = "Nbu-zt-FoO"; */
+"Nbu-zt-FoO.segmentTitles[0]" = "witch";
+
+/* Class = "UISegmentedControl"; Nbu-zt-FoO.segmentTitles[1] = "paper"; ObjectID = "Nbu-zt-FoO"; */
+"Nbu-zt-FoO.segmentTitles[1]" = "paper";
+
+/* Class = "UISegmentedControl"; Nbu-zt-FoO.segmentTitles[2] = "monk"; ObjectID = "Nbu-zt-FoO"; */
+"Nbu-zt-FoO.segmentTitles[2]" = "monk";
+
+/* Class = "UILabel"; text = "Your wallet is now backed up"; ObjectID = "O2U-zQ-HSC"; */
+"O2U-zQ-HSC.text" = "Su cartera ahora está respaldada";
+
+/* Class = "UILabel"; text = "1 witch\n2 witch\n3 witch\n4 witch\n5 witch\n6 witch\n7 witch\n8 witch\n9 witch\n10 witch\n11 witch\n12 witch"; ObjectID = "Qyh-MP-0c3"; */
+"Qyh-MP-0c3.text" = "1 witch\n2 witch\n3 witch\n4 witch\n5 witch\n6 witch\n7 witch\n8 witch\n9 witch\n10 witch\n11 witch\n12 witch";
+
+/* Class = "UILabel"; text = "Here’s your recovery phrase:"; ObjectID = "ReC-yk-tzX"; */
+"ReC-yk-tzX.text" = "Esta es su frase de recuperación:";
+
+/* Class = "UILabel"; text = "If your device gets lost or stolen, you can restore your wallet using your recovery phrase.\nGet pen and paper before you start."; ObjectID = "Tls-xM-R26"; */
+"Tls-xM-R26.text" = "Si pierde o le roban su dispositivo, puede restaurar su billetera con su frase de recuperación. \nObtenga lápiz y papel antes de comenzar.";
+
+/* Class = "UILabel"; text = "Write these down"; ObjectID = "Tny-t4-TK0"; */
+"Tny-t4-TK0.text" = "Escriba lo siguiente";
+
+/* Class = "UILabel"; text = "Select word #12"; ObjectID = "UjN-3S-tjX"; */
+"UjN-3S-tjX.text" = "Seleccionar palabra #12";
+
+/* Class = "UILabel"; text = "Your Ethereum address and private key are stored in a local secure vault on this device.\nBut, what happens if you lose this device? Well… unless you back up your wallet, you will lose all your funds forever."; ObjectID = "V1f-Ht-c84"; */
+"V1f-Ht-c84.text" = "Su dirección de Ethereum y su clave privada se almacenan en una bóveda segura local en este dispositivo. \nPero, ¿qué sucede si pierde este dispositivo? Bueno... a menos que respalde su cartera, perderá todos sus fondos para siempre.";
+
+/* Class = "UIBarButtonItem"; title = "Next"; ObjectID = "bFa-eH-2zh"; */
+"bFa-eH-2zh.title" = "Siguiente";
+
+/* Class = "UILabel"; text = "Resist temptation to email it to yourself or screenshot it. You will thank yourself later. The order of words is important too."; ObjectID = "eJa-CC-2cP"; */
+"eJa-CC-2cP.text" = "Resista la tentación de enviarse un correo electrónico o capturarlo. Se lo agradecerá más tarde. El orden de las palabras también es importante.";
+
+/* Class = "UILabel"; text = "Back up your wallet"; ObjectID = "g5b-Li-Rpu"; */
+"g5b-Li-Rpu.text" = "Respaldar cartera";
+
+/* Class = "UILabel"; text = "Let’s double check it"; ObjectID = "gok-Ck-hhG"; */
+"gok-Ck-hhG.text" = "Verifiquemos nuevamente";
+
+/* Class = "UILabel"; text = "1 witch\n2 witch\n3 witch\n4 witch\n5 witch\n6 witch\n7 witch\n8 witch\n9 witch\n10 witch\n11 witch\n12 witch"; ObjectID = "hXT-pc-Hu2"; */
+"hXT-pc-Hu2.text" = "1 witch\n2 witch\n3 witch\n4 witch\n5 witch\n6 witch\n7 witch\n8 witch\n9 witch\n10 witch\n11 witch\n12 witch";
+
+/* Class = "UILabel"; text = "Select word #16"; ObjectID = "isa-VA-n79"; */
+"isa-VA-n79.text" = "Seleccionar palabra #16";
+
+/* Class = "UILabel"; text = "Protect your recovery phrase like a million dollars your account might once be worth.\nIn a de-centralized world your safety and security is your own responsibility. \nStay safe out there!"; ObjectID = "kmF-gZ-enj"; */
+"kmF-gZ-enj.text" = "Proteja su frase de recuperación como un millón de dólares que su cuenta podría valer alguna vez. \nEn un mundo descentralizado, su seguridad es su responsabilidad. \nMantengase seguro afuera!";
+
+/* Class = "UILabel"; text = "Select word #3"; ObjectID = "n80-Du-av6"; */
+"n80-Du-av6.text" = "Seleccionar palabra #3";
+
+/* Class = "UIButton"; normalTitle = "START"; ObjectID = "oKE-g2-Vrf"; */
+"oKE-g2-Vrf.normalTitle" = "INICIAR";
+
+/* Class = "UISegmentedControl"; syd-Vl-cCO.segmentTitles[0] = "hat"; ObjectID = "syd-Vl-cCO"; */
+"syd-Vl-cCO.segmentTitles[0]" = "hat";
+
+/* Class = "UISegmentedControl"; syd-Vl-cCO.segmentTitles[1] = "shame"; ObjectID = "syd-Vl-cCO"; */
+"syd-Vl-cCO.segmentTitles[1]" = "shame";
+
+/* Class = "UISegmentedControl"; syd-Vl-cCO.segmentTitles[2] = "again"; ObjectID = "syd-Vl-cCO"; */
+"syd-Vl-cCO.segmentTitles[2]" = "again";
+
+/* Class = "UIButton"; normalTitle = "DONE"; ObjectID = "uIg-FQ-Vmp"; */
+"uIg-FQ-Vmp.normalTitle" = "LISTO";
+
+/* Class = "UILabel"; text = "Select word #20"; ObjectID = "wNx-2w-qMu"; */
+"wNx-2w-qMu.text" = "Seleccionar palabra #20";
+
+/* Class = "UIBarButtonItem"; title = "Finish"; ObjectID = "xtN-wA-o1V"; */
+"xtN-wA-o1V.title" = "Terminar";

@@ -1,0 +1,114 @@
+
+/* Class = "UIBarButtonItem"; title = "Close"; ObjectID = "0WK-pT-dpJ"; */
+"0WK-pT-dpJ.title" = "Close";
+
+/* Class = "UIButton"; normalTitle = "SCAN TO CONNECT"; ObjectID = "2b3-2N-jAz"; */
+"2b3-2N-jAz.normalTitle" = "SCAN TO CONNECT";
+
+/* Class = "UILabel"; text = "Label"; ObjectID = "6XZ-uy-gvD"; */
+"6XZ-uy-gvD.text" = "Label";
+
+/* Class = "UITextView"; text = "MEWconnect is a simple, powerful new app for your mobile device that enables a better, more secure way of managing your Ethereum assets and ERC-20 Tokens. It is an official mobile software brought by MyEtherWallet Inc, currently available only on IOS for iPhone 5 and above. \nMEWconnect generates a new wallet then encrypts your private key and then stores it in isolation using your device’s built-in security architecture. The app  establishes a secure connection while keeping your private key separate from the browser. The software implements two-factor authentication, protecting you from unauthorized transaction broadcasting on the blockchain. Only you will be able to verify and sign the transaction. MyEtherWallet will never collect any of your personal data, all of your information will only be stored on your mobile device. \nWith added layers of security, MEWconnect puts you in total control of your crypto assets."; ObjectID = "8On-Cv-TlD"; */
+"8On-Cv-TlD.text" = "Ivoxis es una nueva aplicación simple y potente para su dispositivo móvil que permite una forma mejor y más segura de administrar sus activos Ethereum y tokens ERC-20. Es un software móvil oficial traído por MyEtherWallet Inc, actualmente disponible solo en IOS para iPhone 5 y superior. \nIvoxis genera una nueva billetera, luego encripta su clave privada y luego la almacena de forma aislada utilizando la arquitectura de seguridad integrada de su dispositivo. La aplicación establece una conexión segura mientras mantiene su clave privada separada del navegador. El software implementa la autenticación de dos factores, que lo protege de la transmisión de transacciones no autorizadas en la cadena de bloques. Solo usted podrá verificar y firmar la transacción. MyEtherWallet nunca recopilará ninguno de sus datos personales, toda su información solo se almacenará en su dispositivo móvil. \nCon capas adicionales de seguridad, Ivoxis te permite tener el control total de tus activos de cifrado.";
+
+/* Class = "UILabel"; text = "Token"; ObjectID = "COB-bV-cLe"; */
+"COB-bV-cLe.text" = "Token";
+
+/* Class = "UIViewController"; title = "Tokens"; ObjectID = "EjC-KJ-Zlp"; */
+"EjC-KJ-Zlp.title" = "Tokens";
+
+/* Class = "UILabel"; text = "Your public Ethereum address"; ObjectID = "Fpq-SB-wSc"; */
+"Fpq-SB-wSc.text" = "Su dirección pública de Ethereum";
+
+/* Class = "UILabel"; text = "Version 21.0.312"; ObjectID = "G89-d1-aMk"; */
+"G89-d1-aMk.text" = "Version 21.0.312";
+
+/* Class = "UIButton"; normalTitle = "SHARE"; ObjectID = "IEW-1c-xoo"; */
+"IEW-1c-xoo.normalTitle" = "COMPARTIR";
+
+/* Class = "UILabel"; text = "Tokens"; ObjectID = "LKg-3x-mX6"; */
+"LKg-3x-mX6.text" = "Tokens";
+
+/* Class = "UILabel"; text = "Connected to MyEtherWallet"; ObjectID = "MzZ-p5-5TQ"; */
+"MzZ-p5-5TQ.text" = "Conectado a Ivoxis";
+
+/* Class = "UIButton"; normalTitle = "DECLINE"; ObjectID = "PCa-Jc-VXR"; */
+"PCa-Jc-VXR.normalTitle" = "DECLINAR";
+
+/* Class = "UILabel"; text = "Tokens"; ObjectID = "Ps0-jf-I1V"; */
+"Ps0-jf-I1V.text" = "Tokens";
+
+/* Class = "UIButton"; normalTitle = "CONFIRM"; ObjectID = "QJ5-98-2e0"; */
+"QJ5-98-2e0.normalTitle" = "CONFIRMAR";
+
+/* Class = "UILabel"; text = "Info"; ObjectID = "QRR-el-fva"; */
+"QRR-el-fva.text" = "Info";
+
+/* Class = "UILabel"; text = "Verify destination account:"; ObjectID = "QeB-Tz-Owz"; */
+"QeB-Tz-Owz.text" = "Verifique cuenta destino:";
+
+/* Class = "UIViewController"; title = "Transfers"; ObjectID = "TrD-JQ-0R3"; */
+"TrD-JQ-0R3.title" = "Transferencias";
+
+/* Class = "UIButton"; normalTitle = "Reset wallet"; ObjectID = "Ui4-Nu-eAE"; */
+"Ui4-Nu-eAE.normalTitle" = "Reiniciar cartera";
+
+/* Class = "UILabel"; text = "If your computer is compromised, attackers might replace ‘Send to’ address with their own, before sending your transaction. That’s why it’s important to check it in MEWconnect."; ObjectID = "VB0-oQ-rqL"; */
+"VB0-oQ-rqL.text" = "Es importante revisar la cuenta destino ya que las transacciones de Ether y Tokens son definitivas.";
+
+/* Class = "UILabel"; text = "Copyright 2018 MyEtherWallet Inc."; ObjectID = "VmI-iZ-Ky7"; */
+"VmI-iZ-Ky7.text" = "Derechos reservados 2018 Ivoxis SAPI";
+
+/* Class = "UILabel"; text = "Share your public address to receive Ether and ERC-20 tokens"; ObjectID = "WH0-kx-j8V"; */
+"WH0-kx-j8V.text" = "Comparta dirección pública para recibir Ether y tokens ERC-20";
+
+/* Class = "UITextView"; text = "0xed8dae31dac49c9fc3aeee086f59e894be6b9329"; ObjectID = "YKr-qN-kjj"; */
+"YKr-qN-kjj.text" = "0xed8dae31dac49c9fc3aeee086f59e894be6b9329";
+
+/* Class = "UINavigationItem"; title = "About"; ObjectID = "YML-55-VQO"; */
+"YML-55-VQO.title" = "Acerca de";
+
+/* Class = "UIButton"; normalTitle = "DISCONNECT"; ObjectID = "cDT-K4-ldC"; */
+"cDT-K4-ldC.normalTitle" = "DESCONECTAR";
+
+/* Class = "UITextView"; text = "1"; ObjectID = "d6O-bg-zkY"; */
+"d6O-bg-zkY.text" = "1";
+
+/* Class = "UIButton"; normalTitle = "COPY"; ObjectID = "g4t-9M-7aF"; */
+"g4t-9M-7aF.normalTitle" = "COPIAR";
+
+/* Class = "UILabel"; text = "Verify amount:"; ObjectID = "gI2-v0-L6I"; */
+"gI2-v0-L6I.text" = "Verifique cantidad:";
+
+/* Class = "UILabel"; text = "Scan QR code"; ObjectID = "h5f-xs-YvH"; */
+"h5f-xs-YvH.text" = "Escanear código QR";
+
+/* Class = "UILabel"; text = "Label"; ObjectID = "kuv-sN-5DV"; */
+"kuv-sN-5DV.text" = "Label";
+
+/* Class = "UILabel"; text = "0x20D901fD3934A161CE07AF4A7226c3d21d8664c3"; ObjectID = "lJX-tl-qeD"; */
+"lJX-tl-qeD.text" = "0x20D901fD3934A161CE07AF4A7226c3d21d8664c3";
+
+/* Class = "UILabel"; text = "Label"; ObjectID = "muQ-LB-KpM"; */
+"muQ-LB-KpM.text" = "Label";
+
+/* Class = "UIViewController"; title = "Single Token"; ObjectID = "o9f-jd-0YV"; */
+"o9f-jd-0YV.title" = "Token Individual";
+
+/* Class = "UIButton"; accessibilityLabel = "Ok"; ObjectID = "qSD-n9-fNu"; */
+"qSD-n9-fNu.accessibilityLabel" = "Ok";
+
+/* Class = "UIButton"; normalTitle = "Ok"; ObjectID = "qSD-n9-fNu"; */
+"qSD-n9-fNu.normalTitle" = "Ok";
+
+/* Class = "UITextView"; text = "Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda."; ObjectID = "x4y-Rj-9KN"; */
+"x4y-Rj-9KN.text" = "Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.";
+
+/* Class = "UILabel"; text = "Transfers"; ObjectID = "yD0-YP-pah"; */
+"yD0-YP-pah.text" = "Transferencias";
+
+/* Class = "UILabel"; text = "1 Go to MyEtherWallet.com on your computer and choose Access My Wallet option.\n\n2 Select MEWconnect option on the screen that follows.\n\n3 Scan the QR code."; ObjectID = "yW4-Nc-2RA"; */
+"yW4-Nc-2RA.text" = "1 Go to MyEtherWallet.com on your computer and choose Access My Wallet option.\n\n2 Select MEWconnect option on the screen that follows.\n\n3 Scan the QR code.";
+
+/* Class = "UILabel"; text = "To connect to MyEtherWallet"; ObjectID = "ysL-al-JJC"; */
+"ysL-al-JJC.text" = "To connect to MyEtherWallet";

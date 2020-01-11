@@ -21,6 +21,9 @@ static float const kSplashPasswordShakeAnimationRepeatCount = 3.0;
 
 @interface SplashPasswordViewController () <UITextFieldDelegate>
 @property (nonatomic, weak) IBOutlet PasswordTextField *passwordTextField;
+
+@property (weak, nonatomic) IBOutlet UIImageView *logoImageView;
+
 @end
 
 @implementation SplashPasswordViewController {
@@ -37,6 +40,16 @@ static float const kSplashPasswordShakeAnimationRepeatCount = 3.0;
 
 - (void) viewWillAppear:(BOOL)animated {
   [super viewWillAppear:animated];
+    self.logoImageView.translatesAutoresizingMaskIntoConstraints = YES;
+    
+    self.logoImageView.frame = CGRectMake(self.passwordTextField.frame.origin.x, self.passwordTextField.frame.origin.y + 32, 160, 36);
+
+    self.passwordTextField.translatesAutoresizingMaskIntoConstraints = YES;
+    
+    self.passwordTextField.frame = CGRectMake(self.passwordTextField.frame.origin.x, self.passwordTextField.frame.origin.y + 96, self.passwordTextField.frame.size.width, 48);
+
+    //[self.view layoutIfNeeded];
+    
   if (_makePasswordTextFieldActive) {
     [self.passwordTextField becomeFirstResponder];
   }

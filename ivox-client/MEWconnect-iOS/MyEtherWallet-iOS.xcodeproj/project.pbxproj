@@ -35,6 +35,18 @@
 		0A7A331723B70F0F00F835FC /* _EtherTokenModelObject.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A7A331623B70F0E00F835FC /* _EtherTokenModelObject.m */; };
 		0A7A331A23B70F2100F835FC /* EtherTokenModelObject.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A7A331823B70F2100F835FC /* EtherTokenModelObject.m */; };
 		0A7A331D23B711D400F835FC /* EtherTokenPlainObject.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A7A331B23B711D300F835FC /* EtherTokenPlainObject.m */; };
+		0AA50FD323C97DA000FB4C02 /* BuyEther.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0AA50FD623C97DA000FB4C02 /* BuyEther.storyboard */; };
+		0AA50FD423C97DA000FB4C02 /* BuyEther.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0AA50FD623C97DA000FB4C02 /* BuyEther.storyboard */; };
+		0AA50FD723C97DCA00FB4C02 /* SplashPassword.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0AA50FDA23C97DCA00FB4C02 /* SplashPassword.storyboard */; };
+		0AA50FD823C97DCA00FB4C02 /* SplashPassword.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0AA50FDA23C97DCA00FB4C02 /* SplashPassword.storyboard */; };
+		0AA50FE123C97E6D00FB4C02 /* Backup.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0AA50FE423C97E6D00FB4C02 /* Backup.storyboard */; };
+		0AA50FE223C97E6D00FB4C02 /* Backup.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0AA50FE423C97E6D00FB4C02 /* Backup.storyboard */; };
+		0AA50FE723C97EA900FB4C02 /* Setup.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0AA50FEA23C97EA900FB4C02 /* Setup.storyboard */; };
+		0AA50FE823C97EA900FB4C02 /* Setup.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0AA50FEA23C97EA900FB4C02 /* Setup.storyboard */; };
+		0AA50FED23C97EBE00FB4C02 /* Wallet.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0AA50FF023C97EBE00FB4C02 /* Wallet.storyboard */; };
+		0AA50FEE23C97EBE00FB4C02 /* Wallet.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0AA50FF023C97EBE00FB4C02 /* Wallet.storyboard */; };
+		0AA50FF323C97ECD00FB4C02 /* Confirmation.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0AA50FF623C97ECD00FB4C02 /* Confirmation.storyboard */; };
+		0AA50FF423C97ECD00FB4C02 /* Confirmation.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0AA50FF623C97ECD00FB4C02 /* Confirmation.storyboard */; };
 		0AC6EBD423B1A0D400320D7A /* GenericToken.m in Sources */ = {isa = PBXBuildFile; fileRef = 0AC6EBD323B1A0D300320D7A /* GenericToken.m */; };
 		0AC6EBD723B1A67400320D7A /* HeadlineTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 0AC6EBD623B1A67400320D7A /* HeadlineTableViewCell.m */; };
 		0AC6EBDC23B5734F00320D7A /* SingleTokenPopOverViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AC6EBDB23B5734F00320D7A /* SingleTokenPopOverViewController.swift */; };
@@ -131,7 +143,6 @@
 		560D772520B49927009A3D6D /* HomeTableViewAnimator.m in Sources */ = {isa = PBXBuildFile; fileRef = 560D772420B49927009A3D6D /* HomeTableViewAnimator.m */; };
 		560D772A20B4C8D1009A3D6D /* CellFactory.m in Sources */ = {isa = PBXBuildFile; fileRef = 560D772920B4C8D1009A3D6D /* CellFactory.m */; };
 		560D772D20B4D3E0009A3D6D /* Localizable.stringsdict in Resources */ = {isa = PBXBuildFile; fileRef = 560D772C20B4D3E0009A3D6D /* Localizable.stringsdict */; };
-		560D773220B4F0C1009A3D6D /* Backup.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 560D773120B4F0C1009A3D6D /* Backup.storyboard */; };
 		560D773620B58C93009A3D6D /* BackupConfirmationSegmentedControl.m in Sources */ = {isa = PBXBuildFile; fileRef = 560D773520B58C93009A3D6D /* BackupConfirmationSegmentedControl.m */; };
 		560D773A20B5A258009A3D6D /* BackupConfirmationQuiz.m in Sources */ = {isa = PBXBuildFile; fileRef = 560D773920B5A258009A3D6D /* BackupConfirmationQuiz.m */; };
 		56191EA821504C35000BF97F /* CrashCatcherConfiguratorImplementation.m in Sources */ = {isa = PBXBuildFile; fileRef = 56191EA721504C35000BF97F /* CrashCatcherConfiguratorImplementation.m */; };
@@ -335,9 +346,6 @@
 		56947CDA2186465700336F4B /* MasterTokenBody.m in Sources */ = {isa = PBXBuildFile; fileRef = 56947CD92186465700336F4B /* MasterTokenBody.m */; };
 		56947CDB2186465700336F4B /* MasterTokenBody.m in Sources */ = {isa = PBXBuildFile; fileRef = 56947CD92186465700336F4B /* MasterTokenBody.m */; };
 		5695A95A2B5CED358C015C0D /* DeclinedTransactionRouter.m in Sources */ = {isa = PBXBuildFile; fileRef = DD110C7B23B316FCBDF56162 /* DeclinedTransactionRouter.m */; };
-		5699983C2095141100D45153 /* Setup.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5699983B2095141100D45153 /* Setup.storyboard */; };
-		56999846209517D500D45153 /* Wallet.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 56999845209517D500D45153 /* Wallet.storyboard */; };
-		56999848209517EB00D45153 /* Confirmation.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 56999847209517EB00D45153 /* Confirmation.storyboard */; };
 		569998502095363D00D45153 /* MEWWalletImplementation.m in Sources */ = {isa = PBXBuildFile; fileRef = 5699984F2095363D00D45153 /* MEWWalletImplementation.m */; };
 		569E51CA20D946B000883583 /* NSData+ArrayBuffer.m in Sources */ = {isa = PBXBuildFile; fileRef = 569E51C920D946B000883583 /* NSData+ArrayBuffer.m */; };
 		56A29C9420E04B7500D05FF1 /* AccessoryTableViewAction.m in Sources */ = {isa = PBXBuildFile; fileRef = 56A29C9320E04B7400D05FF1 /* AccessoryTableViewAction.m */; };
@@ -346,7 +354,6 @@
 		56A29C9F20E0627200D05FF1 /* InfoEmptyTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 56A29C9D20E0627200D05FF1 /* InfoEmptyTableViewCell.xib */; };
 		56A4EAA020B5D22A0042A358 /* HomeTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 56A4EA9F20B5D22A0042A358 /* HomeTableView.m */; };
 		56A4EAA420B826A50042A358 /* NSCharacterSet+WNS.m in Sources */ = {isa = PBXBuildFile; fileRef = 56A4EAA320B826A40042A358 /* NSCharacterSet+WNS.m */; };
-		56A4EAA920B8BC440042A358 /* SplashPassword.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 56A4EAA820B8BC440042A358 /* SplashPassword.storyboard */; };
 		56A4EAAF20B8BE920042A358 /* TransitioningDelegateAssembly.m in Sources */ = {isa = PBXBuildFile; fileRef = 56A4EAAE20B8BE920042A358 /* TransitioningDelegateAssembly.m */; };
 		56A4EAB620B8C2610042A358 /* TransitioningDelegateBase.m in Sources */ = {isa = PBXBuildFile; fileRef = 56A4EAB520B8C2610042A358 /* TransitioningDelegateBase.m */; };
 		56A4EABF20B8C4170042A358 /* BottomModalPresentingAnimationController.m in Sources */ = {isa = PBXBuildFile; fileRef = 56A4EABE20B8C4170042A358 /* BottomModalPresentingAnimationController.m */; };
@@ -403,7 +410,6 @@
 		56E14BCC20E9899B00C41F83 /* TickerResponseConverterImplementation.m in Sources */ = {isa = PBXBuildFile; fileRef = 56E14BCB20E9899B00C41F83 /* TickerResponseConverterImplementation.m */; };
 		56E14BD020E99C9500C41F83 /* FiatPricesResponseValidator.m in Sources */ = {isa = PBXBuildFile; fileRef = 56E14BCF20E99C9500C41F83 /* FiatPricesResponseValidator.m */; };
 		56E14BD420EA687700C41F83 /* NSNumberFormatter+TokenPrice.m in Sources */ = {isa = PBXBuildFile; fileRef = 56E14BD320EA687700C41F83 /* NSNumberFormatter+TokenPrice.m */; };
-		56E14BD920EA838400C41F83 /* BuyEther.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 56E14BD820EA838400C41F83 /* BuyEther.storyboard */; };
 		56E14BDE20EBC84500C41F83 /* SimplexServiceImplementation.m in Sources */ = {isa = PBXBuildFile; fileRef = 56E14BDD20EBC84500C41F83 /* SimplexServiceImplementation.m */; };
 		56E14BE320EBCCB600C41F83 /* SimplexOperationFactory.m in Sources */ = {isa = PBXBuildFile; fileRef = 56E14BE220EBCCB600C41F83 /* SimplexOperationFactory.m */; };
 		56E14BE720EBCE8A00C41F83 /* SimplexQueryTransformer.m in Sources */ = {isa = PBXBuildFile; fileRef = 56E14BE620EBCE8A00C41F83 /* SimplexQueryTransformer.m */; };
@@ -735,10 +741,6 @@
 		56E3E63D21016DB60014152D /* ConfirmationNavigationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DAAC174F21B3E04A4219AE53 /* ConfirmationNavigationViewController.m */; };
 		56E3E63E21016DB60014152D /* ConfirmationNavigationPresenter.m in Sources */ = {isa = PBXBuildFile; fileRef = 26280180FB77127773AA4F11 /* ConfirmationNavigationPresenter.m */; };
 		56E3E63F21016DB60014152D /* ConfirmationNavigationRouter.m in Sources */ = {isa = PBXBuildFile; fileRef = B09EAAF645E5969576DF2D0D /* ConfirmationNavigationRouter.m */; };
-		56E3E64321016DB60014152D /* Setup.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5699983B2095141100D45153 /* Setup.storyboard */; };
-		56E3E64421016DB60014152D /* Wallet.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 56999845209517D500D45153 /* Wallet.storyboard */; };
-		56E3E64521016DB60014152D /* Backup.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 560D773120B4F0C1009A3D6D /* Backup.storyboard */; };
-		56E3E64621016DB60014152D /* BuyEther.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 56E14BD820EA838400C41F83 /* BuyEther.storyboard */; };
 		56E3E64721016DB60014152D /* BuyEtherHistoryEmptyTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 563CF30020EFAD8A005467AE /* BuyEtherHistoryEmptyTableViewCell.xib */; };
 		56E3E64821016DB60014152D /* InfoEmptyTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 56A29C9D20E0627200D05FF1 /* InfoEmptyTableViewCell.xib */; };
 		56E3E64921016DB60014152D /* Localizable.stringsdict in Resources */ = {isa = PBXBuildFile; fileRef = 560D772C20B4D3E0009A3D6D /* Localizable.stringsdict */; };
@@ -749,8 +751,6 @@
 		56E3E64E21016DB60014152D /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 56FE2B7B20817F1100DB39D5 /* LaunchScreen.storyboard */; };
 		56E3E64F21016DB60014152D /* InfoDestructiveTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 56C7758820DFEBCE00451EEF /* InfoDestructiveTableViewCell.xib */; };
 		56E3E65021016DB60014152D /* HomeEmptyTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 56C878B420BC199300343ADC /* HomeEmptyTableViewCell.xib */; };
-		56E3E65121016DB60014152D /* Confirmation.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 56999847209517EB00D45153 /* Confirmation.storyboard */; };
-		56E3E65221016DB60014152D /* SplashPassword.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 56A4EAA820B8BC440042A358 /* SplashPassword.storyboard */; };
 		56E3E65321016DB60014152D /* ServicesConfig.plist in Resources */ = {isa = PBXBuildFile; fileRef = 56428A8620F96DE80049E8BC /* ServicesConfig.plist */; };
 		56E3E65521016DB60014152D /* BuyEtherHistoryItemTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 563CF2F820EFAD65005467AE /* BuyEtherHistoryItemTableViewCell.xib */; };
 		56E3E65621016DB60014152D /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 56FE2B7620817F1100DB39D5 /* Main.storyboard */; };
@@ -1009,7 +1009,21 @@
 		0A7A331923B70F2100F835FC /* EtherTokenModelObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EtherTokenModelObject.h; sourceTree = "<group>"; };
 		0A7A331B23B711D300F835FC /* EtherTokenPlainObject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EtherTokenPlainObject.m; sourceTree = "<group>"; };
 		0A7A331C23B711D400F835FC /* EtherTokenPlainObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EtherTokenPlainObject.h; sourceTree = "<group>"; };
-		0A89C5C623C56ED500C88CD5 /* es-419 */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "es-419"; path = "es-419.lproj/Localizable.strings"; sourceTree = "<group>"; };
+		0AA50FD023C97CCE00FB4C02 /* es-419 */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "es-419"; path = "es-419.lproj/LaunchScreen.strings"; sourceTree = "<group>"; };
+		0AA50FD123C97CD000FB4C02 /* es-419 */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "es-419"; path = "es-419.lproj/Main.strings"; sourceTree = "<group>"; };
+		0AA50FD223C97CD000FB4C02 /* es-419 */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "es-419"; path = "es-419.lproj/Localizable.strings"; sourceTree = "<group>"; };
+		0AA50FD523C97DA000FB4C02 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/BuyEther.storyboard; sourceTree = "<group>"; };
+		0AA50FD923C97DCA00FB4C02 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/SplashPassword.storyboard; sourceTree = "<group>"; };
+		0AA50FDE23C97E0800FB4C02 /* es-419 */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "es-419"; path = "es-419.lproj/SplashPassword.strings"; sourceTree = "<group>"; };
+		0AA50FE023C97E4C00FB4C02 /* es-419 */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "es-419"; path = "es-419.lproj/BuyEther.strings"; sourceTree = "<group>"; };
+		0AA50FE323C97E6D00FB4C02 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Backup.storyboard; sourceTree = "<group>"; };
+		0AA50FE623C97E8500FB4C02 /* es-419 */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "es-419"; path = "es-419.lproj/Backup.strings"; sourceTree = "<group>"; };
+		0AA50FE923C97EA900FB4C02 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Setup.storyboard; sourceTree = "<group>"; };
+		0AA50FEC23C97EB900FB4C02 /* es-419 */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "es-419"; path = "es-419.lproj/Setup.strings"; sourceTree = "<group>"; };
+		0AA50FEF23C97EBE00FB4C02 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Wallet.storyboard; sourceTree = "<group>"; };
+		0AA50FF223C97EC700FB4C02 /* es-419 */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "es-419"; path = "es-419.lproj/Wallet.strings"; sourceTree = "<group>"; };
+		0AA50FF523C97ECD00FB4C02 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Confirmation.storyboard; sourceTree = "<group>"; };
+		0AA50FF823C97ED400FB4C02 /* es-419 */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "es-419"; path = "es-419.lproj/Confirmation.strings"; sourceTree = "<group>"; };
 		0AC6EBD223B197BC00320D7A /* GenericToken.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GenericToken.h; sourceTree = "<group>"; };
 		0AC6EBD323B1A0D300320D7A /* GenericToken.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GenericToken.m; sourceTree = "<group>"; };
 		0AC6EBD523B1A63900320D7A /* HeadlineTableViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HeadlineTableViewCell.h; sourceTree = "<group>"; };
@@ -1031,8 +1045,6 @@
 		0ACA4F3A23AEED4700DEC56A /* TokensRouter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TokensRouter.m; sourceTree = "<group>"; };
 		0ACA4F3B23AEED4700DEC56A /* TokensRouter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TokensRouter.h; sourceTree = "<group>"; };
 		0ACA4F3C23AEED4700DEC56A /* TokensRouterInput.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TokensRouterInput.h; sourceTree = "<group>"; };
-		0AE3DBD423A1E57900C30078 /* es-419 */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "es-419"; path = "es-419.lproj/LaunchScreen.strings"; sourceTree = "<group>"; };
-		0AE3DBD523A1E57A00C30078 /* es-419 */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "es-419"; path = "es-419.lproj/Main.strings"; sourceTree = "<group>"; };
 		0AE3DBD723A1E5A900C30078 /* Base */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = Base; path = Base.lproj/Localizable.strings; sourceTree = "<group>"; };
 		0AE3DBE223A48C2200C30078 /* _IvoxTokenModelObject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = _IvoxTokenModelObject.m; sourceTree = "<group>"; };
 		0AE3DBE323A48C2300C30078 /* _BalanceModelObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = _BalanceModelObject.h; sourceTree = "<group>"; };
@@ -1314,7 +1326,6 @@
 		560D772820B4C8D1009A3D6D /* CellFactory.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CellFactory.h; sourceTree = "<group>"; };
 		560D772920B4C8D1009A3D6D /* CellFactory.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CellFactory.m; sourceTree = "<group>"; };
 		560D772C20B4D3E0009A3D6D /* Localizable.stringsdict */ = {isa = PBXFileReference; lastKnownFileType = text.plist.stringsdict; path = Localizable.stringsdict; sourceTree = "<group>"; };
-		560D773120B4F0C1009A3D6D /* Backup.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Backup.storyboard; sourceTree = "<group>"; };
 		560D773420B58C93009A3D6D /* BackupConfirmationSegmentedControl.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BackupConfirmationSegmentedControl.h; sourceTree = "<group>"; };
 		560D773520B58C93009A3D6D /* BackupConfirmationSegmentedControl.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BackupConfirmationSegmentedControl.m; sourceTree = "<group>"; };
 		560D773820B5A258009A3D6D /* BackupConfirmationQuiz.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BackupConfirmationQuiz.h; sourceTree = "<group>"; };
@@ -1580,9 +1591,6 @@
 		569162632194B8CC00A58480 /* ValidatorComponentsAssembly.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ValidatorComponentsAssembly.m; sourceTree = "<group>"; };
 		56947CD82186465700336F4B /* MasterTokenBody.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MasterTokenBody.h; sourceTree = "<group>"; };
 		56947CD92186465700336F4B /* MasterTokenBody.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MasterTokenBody.m; sourceTree = "<group>"; };
-		5699983B2095141100D45153 /* Setup.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Setup.storyboard; sourceTree = "<group>"; };
-		56999845209517D500D45153 /* Wallet.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Wallet.storyboard; sourceTree = "<group>"; };
-		56999847209517EB00D45153 /* Confirmation.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Confirmation.storyboard; sourceTree = "<group>"; };
 		5699984B2095362400D45153 /* MEWwallet.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MEWwallet.h; sourceTree = "<group>"; };
 		5699984E2095363D00D45153 /* MEWWalletImplementation.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MEWWalletImplementation.h; sourceTree = "<group>"; };
 		5699984F2095363D00D45153 /* MEWWalletImplementation.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MEWWalletImplementation.m; sourceTree = "<group>"; };
@@ -1601,7 +1609,6 @@
 		56A4EA9F20B5D22A0042A358 /* HomeTableView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HomeTableView.m; sourceTree = "<group>"; };
 		56A4EAA220B826A40042A358 /* NSCharacterSet+WNS.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NSCharacterSet+WNS.h"; sourceTree = "<group>"; };
 		56A4EAA320B826A40042A358 /* NSCharacterSet+WNS.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "NSCharacterSet+WNS.m"; sourceTree = "<group>"; };
-		56A4EAA820B8BC440042A358 /* SplashPassword.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = SplashPassword.storyboard; sourceTree = "<group>"; };
 		56A4EAAC20B8BE830042A358 /* TransitioningDelegateFactory.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TransitioningDelegateFactory.h; sourceTree = "<group>"; };
 		56A4EAAD20B8BE920042A358 /* TransitioningDelegateAssembly.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TransitioningDelegateAssembly.h; sourceTree = "<group>"; };
 		56A4EAAE20B8BE920042A358 /* TransitioningDelegateAssembly.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TransitioningDelegateAssembly.m; sourceTree = "<group>"; };
@@ -1714,7 +1721,6 @@
 		56E14BCF20E99C9500C41F83 /* FiatPricesResponseValidator.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FiatPricesResponseValidator.m; sourceTree = "<group>"; };
 		56E14BD220EA687700C41F83 /* NSNumberFormatter+TokenPrice.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NSNumberFormatter+TokenPrice.h"; sourceTree = "<group>"; };
 		56E14BD320EA687700C41F83 /* NSNumberFormatter+TokenPrice.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "NSNumberFormatter+TokenPrice.m"; sourceTree = "<group>"; };
-		56E14BD820EA838400C41F83 /* BuyEther.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = BuyEther.storyboard; sourceTree = "<group>"; };
 		56E14BDB20EBC83A00C41F83 /* SimplexService.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SimplexService.h; sourceTree = "<group>"; };
 		56E14BDC20EBC84500C41F83 /* SimplexServiceImplementation.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SimplexServiceImplementation.h; sourceTree = "<group>"; };
 		56E14BDD20EBC84500C41F83 /* SimplexServiceImplementation.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SimplexServiceImplementation.m; sourceTree = "<group>"; };
@@ -4164,7 +4170,7 @@
 		560D772F20B4F0AE009A3D6D /* Storyboard */ = {
 			isa = PBXGroup;
 			children = (
-				560D773120B4F0C1009A3D6D /* Backup.storyboard */,
+				0AA50FE423C97E6D00FB4C02 /* Backup.storyboard */,
 			);
 			path = Storyboard;
 			sourceTree = "<group>";
@@ -5402,7 +5408,7 @@
 		5699983A209513FB00D45153 /* Storyboard */ = {
 			isa = PBXGroup;
 			children = (
-				5699983B2095141100D45153 /* Setup.storyboard */,
+				0AA50FEA23C97EA900FB4C02 /* Setup.storyboard */,
 			);
 			path = Storyboard;
 			sourceTree = "<group>";
@@ -5458,7 +5464,7 @@
 		56999843209517C100D45153 /* Storyboard */ = {
 			isa = PBXGroup;
 			children = (
-				56999845209517D500D45153 /* Wallet.storyboard */,
+				0AA50FF023C97EBE00FB4C02 /* Wallet.storyboard */,
 			);
 			path = Storyboard;
 			sourceTree = "<group>";
@@ -5466,7 +5472,7 @@
 		56999844209517C800D45153 /* Storyboard */ = {
 			isa = PBXGroup;
 			children = (
-				56999847209517EB00D45153 /* Confirmation.storyboard */,
+				0AA50FF623C97ECD00FB4C02 /* Confirmation.storyboard */,
 			);
 			path = Storyboard;
 			sourceTree = "<group>";
@@ -5646,7 +5652,7 @@
 		56A4EAA620B8BC000042A358 /* Storyboard */ = {
 			isa = PBXGroup;
 			children = (
-				56A4EAA820B8BC440042A358 /* SplashPassword.storyboard */,
+				0AA50FDA23C97DCA00FB4C02 /* SplashPassword.storyboard */,
 			);
 			path = Storyboard;
 			sourceTree = "<group>";
@@ -6300,7 +6306,7 @@
 		56E14BD620EA836C00C41F83 /* Storyboard */ = {
 			isa = PBXGroup;
 			children = (
-				56E14BD820EA838400C41F83 /* BuyEther.storyboard */,
+				0AA50FD623C97DA000FB4C02 /* BuyEther.storyboard */,
 			);
 			path = Storyboard;
 			sourceTree = "<group>";
@@ -10417,10 +10423,10 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				56E3E64321016DB60014152D /* Setup.storyboard in Resources */,
-				56E3E64421016DB60014152D /* Wallet.storyboard in Resources */,
-				56E3E64521016DB60014152D /* Backup.storyboard in Resources */,
-				56E3E64621016DB60014152D /* BuyEther.storyboard in Resources */,
+				0AA50FE823C97EA900FB4C02 /* Setup.storyboard in Resources */,
+				0AA50FEE23C97EBE00FB4C02 /* Wallet.storyboard in Resources */,
+				0AA50FE223C97E6D00FB4C02 /* Backup.storyboard in Resources */,
+				0AA50FD423C97DA000FB4C02 /* BuyEther.storyboard in Resources */,
 				56896BAA221B6B0B00B78FF6 /* RestoreOptionsNormalTableViewCell.xib in Resources */,
 				56E3E64721016DB60014152D /* BuyEtherHistoryEmptyTableViewCell.xib in Resources */,
 				56E9D3792170C4260004AC61 /* peep_connection_started.caf in Resources */,
@@ -10439,8 +10445,8 @@
 				5658515E224462BA006AEC7E /* CHANGELOG.md in Resources */,
 				56E3E65E21016E060014152D /* Assets.xcassets in Resources */,
 				56E9D3752170C4260004AC61 /* peep_connection_success.caf in Resources */,
-				56E3E65121016DB60014152D /* Confirmation.storyboard in Resources */,
-				56E3E65221016DB60014152D /* SplashPassword.storyboard in Resources */,
+				0AA50FF423C97ECD00FB4C02 /* Confirmation.storyboard in Resources */,
+				0AA50FD823C97DCA00FB4C02 /* SplashPassword.storyboard in Resources */,
 				56E3E65321016DB60014152D /* ServicesConfig.plist in Resources */,
 				56E3E65521016DB60014152D /* BuyEtherHistoryItemTableViewCell.xib in Resources */,
 				56E9D3772170C4260004AC61 /* peep_connection_failed.caf in Resources */,
@@ -10452,10 +10458,10 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				5699983C2095141100D45153 /* Setup.storyboard in Resources */,
-				56999846209517D500D45153 /* Wallet.storyboard in Resources */,
-				560D773220B4F0C1009A3D6D /* Backup.storyboard in Resources */,
-				56E14BD920EA838400C41F83 /* BuyEther.storyboard in Resources */,
+				0AA50FE723C97EA900FB4C02 /* Setup.storyboard in Resources */,
+				0AA50FED23C97EBE00FB4C02 /* Wallet.storyboard in Resources */,
+				0AA50FE123C97E6D00FB4C02 /* Backup.storyboard in Resources */,
+				0AA50FD323C97DA000FB4C02 /* BuyEther.storyboard in Resources */,
 				56896BA9221B6B0B00B78FF6 /* RestoreOptionsNormalTableViewCell.xib in Resources */,
 				563CF30220EFAD8A005467AE /* BuyEtherHistoryEmptyTableViewCell.xib in Resources */,
 				56E9D3782170C4260004AC61 /* peep_connection_started.caf in Resources */,
@@ -10472,10 +10478,10 @@
 				56BDC2E3212F342700D7AE03 /* ApplicationIcon.xcassets in Resources */,
 				56E3E6652101746F0014152D /* Assets.xcassets in Resources */,
 				5658515F224462BB006AEC7E /* CHANGELOG.md in Resources */,
-				56999848209517EB00D45153 /* Confirmation.storyboard in Resources */,
+				0AA50FF323C97ECD00FB4C02 /* Confirmation.storyboard in Resources */,
 				56E9D3742170C4260004AC61 /* peep_connection_success.caf in Resources */,
 				0AE3DBD823A1E5A900C30078 /* Localizable.strings in Resources */,
-				56A4EAA920B8BC440042A358 /* SplashPassword.storyboard in Resources */,
+				0AA50FD723C97DCA00FB4C02 /* SplashPassword.storyboard in Resources */,
 				56307A90216EC77700282602 /* Shared.xcassets in Resources */,
 				56428A8720F96DE80049E8BC /* ServicesConfig.plist in Resources */,
 				563CF2FA20EFAD65005467AE /* BuyEtherHistoryItemTableViewCell.xib in Resources */,
@@ -11631,11 +11637,65 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
+		0AA50FD623C97DA000FB4C02 /* BuyEther.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				0AA50FD523C97DA000FB4C02 /* Base */,
+				0AA50FE023C97E4C00FB4C02 /* es-419 */,
+			);
+			name = BuyEther.storyboard;
+			sourceTree = "<group>";
+		};
+		0AA50FDA23C97DCA00FB4C02 /* SplashPassword.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				0AA50FD923C97DCA00FB4C02 /* Base */,
+				0AA50FDE23C97E0800FB4C02 /* es-419 */,
+			);
+			name = SplashPassword.storyboard;
+			sourceTree = "<group>";
+		};
+		0AA50FE423C97E6D00FB4C02 /* Backup.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				0AA50FE323C97E6D00FB4C02 /* Base */,
+				0AA50FE623C97E8500FB4C02 /* es-419 */,
+			);
+			name = Backup.storyboard;
+			sourceTree = "<group>";
+		};
+		0AA50FEA23C97EA900FB4C02 /* Setup.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				0AA50FE923C97EA900FB4C02 /* Base */,
+				0AA50FEC23C97EB900FB4C02 /* es-419 */,
+			);
+			name = Setup.storyboard;
+			sourceTree = "<group>";
+		};
+		0AA50FF023C97EBE00FB4C02 /* Wallet.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				0AA50FEF23C97EBE00FB4C02 /* Base */,
+				0AA50FF223C97EC700FB4C02 /* es-419 */,
+			);
+			name = Wallet.storyboard;
+			sourceTree = "<group>";
+		};
+		0AA50FF623C97ECD00FB4C02 /* Confirmation.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				0AA50FF523C97ECD00FB4C02 /* Base */,
+				0AA50FF823C97ED400FB4C02 /* es-419 */,
+			);
+			name = Confirmation.storyboard;
+			sourceTree = "<group>";
+		};
 		0AE3DBD623A1E5A900C30078 /* Localizable.strings */ = {
 			isa = PBXVariantGroup;
 			children = (
 				0AE3DBD723A1E5A900C30078 /* Base */,
-				0A89C5C623C56ED500C88CD5 /* es-419 */,
+				0AA50FD223C97CD000FB4C02 /* es-419 */,
 			);
 			name = Localizable.strings;
 			sourceTree = "<group>";
@@ -11644,7 +11704,7 @@
 			isa = PBXVariantGroup;
 			children = (
 				56FE2B7720817F1100DB39D5 /* Base */,
-				0AE3DBD523A1E57A00C30078 /* es-419 */,
+				0AA50FD123C97CD000FB4C02 /* es-419 */,
 			);
 			name = Main.storyboard;
 			sourceTree = "<group>";
@@ -11653,7 +11713,7 @@
 			isa = PBXVariantGroup;
 			children = (
 				56FE2B7C20817F1100DB39D5 /* Base */,
-				0AE3DBD423A1E57900C30078 /* es-419 */,
+				0AA50FD023C97CCE00FB4C02 /* es-419 */,
 			);
 			name = LaunchScreen.storyboard;
 			sourceTree = "<group>";

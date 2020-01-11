@@ -1,0 +1,111 @@
+
+/* Class = "UILabel"; text = "Interact directly with the blockchain with full control of your keys & your funds."; ObjectID = "0tG-ye-IIL"; */
+"0tG-ye-IIL.text" = "Interactúe directamente con el blockchain con el control total de sus llaves y sus fondos.";
+
+/* Class = "UILabel"; text = "i.e. keystore file, private key, etc."; ObjectID = "1Xr-MG-NxM"; */
+"1Xr-MG-NxM.text" = "e.g. archivo keystore, llave privada, etc.";
+
+/* Class = "UILabel"; text = "Enter your recovery phrase"; ObjectID = "3kp-Aw-s29"; */
+"3kp-Aw-s29.text" = "Introduzca su frase de recuperación";
+
+/* Class = "UILabel"; text = "Restore\nexisting wallet"; ObjectID = "698-s1-6zK"; */
+"698-s1-6zK.text" = "Restaurar\ncartera existente";
+
+/* Class = "UILabel"; text = "Interact directly with the blockchain with full control of your keys & your funds."; ObjectID = "A1v-5z-d7A"; */
+"A1v-5z-d7A.text" = "Interactúe directamente con el blockchain con el control total de sus llaves y sus fondos.";
+
+/* Class = "UILabel"; text = " "; ObjectID = "C28-ET-RGh"; */
+"C28-ET-RGh.text" = " ";
+
+/* Class = "UILabel"; text = "If your recovery phrase is shorter than 24 words (i.e. 12, 15, 18 or 21 words) you can still use it to restore your wallet. Just enter as many words as you have in your phrase."; ObjectID = "C42-h9-a6b"; */
+"C42-h9-a6b.text" = "Si su frase de recuperación tiene menos de 24 palabras (e.g. 12, 15, 18 o 21 palabras) usted aún puede utilizarla para restaurar su cartera. Sólo introduzca tantas palabras como tenga en su frase.";
+
+/* Class = "UILabel"; text = "There will be NO ‘Restore password’ button. Make sure you remember it."; ObjectID = "EZG-EI-90H"; */
+"EZG-EI-90H.text" = "No habrá botón ‘Recuperar contraseña’. Asegúrese de recordarla.";
+
+/* Class = "UILabel"; text = "Please enter your MEWconnect backup passphrase to generate Ropsten testnet keys."; ObjectID = "Eex-Bj-WyE"; */
+"Eex-Bj-WyE.text" = "Please enter your MEWconnect backup passphrase to generate Ropsten testnet keys.";
+
+/* Class = "UILabel"; text = "Since you’re going to be your own bank, we won’t be able to help if you lose your password."; ObjectID = "FOg-1a-ba0"; */
+"FOg-1a-ba0.text" = "Dado que usted será su propio banco, no seremos capaces de ayudarle si usted pierde su contraseña..";
+
+/* Class = "UILabel"; text = "Interact directly with the blockchain with full control of your keys & your funds."; ObjectID = "Gfg-cS-tRp"; */
+"Gfg-cS-tRp.text" = "Interactúe directamente con el blockchain con el control total de sus llaves y sus fondos.";
+
+/* Class = "UITextField"; placeholder = "Password"; ObjectID = "Jyf-Yi-uru"; */
+"Jyf-Yi-uru.placeholder" = "Contraseña";
+
+/* Class = "UILabel"; text = "So no one else but you can unlock your wallet"; ObjectID = "Lej-TZ-YXs"; */
+"Lej-TZ-YXs.text" = "Para que nadie más que usted pueda desbloquear su cartera";
+
+/* Class = "UITextField"; placeholder = "Password"; ObjectID = "LfX-gg-TfK"; */
+"LfX-gg-TfK.placeholder" = "Contraseña";
+
+/* Class = "UILabel"; text = "Interact directly with the blockchain with full control of your keys & your funds."; ObjectID = "LwO-OS-ot9"; */
+"LwO-OS-ot9.text" = "Interactúe directamente con el blockchain con el control total de sus llaves y sus fondos.";
+
+/* Class = "UILabel"; text = "Recovery phrase is a 24 word phrase that you wrote down when you backed up your wallet."; ObjectID = "Pds-zR-Txc"; */
+"Pds-zR-Txc.text" = "La frase de recuperación es una frase de 24 palabras que escribió cuando respaldó su cartera.";
+
+/* Class = "UILabel"; text = "Interact directly with the blockchain with full control of your keys & your funds."; ObjectID = "Sdn-1n-Fgb"; */
+"Sdn-1n-Fgb.text" = "Interactúe directamente con el blockchain con el control total de sus llaves y sus fondos.";
+
+/* Class = "UILabel"; text = "Best passwords are long and contain letters, numbers and special characters"; ObjectID = "ZTW-M2-q6y"; */
+"ZTW-M2-q6y.text" = "Las mejores contraseñas son largas, contienen letras, números y caracteres especiales";
+
+/* Class = "UILabel"; text = "Passwords don't match"; ObjectID = "acW-zu-dCW"; */
+"acW-zu-dCW.text" = "Las contraseñas no concuerdan";
+
+/* Class = "UILabel"; text = "Finally, a ‘hardware wallet’ without all the hardware. Officially by MyEtherWallet"; ObjectID = "dKN-Rk-zZ5"; */
+"dKN-Rk-zZ5.text" = "Energía sustentable para todos.\nInvierta fácilmente.\nPor Ivox Coin";
+
+/* Class = "UILabel"; text = "Weak"; ObjectID = "e2q-UQ-i3Z"; */
+"e2q-UQ-i3Z.text" = "Débil";
+
+/* Class = "UILabel"; text = "Your safety and security is our \n#1 priority"; ObjectID = "eCI-kO-7Z2"; */
+"eCI-kO-7Z2.text" = "Su seguridad es nuestra prioridad";
+
+/* Class = "UILabel"; text = "by MyEtherWallet"; ObjectID = "hgr-4b-rhX"; */
+"hgr-4b-rhX.text" = "por Ivox Coin";
+
+/* Class = "UIButton"; normalTitle = "Other options"; ObjectID = "hry-Av-yD2"; */
+"hry-Av-yD2.normalTitle" = "Otras opciones";
+
+/* Class = "UIBarButtonItem"; title = "Next"; ObjectID = "jbV-gB-VII"; */
+"jbV-gB-VII.title" = "Siguiente";
+
+/* Class = "UIBarButtonItem"; title = "Restore"; ObjectID = "lI8-7d-nNR"; */
+"lI8-7d-nNR.title" = "Restaurar";
+
+/* Class = "UIButton"; normalTitle = "CONTINUE"; ObjectID = "nhL-XN-UsL"; */
+"nhL-XN-UsL.normalTitle" = "CONTINUAR";
+
+/* Class = "UILabel"; text = "Pick a\npassword"; ObjectID = "oR6-1e-Iju"; */
+"oR6-1e-Iju.text" = "Escoja una\ncontraseña";
+
+/* Class = "UIButton"; normalTitle = "CREATE NEW WALLET"; ObjectID = "oZu-OL-Hv5"; */
+"oZu-OL-Hv5.normalTitle" = "CREAR NUEVA CARTERA";
+
+/* Class = "UIButton"; normalTitle = "I ALREADY HAVE A WALLET"; ObjectID = "p61-aI-WVD"; */
+"p61-aI-WVD.normalTitle" = "YA TENGO UNA CARTERA";
+
+/* Class = "UILabel"; text = "We don’t support keystore file and private key imports in MEWconnect app, as they are highly unsafe. \n(Note that keystore file and private key are still available methods of access on MyEtherWallet.com, but are not recommended unless using MEW offline)\nBecause MEWconnect is a ‘Hardware wallet’ without all the hardware, it's best to create a new wallet directly in MEWconnect app, same as if you just got a new hardware wallet. That way you can be sure your keys never leave your device.\nIf you want to access funds in one of your existing wallets via MEWconnect, the most secure way to do so would be transferring your ETH and tokens to your new MEWconnect wallet once it’s created. \nUsing your existing private key defeats the purpose of MEWconnect, and reduces your security considerably."; ObjectID = "qFD-MZ-yQh"; */
+"qFD-MZ-yQh.text" = "No disponible en esta versión.";
+
+/* Class = "UILabel"; text = "Type your\npassword again"; ObjectID = "qxY-Iy-yu4"; */
+"qxY-Iy-yu4.text" = "Escriba su\ncontraseña de nuevo";
+
+/* Class = "UILabel"; text = "Do you have\nyour recovery\nphrase handy?"; ObjectID = "tBL-qB-QSn"; */
+"tBL-qB-QSn.text" = "Tiene su\nfrase de\nrecuperación en mano?";
+
+/* Class = "UIButton"; normalTitle = "START USING MEWCONNECT"; ObjectID = "vDv-v1-uhA"; */
+"vDv-v1-uhA.normalTitle" = "LANZAR IVOXIS";
+
+/* Class = "UIBarButtonItem"; title = "Next"; ObjectID = "vfO-ti-l81"; */
+"vfO-ti-l81.title" = "Siguiente";
+
+/* Class = "UILabel"; text = "Interact directly with the blockchain with full control of your keys & your funds."; ObjectID = "xkV-Ja-NFK"; */
+"xkV-Ja-NFK.text" = "Interactúe directamente con el blockchain con el control total de sus llaves y sus fondos.";
+
+/* Class = "UIBarButtonItem"; title = "Next"; ObjectID = "yP4-Y9-qGd"; */
+"yP4-Y9-qGd.title" = "Siguiente";

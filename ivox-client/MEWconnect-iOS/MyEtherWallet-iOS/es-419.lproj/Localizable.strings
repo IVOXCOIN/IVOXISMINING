@@ -78,7 +78,7 @@
 
 "Please enter the exact passphrase you used to back up MEWconnect app." = "Por favor introduzca la frase de recuperación que usó para respaldar Ivoxis.";
 
-"Finally, a ‘hardware wallet’ without all the hardware. Officially by MyEtherWallet" = "Energía sustentable para todos\ninvierta fácilmente.\nPor Ivox Coin";
+"Finally, a ‘hardware wallet’ without all the hardware. Officially by MyEtherWallet" = "Energía sustentable para todos.\nInvierta fácilmente.\nPor Ivox Coin";
 
 "Secure your every MyEtherWallet transaction with two-factor verification" = "Una cartera de \nEthereum\nque permite almacenar\ntokens de Ivox";
 
@@ -208,3 +208,46 @@
 "DONE" = "LISTO";
 
 "NEXT WORD" = "SIGUIENTE PALABRA";
+
+"CREATE NEW WALLET" = "NUEVA CARTERA";
+
+"I ALREADY HAVE A WALLET" = "YA TENGO UNA CARTERA";
+
+"i.e. keystore file, private key, etc." = "e.g. archivo keystore, llave privada, etc.";
+
+"Other options" = "Otras opciones";
+
+"Restore existing wallet" = "Restaurar cartera existente";
+
+"Do you have your recovery phrase handy?" = "¿Tiene su frase de recuperación a la mano?";
+
+"Recovery phrase is a 24 word phrase that you wrote down when you backed up your wallet." = "La frase de recuperación es una frase de 24 palabras que escribió cuando respaldó su cartera.";
+
+"Continue" = "Continuar";
+
+"Enter your recovery phrase" = "Introduzca su frase de recuperación";
+
+"If your recovery phrase is shorter than 24 words (i.e. 12, 15, 18 or 21 words) you can still use it to restore your wallet. Just enter as many words as you have in your phrase." = "Si su frase de recuperación tiene menos de 24 palabras (e.g. 12, 15, 18 o 21 palabras) usted aún puede utilizarla para restaurar su cartera. Sólo introduzca tantas palabras como tenga en su frase.";
+
+"Restore" = "Restaurar";
+
+
+"Your safety and security is our priority" = "Usted es nuestra prioridad";
+
+"We don’t support keystore file and private key imports in MEWconnect app, as they are highly unsafe.\n(Note that keystore file and private key are still available methods of access on MyEtherWallet.com, but are not recommended unless using MEW offline)\nBecause MEWconnect is a ‘Hardware wallet’ without all the hardware, it's best to create a new wallet directly in MEWconnect app, same as if you just got a new hardware wallet. That way you can be sure your keys never leave your device.\nIf you want to access funds in one of your existing wallets via MEWconnect, the most secure way to do so would be transferring your ETH and tokens to your new MEWconnect wallet once it’s created.\nUsing your existing private key defeats the purpose of MEWconnect, and reduces your security considerably." = "No disponible en esta versión.";
+
+"Pick a\npassword" = "Escoja una\ncontraseña";
+
+"So no one else but you can unlock your wallet" = "Para que nadie más que usted pueda desbloquear su cartera";
+
+"Best passwords are long and contain letters, numbers and special characters" = "Las mejores contraseñas son largas, contienen letras, números y caracteres especiales";
+
+"Next" = "Siguiente";
+
+"Type your\npassword again" = "Ingrese su\ncontraseña otra vez";
+
+"There will be NO ‘Restore password’ button. Make sure you remember it." = "No habrá botón ‘Recuperar contraseña’. Asegúrese de recordarla";
+   
+"Since you’re going to be your own bank, we won’t be able to help if you lose your password." = "Dado que usted será su propio banco, no seremos capaces de ayudarle si usted pierde su contraseña.";
+
+"START USING MEWCONNECT" = "LANZAR IVOXIS";

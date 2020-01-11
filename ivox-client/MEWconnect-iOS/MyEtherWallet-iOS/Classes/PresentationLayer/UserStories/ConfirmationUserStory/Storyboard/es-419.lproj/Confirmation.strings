@@ -1,0 +1,42 @@
+
+/* Class = "UILabel"; text = "Transaction\ndeclined"; ObjectID = "5mr-vE-qya"; */
+"5mr-vE-qya.text" = "Transacción\ndeclinada";
+
+/* Class = "UILabel"; text = "Please remember to include your nickname and a specific reason for the message, so someone else cannot re-use it for a different purpose."; ObjectID = "5p2-Xe-moj"; */
+"5p2-Xe-moj.text" = "Recuerde incluir su apodo y un motivo específico para el mensaje, de modo que otra persona no pueda reutilizarlo para un propósito diferente.";
+
+/* Class = "UIButton"; normalTitle = "SIGN"; ObjectID = "7rv-hF-bz6"; */
+"7rv-hF-bz6.normalTitle" = "FIRMAR";
+
+/* Class = "UILabel"; text = "Verify\ntransaction"; ObjectID = "8Th-YD-m1u"; */
+"8Th-YD-m1u.text" = "Verificar\ntransacción";
+
+/* Class = "UILabel"; text = "If your computer is compromised, attackers might replace ‘Send to’ address with their own, before sending your transaction. That’s why it’s important to check it in MEWconnect."; ObjectID = "9lA-gj-2kw"; */
+"9lA-gj-2kw.text" = "If your computer is compromised, attackers might replace ‘Send to’ address with their own, before sending your transaction. That’s why it’s important to check it in MEWconnect.";
+
+/* Class = "UIButton"; normalTitle = "CONFIRM"; ObjectID = "ELz-ph-v1O"; */
+"ELz-ph-v1O.normalTitle" = "CONFIRM";
+
+/* Class = "UILabel"; text = "You declined the transaction and it was cancelled. If you have security concerns, please contact MEW Support"; ObjectID = "GUW-65-6Uk"; */
+"GUW-65-6Uk.text" = "You declined the transaction and it was cancelled. If you have security concerns, please contact MEW Support";
+
+/* Class = "UILabel"; text = "Continue in your browser"; ObjectID = "RGz-tl-k6o"; */
+"RGz-tl-k6o.text" = "Continue in your browser";
+
+/* Class = "UIButton"; normalTitle = "DECLINE"; ObjectID = "SZO-L9-lI5"; */
+"SZO-L9-lI5.normalTitle" = "DECLINE";
+
+/* Class = "UIButton"; normalTitle = "CANCEL"; ObjectID = "ZGL-KX-pIb"; */
+"ZGL-KX-pIb.normalTitle" = "CANCEL";
+
+/* Class = "UIButton"; normalTitle = "CLOSE"; ObjectID = "kaU-ok-Kz7"; */
+"kaU-ok-Kz7.normalTitle" = "CLOSE";
+
+/* Class = "UILabel"; text = "Sign message"; ObjectID = "nl7-IL-2Qw"; */
+"nl7-IL-2Qw.text" = "Sign message";
+
+/* Class = "UILabel"; text = "Transaction is generated and signed. Please continue in MyEtherWallet in your browser in order to send it."; ObjectID = "tXI-2j-zCW"; */
+"tXI-2j-zCW.text" = "Transaction is generated and signed. Please continue in MyEtherWallet in your browser in order to send it.";
+
+/* Class = "UIButton"; normalTitle = "CLOSE"; ObjectID = "w7P-zT-6NR"; */
+"w7P-zT-6NR.normalTitle" = "CLOSE";
