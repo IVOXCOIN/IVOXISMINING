@@ -53,6 +53,112 @@ static NSString *const RopstenTokensContractAddress = @"0xb8e1bbc50fd87ea00d8ce7
 
 @implementation TokensServiceImplementation
 
+- (void) performCommissionLookup:(MasterTokenPlainObject *)masterToken withCompletion:(TokensServiceCompletion)completion  isUSD:(BOOL)isUSDLookup
+{
+    NSManagedObjectContext *rootSavingContext = [NSManagedObjectContext MR_rootSavingContext];
+    
+    [rootSavingContext performBlock:^{
+        
+        NSLocale *locale = [NSLocale currentLocale];
+
+        NSDictionary *jsonBodyDict = @{@"tag":isUSDLookup?@"USD":[locale currencyCode]};
+        
+        NSData *jsonBodyData = [NSJSONSerialization dataWithJSONObject:jsonBodyDict options:kNilOptions error:nil];
+
+        NSString *urlString = @"https://ivoxis-backend.azurewebsites.net/api/gas/get";
+
+        NSMutableURLRequest *request = [NSMutableURLRequest new];
+        request.HTTPMethod = @"POST";
+
+        // for alternative 1:
+        [request setURL:[NSURL URLWithString:urlString]];
+        [request setValue:@"application/json" forHTTPHeaderField:@"Content-Type"];
+        [request setValue:@"application/json" forHTTPHeaderField:@"Accept"];
+        [request setHTTPBody:jsonBodyData];
+       
+       NSURLSession *session = [NSURLSession sharedSession];
+       NSURLSessionDataTask *dataTask = [session dataTaskWithRequest:request completionHandler:^(NSData *data, NSURLResponse *response, NSError *error) {
+           
+           BOOL hasError = false;
+
+           if (!error) {
+               NSHTTPURLResponse *httpResponse = (NSHTTPURLResponse *)response;
+               if(httpResponse.statusCode == 200)
+               {
+                  @try {
+                      NSError *parseError = nil;
+                      NSArray *responseArray = [NSJSONSerialization JSONObjectWithData:data options:0 error:&parseError];
+                      NSLog(@"The response is - %@",responseArray);
+
+
+                      NSDictionary *item = responseArray[0];
+                      NSDecimalNumber *rate = [NSDecimalNumber decimalNumberWithString:[item objectForKey:@"price"]];
+
+                      MasterTokenModelObject *masterTokenModelObject = [MasterTokenModelObject MR_findFirstByAttribute:NSStringFromSelector(@selector(address)) withValue:masterToken.address inContext:rootSavingContext];
+
+                      
+                      FiatPriceModelObject *fiatPrice =         masterTokenModelObject.price;
+
+                      
+                      fiatPrice.commission = rate;
+                      masterTokenModelObject.price = fiatPrice;
+                                            
+                  }
+           
+                  @catch ( NSException *e ) {
+                      hasError = true;
+                  }
+               }
+               else {
+                   hasError = true;
+               }
+           }
+           else {
+               hasError = true;
+           }
+           
+           if ([rootSavingContext hasChanges]) {
+             [rootSavingContext MR_saveToPersistentStoreWithCompletion:^(__unused BOOL contextDidSave, __unused NSError * _Nullable saveError) {
+
+                 if(!hasError){
+                     dispatch_async(dispatch_get_main_queue(), ^{
+                       if (completion) {
+                         completion(error);
+                       }
+                     });
+                 } else {
+                     dispatch_async(dispatch_get_main_queue(), ^{
+                       if (completion) {
+                         completion(error);
+                       }
+                     });
+                 }
+
+             }];
+           } else {
+               if(!hasError){
+                   dispatch_async(dispatch_get_main_queue(), ^{
+                     if (completion) {
+                       completion(error);
+                     }
+                   });
+               } else {
+                   dispatch_async(dispatch_get_main_queue(), ^{
+                     if (completion) {
+                       completion(error);
+                     }
+                   });
+               }
+
+           }
+       }];
+       
+       [dataTask resume];
+    
+    }];
+}
+
+
 - (void) performRateLookup:(MasterTokenPlainObject *)masterToken withCompletion:(TokensServiceCompletion)completion balanceMethod:(NSString *)balanceMethodString isUSD:(BOOL)isUSDLookup{
     NSManagedObjectContext *rootSavingContext = [NSManagedObjectContext MR_rootSavingContext];
     
@@ -108,7 +214,7 @@ static NSString *const RopstenTokensContractAddress = @"0xb8e1bbc50fd87ea00d8ce7
                       
                       [account setCurrency:isUSDLookup?@"USD":[locale currencyCode]];
                       
-                      [self.accountsService setCurrency:account currency:account.currency];
+                      [self.accountsService setCurrency:(AccountPlainObject*)account currency:account.currency];
                       
                   }
            
@@ -128,11 +234,7 @@ static NSString *const RopstenTokensContractAddress = @"0xb8e1bbc50fd87ea00d8ce7
              [rootSavingContext MR_saveToPersistentStoreWithCompletion:^(__unused BOOL contextDidSave, __unused NSError * _Nullable saveError) {
 
                  if(!hasError){
-                     dispatch_async(dispatch_get_main_queue(), ^{
-                       if (completion) {
-                         completion(error);
-                       }
-                     });
+                     [self performCommissionLookup:masterToken withCompletion:completion isUSD:isUSDLookup];
                  } else {
                      if(!isUSDLookup){
                          [self performRateLookup:masterToken withCompletion:completion balanceMethod:balanceMethodString isUSD:true];
@@ -148,11 +250,7 @@ static NSString *const RopstenTokensContractAddress = @"0xb8e1bbc50fd87ea00d8ce7
              }];
            } else {
                if(!hasError){
-                   dispatch_async(dispatch_get_main_queue(), ^{
-                     if (completion) {
-                       completion(error);
-                     }
-                   });
+                [self performCommissionLookup:masterToken withCompletion:completion isUSD:isUSDLookup];
                } else {
                    if(!isUSDLookup){
                        [self performRateLookup:masterToken withCompletion:completion balanceMethod:balanceMethodString isUSD:true];
@@ -516,6 +614,7 @@ static NSString *const RopstenTokensContractAddress = @"0xb8e1bbc50fd87ea00d8ce7
                   NSString *status = [item objectForKey:@"status"];
                   NSString *value = [item objectForKey:@"value"];
                   NSString *currency = [item objectForKey:@"currency"];
+                  NSString *commission = [item objectForKey:@"commission"];
                   
                   
                   NSEntityDescription *IvoxTokenEntity = [NSEntityDescription entityForName:@"IvoxToken" inManagedObjectContext:rootSavingContext];
@@ -524,7 +623,7 @@ static NSString *const RopstenTokensContractAddress = @"0xb8e1bbc50fd87ea00d8ce7
                   NSDecimalNumber* total = [NSDecimalNumber decimalNumberWithString:@"0"];
                   
                   if(![purchase isEqualToString:@"N/A"]){
-                      total = [total decimalNumberBySubtracting:[NSDecimalNumber decimalNumberWithString:@"25"]];
+                      total = [total decimalNumberBySubtracting:[NSDecimalNumber decimalNumberWithString:commission]];
                   }
                   
                   if([paypal isEqualToString:@"N/A"] && ![purchase isEqualToString:@"N/A"]){
@@ -650,7 +749,7 @@ static NSString *const RopstenTokensContractAddress = @"0xb8e1bbc50fd87ea00d8ce7
                   NSString *status = [item objectForKey:@"status"];
                   NSString *value = [item objectForKey:@"value"];
                   NSString *currency = [item objectForKey:@"currency"];
-                  
+                NSString *commission = [item objectForKey:@"commission"];
                   
                   NSEntityDescription *etherTokenEntity = [NSEntityDescription entityForName:@"EtherToken" inManagedObjectContext:rootSavingContext];
                   EtherTokenModelObject *etherToken = (EtherTokenModelObject *)[[NSManagedObject alloc] initWithEntity:etherTokenEntity insertIntoManagedObjectContext:rootSavingContext];
@@ -658,7 +757,7 @@ static NSString *const RopstenTokensContractAddress = @"0xb8e1bbc50fd87ea00d8ce7
                   NSDecimalNumber* total = [NSDecimalNumber decimalNumberWithString:@"0"];
                   
                   if(![purchase isEqualToString:@"N/A"]){
-                      total = [total decimalNumberBySubtracting:[NSDecimalNumber decimalNumberWithString:@"25"]];
+                      total = [total decimalNumberBySubtracting:[NSDecimalNumber decimalNumberWithString:commission]];
                   }
                   
                   if([paypal isEqualToString:@"N/A"] && ![purchase isEqualToString:@"N/A"]){

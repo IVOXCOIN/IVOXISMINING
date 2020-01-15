@@ -22,6 +22,8 @@ NS_ASSUME_NONNULL_BEGIN
 + (nullable NSEntityDescription*)entityInManagedObjectContext:(NSManagedObjectContext*)moc_;
 @property (nonatomic, readonly, strong) FiatPriceModelObjectID *objectID;
 
+@property (nonatomic, strong, nullable) NSDecimalNumber* commission;
+
 @property (nonatomic, strong, nullable) NSDecimalNumber* usdPrice;
 
 @property (nonatomic, strong, nullable) NSSet<TokenModelObject*> *fromToken;
@@ -39,6 +41,9 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface _FiatPriceModelObject (CoreDataGeneratedPrimitiveAccessors)
 
+- (nullable NSDecimalNumber*)primitiveCommission;
+- (void)setPrimitiveCommission:(nullable NSDecimalNumber*)value;
+
 - (nullable NSDecimalNumber*)primitiveUsdPrice;
 - (void)setPrimitiveUsdPrice:(nullable NSDecimalNumber*)value;
 
@@ -48,6 +53,7 @@ NS_ASSUME_NONNULL_BEGIN
 @end
 
 @interface FiatPriceModelObjectAttributes: NSObject 
++ (NSString *)commission;
 + (NSString *)usdPrice;
 @end
 

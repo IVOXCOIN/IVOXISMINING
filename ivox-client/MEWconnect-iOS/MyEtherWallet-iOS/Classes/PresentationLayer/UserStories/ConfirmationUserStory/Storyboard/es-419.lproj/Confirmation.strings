@@ -27,10 +27,10 @@
 "SZO-L9-lI5.normalTitle" = "DECLINE";
 
 /* Class = "UIButton"; normalTitle = "CANCEL"; ObjectID = "ZGL-KX-pIb"; */
-"ZGL-KX-pIb.normalTitle" = "CANCEL";
+"ZGL-KX-pIb.normalTitle" = "CANCELAR";
 
 /* Class = "UIButton"; normalTitle = "CLOSE"; ObjectID = "kaU-ok-Kz7"; */
-"kaU-ok-Kz7.normalTitle" = "CLOSE";
+"kaU-ok-Kz7.normalTitle" = "CERRAR";
 
 /* Class = "UILabel"; text = "Sign message"; ObjectID = "nl7-IL-2Qw"; */
 "nl7-IL-2Qw.text" = "Sign message";
@@ -39,4 +39,4 @@
 "tXI-2j-zCW.text" = "Transaction is generated and signed. Please continue in MyEtherWallet in your browser in order to send it.";
 
 /* Class = "UIButton"; normalTitle = "CLOSE"; ObjectID = "w7P-zT-6NR"; */
-"w7P-zT-6NR.normalTitle" = "CLOSE";
+"w7P-zT-6NR.normalTitle" = "CERRAR";

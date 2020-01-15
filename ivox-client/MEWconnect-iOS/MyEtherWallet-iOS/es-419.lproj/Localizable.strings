@@ -251,3 +251,18 @@
 "Since you’re going to be your own bank, we won’t be able to help if you lose your password." = "Dado que usted será su propio banco, no seremos capaces de ayudarle si usted pierde su contraseña.";
 
 "START USING MEWCONNECT" = "LANZAR IVOXIS";
+
+"Buy" = "Comprar";
+"Transactions" = "Transacciones";
+
+"An error occurred: " = "Un error ha ocurrido: ";
+
+"Wrong password" = "Contraseña incorrecta";
+
+"The password you entered is wrong" = "La contraseña introducida es incorrecta";
+
+"View" = "Ver";
+
+"Operation completed: You can view the transaction status on Etherscan" = "Operación completada: Puede ver el estatus de la transacción en Etherscan"
+
+"Type your password" = "Escriba su contraseña"

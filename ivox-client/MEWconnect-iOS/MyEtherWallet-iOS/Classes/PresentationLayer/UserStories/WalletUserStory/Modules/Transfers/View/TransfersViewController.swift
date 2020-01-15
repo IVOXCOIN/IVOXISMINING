@@ -55,6 +55,9 @@ import PromiseKit
         self.router.close()
     }
     
+    @IBAction func onCloseButtonDown(_ sender: UIButton) {
+        self.router.close()
+    }
     
     @IBAction func onConfirmButtonDown(_ sender: FlatButton) {
         
@@ -62,12 +65,13 @@ import PromiseKit
         
         if((ethereumAddress) != nil){
             
-            let alert = UIAlertController(title: "Type your password", message: nil, preferredStyle: .alert)
-            alert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
+            let alert = UIAlertController(title: NSLocalizedString("Type your password", comment: ""), message: nil, preferredStyle: .alert)
+            alert.addAction(UIAlertAction(title: NSLocalizedString("Cancel", comment: ""), style: .cancel, handler: nil))
 
             alert.addTextField(configurationHandler: { textField in
-                textField.placeholder = "Input your password here."
+                textField.placeholder = NSLocalizedString("Password", comment: "")
                 textField.textContentType = UITextContentType.password
+                textField.isSecureTextEntry = true
                 
             })
 
@@ -133,7 +137,7 @@ import PromiseKit
                             
                             let link = "https://etherscan.io/tx/" + result.hash
                                 
-                            self.showInfoMessage("Operation completed: You can view the transaction status on Etherscan", link: link)
+                            self.showInfoMessage(NSLocalizedString("Operation completed: You can view the transaction status on Etherscan", comment: "Description"), link: link)
                             
                         })
                         
@@ -154,7 +158,7 @@ import PromiseKit
                     
                 } else {
                     
-                    let alertController = UIAlertController(title: "Wrong password", message: "The password you entered is wrong", preferredStyle: .alert)
+                    let alertController = UIAlertController(title: NSLocalizedString("Wrong password", comment: "Wrong password"), message: NSLocalizedString("The password you entered is wrong", comment: "Error message"), preferredStyle: .alert)
                     
                     let OKAction = UIAlertAction(title: "OK", style: .default) { (action:UIAlertAction!) in
                                                 
@@ -176,10 +180,10 @@ import PromiseKit
     func showInfoMessage(_ info: String, link: String){
         let alertController = UIAlertController(title: "Info", message: info, preferredStyle: .alert)
                
-               let OKAction = UIAlertAction(title: "Close", style: .default) { (action:UIAlertAction!) in
+        let OKAction = UIAlertAction(title: NSLocalizedString("Close", comment: "Close"), style: .default) { (action:UIAlertAction!) in
                                            
                }
-                let ViewAction = UIAlertAction(title: "View", style: .default) { (action:UIAlertAction!) in
+        let ViewAction = UIAlertAction(title: NSLocalizedString("View", comment: "View"), style: .default) { (action:UIAlertAction!) in
                     UIApplication.shared.open(NSURL(string: link)! as URL)
 
                 }
@@ -199,7 +203,7 @@ import PromiseKit
         
     func showErrorMessage(_ error: String){
 
-         let alertController = UIAlertController(title: "Error", message: "An error occurred: " +  error, preferredStyle: .alert)
+        let alertController = UIAlertController(title: "Error", message: NSLocalizedString("An error occurred: ", comment:"Error description") +  error, preferredStyle: .alert)
          
          let OKAction = UIAlertAction(title: "OK", style: .default) { (action:UIAlertAction!) in
                                      

@@ -13,6 +13,7 @@
 
 - (void)encodeWithCoder:(NSCoder *)aCoder {
 
+    [aCoder encodeObject:self.commission forKey:@"commission"];
     [aCoder encodeObject:self.usdPrice forKey:@"usdPrice"];
     [aCoder encodeObject:self.fromToken forKey:@"fromToken"];
 }
@@ -21,6 +22,7 @@
     self = [super init];
     if (self != nil) {
 
+        _commission = [[aDecoder decodeObjectForKey:@"commission"] copy];
         _usdPrice = [[aDecoder decodeObjectForKey:@"usdPrice"] copy];
         _fromToken = [[aDecoder decodeObjectForKey:@"fromToken"] copy];
     }
@@ -33,6 +35,7 @@
 - (id)copyWithZone:(NSZone *)zone {
     FiatPricePlainObject *replica = [[[self class] allocWithZone:zone] init];
 
+    replica.commission = self.commission;
     replica.usdPrice = self.usdPrice;
 
     replica.fromToken = self.fromToken;

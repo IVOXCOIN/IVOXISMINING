@@ -101,11 +101,26 @@ static NSString *const kBuyEtherAmountDecimalSeparator    = @".";
                                   self.simplexPrice = quote.fiatBaseAmount;
                                   NSDecimalNumber *convertedAmount = [self obtainInputAmount];
                                   
+                                    NSManagedObjectContext *defaultContext = [NSManagedObjectContext MR_defaultContext];
+
+                                    AccountModelObject* accountModelObject = [AccountModelObject MR_findFirstByAttribute:NSStringFromSelector(@selector(active)) withValue:@YES inContext:defaultContext];
+
+                                  NSString* balanceMethod = accountModelObject.balanceMethod;
+
                                     
                                   BOOL minimumAmountReached = NO;
                                   NSDecimalNumber *usd = [self obtainInputAmount];
-                                  minimumAmountReached = [usd compare:kBuyEtherMinimumUSDAmount] != NSOrderedAscending;
+                                  
+                                    if([balanceMethod isEqualToString:@"IVOX"]){
+                                        minimumAmountReached = [usd compare:kBuyEtherMinimumUSDAmount] != NSOrderedAscending;
 
+                                    } else {
+                                        if(![usd isEqual:@0]){
+                                            minimumAmountReached = YES;
+                                        }
+                                    }
+                                    
+ 
                                   [self.output updateInputPriceWithEnteredAmount:self.amount convertedAmount:convertedAmount];
                                   [self.output minimumAmountDidReached:minimumAmountReached];
                                 }
@@ -141,10 +156,25 @@ static NSString *const kBuyEtherAmountDecimalSeparator    = @".";
       [_amount appendString:symbol];
     }
   }
+    
+    
+      NSManagedObjectContext *defaultContext = [NSManagedObjectContext MR_defaultContext];
+
+      AccountModelObject* accountModelObject = [AccountModelObject MR_findFirstByAttribute:NSStringFromSelector(@selector(active)) withValue:@YES inContext:defaultContext];
+
+    NSString* balanceMethod = accountModelObject.balanceMethod;
+
   
   BOOL minimumAmountReached = NO;
   NSDecimalNumber *convertedAmount = [self obtainInputAmount];
-    minimumAmountReached = [convertedAmount compare:kBuyEtherMinimumUSDAmount] != NSOrderedAscending;
+    
+    if([balanceMethod isEqualToString:@"IVOX"]){
+        minimumAmountReached = [convertedAmount compare:kBuyEtherMinimumUSDAmount] != NSOrderedAscending;
+    } else {
+        if(![convertedAmount isEqual:@0]){
+            minimumAmountReached = YES;
+        }
+    }
 
   [self.output updateInputPriceWithEnteredAmount:_amount convertedAmount:convertedAmount];
   [self.output minimumAmountDidReached:minimumAmountReached];
@@ -156,11 +186,27 @@ static NSString *const kBuyEtherAmountDecimalSeparator    = @".";
     [_amount replaceCharactersInRange:range withString:@""];
   }
 
+      NSManagedObjectContext *defaultContext = [NSManagedObjectContext MR_defaultContext];
+
+      AccountModelObject* accountModelObject = [AccountModelObject MR_findFirstByAttribute:NSStringFromSelector(@selector(active)) withValue:@YES inContext:defaultContext];
+
+    NSString* balanceMethod = accountModelObject.balanceMethod;
+
+    
   NSDecimalNumber *convertedAmount = [self obtainInputAmount];
   BOOL minimumAmountReached = NO;
 
     NSDecimalNumber *usd = convertedAmount;
-    minimumAmountReached = [usd compare:kBuyEtherMinimumUSDAmount] != NSOrderedAscending;
+    
+    if([balanceMethod isEqualToString:@"IVOX"]){
+        minimumAmountReached = [usd compare:kBuyEtherMinimumUSDAmount] != NSOrderedAscending;
+
+    } else {
+        if(![usd isEqual:@0]){
+            minimumAmountReached = YES;
+        }
+    }
+    
 
   [self.output updateInputPriceWithEnteredAmount:_amount convertedAmount:convertedAmount];
   [self.output minimumAmountDidReached:minimumAmountReached];

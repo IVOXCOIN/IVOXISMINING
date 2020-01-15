@@ -349,6 +349,7 @@ class BuyFragment : BaseViewModelFragment() {
         customObject.put("destination", formatedEthereumAddress)
         customObject.put("ether", paymentEthereum)
         customObject.put("currency", preferences.getWalletPreferences(preferences.applicationPreferences.getCurrentNetwork()).getWalletCurrency())
+        customObject.put("commission", gasPrice.toString())
         customObject.put("amount", paymentTotal.toString())
 
         payment.custom(customObject.toString())

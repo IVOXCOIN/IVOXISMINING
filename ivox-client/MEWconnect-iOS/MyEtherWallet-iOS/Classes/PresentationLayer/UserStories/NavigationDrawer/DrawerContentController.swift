@@ -94,19 +94,23 @@ extension DrawerContentController: UICollectionViewDelegate, UICollectionViewDat
        switch index {
        case 0:
            cell.cellIcon.image = UIImage(named: "mail_black_24dp")
-           cell.cellName.text = "Buy"
+           cell.cellName.text = NSLocalizedString("Buy", comment: "Cell Name")
+
        case 1:
            cell.cellIcon.image = UIImage(named: "send_black_24dp")
-           cell.cellName.text = "Tokens"
+           cell.cellName.text = NSLocalizedString("Tokens", comment: "Cell Name")
+
        case 2:
            cell.cellIcon.image = UIImage(named: "favorite_black_24dp")
-           cell.cellName.text = "Ether"
+           cell.cellName.text = NSLocalizedString("Ether", comment: "Cell Name")
+
        case 3:
            cell.cellIcon.image = UIImage(named: "favorite_black_24dp")
-           cell.cellName.text = "Transactions"
+           cell.cellName.text = NSLocalizedString("Transactions", comment: "Cell Name")
        case 4:
            cell.cellIcon.image = UIImage(named: "delete_black_24dp")
-           cell.cellName.text = "Info"
+           cell.cellName.text = NSLocalizedString("Info", comment: "Cell Name")
+
        default:
            break
        }

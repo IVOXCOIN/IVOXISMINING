@@ -21,12 +21,25 @@
 #import "UIScreen+ScreenSizeType.h"
 
 #import "PayPalMobile.h"
+
+#import "MasterTokenModelObject.h"
+#import "MasterTokenPlainObject.h"
 #import "AccountModelObject.h"
+#import "BalanceModelObject.h"
+#import "IvoxTokenModelObject.h"
+#import "EtherTokenModelObject.h"
+#import "TokenModelObject.h"
+#import "TokenPlainObject.h"
+#import "FiatPriceModelObject.h"
+#import "NetworkModelObject.h"
+#import "NetworkPlainObject.h"
+
+
 #import "NSManagedObjectContext+MagicalRecord.h"
 #import "NSManagedObject+MagicalFinders.h"
 
 
-#define kPayPalEnvironment PayPalEnvironmentNoNetwork
+#define kPayPalEnvironment PayPalEnvironmentSandbox
 
 
 @interface BuyEtherAmountViewController ()
@@ -54,6 +67,7 @@
 - (void) viewDidLoad {
   [super viewDidLoad];
     
+    self.buyButton.enabled = false;
     
     // Set up payPalConfig
     _payPalConfig = [[PayPalConfiguration alloc] init];
@@ -141,6 +155,38 @@
   payment.items = nil;  // if not including multiple items, then leave payment.items as nil
   payment.paymentDetails = nil; // if not including payment details, then leave payment.paymentDetails as nil
 
+    NSManagedObjectContext *defaultContext = [NSManagedObjectContext MR_defaultContext];
+
+    AccountModelObject* accountModelObject = [AccountModelObject MR_findFirstByAttribute:NSStringFromSelector(@selector(active)) withValue:@YES inContext:defaultContext];
+
+    NSPredicate *predicate = [NSPredicate predicateWithFormat:@"SELF.chainID = %lld", BlockchainNetworkTypeEthereum];
+    NetworkModelObject *networkModelObject = [[accountModelObject.networks filteredSetUsingPredicate:predicate] anyObject];
+    if (!networkModelObject) {
+      networkModelObject = [accountModelObject.networks anyObject];
+    }
+
+    NSDictionary *customBodyDict = @{
+        @"method":accountModelObject.balanceMethod,
+        @"source":networkModelObject.master.address,
+        @"destination":networkModelObject.master.address,
+        @"ether":[self._purchaseUnits stringValue],
+        @"currency":accountModelObject.currency,
+        @"commission":[networkModelObject.master.price.commission stringValue],
+        @"amount":[total stringValue]
+    };
+    
+    NSError *error;
+    NSData *jsonData = [NSJSONSerialization dataWithJSONObject:customBodyDict options:NSJSONWritingPrettyPrinted error:&error];
+
+    if (!jsonData) {
+        NSLog(@"Got an error: %@", error);
+        return;
+    } else {
+        NSString *jsonString = [[NSString alloc] initWithData:jsonData encoding:NSUTF8StringEncoding];
+        
+        payment.custom = jsonString;
+    }
+    
   if (!payment.processable) {
     // This particular payment will always be processable. If, for
     // example, the amount was negative or the shortDescription was
@@ -253,6 +299,17 @@
 
     self._currency = accountModelObject.currency;
     
+
+    NSPredicate *predicate = [NSPredicate predicateWithFormat:@"SELF.chainID = %lld", BlockchainNetworkTypeEthereum];
+    NetworkModelObject *networkModelObject = [[accountModelObject.networks filteredSetUsingPredicate:predicate] anyObject];
+    if (!networkModelObject) {
+      networkModelObject = [accountModelObject.networks anyObject];
+    }
+    
+    self._purchaseValue = [self._purchaseValue decimalNumberByAdding:
+      networkModelObject.master.price.commission];
+
+    
   prefix = [NSNumberFormatter usdFormatter].currencySymbol;
   convertedFormatter = [NSNumberFormatter ethereumFormatterWithBalanceMethod:balanceMethodString];
   nullSuffix = convertedFormatter.currencySymbol;
@@ -261,14 +318,13 @@
 
     self.title = purchaseTitle;
     
-  self.amountLabel.text = [prefix stringByAppendingString:enteredAmount];
+  self.amountLabel.text = [prefix stringByAppendingString:[self._purchaseValue stringValue]];
   if (convertedAmount) {
       
       NSDecimalNumber *originalNumber = [NSDecimalNumber decimalNumberWithString:[convertedAmount stringValue]];
       NSDecimalNumberHandler *behavior = [NSDecimalNumberHandler decimalNumberHandlerWithRoundingMode:NSRoundPlain scale:4 raiseOnExactness:NO raiseOnOverflow:NO raiseOnUnderflow:NO raiseOnDivideByZero:NO];
 
       NSDecimalNumber *roundedNumber = [originalNumber decimalNumberByRoundingAccordingToBehavior:behavior];
-
 
     NSString *convertedAmountText = [@"≈ " stringByAppendingString:[convertedFormatter stringFromNumber:roundedNumber]];
       
@@ -288,7 +344,11 @@
 }
 
 - (void) disableContinue {
-  self.buyButton.enabled = NO;
+    if(self.environment == PayPalEnvironmentSandbox){
+        self.buyButton.enabled = YES;
+    } else {
+        self.buyButton.enabled = NO;
+    }
 }
 
 - (void) showLoading {

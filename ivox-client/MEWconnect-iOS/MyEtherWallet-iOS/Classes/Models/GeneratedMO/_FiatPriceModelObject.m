@@ -32,6 +32,8 @@
 	return keyPaths;
 }
 
+@dynamic commission;
+
 @dynamic usdPrice;
 
 @dynamic fromToken;
@@ -48,6 +50,9 @@
 @end
 
 @implementation FiatPriceModelObjectAttributes 
++ (NSString *)commission {
+	return @"commission";
+}
 + (NSString *)usdPrice {
 	return @"usdPrice";
 }

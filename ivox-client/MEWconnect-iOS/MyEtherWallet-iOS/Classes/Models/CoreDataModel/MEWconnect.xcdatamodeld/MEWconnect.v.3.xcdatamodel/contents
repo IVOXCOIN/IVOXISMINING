@@ -28,6 +28,7 @@
         <relationship name="fromNetwork" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Network" inverseName="etherTokens" inverseEntity="Network"/>
     </entity>
     <entity name="FiatPrice" representedClassName="FiatPriceModelObject" syncable="YES">
+        <attribute name="commission" optional="YES" attributeType="Decimal" defaultValueString="0.0"/>
         <attribute name="usdPrice" optional="YES" attributeType="Decimal" defaultValueString="0.0"/>
         <relationship name="fromToken" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Token" inverseName="price" inverseEntity="Token"/>
     </entity>
@@ -80,7 +81,7 @@
         <element name="Account" positionX="-1379.0234375" positionY="-6297.203125" width="128" height="148"/>
         <element name="Balance" positionX="-1161" positionY="-6255" width="128" height="73"/>
         <element name="EtherToken" positionX="-1170" positionY="-6264" width="128" height="223"/>
-        <element name="FiatPrice" positionX="-788.19140625" positionY="-6267.05859375" width="128" height="73"/>
+        <element name="FiatPrice" positionX="-788.19140625" positionY="-6267.05859375" width="128" height="88"/>
         <element name="IvoxToken" positionX="-1170" positionY="-6264" width="128" height="223"/>
         <element name="MasterToken" positionX="-1012.55078125" positionY="-6419" width="128" height="60"/>
         <element name="Network" positionX="-1192.65234375" positionY="-6297.08203125" width="128" height="163"/>
