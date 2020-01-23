@@ -183,21 +183,22 @@ import PromiseKit
         let OKAction = UIAlertAction(title: NSLocalizedString("Close", comment: "Close"), style: .default) { (action:UIAlertAction!) in
                                            
                }
+        
         let ViewAction = UIAlertAction(title: NSLocalizedString("View", comment: "View"), style: .default) { (action:UIAlertAction!) in
                     UIApplication.shared.open(NSURL(string: link)! as URL)
 
-                }
+        }
 
-                alertController.addAction(OKAction)
-                alertController.addAction(ViewAction)
+        alertController.addAction(OKAction)
+        alertController.addAction(ViewAction)
 
-              if(self.presentedViewController == nil){
-               self.present(alertController, animated: true, completion:nil)
-              } else {
-                  self.presentedViewController?.dismiss(animated: true, completion: {
-                      self.present(alertController, animated: true, completion:nil)
-                  })
-              }
+        if(self.presentedViewController == nil){
+            self.present(alertController, animated: true, completion:nil)
+        } else {
+          self.presentedViewController?.dismiss(animated: true, completion: {
+              self.present(alertController, animated: true, completion:nil)
+          })
+        }
 
     }
         

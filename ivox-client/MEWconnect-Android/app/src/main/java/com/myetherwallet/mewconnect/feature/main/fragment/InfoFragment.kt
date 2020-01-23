@@ -50,7 +50,7 @@ class InfoFragment : BaseDiFragment(), Toolbar.OnMenuItemClickListener {
         //info_toolbar.inflateMenu(R.menu.close)
         //info_toolbar.setOnMenuItemClickListener(this)
 
-        info_contact.setOnClickListener { LaunchUtils.openMailApp(context, "support@myetherwallet.com") }
+        info_contact.setOnClickListener { LaunchUtils.openMailApp(context, "ivoxcoin@gmail.com") }
         info_user_agreement.setOnClickListener { LaunchUtils.openWebSite(context, "http://ivoxis.net/TERMINOS_Y_CONDICIONES_DE_IVOX.pdf") }
         info_privacy_and_terms.setOnClickListener { LaunchUtils.openWebSite(context, "http://ivoxis.net/POLITICA_DE_PRIVACIDAD.pdf") }
         info_site.setOnClickListener { LaunchUtils.openWebSite(context, "https://www.ivoxcoin.com") }

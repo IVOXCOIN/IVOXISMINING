@@ -28,6 +28,8 @@ NS_ASSUME_NONNULL_BEGIN
 - (BOOL)activeValue;
 - (void)setActiveValue:(BOOL)value_;
 
+@property (nonatomic, strong, nullable) NSString* address;
+
 @property (nonatomic, strong, nullable) NSNumber* backedUp;
 
 @property (atomic) BOOL backedUpValue;
@@ -36,11 +38,21 @@ NS_ASSUME_NONNULL_BEGIN
 
 @property (nonatomic, strong, nullable) NSString* balanceMethod;
 
+@property (nonatomic, strong, nullable) NSString* card;
+
+@property (nonatomic, strong, nullable) NSString* country;
+
 @property (nonatomic, strong, nullable) NSString* currency;
+
+@property (nonatomic, strong, nullable) NSString* email;
 
 @property (nonatomic, strong, nullable) NSString* name;
 
+@property (nonatomic, strong, nullable) NSString* phone;
+
 @property (nonatomic, strong, nullable) NSString* uid;
+
+@property (nonatomic, strong, nullable) NSString* username;
 
 @property (nonatomic, strong, nullable) NSSet<NetworkModelObject*> *networks;
 - (nullable NSMutableSet<NetworkModelObject*>*)networksSet;
@@ -63,6 +75,9 @@ NS_ASSUME_NONNULL_BEGIN
 - (BOOL)primitiveActiveValue;
 - (void)setPrimitiveActiveValue:(BOOL)value_;
 
+- (nullable NSString*)primitiveAddress;
+- (void)setPrimitiveAddress:(nullable NSString*)value;
+
 - (nullable NSNumber*)primitiveBackedUp;
 - (void)setPrimitiveBackedUp:(nullable NSNumber*)value;
 
@@ -72,14 +87,29 @@ NS_ASSUME_NONNULL_BEGIN
 - (nullable NSString*)primitiveBalanceMethod;
 - (void)setPrimitiveBalanceMethod:(nullable NSString*)value;
 
+- (nullable NSString*)primitiveCard;
+- (void)setPrimitiveCard:(nullable NSString*)value;
+
+- (nullable NSString*)primitiveCountry;
+- (void)setPrimitiveCountry:(nullable NSString*)value;
+
 - (nullable NSString*)primitiveCurrency;
 - (void)setPrimitiveCurrency:(nullable NSString*)value;
+
+- (nullable NSString*)primitiveEmail;
+- (void)setPrimitiveEmail:(nullable NSString*)value;
 
 - (nullable NSString*)primitiveName;
 - (void)setPrimitiveName:(nullable NSString*)value;
 
+- (nullable NSString*)primitivePhone;
+- (void)setPrimitivePhone:(nullable NSString*)value;
+
 - (nullable NSString*)primitiveUid;
 - (void)setPrimitiveUid:(nullable NSString*)value;
+
+- (nullable NSString*)primitiveUsername;
+- (void)setPrimitiveUsername:(nullable NSString*)value;
 
 - (NSMutableSet<NetworkModelObject*>*)primitiveNetworks;
 - (void)setPrimitiveNetworks:(NSMutableSet<NetworkModelObject*>*)value;
@@ -88,11 +118,17 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface AccountModelObjectAttributes: NSObject 
 + (NSString *)active;
++ (NSString *)address;
 + (NSString *)backedUp;
 + (NSString *)balanceMethod;
++ (NSString *)card;
++ (NSString *)country;
 + (NSString *)currency;
++ (NSString *)email;
 + (NSString *)name;
++ (NSString *)phone;
 + (NSString *)uid;
++ (NSString *)username;
 @end
 
 @interface AccountModelObjectRelationships: NSObject

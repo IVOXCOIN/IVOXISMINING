@@ -47,6 +47,10 @@
 		0AA50FEE23C97EBE00FB4C02 /* Wallet.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0AA50FF023C97EBE00FB4C02 /* Wallet.storyboard */; };
 		0AA50FF323C97ECD00FB4C02 /* Confirmation.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0AA50FF623C97ECD00FB4C02 /* Confirmation.storyboard */; };
 		0AA50FF423C97ECD00FB4C02 /* Confirmation.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0AA50FF623C97ECD00FB4C02 /* Confirmation.storyboard */; };
+		0AB2760523D2807900A5F673 /* ProfileAssembly.m in Sources */ = {isa = PBXBuildFile; fileRef = 0AB2760423D2807700A5F673 /* ProfileAssembly.m */; };
+		0AB2760923D2A51A00A5F673 /* ProfilePresenter.m in Sources */ = {isa = PBXBuildFile; fileRef = 0AB2760823D2A51700A5F673 /* ProfilePresenter.m */; };
+		0AB2760B23D2A54100A5F673 /* ProfileRouter.m in Sources */ = {isa = PBXBuildFile; fileRef = 0AB2760A23D2A54100A5F673 /* ProfileRouter.m */; };
+		0AB2761023D2A59000A5F673 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AB2760F23D2A59000A5F673 /* ProfileViewController.swift */; };
 		0AC6EBD423B1A0D400320D7A /* GenericToken.m in Sources */ = {isa = PBXBuildFile; fileRef = 0AC6EBD323B1A0D300320D7A /* GenericToken.m */; };
 		0AC6EBD723B1A67400320D7A /* HeadlineTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 0AC6EBD623B1A67400320D7A /* HeadlineTableViewCell.m */; };
 		0AC6EBDC23B5734F00320D7A /* SingleTokenPopOverViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AC6EBDB23B5734F00320D7A /* SingleTokenPopOverViewController.swift */; };
@@ -1024,6 +1028,16 @@
 		0AA50FF223C97EC700FB4C02 /* es-419 */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "es-419"; path = "es-419.lproj/Wallet.strings"; sourceTree = "<group>"; };
 		0AA50FF523C97ECD00FB4C02 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Confirmation.storyboard; sourceTree = "<group>"; };
 		0AA50FF823C97ED400FB4C02 /* es-419 */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "es-419"; path = "es-419.lproj/Confirmation.strings"; sourceTree = "<group>"; };
+		0AB2760323D2800300A5F673 /* ProfileAssembly.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ProfileAssembly.h; sourceTree = "<group>"; };
+		0AB2760423D2807700A5F673 /* ProfileAssembly.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ProfileAssembly.m; sourceTree = "<group>"; };
+		0AB2760623D2A4E700A5F673 /* ProfilePresenter.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ProfilePresenter.h; sourceTree = "<group>"; };
+		0AB2760723D2A50100A5F673 /* ProfileModuleInput.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ProfileModuleInput.h; sourceTree = "<group>"; };
+		0AB2760823D2A51700A5F673 /* ProfilePresenter.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ProfilePresenter.m; sourceTree = "<group>"; };
+		0AB2760A23D2A54100A5F673 /* ProfileRouter.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ProfileRouter.m; sourceTree = "<group>"; };
+		0AB2760C23D2A55C00A5F673 /* ProfileRouter.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ProfileRouter.h; sourceTree = "<group>"; };
+		0AB2760D23D2A56F00A5F673 /* ProfileRouterInput.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ProfileRouterInput.h; sourceTree = "<group>"; };
+		0AB2760E23D2A58100A5F673 /* ProfileViewInput.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ProfileViewInput.h; sourceTree = "<group>"; };
+		0AB2760F23D2A59000A5F673 /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
 		0AC6EBD223B197BC00320D7A /* GenericToken.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GenericToken.h; sourceTree = "<group>"; };
 		0AC6EBD323B1A0D300320D7A /* GenericToken.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GenericToken.m; sourceTree = "<group>"; };
 		0AC6EBD523B1A63900320D7A /* HeadlineTableViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HeadlineTableViewCell.h; sourceTree = "<group>"; };
@@ -2581,6 +2595,55 @@
 				0A4C8F1E23BC615600385FC4 /* TransfersPresenter.m */,
 			);
 			path = Presenter;
+			sourceTree = "<group>";
+		};
+		0AB275FE23D16F7200A5F673 /* Profile */ = {
+			isa = PBXGroup;
+			children = (
+				0AB2760223D16F8D00A5F673 /* Assembly */,
+				0AB2760123D16F8800A5F673 /* View */,
+				0AB2760023D16F8300A5F673 /* Router */,
+				0AB275FF23D16F7C00A5F673 /* Presenter */,
+			);
+			path = Profile;
+			sourceTree = "<group>";
+		};
+		0AB275FF23D16F7C00A5F673 /* Presenter */ = {
+			isa = PBXGroup;
+			children = (
+				0AB2760623D2A4E700A5F673 /* ProfilePresenter.h */,
+				0AB2760723D2A50100A5F673 /* ProfileModuleInput.h */,
+				0AB2760823D2A51700A5F673 /* ProfilePresenter.m */,
+			);
+			path = Presenter;
+			sourceTree = "<group>";
+		};
+		0AB2760023D16F8300A5F673 /* Router */ = {
+			isa = PBXGroup;
+			children = (
+				0AB2760A23D2A54100A5F673 /* ProfileRouter.m */,
+				0AB2760C23D2A55C00A5F673 /* ProfileRouter.h */,
+				0AB2760D23D2A56F00A5F673 /* ProfileRouterInput.h */,
+			);
+			path = Router;
+			sourceTree = "<group>";
+		};
+		0AB2760123D16F8800A5F673 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				0AB2760E23D2A58100A5F673 /* ProfileViewInput.h */,
+				0AB2760F23D2A59000A5F673 /* ProfileViewController.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		0AB2760223D16F8D00A5F673 /* Assembly */ = {
+			isa = PBXGroup;
+			children = (
+				0AB2760323D2800300A5F673 /* ProfileAssembly.h */,
+				0AB2760423D2807700A5F673 /* ProfileAssembly.m */,
+			);
+			path = Assembly;
 			sourceTree = "<group>";
 		};
 		0ACA4F2723AEED4600DEC56A /* Tokens */ = {
@@ -5426,6 +5489,7 @@
 		569998402095178800D45153 /* Modules */ = {
 			isa = PBXGroup;
 			children = (
+				0AB275FE23D16F7200A5F673 /* Profile */,
 				0A4C8F0E23BC2BB400385FC4 /* Transfers */,
 				0ACA4F2723AEED4600DEC56A /* Tokens */,
 				53A0700A264E5B4E2D23FE3F /* Settings */,
@@ -11256,6 +11320,7 @@
 				5668E5012083E4D70070A402 /* SystemInfrastructureAssembly.m in Sources */,
 				0ACA4F4123AEED4700DEC56A /* TokensRouter.m in Sources */,
 				56AC9449208FA77900E5BC2C /* MEWConnectConstants.m in Sources */,
+				0AB2760923D2A51A00A5F673 /* ProfilePresenter.m in Sources */,
 				56E14C1520ED16C900C41F83 /* SimplexOrderBody.m in Sources */,
 				563DF38120986B7900F740FF /* UIImage+Color.m in Sources */,
 				56AC945B208FC21300E5BC2C /* MEWRTCConstants.m in Sources */,
@@ -11323,6 +11388,7 @@
 				560D76F020B48296009A3D6D /* PonsomizerAssembly.m in Sources */,
 				5677C5A82181226500477ACD /* TokenModelObject.m in Sources */,
 				5FEF304FAB4A717221A0C324 /* HomeAssembly.m in Sources */,
+				0AB2760B23D2A54100A5F673 /* ProfileRouter.m in Sources */,
 				56E14BF820EBCFAD00C41F83 /* SimplexQuoteBody.m in Sources */,
 				56E9D3652170ADF10004AC61 /* CardViewSeedButton.m in Sources */,
 				3E29FA4D9347F0A161AF1AB8 /* HomeViewController.m in Sources */,
@@ -11437,6 +11503,7 @@
 				56C878B020BB873900343ADC /* EthereumResponseConverterImplementation.m in Sources */,
 				56FB39AE20B22BF6007776C8 /* ResponseConverterOperation.m in Sources */,
 				56FB39F020B35862007776C8 /* BodyTransformerBase.m in Sources */,
+				0AB2760523D2807900A5F673 /* ProfileAssembly.m in Sources */,
 				7879FEAD66BF19CB8B3E2E9C /* ConfirmPasswordInteractor.m in Sources */,
 				56FB39C420B23143007776C8 /* ManyResponseValidator.m in Sources */,
 				0A4C8F1223BC2C8100385FC4 /* TransfersAssembly.m in Sources */,
@@ -11495,6 +11562,7 @@
 				56896BA1221B6B0B00B78FF6 /* RestoreOptionsNormalTableViewCellObject.m in Sources */,
 				565851322242B347006AEC7E /* ConfirmationUIStringList.m in Sources */,
 				50E9A0649AE46B8F3A5B8117 /* BackupStartRouter.m in Sources */,
+				0AB2761023D2A59000A5F673 /* ProfileViewController.swift in Sources */,
 				726F177BFDD1D778D3118037 /* BackupWordsAssembly.m in Sources */,
 				EE2E56F2E2160F882F6FD764 /* BackupWordsViewController.m in Sources */,
 				56E14C0820EC0D4800C41F83 /* SimplexResponseValidator.m in Sources */,

@@ -97,6 +97,13 @@ static NSString *const kCoreDataConfiguratorReset1012  = @"com.myetherwallet.cor
           accountModelObject.balanceMethod = (keychainItem.balanceMethod);
           accountModelObject.currency = (keychainItem.currency);
         
+          accountModelObject.username = (keychainItem.username);
+          accountModelObject.email = (keychainItem.email);
+          accountModelObject.phone = (keychainItem.phone);
+          accountModelObject.address = (keychainItem.address);
+          accountModelObject.country = (keychainItem.country);
+          accountModelObject.card = (keychainItem.card);
+          
         for (KeychainNetworkModel *keychainNetworkItem in keychainItem.networks) {
           NSPredicate *predicate = [NSPredicate predicateWithFormat:@"SELF.master.address = %@", keychainNetworkItem.address];
           NSSet <NetworkModelObject *> *networks = [accountModelObject.networks filteredSetUsingPredicate:predicate];

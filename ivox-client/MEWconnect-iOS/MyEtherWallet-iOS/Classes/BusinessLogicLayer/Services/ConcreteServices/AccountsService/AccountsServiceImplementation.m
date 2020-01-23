@@ -78,6 +78,98 @@
   }];
 }
 
+
+- (NSString *) getUsername:(AccountPlainObject *)account{
+    AccountModelObject *accountModelObject = [self obtainAccountWithAccount:account];
+    return accountModelObject.username;
+}
+
+- (void) setUsername:(AccountPlainObject *)account username:(NSString *)username{
+  [self.keychainService saveUsername:username forAccount:account];
+  NSManagedObjectContext *rootSavingContext = [NSManagedObjectContext MR_rootSavingContext];
+  [rootSavingContext performBlockAndWait:^{
+    AccountModelObject *accountModelObject = [AccountModelObject MR_findFirstByAttribute:NSStringFromSelector(@selector(uid)) withValue:account.uid inContext:rootSavingContext];
+    accountModelObject.username = username;
+    [rootSavingContext MR_saveToPersistentStoreAndWait];
+  }];
+}
+
+- (NSString *) getEmail:(AccountPlainObject *)account{
+    AccountModelObject *accountModelObject = [self obtainAccountWithAccount:account];
+    return accountModelObject.email;
+}
+
+- (void) setEmail:(AccountPlainObject *)account email:(NSString *)email{
+  [self.keychainService saveEmail:email forAccount:account];
+  NSManagedObjectContext *rootSavingContext = [NSManagedObjectContext MR_rootSavingContext];
+  [rootSavingContext performBlockAndWait:^{
+    AccountModelObject *accountModelObject = [AccountModelObject MR_findFirstByAttribute:NSStringFromSelector(@selector(uid)) withValue:account.uid inContext:rootSavingContext];
+    accountModelObject.email = email;
+    [rootSavingContext MR_saveToPersistentStoreAndWait];
+  }];
+}
+
+- (NSString *) getPhone:(AccountPlainObject *)account{
+    AccountModelObject *accountModelObject = [self obtainAccountWithAccount:account];
+    return accountModelObject.phone;
+}
+
+
+- (void) setPhone:(AccountPlainObject *)account phone:(NSString *)phone{
+  [self.keychainService savePhone:phone forAccount:account];
+  NSManagedObjectContext *rootSavingContext = [NSManagedObjectContext MR_rootSavingContext];
+  [rootSavingContext performBlockAndWait:^{
+    AccountModelObject *accountModelObject = [AccountModelObject MR_findFirstByAttribute:NSStringFromSelector(@selector(uid)) withValue:account.uid inContext:rootSavingContext];
+    accountModelObject.phone = phone;
+    [rootSavingContext MR_saveToPersistentStoreAndWait];
+  }];
+}
+
+- (NSString *) getAddress:(AccountPlainObject *)account{
+    AccountModelObject *accountModelObject = [self obtainAccountWithAccount:account];
+    return accountModelObject.address;
+}
+
+- (void) setAddress:(AccountPlainObject *)account address:(NSString *)address{
+  [self.keychainService saveAddress:address forAccount:account];
+  NSManagedObjectContext *rootSavingContext = [NSManagedObjectContext MR_rootSavingContext];
+  [rootSavingContext performBlockAndWait:^{
+    AccountModelObject *accountModelObject = [AccountModelObject MR_findFirstByAttribute:NSStringFromSelector(@selector(uid)) withValue:account.uid inContext:rootSavingContext];
+    accountModelObject.address = address;
+    [rootSavingContext MR_saveToPersistentStoreAndWait];
+  }];
+}
+
+- (NSString *) getCountry:(AccountPlainObject *)account{
+    AccountModelObject *accountModelObject = [self obtainAccountWithAccount:account];
+    return accountModelObject.address;
+}
+
+- (void) setCountry:(AccountPlainObject *)account country:(NSString *)country{
+  [self.keychainService saveCountry:country forAccount:account];
+  NSManagedObjectContext *rootSavingContext = [NSManagedObjectContext MR_rootSavingContext];
+  [rootSavingContext performBlockAndWait:^{
+    AccountModelObject *accountModelObject = [AccountModelObject MR_findFirstByAttribute:NSStringFromSelector(@selector(uid)) withValue:account.uid inContext:rootSavingContext];
+    accountModelObject.country = country;
+    [rootSavingContext MR_saveToPersistentStoreAndWait];
+  }];
+}
+
+- (NSString *) getCard:(AccountPlainObject *)account{
+    AccountModelObject *accountModelObject = [self obtainAccountWithAccount:account];
+    return accountModelObject.address;
+}
+
+- (void) setCard:(AccountPlainObject *)account card:(NSString *)card{
+  [self.keychainService saveCard:card forAccount:account];
+  NSManagedObjectContext *rootSavingContext = [NSManagedObjectContext MR_rootSavingContext];
+  [rootSavingContext performBlockAndWait:^{
+    AccountModelObject *accountModelObject = [AccountModelObject MR_findFirstByAttribute:NSStringFromSelector(@selector(uid)) withValue:account.uid inContext:rootSavingContext];
+    accountModelObject.card = card;
+    [rootSavingContext MR_saveToPersistentStoreAndWait];
+  }];
+}
+
 - (void) accountBackedUp:(AccountPlainObject *)account {
   [self.keychainService saveBackupStatus:YES forAccount:account];
   NSManagedObjectContext *rootSavingContext = [NSManagedObjectContext MR_rootSavingContext];

@@ -30,6 +30,20 @@ NS_ASSUME_NONNULL_BEGIN
 - (void) saveEntropy:(NSData *)entropyData ofAccount:(AccountPlainObject *)account;
 - (void) saveCurrency:(NSString *)currency forAccount:(AccountPlainObject *)account;
 - (void) saveBalanceMethod:(NSString *)method forAccount:(AccountPlainObject *)account;
+
+- (void) saveUsername:(NSString *)username forAccount:(AccountPlainObject *)account;
+
+- (void) saveEmail:(NSString *)email forAccount:(AccountPlainObject *)account;
+
+- (void) savePhone:(NSString *)phone forAccount:(AccountPlainObject *)account;
+
+- (void) saveAddress:(NSString *)address forAccount:(AccountPlainObject *)account;
+
+- (void) saveCountry:(NSString *)country forAccount:(AccountPlainObject *)account;
+
+- (void) saveCard:(NSString *)card forAccount:(AccountPlainObject *)account;
+
+
 - (void) saveBackupStatus:(BOOL)backup forAccount:(AccountPlainObject *)account;
 - (void) savePurchaseUserId:(NSString *)userId forMasterToken:(MasterTokenPlainObject *)token;
 //Obtain

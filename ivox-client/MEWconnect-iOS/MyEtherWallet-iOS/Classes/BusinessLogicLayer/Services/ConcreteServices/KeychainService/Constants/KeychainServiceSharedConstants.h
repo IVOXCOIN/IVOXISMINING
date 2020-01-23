@@ -15,6 +15,19 @@ FOUNDATION_EXPORT NSString *const kKeychainServiceVersionField;
 FOUNDATION_EXPORT NSString *const kKeychainServiceEntropyField;
 FOUNDATION_EXPORT NSString *const kKeychainServiceBackupField;
 
+FOUNDATION_EXPORT NSString *const kKeychainServiceUsernameField;
+
+FOUNDATION_EXPORT NSString *const kKeychainServiceEmailField;
+
+FOUNDATION_EXPORT NSString *const kKeychainServicePhoneField;
+
+FOUNDATION_EXPORT NSString *const kKeychainServiceAddressField;
+
+FOUNDATION_EXPORT NSString *const kKeychainServiceCountryField;
+
+FOUNDATION_EXPORT NSString *const kKeychainServiceCardField;
+
+
 FOUNDATION_EXPORT NSString *const kKeychainServiceBalanceMethodField;
 FOUNDATION_EXPORT NSString *const kKeychainServiceCurrencyField;
 

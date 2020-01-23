@@ -24,6 +24,26 @@ typedef void(^AccountsServiceCreateCompletionBlock)(AccountModelObject *accountM
 - (void) setCurrency:(AccountPlainObject *)account currency:(NSString *)currencyString;
 - (NSString *) getBalanceMethod:(AccountPlainObject *)account;
 - (void) setBalanceMethod:(AccountPlainObject *)account balanceMethod:(NSString *)method;
+
+- (NSString *) getUsername:(AccountPlainObject *)account;
+- (void) setUsername:(AccountPlainObject *)account username:(NSString *)username;
+
+- (NSString *) getEmail:(AccountPlainObject *)account;
+- (void) setEmail:(AccountPlainObject *)account email:(NSString *)email;
+
+- (NSString *) getPhone:(AccountPlainObject *)account;
+- (void) setPhone:(AccountPlainObject *)account phone:(NSString *)phone;
+
+- (NSString *) getAddress:(AccountPlainObject *)account;
+- (void) setAddress:(AccountPlainObject *)account address:(NSString *)address;
+
+- (NSString *) getCountry:(AccountPlainObject *)account;
+- (void) setCountry:(AccountPlainObject *)account country:(NSString *)country;
+
+- (NSString *) getCard:(AccountPlainObject *)account;
+- (void) setCard:(AccountPlainObject *)account card:(NSString *)card;
+
+
 - (void) accountBackedUp:(AccountPlainObject *)account;
 - (void) deleteAccount:(AccountPlainObject *)account;
 @end

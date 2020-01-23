@@ -2,11 +2,17 @@
 <model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="15508" systemVersion="19B88" minimumToolsVersion="Automatic" sourceLanguage="Objective-C" userDefinedModelVersionIdentifier="3">
     <entity name="Account" representedClassName="AccountModelObject" syncable="YES">
         <attribute name="active" optional="YES" attributeType="Boolean" defaultValueString="NO" usesScalarValueType="YES"/>
+        <attribute name="address" optional="YES" attributeType="String"/>
         <attribute name="backedUp" optional="YES" attributeType="Boolean" defaultValueString="NO" usesScalarValueType="YES"/>
         <attribute name="balanceMethod" optional="YES" attributeType="String"/>
+        <attribute name="card" optional="YES" attributeType="String"/>
+        <attribute name="country" optional="YES" attributeType="String"/>
         <attribute name="currency" optional="YES" attributeType="String"/>
+        <attribute name="email" optional="YES" attributeType="String"/>
         <attribute name="name" optional="YES" attributeType="String"/>
+        <attribute name="phone" optional="YES" attributeType="String"/>
         <attribute name="uid" optional="YES" attributeType="String"/>
+        <attribute name="username" optional="YES" attributeType="String"/>
         <relationship name="networks" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="Network" inverseName="fromAccount" inverseEntity="Network"/>
     </entity>
     <entity name="Balance" representedClassName="BalanceModelObject" syncable="YES">
@@ -78,7 +84,7 @@
         <relationship name="purchaseHistory" optional="YES" toMany="YES" deletionRule="Cascade" ordered="YES" destinationEntity="PurchaseHistory" inverseName="fromToken" inverseEntity="PurchaseHistory"/>
     </entity>
     <elements>
-        <element name="Account" positionX="-1379.0234375" positionY="-6297.203125" width="128" height="148"/>
+        <element name="Account" positionX="-1379.0234375" positionY="-6297.203125" width="128" height="238"/>
         <element name="Balance" positionX="-1161" positionY="-6255" width="128" height="73"/>
         <element name="EtherToken" positionX="-1170" positionY="-6264" width="128" height="223"/>
         <element name="FiatPrice" positionX="-788.19140625" positionY="-6267.05859375" width="128" height="88"/>

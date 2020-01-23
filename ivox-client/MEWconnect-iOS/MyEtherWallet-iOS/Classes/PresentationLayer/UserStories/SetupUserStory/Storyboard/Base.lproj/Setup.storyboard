@@ -15,7 +15,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="onboarding_background" translatesAutoresizingMaskIntoConstraints="NO" id="2mb-ws-FXz">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="help-splash" translatesAutoresizingMaskIntoConstraints="NO" id="2mb-ws-FXz">
                                 <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                             </imageView>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" pagingEnabled="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xa7-gv-aDf">
@@ -28,10 +28,10 @@
                                                 <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                                                 <subviews>
                                                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="intro_mewconnect_logo" translatesAutoresizingMaskIntoConstraints="NO" id="YLW-t7-njx">
-                                                        <rect key="frame" x="40" y="80" width="289" height="36"/>
+                                                        <rect key="frame" x="40" y="80" width="289" height="37"/>
                                                     </imageView>
                                                     <label opaque="NO" userInteractionEnabled="NO" alpha="0.69999999999999996" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="by MyEtherWallet" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hgr-4b-rhX">
-                                                        <rect key="frame" x="40" y="131" width="134" height="21"/>
+                                                        <rect key="frame" x="40" y="132" width="134" height="21"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                         <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         <nil key="highlightedColor"/>
@@ -1185,9 +1185,9 @@ existing wallet</string>
     <resources>
         <image name="backup_restore" width="110" height="140"/>
         <image name="general" width="1236" height="2196"/>
+        <image name="help-splash" width="1236" height="2196"/>
         <image name="inline_small_chevron" width="6" height="10"/>
-        <image name="intro_mewconnect_logo" width="289" height="36"/>
-        <image name="onboarding_background" width="414" height="896"/>
+        <image name="intro_mewconnect_logo" width="289" height="37"/>
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="24Y-DY-ODr"/>

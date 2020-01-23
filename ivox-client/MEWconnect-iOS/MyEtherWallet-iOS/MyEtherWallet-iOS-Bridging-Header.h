@@ -21,3 +21,8 @@
 
 #import "TransfersRouterInput.h"
 #import "TransfersViewInput.h"
+
+#import "ProfileRouterInput.h"
+#import "ProfileViewInput.h"
+
+#import "AccountsService.h"

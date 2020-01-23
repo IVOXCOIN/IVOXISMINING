@@ -56,12 +56,19 @@
         [networkModels addObject:networkModel];
       }
       
+        NSString *userName = item[kKeychainServiceUsernameField];
+        NSString *email = item[kKeychainServiceEmailField];
+        NSString *phone = item[kKeychainServicePhoneField];
+        NSString *address = item[kKeychainServiceAddressField];
+        NSString *country = item[kKeychainServiceCountryField];
+        NSString *card = item[kKeychainServiceCardField];
+        
         NSString *balanceMethod = item[kKeychainServiceBalanceMethodField];
         
         NSString *currency = item[kKeychainServiceCurrencyField];
         
       BOOL backedUp = [item[kKeychainServiceBackupField] boolValue];
-        KeychainAccountModel *accountModel = [KeychainAccountModel itemWithUID:uid backedUp:backedUp balanceMethod:balanceMethod currency:currency networks:[networkModels copy]];
+        KeychainAccountModel *accountModel = [KeychainAccountModel itemWithUID:uid backedUp:backedUp balanceMethod:balanceMethod currency:currency username:userName email:email phone:phone address:address country:country card:card networks:[networkModels copy]];
       [itemModels addObject:accountModel];
     }
   }
@@ -118,6 +125,61 @@
   @synchronized (self) {
     NSMutableDictionary *item = [[self _obtainItemWithKey:key] mutableCopy];
     item[kKeychainServiceBalanceMethodField] = (method);
+    [self _storeItem:item withKey:key];
+  }
+}
+
+
+- (void) saveUsername:(NSString *)username forAccount:(AccountPlainObject *)account{
+  NSString *key = [self _keyForUID:account.uid];
+  @synchronized (self) {
+    NSMutableDictionary *item = [[self _obtainItemWithKey:key] mutableCopy];
+    item[kKeychainServiceUsernameField] = (username);
+    [self _storeItem:item withKey:key];
+  }
+}
+
+- (void) saveEmail:(NSString *)email forAccount:(AccountPlainObject *)account{
+  NSString *key = [self _keyForUID:account.uid];
+  @synchronized (self) {
+    NSMutableDictionary *item = [[self _obtainItemWithKey:key] mutableCopy];
+    item[kKeychainServiceEmailField] = (email);
+    [self _storeItem:item withKey:key];
+  }
+}
+
+- (void) savePhone:(NSString *)phone forAccount:(AccountPlainObject *)account{
+  NSString *key = [self _keyForUID:account.uid];
+  @synchronized (self) {
+    NSMutableDictionary *item = [[self _obtainItemWithKey:key] mutableCopy];
+    item[kKeychainServicePhoneField] = (phone);
+    [self _storeItem:item withKey:key];
+  }
+}
+
+- (void) saveAddress:(NSString *)address forAccount:(AccountPlainObject *)account{
+  NSString *key = [self _keyForUID:account.uid];
+  @synchronized (self) {
+    NSMutableDictionary *item = [[self _obtainItemWithKey:key] mutableCopy];
+    item[kKeychainServiceAddressField] = (address);
+    [self _storeItem:item withKey:key];
+  }
+}
+
+- (void) saveCountry:(NSString *)country forAccount:(AccountPlainObject *)account{
+  NSString *key = [self _keyForUID:account.uid];
+  @synchronized (self) {
+    NSMutableDictionary *item = [[self _obtainItemWithKey:key] mutableCopy];
+    item[kKeychainServiceCountryField] = (country);
+    [self _storeItem:item withKey:key];
+  }
+}
+
+- (void) saveCard:(NSString *)card forAccount:(AccountPlainObject *)account{
+  NSString *key = [self _keyForUID:account.uid];
+  @synchronized (self) {
+    NSMutableDictionary *item = [[self _obtainItemWithKey:key] mutableCopy];
+    item[kKeychainServiceCardField] = (card);
     [self _storeItem:item withKey:key];
   }
 }

@@ -21,10 +21,10 @@ static CGFloat      const kCustomRepresentationTopSmallOffset = 8.0;
 
 static NSInteger    const kStartDevelopmentYear               = 2018;
 
-static NSString   * const kMyEtherWalletComURL                = @"https://www.myetherwallet.com";
+static NSString   * const kMyEtherWalletComURL                = @"http://www.ivoxis.net";
 static NSString   * const kKnowledgeBaseURL                   = @"https://myetherwallet.github.io/knowledge-base/";
-static NSString   * const kMyEtherWalletSupportEmail          = @"support@myetherwallet.com";
-static NSString   * const kUserGuideURL                       = @"https://kb.myetherwallet.com/getting-started/mew-connect-user-guide.html";
-static NSString   * const kPrivacyAndTermsURL                 = @"https://www.myetherwallet.com/privacy-policy.html";
+static NSString   * const kMyEtherWalletSupportEmail          = @"ivoxcoin@gmail.com";
+static NSString   * const kUserGuideURL                       = @"http://ivoxis.net/TERMINOS_Y_CONDICIONES_DE_IVOX.pdf";
+static NSString   * const kPrivacyAndTermsURL                 = @"http://ivoxis.net/POLITICA_DE_PRIVACIDAD.pdf";
 
 #endif /* ApplicationConstants_h */

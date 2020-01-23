@@ -310,7 +310,7 @@ static NSUInteger kStartViewIconMinimumCorners  = 4;
   
   CAAnimationGroup *group = [CAAnimationGroup animation];
   group.duration = 1.0;
-  group.animations = @[pathAnimation, rotateAnimation, fillAnimation];
+  group.animations = @[pathAnimation, rotateAnimation];
   group.fillMode = kCAFillModeForwards;
   group.removedOnCompletion = NO;
   [_morphLayer addAnimation:group forKey:@"animation"];

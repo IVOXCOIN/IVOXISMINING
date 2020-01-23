@@ -63,6 +63,8 @@
 	[self setPrimitiveActive:@(value_)];
 }
 
+@dynamic address;
+
 @dynamic backedUp;
 
 - (BOOL)backedUpValue {
@@ -85,11 +87,21 @@
 
 @dynamic balanceMethod;
 
+@dynamic card;
+
+@dynamic country;
+
 @dynamic currency;
+
+@dynamic email;
 
 @dynamic name;
 
+@dynamic phone;
+
 @dynamic uid;
+
+@dynamic username;
 
 @dynamic networks;
 
@@ -108,20 +120,38 @@
 + (NSString *)active {
 	return @"active";
 }
++ (NSString *)address {
+	return @"address";
+}
 + (NSString *)backedUp {
 	return @"backedUp";
 }
 + (NSString *)balanceMethod {
 	return @"balanceMethod";
 }
++ (NSString *)card {
+	return @"card";
+}
++ (NSString *)country {
+	return @"country";
+}
 + (NSString *)currency {
 	return @"currency";
+}
++ (NSString *)email {
+	return @"email";
 }
 + (NSString *)name {
 	return @"name";
 }
++ (NSString *)phone {
+	return @"phone";
+}
 + (NSString *)uid {
 	return @"uid";
+}
++ (NSString *)username {
+	return @"username";
 }
 @end
 
