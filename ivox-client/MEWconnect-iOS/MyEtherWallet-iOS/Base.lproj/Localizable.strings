@@ -76,27 +76,27 @@
 
 "Words separated by spaces…" = "Words separated by spaces…";
 
-"Please enter the exact passphrase you used to back up MEWconnect app." = "Please enter the exact passphrase you used to back up MEWconnect app.";
+"Please enter the exact passphrase you used to back up MEWconnect app." = "Please enter the recovery phrase you used to backup Ivoxis.";
 
-"Finally, a ‘hardware wallet’ without all the hardware. Officially by MyEtherWallet" = "Finally, a ‘hardware wallet’ without all the hardware. Officially by MyEtherWallet";
+"Finally, a ‘hardware wallet’ without all the hardware. Officially by MyEtherWallet" = "Sustainable energy for all. \nInvest easily. \nBy Ivox Coin";
 
-"Secure your every MyEtherWallet transaction with two-factor verification" = "Secure your every MyEtherWallet transaction with two-factor verification";
+"Secure your every MyEtherWallet transaction with two-factor verification" = "An Ethereum\n wallet that allows you to store \nIvox tokens";
 
-"Store your private keys safely in a local isolated secure vault on your device" = "Store your private keys safely in a local isolated secure vault on your device";
+"Store your private keys safely in a local isolated secure vault on your device" = "Buy \nand manage your tokens \nsafely";
 
-"Protect yourself from phishers and malware. No one can obtain your private key." = "Protect yourself from phishers and malware. No one can obtain your private key.";
+"Protect yourself from phishers and malware. No one can obtain your private key." = "Include in your plans \ninvestment in sustainable energy.";
 
-"No data collection: MyEtherWallet can’t collect your personal data even if we wanted to." = "No data collection: MyEtherWallet can’t collect your personal data even if we wanted to.";
+"No data collection: MyEtherWallet can’t collect your personal data even if we wanted to." = "Ivox cannot \ncollect your private data \nwithout your consent.";
 
-"No centralized servers for communication.\nNo databases. MEWconnect uses P2P instead." = "No centralized servers for communication.\nNo databases. MEWconnect uses P2P instead.";
+"No centralized servers for communication.\nNo databases. MEWconnect uses P2P instead." = "Cutting-edge \n\nIvox by Ivox Coin\n has the best technology.";
 
-"Transparent, free and open source. Audited by the community" = "Transparent, free and open source. Audited by the community";
+"Transparent, free and open source. Audited by the community" = "Transparent, clear and concise. Approved by \nthe community";
 
-"Creating a local connection\nwith MyEtherWallet" = "Creating a local connection\nwith MyEtherWallet";
+"Creating a local connection\nwith MyEtherWallet" = "Creating a local connection\nwith Ivoxis";
 
 "Can't connect" = "Can't connect";
 
-"Connected to MyEtherWallet" = "Connected to MyEtherWallet";
+"Connected to MyEtherWallet" = "Connected to Ivoxis";
 
 "Via encrypted peer-to-peer\nconnection" = "Via encrypted peer-to-peer\nconnection";
 
@@ -104,7 +104,7 @@
 
 "Contact support" = "Contact support";
 
-"Please enable camera access\nfor MEWconnect in Settings" = "Please enable camera access\nfor MEWconnect in Settings";
+"Please enable camera access\nfor MEWconnect in Settings" = "Please enable camera access\nfor Ivoxis in Settings";
 
 "Settings" = "Settings";
 
@@ -120,9 +120,9 @@
 
 "MyEtherWallet.com|Access My Wallet" = "MyEtherWallet.com|Access My Wallet";
 
-"Select MEWconnect option on the screen that follows." = "Select MEWconnect option on the screen that follows.";
+"Select MEWconnect option on the screen that follows." = "Select Ivoxis option on the screen that follows.";
 
-"MEWconnect" = "MEWconnect";
+"MEWconnect" = "Ivoxis";
 
 "Scan the QR code." = "Scan the QR code.";
 
@@ -142,7 +142,7 @@
 
 "Knowledge base" = "";
 
-"MyEtherWallet.com" = "MyEtherWallet.com";
+"MyEtherWallet.com" = "ivoxis.net";
 
 "Privacy and terms" = "Privacy and terms";
 
@@ -175,7 +175,7 @@
 
 "Check network:" = "Check network:";
 
-"You declined the transaction and it was cancelled. If you have security concerns, please contact MEW Support" = "You declined the transaction and it was cancelled. If you have security concerns, please contact MEW Support";
+"You declined the transaction and it was cancelled. If you have security concerns, please contact MEW Support" = "You declined the transaction and it was cancelled. If you have security concerns, please contact Ivoxis Support";
 
 "MEW Support" = "MEW Support";
 

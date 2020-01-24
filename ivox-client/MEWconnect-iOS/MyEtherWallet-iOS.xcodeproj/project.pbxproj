@@ -992,6 +992,11 @@
 		09E775CB4181D96FFF5F4F5B /* BackupInfoModuleInput.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = BackupInfoModuleInput.h; sourceTree = "<group>"; };
 		09EB7C98CE8534C5D01E0A3B /* BuyEtherWebPresenterTests.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = BuyEtherWebPresenterTests.m; sourceTree = "<group>"; };
 		09F4BDD96C0A3695772EB465 /* ForgotPasswordViewInput.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = ForgotPasswordViewInput.h; sourceTree = "<group>"; };
+		0A2C985923DA4AD000D1FA8B /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Wallet.strings; sourceTree = "<group>"; };
+		0A2C985B23DA5D9100D1FA8B /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Setup.strings; sourceTree = "<group>"; };
+		0A2C985D23DA5FEE00D1FA8B /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Backup.strings; sourceTree = "<group>"; };
+		0A2C985F23DA604700D1FA8B /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/SplashPassword.strings; sourceTree = "<group>"; };
+		0A2C986123DA605800D1FA8B /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/BuyEther.strings; sourceTree = "<group>"; };
 		0A49C491964372403C73647A /* RestorePrepareInteractorInput.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = RestorePrepareInteractorInput.h; sourceTree = "<group>"; };
 		0A4C8F1023BC2C6B00385FC4 /* TransfersAssembly.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TransfersAssembly.h; sourceTree = "<group>"; };
 		0A4C8F1123BC2C8100385FC4 /* TransfersAssembly.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TransfersAssembly.m; sourceTree = "<group>"; };
@@ -11710,6 +11715,7 @@
 			children = (
 				0AA50FD523C97DA000FB4C02 /* Base */,
 				0AA50FE023C97E4C00FB4C02 /* es-419 */,
+				0A2C986123DA605800D1FA8B /* en */,
 			);
 			name = BuyEther.storyboard;
 			sourceTree = "<group>";
@@ -11719,6 +11725,7 @@
 			children = (
 				0AA50FD923C97DCA00FB4C02 /* Base */,
 				0AA50FDE23C97E0800FB4C02 /* es-419 */,
+				0A2C985F23DA604700D1FA8B /* en */,
 			);
 			name = SplashPassword.storyboard;
 			sourceTree = "<group>";
@@ -11728,6 +11735,7 @@
 			children = (
 				0AA50FE323C97E6D00FB4C02 /* Base */,
 				0AA50FE623C97E8500FB4C02 /* es-419 */,
+				0A2C985D23DA5FEE00D1FA8B /* en */,
 			);
 			name = Backup.storyboard;
 			sourceTree = "<group>";
@@ -11737,6 +11745,7 @@
 			children = (
 				0AA50FE923C97EA900FB4C02 /* Base */,
 				0AA50FEC23C97EB900FB4C02 /* es-419 */,
+				0A2C985B23DA5D9100D1FA8B /* en */,
 			);
 			name = Setup.storyboard;
 			sourceTree = "<group>";
@@ -11746,6 +11755,7 @@
 			children = (
 				0AA50FEF23C97EBE00FB4C02 /* Base */,
 				0AA50FF223C97EC700FB4C02 /* es-419 */,
+				0A2C985923DA4AD000D1FA8B /* en */,
 			);
 			name = Wallet.storyboard;
 			sourceTree = "<group>";
