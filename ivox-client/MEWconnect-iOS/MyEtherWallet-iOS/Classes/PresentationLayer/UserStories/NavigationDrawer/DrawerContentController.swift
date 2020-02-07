@@ -99,11 +99,11 @@ extension DrawerContentController: UICollectionViewDelegate, UICollectionViewDat
    func setDrawerList(cell: DrawerCollectionViewCell, index: Int) {
        switch index {
        case 0:
-           cell.cellIcon.image = UIImage(named: "ivoxis_logo")
+           cell.cellIcon.image = UIImage(named: "buy_logo")
            cell.cellName.text = NSLocalizedString("Buy", comment: "Cell Name")
 
        case 1:
-           cell.cellIcon.image = UIImage(named: "tokens_logo")
+           cell.cellIcon.image = UIImage(named: "ivoxis_logo")
            cell.cellName.text = NSLocalizedString("Tokens", comment: "Cell Name")
 
        case 2:
@@ -118,7 +118,7 @@ extension DrawerContentController: UICollectionViewDelegate, UICollectionViewDat
            cell.cellName.text = NSLocalizedString("Info", comment: "Cell Name")
 
         case 5:
-            cell.cellIcon.image = UIImage(named: "delete_black_24dp")
+            cell.cellIcon.image = UIImage(named: "profile_logo")
             cell.cellName.text = NSLocalizedString("Profile", comment: "Cell Name")
 
        default:
