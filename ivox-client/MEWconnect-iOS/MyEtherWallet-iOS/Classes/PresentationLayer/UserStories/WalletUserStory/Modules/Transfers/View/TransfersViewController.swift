@@ -192,14 +192,16 @@ import PromiseKit
         alertController.addAction(OKAction)
         alertController.addAction(ViewAction)
 
-        if(self.presentedViewController == nil){
-            self.present(alertController, animated: true, completion:nil)
-        } else {
-          self.presentedViewController?.dismiss(animated: true, completion: {
-              self.present(alertController, animated: true, completion:nil)
-          })
-        }
+        DispatchQueue.main.async {
 
+            if(self.presentedViewController == nil){
+                self.present(alertController, animated: true, completion:nil)
+            } else {
+              self.presentedViewController?.dismiss(animated: true, completion: {
+                  self.present(alertController, animated: true, completion:nil)
+              })
+            }
+        }
     }
         
     func showErrorMessage(_ error: String){
@@ -211,14 +213,16 @@ import PromiseKit
          }
          alertController.addAction(OKAction)
          
-        if(self.presentedViewController == nil){
-         self.present(alertController, animated: true, completion:nil)
-        } else {
-            self.presentedViewController?.dismiss(animated: true, completion: {
-                self.present(alertController, animated: true, completion:nil)
-            })
-        }
+        DispatchQueue.main.async {
 
+            if(self.presentedViewController == nil){
+             self.present(alertController, animated: true, completion:nil)
+            } else {
+                self.presentedViewController?.dismiss(animated: true, completion: {
+                    self.present(alertController, animated: true, completion:nil)
+                })
+            }
+        }
     }
         
     

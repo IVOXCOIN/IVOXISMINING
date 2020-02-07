@@ -266,3 +266,35 @@
 "Operation completed: You can view the transaction status on Etherscan" = "Operación completada: Puede ver el estatus de la transacción en Etherscan";
 
 "Type your password" = "Escriba su contraseña";
+
+
+"Operation completed!" = "¡Operación completada!";
+
+"Profile" = "Perfil";
+
+"Name" = "Nombre";
+
+"Email" = "Email";
+
+"Phone" = "Teléfono";
+
+"Address" = "Dirección";
+
+"Country" = "País";
+
+"Credit card" = "Número de tarjeta";
+
+"Name is too short (3 characters minimum)" = "El nombre es demasiado corto (3 caracteres mínimo)";
+
+"Invalid email" = "Email inválido";
+
+"Invalid phone number" = "Número de teléfono inválido";
+
+"Address must be non-empty" = "La dirección no debe estar vacía";
+
+"Country name is too short (4 characters minimum)" = "El nombre del país es demasiado corto (4 caracteres mínimo)";
+
+"Invalid card number" = "Número de tarjeta inválido";
+
+"Type your password" = "Escriba su contraseña";
+

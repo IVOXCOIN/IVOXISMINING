@@ -1943,7 +1943,7 @@
 		56FB3A5D20B47184007776C8 /* ResponseObjectFormatter.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ResponseObjectFormatter.h; sourceTree = "<group>"; };
 		56FB3A5F20B471B0007776C8 /* ManyResponseObjectFormatter.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ManyResponseObjectFormatter.h; sourceTree = "<group>"; };
 		56FB3A6020B471B0007776C8 /* ManyResponseObjectFormatter.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ManyResponseObjectFormatter.m; sourceTree = "<group>"; };
-		56FE2B6D20817F1100DB39D5 /* MyEtherWallet-iOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "MyEtherWallet-iOS.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		56FE2B6D20817F1100DB39D5 /* Ivoxis.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Ivoxis.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		56FE2B7720817F1100DB39D5 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		56FE2B7920817F1100DB39D5 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		56FE2B7C20817F1100DB39D5 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -7663,7 +7663,7 @@
 		56FE2B6E20817F1100DB39D5 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				56FE2B6D20817F1100DB39D5 /* MyEtherWallet-iOS.app */,
+				56FE2B6D20817F1100DB39D5 /* Ivoxis.app */,
 				56E3E65C21016DB60014152D /* MyEtherWallet-iOS-Beta.app */,
 			);
 			name = Products;
@@ -10430,7 +10430,7 @@
 			);
 			name = "MyEtherWallet-iOS";
 			productName = "MyEtherWallet-iOS";
-			productReference = 56FE2B6D20817F1100DB39D5 /* MyEtherWallet-iOS.app */;
+			productReference = 56FE2B6D20817F1100DB39D5 /* Ivoxis.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -11847,6 +11847,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
+				SWIFT_OBJC_INTERFACE_HEADER_NAME = "MyEtherWallet_iOS-Swift.h";
 				SWIFT_VERSION = 4.0;
 				VALIDATE_PRODUCT = YES;
 			};
@@ -11864,7 +11865,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 19101401.2;
 				DEFINES_MODULE = YES;
-				DEVELOPMENT_TEAM = MDN888GSU8;
+				DEVELOPMENT_TEAM = CJ2L4C3JHQ;
 				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = "$(inherited)";
 				GCC_PRECOMPILE_PREFIX_HEADER = NO;
@@ -11876,8 +11877,8 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = "$(inherited)";
 				MARKETING_VERSION = 1.0.13;
-				PRODUCT_BUNDLE_IDENTIFIER = com.myetherwallet.mewconnect;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_BUNDLE_IDENTIFIER = com.ivox.ivoxis;
+				PRODUCT_NAME = Ivoxis;
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "MyEtherWallet-iOS/MyEtherWallet-iOS-Bridging-Header.h";
 				SWIFT_VERSION = 4.0;
@@ -12049,6 +12050,7 @@
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
+				SWIFT_OBJC_INTERFACE_HEADER_NAME = "MyEtherWallet_iOS-Swift.h";
 				SWIFT_VERSION = 4.0;
 			};
 			name = Debug;
@@ -12102,6 +12104,7 @@
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
 				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OBJC_INTERFACE_HEADER_NAME = "MyEtherWallet_iOS-Swift.h";
 				SWIFT_VERSION = 4.0;
 				VALIDATE_PRODUCT = YES;
 			};
@@ -12119,7 +12122,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 19101401.2;
 				DEFINES_MODULE = YES;
-				DEVELOPMENT_TEAM = MDN888GSU8;
+				DEVELOPMENT_TEAM = CJ2L4C3JHQ;
 				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = "$(inherited)";
 				GCC_PRECOMPILE_PREFIX_HEADER = NO;
@@ -12131,8 +12134,8 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = "$(inherited)";
 				MARKETING_VERSION = 1.0.13;
-				PRODUCT_BUNDLE_IDENTIFIER = com.myetherwallet.mewconnect;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_BUNDLE_IDENTIFIER = com.ivox.ivoxis;
+				PRODUCT_NAME = Ivoxis;
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "MyEtherWallet-iOS/MyEtherWallet-iOS-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
@@ -12153,7 +12156,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 19101401.2;
 				DEFINES_MODULE = YES;
-				DEVELOPMENT_TEAM = MDN888GSU8;
+				DEVELOPMENT_TEAM = CJ2L4C3JHQ;
 				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = "$(inherited)";
 				GCC_PRECOMPILE_PREFIX_HEADER = NO;
@@ -12165,8 +12168,8 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = "$(inherited)";
 				MARKETING_VERSION = 1.0.13;
-				PRODUCT_BUNDLE_IDENTIFIER = com.myetherwallet.mewconnect;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_BUNDLE_IDENTIFIER = com.ivox.ivoxis;
+				PRODUCT_NAME = Ivoxis;
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "MyEtherWallet-iOS/MyEtherWallet-iOS-Bridging-Header.h";
 				SWIFT_VERSION = 4.0;

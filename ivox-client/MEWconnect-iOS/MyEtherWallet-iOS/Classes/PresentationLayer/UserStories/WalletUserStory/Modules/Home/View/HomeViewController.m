@@ -574,10 +574,20 @@ static CGFloat kHomeViewControllerBottomDefaultOffset = 38.0;
     self.bottomDrawerViewController.contentViewController =  contentViewController;
     self.bottomDrawerViewController.headerViewController = headerViewController;
     
-    contentViewController.preferredContentSize = CGSizeMake(contentViewController.preferredContentSize.width, 240);
+    contentViewController.preferredContentSize = CGSizeMake(contentViewController.preferredContentSize.width, 320);
 
     headerViewController.preferredContentSize = CGSizeMake(contentViewController.preferredContentSize.width, 90);
     
+    [contentViewController onProfileClick:^(){
+        
+        dispatch_async(dispatch_get_main_queue(), ^ {
+            [self.presentedViewController dismissViewControllerAnimated:YES completion:^(){
+                [self profileAction:nil];
+            }];
+
+        });
+    }];
+
     [contentViewController onInfoClick:^(){
         
         dispatch_async(dispatch_get_main_queue(), ^ {
@@ -587,7 +597,7 @@ static CGFloat kHomeViewControllerBottomDefaultOffset = 38.0;
 
         });
     }];
-    
+
     [contentViewController onTokensClick:^(){
         
         dispatch_async(dispatch_get_main_queue(), ^ {
@@ -630,6 +640,12 @@ static CGFloat kHomeViewControllerBottomDefaultOffset = 38.0;
 
     
     [self presentViewController:self.bottomDrawerViewController animated:YES completion:nil];
+}
+
+
+- (IBAction) profileAction:(__unused id)sender {
+  [self _hideKeyboardIfNeeded];
+  [self.output profileAction];
 }
 
 - (IBAction) tokensAction:(__unused id)sender {

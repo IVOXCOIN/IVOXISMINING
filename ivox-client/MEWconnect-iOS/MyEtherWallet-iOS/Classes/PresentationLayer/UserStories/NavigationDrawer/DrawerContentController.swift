@@ -11,12 +11,18 @@ import UIKit
 
 @objc class DrawerContentController: UIViewController {
 
+   private var onProfile: (() -> Void)?
    private var onInfo: (() -> Void)?
    private var onTransactions: (() -> Void)?
    private var onTokens: (() -> Void)?
    private var onEther: (() -> Void)?
    private var onBuy: (() -> Void)?
 
+    @objc public func onProfileClick(_ function: @escaping @autoclosure () -> Void) {
+        // Store the function
+        onProfile = function
+    }
+    
     @objc public func onInfoClick(_ function: @escaping @autoclosure () -> Void) {
         // Store the function
         onInfo = function
@@ -77,7 +83,7 @@ import UIKit
 extension DrawerContentController: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
     
    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-       return 5
+       return 6
    }
    
    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
@@ -93,23 +99,27 @@ extension DrawerContentController: UICollectionViewDelegate, UICollectionViewDat
    func setDrawerList(cell: DrawerCollectionViewCell, index: Int) {
        switch index {
        case 0:
-           cell.cellIcon.image = UIImage(named: "mail_black_24dp")
+           cell.cellIcon.image = UIImage(named: "ivoxis_logo")
            cell.cellName.text = NSLocalizedString("Buy", comment: "Cell Name")
 
        case 1:
-           cell.cellIcon.image = UIImage(named: "send_black_24dp")
+           cell.cellIcon.image = UIImage(named: "tokens_logo")
            cell.cellName.text = NSLocalizedString("Tokens", comment: "Cell Name")
 
        case 2:
-           cell.cellIcon.image = UIImage(named: "favorite_black_24dp")
+           cell.cellIcon.image = UIImage(named: "ethereum_logo")
            cell.cellName.text = NSLocalizedString("Ether", comment: "Cell Name")
 
        case 3:
-           cell.cellIcon.image = UIImage(named: "favorite_black_24dp")
+           cell.cellIcon.image = UIImage(named: "transfers_logo")
            cell.cellName.text = NSLocalizedString("Transactions", comment: "Cell Name")
        case 4:
-           cell.cellIcon.image = UIImage(named: "delete_black_24dp")
+           cell.cellIcon.image = UIImage(named: "info_logo")
            cell.cellName.text = NSLocalizedString("Info", comment: "Cell Name")
+
+        case 5:
+            cell.cellIcon.image = UIImage(named: "delete_black_24dp")
+            cell.cellName.text = NSLocalizedString("Profile", comment: "Cell Name")
 
        default:
            break
@@ -139,7 +149,11 @@ extension DrawerContentController: UICollectionViewDelegate, UICollectionViewDat
         case 4:
            onInfo?();
            break;
-            
+
+        case 5:
+           onProfile?();
+           break;
+
         default:
             break;
         }

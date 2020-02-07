@@ -142,7 +142,7 @@
 
 - (NSString *) getCountry:(AccountPlainObject *)account{
     AccountModelObject *accountModelObject = [self obtainAccountWithAccount:account];
-    return accountModelObject.address;
+    return accountModelObject.country;
 }
 
 - (void) setCountry:(AccountPlainObject *)account country:(NSString *)country{
@@ -157,7 +157,7 @@
 
 - (NSString *) getCard:(AccountPlainObject *)account{
     AccountModelObject *accountModelObject = [self obtainAccountWithAccount:account];
-    return accountModelObject.address;
+    return accountModelObject.card;
 }
 
 - (void) setCard:(AccountPlainObject *)account card:(NSString *)card{
@@ -211,6 +211,12 @@
     accountModelObject.uid = [[NSUUID UUID] UUIDString];
     accountModelObject.active = @YES;
     accountModelObject.balanceMethod = @"IVOX";
+      accountModelObject.name = @"";
+      accountModelObject.email = @"";
+      accountModelObject.phone = @"";
+      accountModelObject.address = @"";
+      accountModelObject.country = @"";
+      accountModelObject.card = @"";
     accountModelObject.currency = @"USD";
     [rootSavingContext MR_saveToPersistentStoreAndWait];
     

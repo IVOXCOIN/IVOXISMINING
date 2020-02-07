@@ -21,6 +21,7 @@
 #import "ShareModuleInput.h"
 #import "TokensModuleInput.h"
 #import "TransfersModuleInput.h"
+#import "ProfileModuleInput.h"
 #import "QRScannerModuleInput.h"
 #import "ContextPasswordModuleInput.h"
 #import "RestoreSeedModuleInput.h"
@@ -31,6 +32,7 @@
 
 #import "UIViewController+Hierarchy.h"
 
+static NSString *const kHomeToProfileSegueIdentifier          = @"HomeToProfileSegueIdentifier";
 static NSString *const kHomeToTransfersSegueIdentifier          = @"HomeToTransfersSegueIdentifier";
 static NSString *const kHomeToTokensSegueIdentifier          = @"HomeToTokensSegueIdentifier";
 static NSString *const kHomeToScannerSegueIdentifier          = @"HomeToScannerSegueIdentifier";
@@ -55,11 +57,20 @@ static NSString *const kHomeToRestoreSeedSegueIdentifier      = @"HomeToRestoreS
   }];
 }
 
-- (void) openTokensWithAccountAndMasterToken:(AccountPlainObject *)account masterToken:(MasterTokenPlainObject*)masterToken isEther:(BOOL)isEther{
-  [[self.transitionHandler openModuleUsingSegue:kHomeToTokensSegueIdentifier] thenChainUsingBlock:^id<RamblerViperModuleOutput>(id<TokensModuleInput> moduleInput) {
-      [moduleInput configureModuleWithAccountAndMasterToken:account masterToken:masterToken isEther:isEther];
+
+- (void) openProfileWithAccountAndMasterToken:(AccountPlainObject *)account masterToken:(MasterTokenPlainObject*)masterToken{
+  [[self.transitionHandler openModuleUsingSegue:kHomeToProfileSegueIdentifier] thenChainUsingBlock:^id<RamblerViperModuleOutput>(id<ProfileModuleInput> moduleInput) {
+      [moduleInput configureModuleWithAccountAndMasterToken:account masterToken:masterToken];
     return nil;
   }];
+}
+
+- (void) openTokensWithAccountAndMasterToken:(AccountPlainObject *)account masterToken:(MasterTokenPlainObject*)masterToken isEther:(BOOL)isEther{
+    [[self.transitionHandler openModuleUsingSegue:kHomeToTokensSegueIdentifier] thenChainUsingBlock:^id<RamblerViperModuleOutput>(id<TokensModuleInput> moduleInput) {
+        [moduleInput configureModuleWithAccountAndMasterToken:account masterToken:masterToken isEther:isEther];
+      return nil;
+    }];
+
 }
 
 - (void) openTransactionsWithAccountAndMasterToken:(AccountPlainObject *)account masterToken:(MasterTokenPlainObject*)masterToken{

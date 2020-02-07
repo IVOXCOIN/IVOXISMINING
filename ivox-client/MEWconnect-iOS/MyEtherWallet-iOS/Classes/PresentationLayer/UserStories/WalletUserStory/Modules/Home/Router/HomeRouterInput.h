@@ -17,6 +17,8 @@
 @protocol RestoreSeedModuleOutput;
 
 @protocol HomeRouterInput <NSObject>
+- (void) openProfileWithAccountAndMasterToken:(AccountPlainObject *)account masterToken:(MasterTokenPlainObject*)masterToken;
+
 - (void) openTokensWithAccountAndMasterToken:(AccountPlainObject *)account masterToken:(MasterTokenPlainObject*)masterToken isEther:(BOOL)isEther;
 - (void) openTransactionsWithAccountAndMasterToken:(AccountPlainObject *)account masterToken:(MasterTokenPlainObject*)masterToken;
 - (void) openScanner;

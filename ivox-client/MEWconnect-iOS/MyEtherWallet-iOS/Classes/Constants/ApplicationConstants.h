@@ -11,10 +11,10 @@
 #ifndef ApplicationConstants_h
 #define ApplicationConstants_h
 
-static NSString   * const kAppGroupIdentifier                 = @"group.myetherwallet";
-static NSString   * const kKeychainService                    = @"com.myetherwallet.keychainService";
+static NSString   * const kAppGroupIdentifier                 = @"group.ivoxis";
+static NSString   * const kKeychainService                    = @"com.ivoxis.keychainService";
 
-static NSString   * const kCoreDataName                       = @"MEWconnect.sqlite";
+static NSString   * const kCoreDataName                       = @"Ivoxis.sqlite";
 
 static CGFloat      const kCustomRepresentationTopBigOffset   = 90.0;
 static CGFloat      const kCustomRepresentationTopSmallOffset = 8.0;

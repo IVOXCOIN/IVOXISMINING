@@ -59,7 +59,7 @@ import UIKit
         }
 
         // check validity
-        valid = luhnCheck(number: numberOnly)
+        valid = luhnCheck(number: numberOnly) && type != .Unknown
 
         // format
         var formatted4 = ""
@@ -129,16 +129,19 @@ import UIKit
     @objc var customTransitioningDelegate: UIViewControllerTransitioningDelegate!
 
     
+    @IBOutlet weak var titleLabel: UILabel!
+    @IBOutlet weak var nameLabel: UILabel!
+    @IBOutlet weak var emailLabel: UILabel!
+    @IBOutlet weak var phoneLabel: UILabel!
+    @IBOutlet weak var addressLabel: UILabel!
+    @IBOutlet weak var countryLabel: UILabel!
+    @IBOutlet weak var creditCardLabel: UILabel!
+    
     @IBOutlet weak var nameTextField: UITextField!
-    
     @IBOutlet weak var emailTextField: UITextField!
-    
     @IBOutlet weak var phoneTextField: UITextField!
-    
     @IBOutlet weak var addressTextField: UITextField!
-    
     @IBOutlet weak var countryTextField: UITextField!
-    
     @IBOutlet weak var creditCardTextField: UITextField!
     
     
@@ -147,74 +150,116 @@ import UIKit
         
     }
     
-    @IBAction func updateButtonDown(_ sender: UIButton) {
+    override func viewDidLoad() {
+        super.viewDidLoad()
         
+        self.titleLabel.text =
+            NSLocalizedString("Profile",
+                              comment: "Localized string")
+
+        self.nameLabel.text =
+            NSLocalizedString("Name",
+                              comment: "Localized string")
+
+        self.emailLabel.text =
+            NSLocalizedString("Email",
+                              comment: "Localized string")
+
+        self.phoneLabel.text =
+            NSLocalizedString("Phone",
+                              comment: "Localized string")
+
+        self.addressLabel.text =
+            NSLocalizedString("Address",
+                              comment: "Localized string")
+
+        self.countryLabel.text =
+            NSLocalizedString("Country",
+                              comment: "Localized string")
+
+        self.creditCardLabel.text =
+            NSLocalizedString("Credit card",
+                              comment: "Localized string")
+
+        self.nameTextField.text =
+        self.accountsService.getUsername(self.account)
+        
+        self.emailTextField.text =
+        self.accountsService.getEmail(self.account)
+        
+        self.phoneTextField.text =
+        self.accountsService.getPhone(self.account)
+        
+        self.addressTextField.text =
+        self.accountsService.getAddress(self.account)
+        
+        self.countryTextField.text =
+        self.accountsService.getCountry(self.account)
+        
+        self.creditCardTextField.text =
+        self.accountsService.getCard(self.account)
+        
+    }
+
+    
+    @IBAction func updateButtonDown(_ sender: UIButton) {
+        let cardFormat = validateCreditCardFormat(string: creditCardTextField.text ?? "")
+
         if(nameTextField.text == nil || nameTextField.text?.count ?? 0 < 3){
             showErrorMessage(NSLocalizedString("Name is too short (3 characters minimum)", comment: "Name error"))
-        }
-        
-        if(emailTextField.text == nil || !isValidEmail(emailTextField.text ?? "")){
+        } else if(emailTextField.text == nil || !isValidEmail(emailTextField.text ?? "")){
             showErrorMessage(NSLocalizedString("Invalid email", comment: "Email error"))
 
-        }
-        
-        if(phoneTextField.text == nil || phoneTextField.text?.count ?? 0 != 10){
+        } else if(phoneTextField.text == nil || phoneTextField.text?.count ?? 0 != 10){
             showErrorMessage(NSLocalizedString("Invalid phone number", comment: "Phone error"))
-        }
-        
-        if(addressTextField.text == nil || addressTextField.text?.count ?? 0 < 3){
+        } else if(addressTextField.text == nil || addressTextField.text?.count ?? 0 < 3){
             showErrorMessage(NSLocalizedString("Address must be non-empty", comment: "Address error"))
-        }
-        
-        if(countryTextField.text == nil || countryTextField.text?.count ?? 0 < 4){
+        } else if(countryTextField.text == nil || countryTextField.text?.count ?? 0 < 4){
             showErrorMessage(NSLocalizedString("Country name is too short (4 characters minimum)", comment: "Country error"))
-        }
-        
-        
-        let cardFormat = validateCreditCardFormat(string: creditCardTextField.text ?? "")
-        
-        if(creditCardTextField.text == nil || !cardFormat.valid){
+        } else if(creditCardTextField.text == nil || !cardFormat.valid){
             showErrorMessage(NSLocalizedString("Invalid card number", comment: "Card error"))
 
-        }
-        
-        let alert = UIAlertController(title: NSLocalizedString("Type your password", comment: ""), message: nil, preferredStyle: .alert)
-        alert.addAction(UIAlertAction(title: NSLocalizedString("Cancel", comment: ""), style: .cancel, handler: nil))
-
-        alert.addTextField(configurationHandler: { textField in
-            textField.placeholder = NSLocalizedString("Password", comment: "")
-            textField.textContentType = UITextContentType.password
-            textField.isSecureTextEntry = true
+        } else {
             
-        })
-        
-        alert.addAction(UIAlertAction(title: "OK", style: .default, handler: { action in
+            let alert = UIAlertController(title: NSLocalizedString("Type your password", comment: ""), message: nil, preferredStyle: .alert)
+            alert.addAction(UIAlertAction(title: NSLocalizedString("Cancel", comment: ""), style: .cancel, handler: nil))
+
+            alert.addTextField(configurationHandler: { textField in
+                textField.placeholder = NSLocalizedString("Password", comment: "")
+                textField.textContentType = UITextContentType.password
+                textField.isSecureTextEntry = true
+                
+            })
+            
+            alert.addAction(UIAlertAction(title: "OK", style: .default, handler: { action in
 
 
-            let password = alert.textFields?.first?.text
-            
-            if self.wrapper.validatePassword(password: password!, masterToken: self.masterToken, account: self.account) {
+                let password = alert.textFields?.first?.text
                 
-                self.findUser(withPassword: password!)
-            
-            } else {
+                if self.wrapper.validatePassword(password: password!, masterToken: self.masterToken, account: self.account) {
+                    
+                    self.findUser(withPassword: password!)
                 
-                let alertController = UIAlertController(title: NSLocalizedString("Wrong password", comment: "Wrong password"), message: NSLocalizedString("The password you entered is wrong", comment: "Error message"), preferredStyle: .alert)
-                
-                let OKAction = UIAlertAction(title: "OK", style: .default) { (action:UIAlertAction!) in
-                                            
+                } else {
+                    
+                    let alertController = UIAlertController(title: NSLocalizedString("Wrong password", comment: "Wrong password"), message: NSLocalizedString("The password you entered is wrong", comment: "Error message"), preferredStyle: .alert)
+                    
+                    let OKAction = UIAlertAction(title: "OK", style: .default) { (action:UIAlertAction!) in
+                                                
+                    }
+                    
+                    alertController.addAction(OKAction)
+                    
+                    self.present(alertController, animated: true, completion:nil)
+                    
                 }
                 
-                alertController.addAction(OKAction)
                 
-                self.present(alertController, animated: true, completion:nil)
-                
-            }
+            }))
             
-            
-        }))
-        
-        self.present(alert, animated: true)
+            self.present(alert, animated: true)
+        }
+
 
         
     }
@@ -296,25 +341,27 @@ import UIKit
             
             if let httpStatus = response as? HTTPURLResponse, httpStatus.statusCode != 200 {
                 self.showErrorMessage("Server returned an error")
+            } else {
+                
+                self.accountsService.setUsername(self.account, username: self.nameTextField.text!)
+                
+                self.accountsService.setEmail(self.account, email: self.emailTextField.text!)
+                
+                self.accountsService.setPhone(self.account, phone: self.phoneTextField.text!)
+                
+                self.accountsService.setAddress(self.account, address:
+                    self.addressTextField.text!)
+                
+                self.accountsService.setCountry(self.account, country:
+                    self.countryTextField.text!)
+                
+                self.accountsService.setCard(self.account, card:
+                    self.creditCardTextField.text!)
+                
+                self.showInfoMessage(NSLocalizedString("Operation completed!", comment: "Info message"))
+                
+
             }
-            
-            self.accountsService.setUsername(self.account, username: self.nameTextField.text!)
-            
-            self.accountsService.setEmail(self.account, email: self.emailTextField.text!)
-            
-            self.accountsService.setPhone(self.account, phone: self.phoneTextField.text!)
-            
-            self.accountsService.setAddress(self.account, address:
-                self.addressTextField.text!)
-            
-            self.accountsService.setCountry(self.account, country:
-                self.countryTextField.text!)
-            
-            self.accountsService.setCard(self.account, card:
-                self.creditCardTextField.text!)
-            
-            self.showInfoMessage("Operation completed!")
-            
         }
 
         task.resume()
@@ -358,26 +405,28 @@ import UIKit
             }
             
             if let httpStatus = response as? HTTPURLResponse, httpStatus.statusCode != 200 {
-                self.showErrorMessage("Server returned an error")
+                self.showErrorMessage(NSLocalizedString("Server returned an error", comment: "Error message"))
+            } else {
+                
+                self.accountsService.setUsername(self.account, username: self.nameTextField.text!)
+                
+                self.accountsService.setEmail(self.account, email: self.emailTextField.text!)
+                
+                self.accountsService.setPhone(self.account, phone: self.phoneTextField.text!)
+                
+                self.accountsService.setAddress(self.account, address:
+                    self.addressTextField.text!)
+                
+                self.accountsService.setCountry(self.account, country:
+                    self.countryTextField.text!)
+                
+                self.accountsService.setCard(self.account, card:
+                    self.creditCardTextField.text!)
+                
+                self.showInfoMessage(NSLocalizedString("Operation completed!", comment: "Info message"))
+
+
             }
-            
-            self.accountsService.setUsername(self.account, username: self.nameTextField.text!)
-            
-            self.accountsService.setEmail(self.account, email: self.emailTextField.text!)
-            
-            self.accountsService.setPhone(self.account, phone: self.phoneTextField.text!)
-            
-            self.accountsService.setAddress(self.account, address:
-                self.addressTextField.text!)
-            
-            self.accountsService.setCountry(self.account, country:
-                self.countryTextField.text!)
-            
-            self.accountsService.setCard(self.account, card:
-                self.creditCardTextField.text!)
-            
-            self.showInfoMessage("Operation completed!")
-            
         }
 
         task.resume()
@@ -392,14 +441,16 @@ import UIKit
 
         alertController.addAction(OKAction)
 
-        if(self.presentedViewController == nil){
-            self.present(alertController, animated: true, completion:nil)
-        } else {
-          self.presentedViewController?.dismiss(animated: true, completion: {
-              self.present(alertController, animated: true, completion:nil)
-          })
-        }
+        DispatchQueue.main.async {
 
+            if(self.presentedViewController == nil){
+                self.present(alertController, animated: true, completion:nil)
+            } else {
+                self.presentedViewController?.dismiss(animated: true, completion: {
+                    self.present(alertController, animated: true, completion:nil)
+                })
+            }
+        }
     }
     
     func showErrorMessage(_ error: String){
@@ -411,12 +462,15 @@ import UIKit
          }
          alertController.addAction(OKAction)
          
-        if(self.presentedViewController == nil){
-         self.present(alertController, animated: true, completion:nil)
-        } else {
-            self.presentedViewController?.dismiss(animated: true, completion: {
+        DispatchQueue.main.async {
+
+            if(self.presentedViewController == nil){
                 self.present(alertController, animated: true, completion:nil)
-            })
+            } else {
+                self.presentedViewController?.dismiss(animated: true, completion: {
+                    self.present(alertController, animated: true, completion:nil)
+                })
+            }
         }
 
     }

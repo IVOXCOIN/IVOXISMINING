@@ -604,6 +604,12 @@ password</string>
                         <rect key="frame" x="0.0" y="0.0" width="414" height="692"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="general" translatesAutoresizingMaskIntoConstraints="NO" id="iXk-bl-LST">
+                                <rect key="frame" x="0.0" y="-54" width="1236" height="746"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="746" id="nzw-LJ-c0w"/>
+                                </constraints>
+                            </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text=" " textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="C28-ET-RGh" customClass="TypingAnimationLabel">
                                 <rect key="frame" x="24" y="318.33333333333331" width="366" height="40.666666666666686"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="34"/>
@@ -633,15 +639,13 @@ password</string>
                                     <action selector="startUsingAction:" destination="4At-jE-A82" eventType="touchUpInside" id="hNZ-wD-frp"/>
                                 </connections>
                             </button>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="general" translatesAutoresizingMaskIntoConstraints="NO" id="iXk-bl-LST">
-                                <rect key="frame" x="0.0" y="-54" width="414" height="746"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                            </imageView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
+                            <constraint firstItem="iXk-bl-LST" firstAttribute="top" secondItem="E5Q-0N-8OR" secondAttribute="top" constant="-54" id="CFx-yz-ACg"/>
                             <constraint firstItem="vDv-v1-uhA" firstAttribute="centerY" secondItem="s0c-iV-h7G" secondAttribute="centerY" constant="1" id="JgK-qA-2bj"/>
                             <constraint firstItem="s0c-iV-h7G" firstAttribute="top" secondItem="C28-ET-RGh" secondAttribute="bottom" id="K3w-fE-g6m"/>
+                            <constraint firstItem="iXk-bl-LST" firstAttribute="leading" secondItem="uTp-tR-fv5" secondAttribute="leading" id="M3N-w8-7qe"/>
                             <constraint firstItem="uTp-tR-fv5" firstAttribute="trailing" secondItem="C28-ET-RGh" secondAttribute="trailing" constant="24" id="Pfu-TQ-GxM"/>
                             <constraint firstItem="C28-ET-RGh" firstAttribute="leading" secondItem="uTp-tR-fv5" secondAttribute="leading" constant="24" id="RSe-QG-8Fp"/>
                             <constraint firstAttribute="trailing" secondItem="s0c-iV-h7G" secondAttribute="trailing" id="YFJ-S5-L0E"/>

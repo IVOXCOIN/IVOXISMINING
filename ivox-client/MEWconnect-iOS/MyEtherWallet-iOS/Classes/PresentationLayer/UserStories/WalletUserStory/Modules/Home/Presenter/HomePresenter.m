@@ -135,6 +135,14 @@ typedef NS_OPTIONS(short, HomeViewPresenterStatus) {
 - (void) searchTermDidChanged:(NSString *)searchTerm {
   [self.interactor searchTokensWithTerm:searchTerm];
 }
+
+- (void) profileAction {
+    AccountPlainObject *account = [self.interactor obtainAccount];
+    MasterTokenPlainObject *masterToken = [self.interactor obtainMasterToken];
+
+      [self.router openProfileWithAccountAndMasterToken:account masterToken:masterToken];
+}
+
 - (void) ivoxTokensAction {
   AccountPlainObject *account = [self.interactor obtainAccount];
   MasterTokenPlainObject *masterToken = [self.interactor obtainMasterToken];
