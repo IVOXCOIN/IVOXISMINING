@@ -613,6 +613,7 @@ static NSString *const RopstenTokensContractAddress = @"0xb8e1bbc50fd87ea00d8ce7
                   NSString *date = [item objectForKey:@"date"];
                   NSString *status = [item objectForKey:@"status"];
                   NSString *value = [item objectForKey:@"value"];
+                  NSString *timestamp = [item objectForKey:@"timestamp"];
                   NSString *currency = [item objectForKey:@"currency"];
                   NSString *commission = [item objectForKey:@"commission"];
                   
@@ -645,6 +646,7 @@ static NSString *const RopstenTokensContractAddress = @"0xb8e1bbc50fd87ea00d8ce7
                   ivoxToken.status = status;
                   ivoxToken.value = value;
                   ivoxToken.rate = [rate stringValue];
+                  ivoxToken.timestamp = timestamp;
                   ivoxToken.currency = currency;
                   
                   [tokensToAdd addObject:ivoxToken];
@@ -749,6 +751,8 @@ static NSString *const RopstenTokensContractAddress = @"0xb8e1bbc50fd87ea00d8ce7
                   NSString *status = [item objectForKey:@"status"];
                   NSString *value = [item objectForKey:@"value"];
                   NSString *currency = [item objectForKey:@"currency"];
+                  NSString *timestamp = [item objectForKey:@"timestamp"];
+                  
                 NSString *commission = [item objectForKey:@"commission"];
                   
                   NSEntityDescription *etherTokenEntity = [NSEntityDescription entityForName:@"EtherToken" inManagedObjectContext:rootSavingContext];
@@ -779,6 +783,7 @@ static NSString *const RopstenTokensContractAddress = @"0xb8e1bbc50fd87ea00d8ce7
                   etherToken.status = status;
                   etherToken.value = value;
                   etherToken.rate = [rate stringValue];
+                  etherToken.timestamp = timestamp;
                   etherToken.currency = currency;
                   
                   [tokensToAdd addObject:etherToken];

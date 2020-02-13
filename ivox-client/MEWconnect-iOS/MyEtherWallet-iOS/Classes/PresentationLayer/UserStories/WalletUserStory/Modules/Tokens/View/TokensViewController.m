@@ -88,7 +88,8 @@
 
 -(void) addIvoxTokensAndRefresh:(NSArray <IvoxTokenModelObject *> *)tokens{
     self.tokensArray = [[NSMutableArray alloc] initWithCapacity:tokens.count];
-    
+    tokens = [tokens sortedArrayUsingDescriptors:@[[NSSortDescriptor sortDescriptorWithKey:@"timestamp" ascending:YES]]];
+
     NSUInteger count = [tokens count];
     for (NSUInteger index = 0; index<count ; index++) {
         IvoxTokenModelObject* token = [tokens objectAtIndex:index];

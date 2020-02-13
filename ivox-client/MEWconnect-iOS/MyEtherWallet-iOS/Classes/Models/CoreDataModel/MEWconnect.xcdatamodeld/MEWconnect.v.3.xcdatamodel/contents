@@ -29,6 +29,7 @@
         <attribute name="rate" optional="YES" attributeType="String"/>
         <attribute name="source" optional="YES" attributeType="String"/>
         <attribute name="status" optional="YES" attributeType="String"/>
+        <attribute name="timestamp" optional="YES" attributeType="String"/>
         <attribute name="value" optional="YES" attributeType="String"/>
         <attribute name="wallet" optional="YES" attributeType="String"/>
         <relationship name="fromNetwork" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Network" inverseName="etherTokens" inverseEntity="Network"/>
@@ -48,6 +49,7 @@
         <attribute name="rate" optional="YES" attributeType="String"/>
         <attribute name="source" optional="YES" attributeType="String"/>
         <attribute name="status" optional="YES" attributeType="String"/>
+        <attribute name="timestamp" optional="YES" attributeType="String"/>
         <attribute name="value" optional="YES" attributeType="String"/>
         <attribute name="wallet" optional="YES" attributeType="String"/>
         <relationship name="fromNetwork" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Network" inverseName="ivoxTokens" inverseEntity="Network"/>
@@ -86,9 +88,9 @@
     <elements>
         <element name="Account" positionX="-1379.0234375" positionY="-6297.203125" width="128" height="238"/>
         <element name="Balance" positionX="-1161" positionY="-6255" width="128" height="73"/>
-        <element name="EtherToken" positionX="-1170" positionY="-6264" width="128" height="223"/>
+        <element name="EtherToken" positionX="-1170" positionY="-6264" width="128" height="238"/>
         <element name="FiatPrice" positionX="-788.19140625" positionY="-6267.05859375" width="128" height="88"/>
-        <element name="IvoxToken" positionX="-1170" positionY="-6264" width="128" height="223"/>
+        <element name="IvoxToken" positionX="-1170" positionY="-6264" width="128" height="238"/>
         <element name="MasterToken" positionX="-1012.55078125" positionY="-6419" width="128" height="60"/>
         <element name="Network" positionX="-1192.65234375" positionY="-6297.08203125" width="128" height="163"/>
         <element name="PurchaseHistory" positionX="-789.89453125" positionY="-6127.15625" width="128" height="135"/>

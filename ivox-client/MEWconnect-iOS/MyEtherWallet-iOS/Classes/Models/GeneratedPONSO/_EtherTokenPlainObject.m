@@ -22,6 +22,7 @@
     [aCoder encodeObject:self.rate forKey:@"rate"];
     [aCoder encodeObject:self.source forKey:@"source"];
     [aCoder encodeObject:self.status forKey:@"status"];
+    [aCoder encodeObject:self.timestamp forKey:@"timestamp"];
     [aCoder encodeObject:self.value forKey:@"value"];
     [aCoder encodeObject:self.wallet forKey:@"wallet"];
     [aCoder encodeObject:self.fromNetwork forKey:@"fromNetwork"];
@@ -40,6 +41,7 @@
         _rate = [[aDecoder decodeObjectForKey:@"rate"] copy];
         _source = [[aDecoder decodeObjectForKey:@"source"] copy];
         _status = [[aDecoder decodeObjectForKey:@"status"] copy];
+        _timestamp = [[aDecoder decodeObjectForKey:@"timestamp"] copy];
         _value = [[aDecoder decodeObjectForKey:@"value"] copy];
         _wallet = [[aDecoder decodeObjectForKey:@"wallet"] copy];
         _fromNetwork = [[aDecoder decodeObjectForKey:@"fromNetwork"] copy];
@@ -62,6 +64,7 @@
     replica.rate = self.rate;
     replica.source = self.source;
     replica.status = self.status;
+    replica.timestamp = self.timestamp;
     replica.value = self.value;
     replica.wallet = self.wallet;
 

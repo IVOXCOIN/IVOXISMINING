@@ -50,6 +50,8 @@
 
 @dynamic status;
 
+@dynamic timestamp;
+
 @dynamic value;
 
 @dynamic wallet;
@@ -85,6 +87,9 @@
 }
 + (NSString *)status {
 	return @"status";
+}
++ (NSString *)timestamp {
+	return @"timestamp";
 }
 + (NSString *)value {
 	return @"value";

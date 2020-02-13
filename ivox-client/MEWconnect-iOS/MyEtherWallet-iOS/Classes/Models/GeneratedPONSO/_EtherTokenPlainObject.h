@@ -20,6 +20,7 @@
 @property (nonatomic, copy, readwrite) NSString *rate;
 @property (nonatomic, copy, readwrite) NSString *source;
 @property (nonatomic, copy, readwrite) NSString *status;
+@property (nonatomic, copy, readwrite) NSString *timestamp;
 @property (nonatomic, copy, readwrite) NSString *value;
 @property (nonatomic, copy, readwrite) NSString *wallet;
 

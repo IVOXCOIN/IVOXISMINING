@@ -40,6 +40,8 @@ NS_ASSUME_NONNULL_BEGIN
 
 @property (nonatomic, strong, nullable) NSString* status;
 
+@property (nonatomic, strong, nullable) NSString* timestamp;
+
 @property (nonatomic, strong, nullable) NSString* value;
 
 @property (nonatomic, strong, nullable) NSString* wallet;
@@ -77,6 +79,9 @@ NS_ASSUME_NONNULL_BEGIN
 - (nullable NSString*)primitiveStatus;
 - (void)setPrimitiveStatus:(nullable NSString*)value;
 
+- (nullable NSString*)primitiveTimestamp;
+- (void)setPrimitiveTimestamp:(nullable NSString*)value;
+
 - (nullable NSString*)primitiveValue;
 - (void)setPrimitiveValue:(nullable NSString*)value;
 
@@ -98,6 +103,7 @@ NS_ASSUME_NONNULL_BEGIN
 + (NSString *)rate;
 + (NSString *)source;
 + (NSString *)status;
++ (NSString *)timestamp;
 + (NSString *)value;
 + (NSString *)wallet;
 @end
