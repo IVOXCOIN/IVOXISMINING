@@ -51,7 +51,7 @@
 
 - (void) contactAction {
   NSString *version = [[NSBundle mainBundle] fullApplicationVersion];
-  NSString *subject = [NSString stringWithFormat:@"MEWconnect v.%@ support request", version];
+  NSString *subject = [NSString stringWithFormat:@"Ivoxis v.%@ support request", version];
   NSArray *recipients = @[kMyEtherWalletSupportEmail];
   [self.view presentMailComposeWithSubject:subject recipients:recipients];
 }

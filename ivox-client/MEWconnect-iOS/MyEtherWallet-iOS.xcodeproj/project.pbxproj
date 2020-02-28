@@ -25,6 +25,10 @@
 		0200A429F6FF43815C7B2AFD /* QRScannerRouter.m in Sources */ = {isa = PBXBuildFile; fileRef = 10704F14617B1B50992AA214 /* QRScannerRouter.m */; };
 		0300F8A0DC179B5B8E58E3EC /* ForgotPasswordAssembly.m in Sources */ = {isa = PBXBuildFile; fileRef = 9AD5E93E2F918844127F0D5B /* ForgotPasswordAssembly.m */; };
 		0530718878D5DD21A54FDF89 /* RestoreOptionsInteractor.m in Sources */ = {isa = PBXBuildFile; fileRef = C3CF270EFCBD491B804E5192 /* RestoreOptionsInteractor.m */; };
+		0A4AB68B24086B200017F453 /* ProposalsAssembly.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A4AB68A24086B200017F453 /* ProposalsAssembly.m */; };
+		0A4AB68F24086B860017F453 /* ProposalsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A4AB68E24086B860017F453 /* ProposalsViewController.swift */; };
+		0A4AB69224086BAD0017F453 /* ProposalsRouter.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A4AB69124086BAD0017F453 /* ProposalsRouter.m */; };
+		0A4AB69824086BFC0017F453 /* ProposalsPresenter.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A4AB69724086BFC0017F453 /* ProposalsPresenter.m */; };
 		0A4C8F1223BC2C8100385FC4 /* TransfersAssembly.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A4C8F1123BC2C8100385FC4 /* TransfersAssembly.m */; };
 		0A4C8F1523BC386100385FC4 /* TransfersViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A4C8F1423BC386100385FC4 /* TransfersViewController.swift */; };
 		0A4C8F1A23BC5C1800385FC4 /* TransfersRouter.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A4C8F1923BC5C1800385FC4 /* TransfersRouter.m */; };
@@ -998,6 +1002,16 @@
 		0A2C985F23DA604700D1FA8B /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/SplashPassword.strings; sourceTree = "<group>"; };
 		0A2C986123DA605800D1FA8B /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/BuyEther.strings; sourceTree = "<group>"; };
 		0A49C491964372403C73647A /* RestorePrepareInteractorInput.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = RestorePrepareInteractorInput.h; sourceTree = "<group>"; };
+		0A4AB68A24086B200017F453 /* ProposalsAssembly.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ProposalsAssembly.m; sourceTree = "<group>"; };
+		0A4AB68C24086B5B0017F453 /* ProposalsAssembly.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ProposalsAssembly.h; sourceTree = "<group>"; };
+		0A4AB68D24086B6A0017F453 /* ProposalsViewInput.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ProposalsViewInput.h; sourceTree = "<group>"; };
+		0A4AB68E24086B860017F453 /* ProposalsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProposalsViewController.swift; sourceTree = "<group>"; };
+		0A4AB69024086B9E0017F453 /* ProposalsRouter.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ProposalsRouter.h; sourceTree = "<group>"; };
+		0A4AB69124086BAD0017F453 /* ProposalsRouter.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ProposalsRouter.m; sourceTree = "<group>"; };
+		0A4AB69424086BD10017F453 /* ProposalsRouterInput.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ProposalsRouterInput.h; sourceTree = "<group>"; };
+		0A4AB69624086BEF0017F453 /* ProposalsPresenter.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ProposalsPresenter.h; sourceTree = "<group>"; };
+		0A4AB69724086BFC0017F453 /* ProposalsPresenter.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ProposalsPresenter.m; sourceTree = "<group>"; };
+		0A4AB69924086C090017F453 /* ProposalsModuleInput.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ProposalsModuleInput.h; sourceTree = "<group>"; };
 		0A4C8F1023BC2C6B00385FC4 /* TransfersAssembly.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TransfersAssembly.h; sourceTree = "<group>"; };
 		0A4C8F1123BC2C8100385FC4 /* TransfersAssembly.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TransfersAssembly.m; sourceTree = "<group>"; };
 		0A4C8F1423BC386100385FC4 /* TransfersViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransfersViewController.swift; sourceTree = "<group>"; };
@@ -1772,7 +1786,7 @@
 		56E14C1420ED16C900C41F83 /* SimplexOrderBody.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SimplexOrderBody.m; sourceTree = "<group>"; };
 		56E14C1720ED298100C41F83 /* SimplexOrder.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SimplexOrder.h; sourceTree = "<group>"; };
 		56E14C1820ED298100C41F83 /* SimplexOrder.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SimplexOrder.m; sourceTree = "<group>"; };
-		56E3E65C21016DB60014152D /* MyEtherWallet-iOS-Beta.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "MyEtherWallet-iOS-Beta.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		56E3E65C21016DB60014152D /* Ivoxis-Beta.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Ivoxis-Beta.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		56E3E65F210170EB0014152D /* debug.beta.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = debug.beta.xcconfig; sourceTree = "<group>"; };
 		56E3E660210171510014152D /* release.beta.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = release.beta.xcconfig; sourceTree = "<group>"; };
 		56E3E661210171CB0014152D /* appstore.beta.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = appstore.beta.xcconfig; sourceTree = "<group>"; };
@@ -2549,6 +2563,55 @@
 			isa = PBXGroup;
 			children = (
 				5627B6FC210B5272009787F7 /* AboutPresenterTests.m */,
+			);
+			path = Presenter;
+			sourceTree = "<group>";
+		};
+		0A4AB687240867D60017F453 /* Proposals */ = {
+			isa = PBXGroup;
+			children = (
+				0A4AB69524086BDD0017F453 /* Presenter */,
+				0A4AB69324086BB40017F453 /* Router */,
+				0A4AB689240867FF0017F453 /* View */,
+				0A4AB688240867F60017F453 /* Assembly */,
+			);
+			path = Proposals;
+			sourceTree = "<group>";
+		};
+		0A4AB688240867F60017F453 /* Assembly */ = {
+			isa = PBXGroup;
+			children = (
+				0A4AB68A24086B200017F453 /* ProposalsAssembly.m */,
+				0A4AB68C24086B5B0017F453 /* ProposalsAssembly.h */,
+			);
+			path = Assembly;
+			sourceTree = "<group>";
+		};
+		0A4AB689240867FF0017F453 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				0A4AB68D24086B6A0017F453 /* ProposalsViewInput.h */,
+				0A4AB68E24086B860017F453 /* ProposalsViewController.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		0A4AB69324086BB40017F453 /* Router */ = {
+			isa = PBXGroup;
+			children = (
+				0A4AB69024086B9E0017F453 /* ProposalsRouter.h */,
+				0A4AB69124086BAD0017F453 /* ProposalsRouter.m */,
+				0A4AB69424086BD10017F453 /* ProposalsRouterInput.h */,
+			);
+			path = Router;
+			sourceTree = "<group>";
+		};
+		0A4AB69524086BDD0017F453 /* Presenter */ = {
+			isa = PBXGroup;
+			children = (
+				0A4AB69624086BEF0017F453 /* ProposalsPresenter.h */,
+				0A4AB69724086BFC0017F453 /* ProposalsPresenter.m */,
+				0A4AB69924086C090017F453 /* ProposalsModuleInput.h */,
 			);
 			path = Presenter;
 			sourceTree = "<group>";
@@ -5494,6 +5557,7 @@
 		569998402095178800D45153 /* Modules */ = {
 			isa = PBXGroup;
 			children = (
+				0A4AB687240867D60017F453 /* Proposals */,
 				0AB275FE23D16F7200A5F673 /* Profile */,
 				0A4C8F0E23BC2BB400385FC4 /* Transfers */,
 				0ACA4F2723AEED4600DEC56A /* Tokens */,
@@ -7664,7 +7728,7 @@
 			isa = PBXGroup;
 			children = (
 				56FE2B6D20817F1100DB39D5 /* Ivoxis.app */,
-				56E3E65C21016DB60014152D /* MyEtherWallet-iOS-Beta.app */,
+				56E3E65C21016DB60014152D /* Ivoxis-Beta.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -10394,9 +10458,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		56E3E4E921016DB60014152D /* MyEtherWallet-iOS-Beta */ = {
+		56E3E4E921016DB60014152D /* Ivoxis-Beta */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 56E3E65821016DB60014152D /* Build configuration list for PBXNativeTarget "MyEtherWallet-iOS-Beta" */;
+			buildConfigurationList = 56E3E65821016DB60014152D /* Build configuration list for PBXNativeTarget "Ivoxis-Beta" */;
 			buildPhases = (
 				B2BFED4EC00E6403590F3EAF /* [CP] Check Pods Manifest.lock */,
 				56E3E4EB21016DB60014152D /* Sources */,
@@ -10408,14 +10472,14 @@
 			);
 			dependencies = (
 			);
-			name = "MyEtherWallet-iOS-Beta";
+			name = "Ivoxis-Beta";
 			productName = "MyEtherWallet-iOS";
-			productReference = 56E3E65C21016DB60014152D /* MyEtherWallet-iOS-Beta.app */;
+			productReference = 56E3E65C21016DB60014152D /* Ivoxis-Beta.app */;
 			productType = "com.apple.product-type.application";
 		};
-		56FE2B6C20817F1100DB39D5 /* MyEtherWallet-iOS */ = {
+		56FE2B6C20817F1100DB39D5 /* Ivoxis */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 56FE2B9920817F1100DB39D5 /* Build configuration list for PBXNativeTarget "MyEtherWallet-iOS" */;
+			buildConfigurationList = 56FE2B9920817F1100DB39D5 /* Build configuration list for PBXNativeTarget "Ivoxis" */;
 			buildPhases = (
 				4D0EDDE94F57A45E0B628E09 /* [CP] Check Pods Manifest.lock */,
 				56FE2B6920817F1100DB39D5 /* Sources */,
@@ -10428,7 +10492,7 @@
 			dependencies = (
 				0AE3DBEF23A48C7A00C30078 /* PBXTargetDependency */,
 			);
-			name = "MyEtherWallet-iOS";
+			name = Ivoxis;
 			productName = "MyEtherWallet-iOS";
 			productReference = 56FE2B6D20817F1100DB39D5 /* Ivoxis.app */;
 			productType = "com.apple.product-type.application";
@@ -10480,9 +10544,9 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				56FE2B6C20817F1100DB39D5 /* MyEtherWallet-iOS */,
+				56FE2B6C20817F1100DB39D5 /* Ivoxis */,
 				56FB3A3020B45969007776C8 /* Mogenerator */,
-				56E3E4E921016DB60014152D /* MyEtherWallet-iOS-Beta */,
+				56E3E4E921016DB60014152D /* Ivoxis-Beta */,
 			);
 		};
 /* End PBXProject section */
@@ -11357,6 +11421,7 @@
 				56CF0A9420D87F550029F841 /* NSArray+Data.m in Sources */,
 				56F8EAA72183BDFE0010274B /* AccountToAccountV2Policy.m in Sources */,
 				560D770C20B4950C009A3D6D /* HomeCellObjectBuilder.m in Sources */,
+				0A4AB69824086BFC0017F453 /* ProposalsPresenter.m in Sources */,
 				56FB39E520B35766007776C8 /* HeadersBuilderBase.m in Sources */,
 				D8F63615756FC3CF5F64F745 /* RestoreWalletPresenter.m in Sources */,
 				56E6849820A4FE340058AA38 /* NSAttributedString+CustomEllipsis.m in Sources */,
@@ -11365,6 +11430,7 @@
 				56FB392820B1A3F7007776C8 /* AsyncOperation.m in Sources */,
 				F8D31D7A5F793F249A5F0FE5 /* RestoreWalletInteractor.m in Sources */,
 				39E9DD5FBCBFA89BFDA6082E /* RestoreWalletRouter.m in Sources */,
+				0A4AB69224086BAD0017F453 /* ProposalsRouter.m in Sources */,
 				56E14BD020E99C9500C41F83 /* FiatPricesResponseValidator.m in Sources */,
 				48775C9BF345F555A704F7AC /* PasswordAssembly.m in Sources */,
 				FA71744EB496938426D1BE7E /* PasswordViewController.m in Sources */,
@@ -11394,6 +11460,7 @@
 				5677C5A82181226500477ACD /* TokenModelObject.m in Sources */,
 				5FEF304FAB4A717221A0C324 /* HomeAssembly.m in Sources */,
 				0AB2760B23D2A54100A5F673 /* ProfileRouter.m in Sources */,
+				0A4AB68B24086B200017F453 /* ProposalsAssembly.m in Sources */,
 				56E14BF820EBCFAD00C41F83 /* SimplexQuoteBody.m in Sources */,
 				56E9D3652170ADF10004AC61 /* CardViewSeedButton.m in Sources */,
 				3E29FA4D9347F0A161AF1AB8 /* HomeViewController.m in Sources */,
@@ -11418,6 +11485,7 @@
 				56FB39C120B2313E007776C8 /* SingleResponseValidator.m in Sources */,
 				56FB391D20B1A228007776C8 /* OperationSchedulerImplementation.m in Sources */,
 				5677C5B42181226500477ACD /* _TokenPlainObject.m in Sources */,
+				0A4AB68F24086B860017F453 /* ProposalsViewController.swift in Sources */,
 				56896BA7221B6B0B00B78FF6 /* RestoreOptionsNormalTableViewCell.m in Sources */,
 				0200A429F6FF43815C7B2AFD /* QRScannerRouter.m in Sources */,
 				563C6AE320AF122000E85B8B /* CheckboxButton.swift in Sources */,
@@ -11865,7 +11933,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 19101401.2;
 				DEFINES_MODULE = YES;
-				DEVELOPMENT_TEAM = CJ2L4C3JHQ;
+				DEVELOPMENT_TEAM = CSJ4542Y33;
 				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = "$(inherited)";
 				GCC_PRECOMPILE_PREFIX_HEADER = NO;
@@ -11877,7 +11945,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = "$(inherited)";
 				MARKETING_VERSION = 1.0.13;
-				PRODUCT_BUNDLE_IDENTIFIER = com.ivox.ivoxis;
+				PRODUCT_BUNDLE_IDENTIFIER = com.ivox.ivoxis.app;
 				PRODUCT_NAME = Ivoxis;
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "MyEtherWallet-iOS/MyEtherWallet-iOS-Bridging-Header.h";
@@ -12122,7 +12190,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 19101401.2;
 				DEFINES_MODULE = YES;
-				DEVELOPMENT_TEAM = CJ2L4C3JHQ;
+				DEVELOPMENT_TEAM = CSJ4542Y33;
 				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = "$(inherited)";
 				GCC_PRECOMPILE_PREFIX_HEADER = NO;
@@ -12134,7 +12202,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = "$(inherited)";
 				MARKETING_VERSION = 1.0.13;
-				PRODUCT_BUNDLE_IDENTIFIER = com.ivox.ivoxis;
+				PRODUCT_BUNDLE_IDENTIFIER = com.ivox.ivoxis.app;
 				PRODUCT_NAME = Ivoxis;
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "MyEtherWallet-iOS/MyEtherWallet-iOS-Bridging-Header.h";
@@ -12156,7 +12224,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 19101401.2;
 				DEFINES_MODULE = YES;
-				DEVELOPMENT_TEAM = CJ2L4C3JHQ;
+				DEVELOPMENT_TEAM = CSJ4542Y33;
 				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = "$(inherited)";
 				GCC_PRECOMPILE_PREFIX_HEADER = NO;
@@ -12168,7 +12236,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = "$(inherited)";
 				MARKETING_VERSION = 1.0.13;
-				PRODUCT_BUNDLE_IDENTIFIER = com.ivox.ivoxis;
+				PRODUCT_BUNDLE_IDENTIFIER = com.ivox.ivoxis.app;
 				PRODUCT_NAME = Ivoxis;
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "MyEtherWallet-iOS/MyEtherWallet-iOS-Bridging-Header.h";
@@ -12180,7 +12248,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		56E3E65821016DB60014152D /* Build configuration list for PBXNativeTarget "MyEtherWallet-iOS-Beta" */ = {
+		56E3E65821016DB60014152D /* Build configuration list for PBXNativeTarget "Ivoxis-Beta" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				56E3E65921016DB60014152D /* Debug */,
@@ -12210,7 +12278,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		56FE2B9920817F1100DB39D5 /* Build configuration list for PBXNativeTarget "MyEtherWallet-iOS" */ = {
+		56FE2B9920817F1100DB39D5 /* Build configuration list for PBXNativeTarget "Ivoxis" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				56FE2B9A20817F1100DB39D5 /* Debug */,

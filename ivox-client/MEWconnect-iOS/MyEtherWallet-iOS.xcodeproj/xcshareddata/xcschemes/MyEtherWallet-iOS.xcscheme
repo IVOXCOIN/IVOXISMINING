@@ -16,7 +16,7 @@
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "56FE2B6C20817F1100DB39D5"
                BuildableName = "Ivoxis.app"
-               BlueprintName = "MyEtherWallet-iOS"
+               BlueprintName = "Ivoxis"
                ReferencedContainer = "container:MyEtherWallet-iOS.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
@@ -32,7 +32,7 @@
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "56FE2B6C20817F1100DB39D5"
             BuildableName = "Ivoxis.app"
-            BlueprintName = "MyEtherWallet-iOS"
+            BlueprintName = "Ivoxis"
             ReferencedContainer = "container:MyEtherWallet-iOS.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
@@ -517,7 +517,7 @@
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "56FE2B6C20817F1100DB39D5"
             BuildableName = "Ivoxis.app"
-            BlueprintName = "MyEtherWallet-iOS"
+            BlueprintName = "Ivoxis"
             ReferencedContainer = "container:MyEtherWallet-iOS.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
@@ -541,7 +541,7 @@
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "56FE2B6C20817F1100DB39D5"
             BuildableName = "Ivoxis.app"
-            BlueprintName = "MyEtherWallet-iOS"
+            BlueprintName = "Ivoxis"
             ReferencedContainer = "container:MyEtherWallet-iOS.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>

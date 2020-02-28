@@ -105,7 +105,7 @@ import PromiseKit
                     
                     self.web3?.addKeystoreManager(keystoreManager);
 
-                    let value: String = "1.0" // In Tokens
+                    let value: String = self.amountTextView.text! // In Tokens
                     let walletAddress = EthereumAddress(self.masterToken.address)! // Your wallet address
                     let toAddress = EthereumAddress(self.addressTextView.text!)!
                     let erc20ContractAddress = EthereumAddress(self.CONTRACT_ADDRESS)!

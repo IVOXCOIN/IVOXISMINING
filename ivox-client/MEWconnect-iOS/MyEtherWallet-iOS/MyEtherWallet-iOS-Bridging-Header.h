@@ -25,4 +25,6 @@
 #import "ProfileRouterInput.h"
 #import "ProfileViewInput.h"
 
+#import "ProposalsViewInput.h"
+
 #import "AccountsService.h"
