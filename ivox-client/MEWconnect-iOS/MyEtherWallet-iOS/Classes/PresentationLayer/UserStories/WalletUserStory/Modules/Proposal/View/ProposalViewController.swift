@@ -96,6 +96,7 @@ import BigInt
         tableView.delegate = self
         tableView.dataSource = self
         
+        self.proposalLabel.text = NSLocalizedString("Proposal", comment: "Proposal label text")
         self.votesLabel.text = NSLocalizedString("Votes", comment: "Votes label")
 
         load()
@@ -132,8 +133,9 @@ import BigInt
             let p = (result["proposed"] as! BigUInt)
             let e = (result["expiration"] as! BigUInt)
 
-            let yesVoteCount = uint(yvc.description)!
-            let noVoteCount = uint(nvc.description)!
+        let yesVoteCount = uint(Web3.Utils.formatToEthereumUnits(yvc)!)!
+            let noVoteCount = uint(Web3.Utils.formatToEthereumUnits(nvc)!)!
+        
             let proposed = uint(p.description)!
             let expiration = uint(e.description)!
            
@@ -146,9 +148,9 @@ import BigInt
                         expirationDate: expiration)
                 DispatchQueue.main.async {
                     //self.proposalTitleLabel.text = proposal.title
-                    self.yesPercentLabel.text = String(proposal.yesVoteCount / (proposal.yesVoteCount + proposal.noVoteCount) * 100)
+                    self.yesPercentLabel.text = String(proposal.yesVoteCount / (proposal.yesVoteCount + proposal.noVoteCount) * 100) + "%"
                     
-                    self.yesPercentLabel.text = String(proposal.noVoteCount / (proposal.yesVoteCount + proposal.noVoteCount) * 100)
+                    self.noPercentLabel.text = String(proposal.noVoteCount / (proposal.yesVoteCount + proposal.noVoteCount) * 100) + "%"
                     
                     self.proposalLabel.text = proposal.title
                 }
@@ -157,13 +159,31 @@ import BigInt
 
             let votersPromise = votersIntermediate!.callPromise()
             let votersPromiseDoneResult = votersPromise.done(on: .global(), { result in
-            
-                let addresses = result["addresses"]
-                let weights = result["weights"]
-                let voted = result["voted"]
-                let decisions = result["decisions"]
+        
+                let addresses = (result["addresses"] as? Array<EthereumAddress>)
+                let weights = (result["weights"] as? Array<BigUInt>)
+                let voted = (result["voted"] as? Array<Bool>)
+                let decisions = (result["decisions"] as? Array<BigUInt>)
+
+                for i in 0 ..< addresses!.count {
+                    let ethereumWeight = Web3.Utils.formatToEthereumUnits(weights![i])!
+
+                    let voted = voted![i]
+                    
+                    let decision = uint(decisions![i].description)
+                    
+                    self.voters!.append(Voter(address:                                      addresses![i].address,
+                                              weight: uint(ethereumWeight)!,
+                                              voted: voted,
+                                              decision: decision!))
+                }
                 
-                
+                DispatchQueue.main.async {
+                    self.tableView.reloadData()
+                }
+
+
+                                
             })
             
             votersPromiseDoneResult.catch({error in

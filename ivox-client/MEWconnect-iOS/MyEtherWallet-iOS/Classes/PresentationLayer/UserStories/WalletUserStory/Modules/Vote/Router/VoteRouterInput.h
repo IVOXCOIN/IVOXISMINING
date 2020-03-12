@@ -14,4 +14,6 @@
 
 @protocol VoteRouterInput <NSObject>
 - (void) close;
+
+- (void) openProposalWithAccountAndMasterToken:(AccountPlainObject *)account masterToken:(MasterTokenPlainObject*)masterToken voteBatch:(int)voteBatch;
 @end

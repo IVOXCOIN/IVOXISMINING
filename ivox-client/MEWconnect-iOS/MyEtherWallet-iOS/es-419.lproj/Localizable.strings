@@ -299,7 +299,14 @@
 "Type your password" = "Escriba su contraseña";
 
 "Vote" = "Votar";
+"Votes" = "Votos";
 "Proposals" = "Propuestas";
 "Proposal" = "Propuesta";
 
 "An error occurred or you don't have enough tokens" = "Un error ha ocurrido o no tiene suficientes tokens";
+
+"Voting has been successful, please allow up to 5 minutes before reflecting changes" = "La votación ha sido exitosa, por favor espere hasta 5 minutos antes de ver reflejados los cambios";
+
+"You have voted this proposal already" = "Usted ya ha votado en esta propuesta";
+
+"There are no proposals made yet" = "No hay propuestas hechas aún";

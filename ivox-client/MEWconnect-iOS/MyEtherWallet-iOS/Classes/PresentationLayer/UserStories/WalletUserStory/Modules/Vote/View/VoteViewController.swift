@@ -102,7 +102,11 @@ import BigInt
                        let votePromise = voteTransactionIntermediate!.sendPromise(password:self.password, transactionOptions: self.contract.transactionOptions)
                        
                         let votePromiseDoneResult = votePromise.done(on: .global(), { result in
-                            
+                            func openProposal() -> () {
+                                self.router.openProposal(withAccountAndMasterToken: self.account, masterToken: self.masterToken, voteBatch: self.voteBatch as! Int32)
+                            }
+
+                            self.showInfoMessage(NSLocalizedString("Voting has been successful, please allow up to 5 minutes before reflecting changes", comment: "Success message"), onClose: openProposal)
                         })
                            
                        votePromiseDoneResult.catch({error in
@@ -111,7 +115,11 @@ import BigInt
                         
                        })
             } else{
-                self.showErrorMessage(NSLocalizedString("You have voted already", comment: "Error message"))
+                func openProposal() -> (){
+                    self.router.openProposal(withAccountAndMasterToken: self.account, masterToken: self.masterToken, voteBatch: self.voteBatch as! Int32)
+                }
+
+                self.showInfoMessage(NSLocalizedString("You have voted this proposal already", comment: "Error message"), onClose: openProposal)
                 
             }
 
@@ -156,8 +164,8 @@ import BigInt
            let p = (result["proposed"] as! BigUInt)
            let e = (result["expiration"] as! BigUInt)
 
-           let yesVoteCount = uint(yvc.description)!
-           let noVoteCount = uint(nvc.description)!
+        let yesVoteCount = uint(Web3.Utils.formatToEthereumUnits(yvc)!)!
+           let noVoteCount = uint(Web3.Utils.formatToEthereumUnits(nvc)!)!
            let proposed = uint(p.description)!
            let expiration = uint(e.description)!
            
@@ -267,15 +275,17 @@ import BigInt
             }
             
         }))
+        DispatchQueue.main.async {
 
-        self.present(alert, animated: true)
+            self.present(alert, animated: true)
+        }
     }
     
-    func showInfoMessage(_ info: String, onClose: (() -> Void)?){
+    func showInfoMessage(_ info: String,  onClose: @escaping() -> Void){
         let alertController = UIAlertController(title: "Info", message: info, preferredStyle: .alert)
                
         let OKAction = UIAlertAction(title: NSLocalizedString("Close", comment: "Close"), style: .default) { (action:UIAlertAction!) in
-            onClose?()
+            onClose()
         }
 
         alertController.addAction(OKAction)

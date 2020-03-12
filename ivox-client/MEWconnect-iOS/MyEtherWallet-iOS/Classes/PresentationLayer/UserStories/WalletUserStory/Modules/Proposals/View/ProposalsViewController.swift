@@ -119,11 +119,16 @@ import BigInt
         let promise = transactionIntermediate!.callPromise()
         let promiseDoneResult = promise.done(on: .global(), { result in
             
-            let biguint = (result["0"] as! BigUInt)
+            let bigint = (result["0"] as? BigInt)
             
-            let uintResult = uint(biguint.description)!
+            let intResult = Int(bigint?.description ?? "0")!
             
-            self.iterateProposals(initialIndex: 0, finalIndex: uintResult + 1)
+            if(intResult < 0){
+                self.showErrorMessage(NSLocalizedString("There are no proposals made yet", comment: "Error message"))
+            } else {
+                self.iterateProposals(initialIndex: 0, finalIndex: uint(intResult + 1))
+            }
+            
 
         })
            
@@ -150,8 +155,8 @@ import BigInt
                 let p = (result["proposed"] as! BigUInt)
                 let e = (result["expiration"] as! BigUInt)
 
-                let yesVoteCount = uint(yvc.description)!
-                let noVoteCount = uint(nvc.description)!
+                let yesVoteCount = uint(Web3.Utils.formatToEthereumUnits(yvc)!)!
+                let noVoteCount = uint(Web3.Utils.formatToEthereumUnits(nvc)!)!
                 let proposed = uint(p.description)!
                 let expiration = uint(e.description)!
                 
