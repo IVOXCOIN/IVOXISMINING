@@ -8,6 +8,13 @@
 
 @import Foundation;
 
+@class AccountPlainObject;
+@class MasterTokenPlainObject;
+
+
 @protocol ProposalsRouterInput <NSObject>
 - (void) close;
+
+- (void) openVoteWithAccountAndMasterToken:(AccountPlainObject *)account masterToken:(MasterTokenPlainObject*)masterToken voteBatch:(int)voteBatch;
+
 @end

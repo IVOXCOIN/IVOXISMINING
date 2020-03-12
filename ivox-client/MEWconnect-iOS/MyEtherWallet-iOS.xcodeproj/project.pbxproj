@@ -51,6 +51,11 @@
 		0AA50FEE23C97EBE00FB4C02 /* Wallet.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0AA50FF023C97EBE00FB4C02 /* Wallet.storyboard */; };
 		0AA50FF323C97ECD00FB4C02 /* Confirmation.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0AA50FF623C97ECD00FB4C02 /* Confirmation.storyboard */; };
 		0AA50FF423C97ECD00FB4C02 /* Confirmation.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0AA50FF623C97ECD00FB4C02 /* Confirmation.storyboard */; };
+		0AA6E3BF2418703400F1D053 /* ProposalAssembly.m in Sources */ = {isa = PBXBuildFile; fileRef = 0AA6E3BE2418703400F1D053 /* ProposalAssembly.m */; };
+		0AA6E3C2241872BC00F1D053 /* ProposalViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AA6E3C1241872BC00F1D053 /* ProposalViewController.swift */; };
+		0AA6E3C5241872E600F1D053 /* ProposalRouter.m in Sources */ = {isa = PBXBuildFile; fileRef = 0AA6E3C4241872E600F1D053 /* ProposalRouter.m */; };
+		0AA6E3C92418731A00F1D053 /* ProposalPresenter.m in Sources */ = {isa = PBXBuildFile; fileRef = 0AA6E3C82418731A00F1D053 /* ProposalPresenter.m */; };
+		0AA6E3CD24187CA500F1D053 /* VotingConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AA6E3CC24187CA500F1D053 /* VotingConstants.swift */; };
 		0AB2760523D2807900A5F673 /* ProfileAssembly.m in Sources */ = {isa = PBXBuildFile; fileRef = 0AB2760423D2807700A5F673 /* ProfileAssembly.m */; };
 		0AB2760923D2A51A00A5F673 /* ProfilePresenter.m in Sources */ = {isa = PBXBuildFile; fileRef = 0AB2760823D2A51700A5F673 /* ProfilePresenter.m */; };
 		0AB2760B23D2A54100A5F673 /* ProfileRouter.m in Sources */ = {isa = PBXBuildFile; fileRef = 0AB2760A23D2A54100A5F673 /* ProfileRouter.m */; };
@@ -58,6 +63,10 @@
 		0AC6EBD423B1A0D400320D7A /* GenericToken.m in Sources */ = {isa = PBXBuildFile; fileRef = 0AC6EBD323B1A0D300320D7A /* GenericToken.m */; };
 		0AC6EBD723B1A67400320D7A /* HeadlineTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 0AC6EBD623B1A67400320D7A /* HeadlineTableViewCell.m */; };
 		0AC6EBDC23B5734F00320D7A /* SingleTokenPopOverViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AC6EBDB23B5734F00320D7A /* SingleTokenPopOverViewController.swift */; };
+		0AC7918C240F39AC00CA30C9 /* VoteAssembly.m in Sources */ = {isa = PBXBuildFile; fileRef = 0AC7918B240F39AC00CA30C9 /* VoteAssembly.m */; };
+		0AC79191240F3A6500CA30C9 /* VoteRouter.m in Sources */ = {isa = PBXBuildFile; fileRef = 0AC79190240F3A6500CA30C9 /* VoteRouter.m */; };
+		0AC79195240F3AA400CA30C9 /* VotePresenter.m in Sources */ = {isa = PBXBuildFile; fileRef = 0AC79194240F3AA400CA30C9 /* VotePresenter.m */; };
+		0AC79198240F3ACA00CA30C9 /* VoteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AC79197240F3ACA00CA30C9 /* VoteViewController.swift */; };
 		0ACA4F3D23AEED4700DEC56A /* TokensAssembly.m in Sources */ = {isa = PBXBuildFile; fileRef = 0ACA4F2A23AEED4600DEC56A /* TokensAssembly.m */; };
 		0ACA4F3E23AEED4700DEC56A /* TokensPresenter.m in Sources */ = {isa = PBXBuildFile; fileRef = 0ACA4F2D23AEED4600DEC56A /* TokensPresenter.m */; };
 		0ACA4F3F23AEED4700DEC56A /* TokensViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0ACA4F3123AEED4600DEC56A /* TokensViewController.m */; };
@@ -1047,6 +1056,17 @@
 		0AA50FF223C97EC700FB4C02 /* es-419 */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "es-419"; path = "es-419.lproj/Wallet.strings"; sourceTree = "<group>"; };
 		0AA50FF523C97ECD00FB4C02 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Confirmation.storyboard; sourceTree = "<group>"; };
 		0AA50FF823C97ED400FB4C02 /* es-419 */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "es-419"; path = "es-419.lproj/Confirmation.strings"; sourceTree = "<group>"; };
+		0AA6E3BD2418701700F1D053 /* ProposalAssembly.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ProposalAssembly.h; sourceTree = "<group>"; };
+		0AA6E3BE2418703400F1D053 /* ProposalAssembly.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ProposalAssembly.m; sourceTree = "<group>"; };
+		0AA6E3C0241872AD00F1D053 /* ProposalViewInput.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ProposalViewInput.h; sourceTree = "<group>"; };
+		0AA6E3C1241872BC00F1D053 /* ProposalViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProposalViewController.swift; sourceTree = "<group>"; };
+		0AA6E3C3241872D000F1D053 /* ProposalRouter.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ProposalRouter.h; sourceTree = "<group>"; };
+		0AA6E3C4241872E600F1D053 /* ProposalRouter.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ProposalRouter.m; sourceTree = "<group>"; };
+		0AA6E3C6241872F900F1D053 /* ProposalRouterInput.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ProposalRouterInput.h; sourceTree = "<group>"; };
+		0AA6E3C72418730C00F1D053 /* ProposalPresenter.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ProposalPresenter.h; sourceTree = "<group>"; };
+		0AA6E3C82418731A00F1D053 /* ProposalPresenter.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ProposalPresenter.m; sourceTree = "<group>"; };
+		0AA6E3CA2418732700F1D053 /* ProposalModuleInput.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ProposalModuleInput.h; sourceTree = "<group>"; };
+		0AA6E3CC24187CA500F1D053 /* VotingConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VotingConstants.swift; sourceTree = "<group>"; };
 		0AB2760323D2800300A5F673 /* ProfileAssembly.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ProfileAssembly.h; sourceTree = "<group>"; };
 		0AB2760423D2807700A5F673 /* ProfileAssembly.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ProfileAssembly.m; sourceTree = "<group>"; };
 		0AB2760623D2A4E700A5F673 /* ProfilePresenter.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ProfilePresenter.h; sourceTree = "<group>"; };
@@ -1062,6 +1082,16 @@
 		0AC6EBD523B1A63900320D7A /* HeadlineTableViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HeadlineTableViewCell.h; sourceTree = "<group>"; };
 		0AC6EBD623B1A67400320D7A /* HeadlineTableViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HeadlineTableViewCell.m; sourceTree = "<group>"; };
 		0AC6EBDB23B5734F00320D7A /* SingleTokenPopOverViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SingleTokenPopOverViewController.swift; sourceTree = "<group>"; };
+		0AC7918B240F39AC00CA30C9 /* VoteAssembly.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = VoteAssembly.m; sourceTree = "<group>"; };
+		0AC7918D240F39CB00CA30C9 /* VoteAssembly.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = VoteAssembly.h; sourceTree = "<group>"; };
+		0AC7918E240F3A4700CA30C9 /* VoteViewInput.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = VoteViewInput.h; sourceTree = "<group>"; };
+		0AC7918F240F3A5700CA30C9 /* VoteRouter.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = VoteRouter.h; sourceTree = "<group>"; };
+		0AC79190240F3A6500CA30C9 /* VoteRouter.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = VoteRouter.m; sourceTree = "<group>"; };
+		0AC79192240F3A7C00CA30C9 /* VoteRouterInput.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = VoteRouterInput.h; sourceTree = "<group>"; };
+		0AC79193240F3A9200CA30C9 /* VotePresenter.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = VotePresenter.h; sourceTree = "<group>"; };
+		0AC79194240F3AA400CA30C9 /* VotePresenter.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = VotePresenter.m; sourceTree = "<group>"; };
+		0AC79196240F3AB000CA30C9 /* VoteModuleInput.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = VoteModuleInput.h; sourceTree = "<group>"; };
+		0AC79197240F3ACA00CA30C9 /* VoteViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VoteViewController.swift; sourceTree = "<group>"; };
 		0ACA4F2923AEED4600DEC56A /* TokensAssembly.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TokensAssembly.h; sourceTree = "<group>"; };
 		0ACA4F2A23AEED4600DEC56A /* TokensAssembly.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TokensAssembly.m; sourceTree = "<group>"; };
 		0ACA4F2C23AEED4600DEC56A /* TokensPresenter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TokensPresenter.h; sourceTree = "<group>"; };
@@ -2665,6 +2695,14 @@
 			path = Presenter;
 			sourceTree = "<group>";
 		};
+		0AA6E3CB24187C8F00F1D053 /* Voting */ = {
+			isa = PBXGroup;
+			children = (
+				0AA6E3CC24187CA500F1D053 /* VotingConstants.swift */,
+			);
+			path = Voting;
+			sourceTree = "<group>";
+		};
 		0AB275FE23D16F7200A5F673 /* Profile */ = {
 			isa = PBXGroup;
 			children = (
@@ -2712,6 +2750,104 @@
 				0AB2760423D2807700A5F673 /* ProfileAssembly.m */,
 			);
 			path = Assembly;
+			sourceTree = "<group>";
+		};
+		0AC79185240F38BD00CA30C9 /* Vote */ = {
+			isa = PBXGroup;
+			children = (
+				0AC79189240F397000CA30C9 /* Assembly */,
+				0AC79188240F396B00CA30C9 /* View */,
+				0AC79187240F396600CA30C9 /* Router */,
+				0AC79186240F396000CA30C9 /* Presenter */,
+			);
+			path = Vote;
+			sourceTree = "<group>";
+		};
+		0AC79186240F396000CA30C9 /* Presenter */ = {
+			isa = PBXGroup;
+			children = (
+				0AC79193240F3A9200CA30C9 /* VotePresenter.h */,
+				0AC79194240F3AA400CA30C9 /* VotePresenter.m */,
+				0AC79196240F3AB000CA30C9 /* VoteModuleInput.h */,
+			);
+			path = Presenter;
+			sourceTree = "<group>";
+		};
+		0AC79187240F396600CA30C9 /* Router */ = {
+			isa = PBXGroup;
+			children = (
+				0AC7918F240F3A5700CA30C9 /* VoteRouter.h */,
+				0AC79190240F3A6500CA30C9 /* VoteRouter.m */,
+				0AC79192240F3A7C00CA30C9 /* VoteRouterInput.h */,
+			);
+			path = Router;
+			sourceTree = "<group>";
+		};
+		0AC79188240F396B00CA30C9 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				0AC7918E240F3A4700CA30C9 /* VoteViewInput.h */,
+				0AC79197240F3ACA00CA30C9 /* VoteViewController.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		0AC79189240F397000CA30C9 /* Assembly */ = {
+			isa = PBXGroup;
+			children = (
+				0AC7918B240F39AC00CA30C9 /* VoteAssembly.m */,
+				0AC7918D240F39CB00CA30C9 /* VoteAssembly.h */,
+			);
+			path = Assembly;
+			sourceTree = "<group>";
+		};
+		0AC7919924176A4500CA30C9 /* Proposal */ = {
+			isa = PBXGroup;
+			children = (
+				0AC7919A24186F3300CA30C9 /* Assembly */,
+				0AC7919D24186F4C00CA30C9 /* View */,
+				0AC7919C24186F4600CA30C9 /* Router */,
+				0AC7919B24186F3E00CA30C9 /* Presenter */,
+			);
+			path = Proposal;
+			sourceTree = "<group>";
+		};
+		0AC7919A24186F3300CA30C9 /* Assembly */ = {
+			isa = PBXGroup;
+			children = (
+				0AA6E3BD2418701700F1D053 /* ProposalAssembly.h */,
+				0AA6E3BE2418703400F1D053 /* ProposalAssembly.m */,
+			);
+			path = Assembly;
+			sourceTree = "<group>";
+		};
+		0AC7919B24186F3E00CA30C9 /* Presenter */ = {
+			isa = PBXGroup;
+			children = (
+				0AA6E3C72418730C00F1D053 /* ProposalPresenter.h */,
+				0AA6E3C82418731A00F1D053 /* ProposalPresenter.m */,
+				0AA6E3CA2418732700F1D053 /* ProposalModuleInput.h */,
+			);
+			path = Presenter;
+			sourceTree = "<group>";
+		};
+		0AC7919C24186F4600CA30C9 /* Router */ = {
+			isa = PBXGroup;
+			children = (
+				0AA6E3C3241872D000F1D053 /* ProposalRouter.h */,
+				0AA6E3C4241872E600F1D053 /* ProposalRouter.m */,
+				0AA6E3C6241872F900F1D053 /* ProposalRouterInput.h */,
+			);
+			path = Router;
+			sourceTree = "<group>";
+		};
+		0AC7919D24186F4C00CA30C9 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				0AA6E3C0241872AD00F1D053 /* ProposalViewInput.h */,
+				0AA6E3C1241872BC00F1D053 /* ProposalViewController.swift */,
+			);
+			path = View;
 			sourceTree = "<group>";
 		};
 		0ACA4F2723AEED4600DEC56A /* Tokens */ = {
@@ -5557,6 +5693,9 @@
 		569998402095178800D45153 /* Modules */ = {
 			isa = PBXGroup;
 			children = (
+				0AA6E3CB24187C8F00F1D053 /* Voting */,
+				0AC7919924176A4500CA30C9 /* Proposal */,
+				0AC79185240F38BD00CA30C9 /* Vote */,
 				0A4AB687240867D60017F453 /* Proposals */,
 				0AB275FE23D16F7200A5F673 /* Profile */,
 				0A4C8F0E23BC2BB400385FC4 /* Transfers */,
@@ -11313,6 +11452,7 @@
 				56A4EAC820B8C5EC0042A358 /* PresentationControllerAssembly.m in Sources */,
 				56A4FAC121485C6D00E7B022 /* ContextPasswordInputAccessoryView.m in Sources */,
 				56AE728320D711350047D51F /* MEWcryptoMessage.m in Sources */,
+				0AA6E3C92418731A00F1D053 /* ProposalPresenter.m in Sources */,
 				56335F7D2187662200C07E2B /* KeychainServiceConstantsV1.m in Sources */,
 				56FB398F20B227EC007776C8 /* ResponseDeserializersAssembly.m in Sources */,
 				56FB39A320B22A47007776C8 /* ResponseConverterAssembly.m in Sources */,
@@ -11372,6 +11512,7 @@
 				56E14BC820E97ED200C41F83 /* FiatPricesQueryTransformer.m in Sources */,
 				569E51CA20D946B000883583 /* NSData+ArrayBuffer.m in Sources */,
 				5658515B224461CB006AEC7E /* WhatsNewServiceImplementation.m in Sources */,
+				0AC7918C240F39AC00CA30C9 /* VoteAssembly.m in Sources */,
 				2A3FFB6DBE3CE8BCA37EC381 /* StartRouter.m in Sources */,
 				56FB398A20B22726007776C8 /* NetworkOperation.m in Sources */,
 				56FB3A6120B471B0007776C8 /* ManyResponseObjectFormatter.m in Sources */,
@@ -11458,6 +11599,7 @@
 				0A7A331423B70EFE00F835FC /* _EtherTokenPlainObject.m in Sources */,
 				560D76F020B48296009A3D6D /* PonsomizerAssembly.m in Sources */,
 				5677C5A82181226500477ACD /* TokenModelObject.m in Sources */,
+				0AC79191240F3A6500CA30C9 /* VoteRouter.m in Sources */,
 				5FEF304FAB4A717221A0C324 /* HomeAssembly.m in Sources */,
 				0AB2760B23D2A54100A5F673 /* ProfileRouter.m in Sources */,
 				0A4AB68B24086B200017F453 /* ProposalsAssembly.m in Sources */,
@@ -11470,6 +11612,7 @@
 				563C6AD820AC696300E85B8B /* MEWSearchBar.m in Sources */,
 				4BECCB3B960C486BF2D02A9C /* HomePresenter.m in Sources */,
 				56E14C0420EC0C8700C41F83 /* SimplexResponseConverterImplementation.m in Sources */,
+				0AA6E3CD24187CA500F1D053 /* VotingConstants.swift in Sources */,
 				0A7A331A23B70F2100F835FC /* EtherTokenModelObject.m in Sources */,
 				56E14C0D20EC0DD600C41F83 /* SimplexQuote.m in Sources */,
 				44AC20E9EB75F0CC836027E1 /* HomeInteractor.m in Sources */,
@@ -11555,11 +11698,13 @@
 				56FB3A2520B441DD007776C8 /* NSString+MEWTokens.m in Sources */,
 				564387A020A4932A0017790F /* UIColor+HSL.swift in Sources */,
 				0AC6EBDC23B5734F00320D7A /* SingleTokenPopOverViewController.swift in Sources */,
+				0AC79195240F3AA400CA30C9 /* VotePresenter.m in Sources */,
 				0A4DA5A913C4B14DD728715E /* SettingsAssembly.m in Sources */,
 				560CB013209B504700BFF59C /* MEWConnectResponseMapper.m in Sources */,
 				563DF38A209871AA00F740FF /* UIColor+Application.m in Sources */,
 				56FFD7F72192455200341D96 /* UIResponder+FindFirstResponder.m in Sources */,
 				56C7758420DFEBC400451EEF /* InfoNormalTableViewCell.m in Sources */,
+				0AA6E3C5241872E600F1D053 /* ProposalRouter.m in Sources */,
 				6A58F7B29733D102F927B25F /* SettingsViewController.m in Sources */,
 				6AD10E186DC461DCE0E19B5F /* SettingsPresenter.m in Sources */,
 				52A492997EC1ED6D0217C3EC /* SettingsInteractor.m in Sources */,
@@ -11665,6 +11810,7 @@
 				5677C5882181226500477ACD /* _FiatPriceModelObject.m in Sources */,
 				291642C66A4CCAB3EC91FE67 /* BackupDoneInteractor.m in Sources */,
 				5677C59A2181226500477ACD /* PurchaseHistoryPlainObject.m in Sources */,
+				0AC79198240F3ACA00CA30C9 /* VoteViewController.swift in Sources */,
 				669C06D658A079AB650AD485 /* BackupDoneRouter.m in Sources */,
 				AFDE8EED4FD1C618C0BD78A1 /* SplashPasswordAssembly.m in Sources */,
 				56C7758020DFEBB900451EEF /* InfoDestructiveTableViewCellObject.m in Sources */,
@@ -11706,6 +11852,7 @@
 				FF9A72197828B8BF99B0CBA1 /* BuyEtherHistoryPresenter.m in Sources */,
 				6C88206E35666E970D211DB4 /* BuyEtherHistoryInteractor.m in Sources */,
 				349DD734BAC8FF695B47B2D4 /* BuyEtherHistoryRouter.m in Sources */,
+				0AA6E3BF2418703400F1D053 /* ProposalAssembly.m in Sources */,
 				BB637F92D100EA257CAE4408 /* BuyEtherNavigationAssembly.m in Sources */,
 				305F1DD38D91054D4017098F /* BuyEtherNavigationController.m in Sources */,
 				5677C5A22181226500477ACD /* MasterTokenModelObject.m in Sources */,
@@ -11737,6 +11884,7 @@
 				533F41FFC2FA32AB99424976 /* ContextPasswordRouter.m in Sources */,
 				F44AF94F63C70216178E5084 /* ShareAssembly.m in Sources */,
 				F3EFC4DF1B60ECEF3AB6079A /* ShareViewController.m in Sources */,
+				0AA6E3C2241872BC00F1D053 /* ProposalViewController.swift in Sources */,
 				5677C5922181226500477ACD /* AccountPlainObject.m in Sources */,
 				4948CDEFDEFE6F3F2399A5D8 /* SharePresenter.m in Sources */,
 				811B7A588FF030822E16DE52 /* ShareInteractor.m in Sources */,
@@ -11929,11 +12077,11 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = "MyEtherWallet-iOS/MyEtherWallet-iOS.entitlements";
-				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 19101401.2;
 				DEFINES_MODULE = YES;
-				DEVELOPMENT_TEAM = CSJ4542Y33;
+				DEVELOPMENT_TEAM = 2H9Q8LZ852;
 				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = "$(inherited)";
 				GCC_PRECOMPILE_PREFIX_HEADER = NO;
@@ -11945,7 +12093,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = "$(inherited)";
 				MARKETING_VERSION = 1.0.13;
-				PRODUCT_BUNDLE_IDENTIFIER = com.ivox.ivoxis.app;
+				PRODUCT_BUNDLE_IDENTIFIER = com.ivoxis.ios;
 				PRODUCT_NAME = Ivoxis;
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "MyEtherWallet-iOS/MyEtherWallet-iOS-Bridging-Header.h";
@@ -12186,11 +12334,11 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = "MyEtherWallet-iOS/MyEtherWallet-iOS.entitlements";
-				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 19101401.2;
 				DEFINES_MODULE = YES;
-				DEVELOPMENT_TEAM = CSJ4542Y33;
+				DEVELOPMENT_TEAM = 2H9Q8LZ852;
 				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = "$(inherited)";
 				GCC_PRECOMPILE_PREFIX_HEADER = NO;
@@ -12202,7 +12350,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = "$(inherited)";
 				MARKETING_VERSION = 1.0.13;
-				PRODUCT_BUNDLE_IDENTIFIER = com.ivox.ivoxis.app;
+				PRODUCT_BUNDLE_IDENTIFIER = com.ivoxis.ios;
 				PRODUCT_NAME = Ivoxis;
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "MyEtherWallet-iOS/MyEtherWallet-iOS-Bridging-Header.h";
@@ -12220,11 +12368,11 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = "MyEtherWallet-iOS/MyEtherWallet-iOS.entitlements";
-				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 19101401.2;
 				DEFINES_MODULE = YES;
-				DEVELOPMENT_TEAM = CSJ4542Y33;
+				DEVELOPMENT_TEAM = 2H9Q8LZ852;
 				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = "$(inherited)";
 				GCC_PRECOMPILE_PREFIX_HEADER = NO;
@@ -12236,7 +12384,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = "$(inherited)";
 				MARKETING_VERSION = 1.0.13;
-				PRODUCT_BUNDLE_IDENTIFIER = com.ivox.ivoxis.app;
+				PRODUCT_BUNDLE_IDENTIFIER = com.ivoxis.ios;
 				PRODUCT_NAME = Ivoxis;
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "MyEtherWallet-iOS/MyEtherWallet-iOS-Bridging-Header.h";

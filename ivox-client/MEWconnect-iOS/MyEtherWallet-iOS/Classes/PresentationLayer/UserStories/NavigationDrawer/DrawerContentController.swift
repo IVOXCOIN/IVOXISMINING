@@ -11,6 +11,7 @@ import UIKit
 
 @objc class DrawerContentController: UIViewController {
 
+   private var onProposals: (() -> Void)?
    private var onProfile: (() -> Void)?
    private var onInfo: (() -> Void)?
    private var onTransactions: (() -> Void)?
@@ -18,11 +19,15 @@ import UIKit
    private var onEther: (() -> Void)?
    private var onBuy: (() -> Void)?
 
+    @objc public func onProposalsClick(_ function: @escaping @autoclosure () -> Void) {
+        // Store the function
+        onProposals = function
+    }
     @objc public func onProfileClick(_ function: @escaping @autoclosure () -> Void) {
         // Store the function
         onProfile = function
     }
-    
+
     @objc public func onInfoClick(_ function: @escaping @autoclosure () -> Void) {
         // Store the function
         onInfo = function
@@ -83,7 +88,7 @@ import UIKit
 extension DrawerContentController: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
     
    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-       return 6
+       return 7
    }
    
    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
@@ -121,6 +126,10 @@ extension DrawerContentController: UICollectionViewDelegate, UICollectionViewDat
             cell.cellIcon.image = UIImage(named: "profile_logo")
             cell.cellName.text = NSLocalizedString("Profile", comment: "Cell Name")
 
+        case 6:
+            cell.cellIcon.image = UIImage(named: "vote_logo")
+            cell.cellName.text = NSLocalizedString("Proposals", comment: "Cell Name")
+
        default:
            break
        }
@@ -152,6 +161,10 @@ extension DrawerContentController: UICollectionViewDelegate, UICollectionViewDat
 
         case 5:
            onProfile?();
+           break;
+
+        case 6:
+           onProposals?();
            break;
 
         default:

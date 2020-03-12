@@ -25,6 +25,13 @@
 #import "ProfileRouterInput.h"
 #import "ProfileViewInput.h"
 
+#import "ProposalsRouterInput.h"
 #import "ProposalsViewInput.h"
+
+#import "VoteRouterInput.h"
+#import "VoteViewInput.h"
+
+#import "ProposalRouterInput.h"
+#import "ProposalViewInput.h"
 
 #import "AccountsService.h"

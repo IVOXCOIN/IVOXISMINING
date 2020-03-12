@@ -136,6 +136,13 @@ typedef NS_OPTIONS(short, HomeViewPresenterStatus) {
   [self.interactor searchTokensWithTerm:searchTerm];
 }
 
+- (void) proposalsAction {
+    AccountPlainObject *account = [self.interactor obtainAccount];
+    MasterTokenPlainObject *masterToken = [self.interactor obtainMasterToken];
+
+      [self.router openProposalsWithAccountAndMasterToken:account masterToken:masterToken];
+}
+
 - (void) profileAction {
     AccountPlainObject *account = [self.interactor obtainAccount];
     MasterTokenPlainObject *masterToken = [self.interactor obtainMasterToken];

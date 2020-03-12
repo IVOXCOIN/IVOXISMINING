@@ -21,6 +21,7 @@
 #import "ShareModuleInput.h"
 #import "TokensModuleInput.h"
 #import "TransfersModuleInput.h"
+#import "ProposalsModuleInput.h"
 #import "ProfileModuleInput.h"
 #import "QRScannerModuleInput.h"
 #import "ContextPasswordModuleInput.h"
@@ -32,6 +33,7 @@
 
 #import "UIViewController+Hierarchy.h"
 
+static NSString *const kHomeToProposalsSegueIdentifier          = @"HomeToProposalsSegueIdentifier";
 static NSString *const kHomeToProfileSegueIdentifier          = @"HomeToProfileSegueIdentifier";
 static NSString *const kHomeToTransfersSegueIdentifier          = @"HomeToTransfersSegueIdentifier";
 static NSString *const kHomeToTokensSegueIdentifier          = @"HomeToTokensSegueIdentifier";
@@ -57,6 +59,13 @@ static NSString *const kHomeToRestoreSeedSegueIdentifier      = @"HomeToRestoreS
   }];
 }
 
+
+- (void) openProposalsWithAccountAndMasterToken:(AccountPlainObject *)account masterToken:(MasterTokenPlainObject*)masterToken{
+  [[self.transitionHandler openModuleUsingSegue:kHomeToProposalsSegueIdentifier] thenChainUsingBlock:^id<RamblerViperModuleOutput>(id<ProposalsModuleInput> moduleInput) {
+      [moduleInput configureModuleWithAccountAndMasterToken:account masterToken:masterToken];
+    return nil;
+  }];
+}
 
 - (void) openProfileWithAccountAndMasterToken:(AccountPlainObject *)account masterToken:(MasterTokenPlainObject*)masterToken{
   [[self.transitionHandler openModuleUsingSegue:kHomeToProfileSegueIdentifier] thenChainUsingBlock:^id<RamblerViperModuleOutput>(id<ProfileModuleInput> moduleInput) {

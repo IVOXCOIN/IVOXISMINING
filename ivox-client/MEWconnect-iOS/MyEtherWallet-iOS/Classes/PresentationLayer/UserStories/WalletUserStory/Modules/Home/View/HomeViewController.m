@@ -574,9 +574,20 @@ static CGFloat kHomeViewControllerBottomDefaultOffset = 38.0;
     self.bottomDrawerViewController.contentViewController =  contentViewController;
     self.bottomDrawerViewController.headerViewController = headerViewController;
     
-    contentViewController.preferredContentSize = CGSizeMake(contentViewController.preferredContentSize.width, 320);
+    contentViewController.preferredContentSize = CGSizeMake(contentViewController.preferredContentSize.width, 400);
 
     headerViewController.preferredContentSize = CGSizeMake(contentViewController.preferredContentSize.width, 90);
+    
+    [contentViewController onProposalsClick:^(){
+        
+        dispatch_async(dispatch_get_main_queue(), ^ {
+            [self.presentedViewController dismissViewControllerAnimated:YES completion:^(){
+                [self proposalsAction:nil];
+            }];
+
+        });
+    }];
+
     
     [contentViewController onProfileClick:^(){
         
@@ -642,6 +653,10 @@ static CGFloat kHomeViewControllerBottomDefaultOffset = 38.0;
     [self presentViewController:self.bottomDrawerViewController animated:YES completion:nil];
 }
 
+- (IBAction) proposalsAction:(__unused id)sender {
+  [self _hideKeyboardIfNeeded];
+  [self.output proposalsAction];
+}
 
 - (IBAction) profileAction:(__unused id)sender {
   [self _hideKeyboardIfNeeded];

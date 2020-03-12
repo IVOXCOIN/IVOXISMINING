@@ -11,7 +11,7 @@
 #ifndef ApplicationConstants_h
 #define ApplicationConstants_h
 
-static NSString   * const kAppGroupIdentifier                 = @"group.ivoxis";
+static NSString   * const kAppGroupIdentifier                 = @"group.ivox.ivoxis";
 static NSString   * const kKeychainService                    = @"com.ivoxis.keychainService";
 
 static NSString   * const kCoreDataName                       = @"Ivoxis.sqlite";

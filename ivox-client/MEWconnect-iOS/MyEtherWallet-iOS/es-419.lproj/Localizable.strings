@@ -298,3 +298,8 @@
 
 "Type your password" = "Escriba su contraseña";
 
+"Vote" = "Votar";
+"Proposals" = "Propuestas";
+"Proposal" = "Propuesta";
+
+"An error occurred or you don't have enough tokens" = "Un error ha ocurrido o no tiene suficientes tokens";

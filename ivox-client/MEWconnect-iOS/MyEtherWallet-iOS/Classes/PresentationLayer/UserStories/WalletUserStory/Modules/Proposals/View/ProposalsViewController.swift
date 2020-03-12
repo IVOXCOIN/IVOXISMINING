@@ -9,12 +9,12 @@
 import UIKit
 import Web3swift
 import EthereumAddress
-
+import BigInt
 
 @objc class ProposalsViewController: UIViewController, ProposalsViewInput, UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return self.animals.count
+        return self.proposals!.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -23,7 +23,7 @@ import EthereumAddress
         let cell:UITableViewCell = self.tableView.dequeueReusableCell(withIdentifier: cellReuseIdentifier)!
 
         // set the text from the data model
-        cell.textLabel?.text = self.animals[indexPath.row]
+        cell.textLabel?.text = self.proposals![indexPath.row].title
 
         return cell
 
@@ -32,11 +32,26 @@ import EthereumAddress
     // method to run when table view cell is tapped
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         print("You tapped cell number \(indexPath.row).")
+        self.router.openVote(withAccountAndMasterToken: self.account, masterToken: self.masterToken, voteBatch: Int32(indexPath.row))
     }
 
+    struct Proposal {
+        // If you can limit the length to a certain number of bytes,
+        // always use one of bytes1 to bytes32 because they are much cheaper
+        var title: String;   // short name
+        var description: String; // description
+        var yesVoteCount: uint; // number of accumulated votes saying yes
+        var noVoteCount: uint; // number of accumulated votes saying no
+
+        var dateProposed: uint;
+        var expirationDate: uint;
+    }
+    
+    var proposals: [Proposal]?;
 
     @IBOutlet var tableView: UITableView!
 
+    @IBOutlet weak var proposalsLabel: UILabel!
     
     var account: AccountPlainObject!
     
@@ -49,21 +64,10 @@ import EthereumAddress
     var contract: web3.web3contract!
 
     
-    @objc var router: ProfileRouterInput!
+    @objc var router: ProposalsRouterInput!
     
-    // Data model: These strings will be the data for the table view cells
-    let animals: [String] = ["Horse", "Cow", "Camel", "Sheep", "Goat", "Chicken",
-        "Donkey", "Duck", "Panda"]
-
     // cell reuse id (cells that scroll out of view can be reused)
     let cellReuseIdentifier = "cell"
-
-
-    var CONTRACT_ABI: String = "[\n    {\n      \"inputs\": [],\n      \"payable\": false,\n      \"stateMutability\": \"nonpayable\",\n      \"type\": \"constructor\"\n    },\n    {\n      \"anonymous\": false,\n      \"inputs\": [\n        {\n          \"indexed\": true,\n          \"internalType\": \"address\",\n          \"name\": \"oldOwner\",\n          \"type\": \"address\"\n        },\n        {\n          \"indexed\": true,\n          \"internalType\": \"address\",\n          \"name\": \"newOwner\",\n          \"type\": \"address\"\n        }\n      ],\n      \"name\": \"OwnerSet\",\n      \"type\": \"event\"\n    },\n    {\n      \"constant\": false,\n      \"inputs\": [\n        {\n          \"internalType\": \"address\",\n          \"name\": \"newOwner\",\n          \"type\": \"address\"\n        }\n      ],\n      \"name\": \"changeOwner\",\n      \"outputs\": [],\n      \"payable\": false,\n      \"stateMutability\": \"nonpayable\",\n      \"type\": \"function\"\n    },\n    {\n      \"constant\": true,\n      \"inputs\": [],\n      \"name\": \"getOwner\",\n      \"outputs\": [\n        {\n          \"internalType\": \"address\",\n          \"name\": \"\",\n          \"type\": \"address\"\n        }\n      ],\n      \"payable\": false,\n      \"stateMutability\": \"view\",\n      \"type\": \"function\"\n    },\n    {\n      \"constant\": false,\n      \"inputs\": [\n        {\n          \"internalType\": \"address\",\n          \"name\": \"_address\",\n          \"type\": \"address\"\n        }\n      ],\n      \"name\": \"setERC20ContractAddress\",\n      \"outputs\": [],\n      \"payable\": false,\n      \"stateMutability\": \"nonpayable\",\n      \"type\": \"function\"\n    },\n    {\n      \"constant\": false,\n      \"inputs\": [\n        {\n          \"internalType\": \"string\",\n          \"name\": \"_proposalName\",\n          \"type\": \"string\"\n        }\n      ],\n      \"name\": \"setProposal\",\n      \"outputs\": [],\n      \"payable\": false,\n      \"stateMutability\": \"nonpayable\",\n      \"type\": \"function\"\n    },\n    {\n      \"constant\": false,\n      \"inputs\": [\n        {\n          \"internalType\": \"uint256\",\n          \"name\": \"yesNo\",\n          \"type\": \"uint256\"\n        }\n      ],\n      \"name\": \"vote\",\n      \"outputs\": [],\n      \"payable\": false,\n      \"stateMutability\": \"nonpayable\",\n      \"type\": \"function\"\n    },\n    {\n      \"constant\": true,\n      \"inputs\": [],\n      \"name\": \"getLatestVoteBatch\",\n      \"outputs\": [\n        {\n          \"internalType\": \"uint256\",\n          \"name\": \"\",\n          \"type\": \"uint256\"\n        }\n      ],\n      \"payable\": false,\n      \"stateMutability\": \"view\",\n      \"type\": \"function\"\n    },\n    {\n      \"constant\": true,\n      \"inputs\": [],\n      \"name\": \"getLatestProposal\",\n      \"outputs\": [\n        {\n          \"internalType\": \"string\",\n          \"name\": \"name\",\n          \"type\": \"string\"\n        },\n        {\n          \"internalType\": \"uint256\",\n          \"name\": \"yesCount\",\n          \"type\": \"uint256\"\n        },\n        {\n          \"internalType\": \"uint256\",\n          \"name\": \"noCount\",\n          \"type\": \"uint256\"\n        },\n        {\n          \"internalType\": \"uint256\",\n          \"name\": \"proposed\",\n          \"type\": \"uint256\"\n        },\n        {\n          \"internalType\": \"uint256\",\n          \"name\": \"expiration\",\n          \"type\": \"uint256\"\n        }\n      ],\n      \"payable\": false,\n      \"stateMutability\": \"view\",\n      \"type\": \"function\"\n    },\n    {\n      \"constant\": true,\n      \"inputs\": [\n        {\n          \"internalType\": \"uint256\",\n          \"name\": \"voteBatch\",\n          \"type\": \"uint256\"\n        }\n      ],\n      \"name\": \"getProposal\",\n      \"outputs\": [\n        {\n          \"internalType\": \"string\",\n          \"name\": \"name\",\n          \"type\": \"string\"\n        },\n        {\n          \"internalType\": \"uint256\",\n          \"name\": \"yesCount\",\n          \"type\": \"uint256\"\n        },\n        {\n          \"internalType\": \"uint256\",\n          \"name\": \"noCount\",\n          \"type\": \"uint256\"\n        },\n        {\n          \"internalType\": \"uint256\",\n          \"name\": \"proposed\",\n          \"type\": \"uint256\"\n        },\n        {\n          \"internalType\": \"uint256\",\n          \"name\": \"expiration\",\n          \"type\": \"uint256\"\n        }\n      ],\n      \"payable\": false,\n      \"stateMutability\": \"view\",\n      \"type\": \"function\"\n    },\n    {\n      \"constant\": true,\n      \"inputs\": [\n        {\n          \"internalType\": \"uint256\",\n          \"name\": \"voteBatch\",\n          \"type\": \"uint256\"\n        }\n      ],\n      \"name\": \"getVoters\",\n      \"outputs\": [\n        {\n          \"internalType\": \"address[]\",\n          \"name\": \"addresses\",\n          \"type\": \"address[]\"\n        },\n        {\n          \"internalType\": \"uint256[]\",\n          \"name\": \"weights\",\n          \"type\": \"uint256[]\"\n        },\n        {\n          \"internalType\": \"bool[]\",\n          \"name\": \"voted\",\n          \"type\": \"bool[]\"\n        },\n        {\n          \"internalType\": \"uint256[]\",\n          \"name\": \"votes\",\n          \"type\": \"uint256[]\"\n        }\n      ],\n      \"payable\": false,\n      \"stateMutability\": \"view\",\n      \"type\": \"function\"\n    }\n  ]"
-
-    var CONTRACT_ADDRESS: String = "0x52431f5d20572086434857Cd5b8713B754aE3A47"
-    
-    var INFURA_URL: String = "https://mainnet.infura.io/v3/1febc18120a2467b9820ed83e95c0cfa"
 
     @objc var customTransitioningDelegate: UIViewControllerTransitioningDelegate!
 
@@ -76,69 +80,109 @@ import EthereumAddress
     override func viewDidLoad() {
         super.viewDidLoad()
         
-    self.tableView.register(UITableViewCell.self, forCellReuseIdentifier: cellReuseIdentifier)
+        self.proposalsLabel.text = NSLocalizedString("Proposals", comment: "Title")
+        
+        self.proposals = []
+        
+        self.tableView.register(UITableViewCell.self, forCellReuseIdentifier: cellReuseIdentifier)
         
         tableView.delegate = self
         tableView.dataSource = self
         
-        let endpoint = self.INFURA_URL
+        let endpoint = VotingConstants.INFURA_URL
         self.web3 = Web3.new(URL(string: endpoint)!)
-        
+                
         let walletAddress = EthereumAddress(self.masterToken.address)! // Your wallet address
 
-        let erc20ContractAddress = EthereumAddress(self.CONTRACT_ADDRESS)!
+        let erc20ContractAddress = EthereumAddress(VotingConstants.CONTRACT_ADDRESS)!
         
-        self.contract = self.web3!.contract(self.CONTRACT_ABI, at: erc20ContractAddress)!
-        
+        self.contract = self.web3!.contract(VotingConstants.CONTRACT_ABI, at: erc20ContractAddress)!
+                
+        /*
         var options = TransactionOptions.defaultOptions
-        options.value = "0x0"
+        options.value = 0x0
         options.from = walletAddress
         options.gasPrice = .automatic
         options.gasLimit = .automatic
         options.nonce = .latest
         options.callOnBlock = .latest
         
+        self.contract.transactionOptions = options*/
+        
+        var options = TransactionOptions.defaultOptions
+        options.from = walletAddress
+
         self.contract.transactionOptions = options
         
         let transactionIntermediate = self.contract?.method("getLatestVoteBatch", parameters:[] as [AnyObject])
 
-        let promise = transactionIntermediate!.sendPromise()
+        let promise = transactionIntermediate!.callPromise()
         let promiseDoneResult = promise.done(on: .global(), { result in
-                              
-                                   
-               self.showInfoMessage(NSLocalizedString("Operation completed: You can view the transaction status on Etherscan", comment: "Description"))
             
-            print(result.transaction.data)
+            let biguint = (result["0"] as! BigUInt)
             
+            let uintResult = uint(biguint.description)!
+            
+            self.iterateProposals(initialIndex: 0, finalIndex: uintResult + 1)
+
         })
            
        promiseDoneResult.catch({error in
            let web3Error = error as! Web3Error
-           self.showErrorMessage(web3Error.description)
+            self.showErrorMessage(NSLocalizedString("An error occurred or you don't have enough tokens", comment: "Error message") + ": " + web3Error.description)
+        
        })
 
 
 
     }
 
-    
-    @IBAction func updateButtonDown(_ sender: UIButton) {
-        
-        
+    func iterateProposals(initialIndex: uint, finalIndex: uint){
+        if(initialIndex < finalIndex){
+             let transactionIntermediate = self.contract?.method("getProposal", parameters:[initialIndex] as [AnyObject])
+
+            let promise = transactionIntermediate!.callPromise()
+             let promiseDoneResult = promise.done(on: .global(), { result in
+                                   
+                print(result)
+                let yvc = (result["yesCount"] as! BigUInt)
+                let nvc = (result["noCount"] as! BigUInt)
+                let p = (result["proposed"] as! BigUInt)
+                let e = (result["expiration"] as! BigUInt)
+
+                let yesVoteCount = uint(yvc.description)!
+                let noVoteCount = uint(nvc.description)!
+                let proposed = uint(p.description)!
+                let expiration = uint(e.description)!
+                
+                let proposal: Proposal =
+                    Proposal(title: result["title"] as! String,
+                             description: result["description"] as! String,
+                             yesVoteCount: yesVoteCount,
+                             noVoteCount: noVoteCount,
+                             dateProposed: proposed,
+                             expirationDate: expiration)
+
+                self.proposals?.append(proposal)
+                
+                self.iterateProposals(initialIndex: initialIndex + 1, finalIndex: finalIndex)
+             })
+                
+            promiseDoneResult.catch({error in
+                let web3Error = error as! Web3Error
+                self.showErrorMessage(NSLocalizedString("An error occurred or you don't have enough tokens", comment: "Error message") + ": " + web3Error.description)
+            })
+
+
+        } else{
+            //update table
+            DispatchQueue.main.async {
+                self.tableView.reloadData()
+            }
+
+        }
     }
     
-    func findUser(withPassword: String){
-      
-    }
-    
-    func registerUser(withPassword: String){
-        
-      
-    }
-    
-    func updateUser(withPassword: String){
-        
-    }
     
     func showInfoMessage(_ info: String){
         let alertController = UIAlertController(title: "Info", message: info, preferredStyle: .alert)
@@ -163,10 +207,14 @@ import EthereumAddress
     
     func showErrorMessage(_ error: String){
 
-        let alertController = UIAlertController(title: "Error", message: NSLocalizedString("An error occurred: ", comment:"Error description") +  error, preferredStyle: .alert)
+        let alertController = UIAlertController(title: "Error", message: error, preferredStyle: .alert)
          
          let OKAction = UIAlertAction(title: "OK", style: .default) { (action:UIAlertAction!) in
-                                     
+             DispatchQueue.main.async {
+
+                 self.router.close()
+             }
+
          }
          alertController.addAction(OKAction)
          

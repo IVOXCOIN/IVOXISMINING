@@ -29,16 +29,16 @@
 
 @implementation ProposalsAssembly
 
-- (ProposalsViewController *)viewProfile {
+- (ProposalsViewController *)viewProposals {
   return [TyphoonDefinition withClass:[ProposalsViewController class]
                         configuration:^(TyphoonDefinition *definition) {
                           [definition injectProperty:@selector(moduleInput)
-                                                with:[self presenterProfile]];
+                                                with:[self presenterProposals]];
 
                           [definition injectProperty:@selector(router)
-                                                with:[self routerProfile]];
+                                                with:[self routerProposals]];
                           [definition injectProperty:@selector(wrapper)
-                            with:[self profileWeb3Wrapper]];
+                            with:[self proposalsWeb3Wrapper]];
 
                           [definition injectProperty:@selector(customTransitioningDelegate)
                                                 with:[self.transitioningDelegateFactory transitioningDelegateWithType:@(TransitioningDelegateBottomBackgroundedModal) cornerRadius:@16.0]];
@@ -53,26 +53,26 @@
 
 }
 
-- (ProposalsPresenter *)presenterProfile{
+- (ProposalsPresenter *)presenterProposals{
   return [TyphoonDefinition withClass:[ProposalsPresenter class]
                         configuration:^(TyphoonDefinition *definition) {
                           [definition injectProperty:@selector(view)
-                                                with:[self viewProfile]];
+                                                with:[self viewProposals]];
                           [definition injectProperty:@selector(router)
-                                                with:[self routerProfile]];
+                                                with:[self routerProposals]];
                         }];
 }
 
 
-- (ProposalsRouter *)routerProfile{
+- (ProposalsRouter *)routerProposals{
   return [TyphoonDefinition withClass:[ProposalsRouter class]
                         configuration:^(TyphoonDefinition *definition) {
                           [definition injectProperty:@selector(transitionHandler)
-                                                with:[self viewProfile]];
+                                                with:[self viewProposals]];
                         }];
 }
 
-- (Web3Wrapper *) profileWeb3Wrapper {
+- (Web3Wrapper *) proposalsWeb3Wrapper {
   return [TyphoonDefinition withClass:[Web3Wrapper class]
                         configuration:^(TyphoonDefinition *definition) {
                           [definition injectProperty:@selector(MEWcrypto)

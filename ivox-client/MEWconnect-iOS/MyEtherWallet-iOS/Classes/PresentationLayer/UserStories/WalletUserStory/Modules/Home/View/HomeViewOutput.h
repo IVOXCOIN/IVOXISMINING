@@ -16,6 +16,7 @@
 - (void) disconnectAction;
 - (void) backupAction;
 - (void) searchTermDidChanged:(NSString *)searchTerm;
+- (void) proposalsAction;
 - (void) profileAction;
 - (void) ivoxTokensAction;
 - (void) etherTokensAction;
