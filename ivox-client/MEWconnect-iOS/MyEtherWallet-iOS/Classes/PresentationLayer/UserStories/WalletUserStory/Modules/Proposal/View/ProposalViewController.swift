@@ -21,6 +21,16 @@ import BigInt
 
     }
     
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let voter = voters![indexPath.row]
+        func doNothing() -> (){
+            
+        }
+        
+        self.showInfoMessage(String.localizedStringWithFormat(NSLocalizedString("Has decided %s, with a vote weight of %d votes", comment: "Voter info"), voter.decision == 1 ? NSLocalizedString("Yes", comment: "Yes") : NSLocalizedString("No", comment: "No"), voter.weight), onClose: doNothing)
+    }
+
+    
     struct Proposal {
            // If you can limit the length to a certain number of bytes,
            // always use one of bytes1 to bytes32 because they are much cheaper
@@ -39,6 +49,8 @@ import BigInt
         var voted: Bool; // if voted already
         var decision: uint; // decision (yes: 1, no: 0)
     }
+    
+    var proposal: Proposal?;
     
     var voters: [Voter]?;
 
@@ -77,11 +89,23 @@ import BigInt
     
     @IBOutlet weak var votesLabel: UILabel!
     
-    @IBAction func yesButtonDown(_ sender: Any) {
+
+    @IBAction func yesButtonDown(_ sender: UIButton) {
+       
+            func doNothing() -> () {
+            
+            }
+        self.showInfoMessage(String.localizedStringWithFormat(NSLocalizedString("With %d votes favoring", comment: "Message"), self.proposal!.yesVoteCount), onClose: doNothing)
     }
     
-    @IBAction func noButtonDown(_ sender: Any) {
+    @IBAction func noButtonDown(_ sender: UIButton) {
+            func doNothing() -> () {
+                   
+            }
+        self.showInfoMessage(String.localizedStringWithFormat(NSLocalizedString("With %d votes against", comment: "Message"), self.proposal!.noVoteCount), onClose: doNothing)
+
     }
+   
     @IBAction func closeButtonDown(_ sender: Any) {
         self.router.close()
     }
@@ -139,20 +163,25 @@ import BigInt
             let proposed = uint(p.description)!
             let expiration = uint(e.description)!
            
-            let proposal: Proposal =
+            self.proposal =
                Proposal(title: result["title"] as! String,
                         description: result["description"] as! String,
                         yesVoteCount: yesVoteCount,
                         noVoteCount: noVoteCount,
                         dateProposed: proposed,
                         expirationDate: expiration)
+        
                 DispatchQueue.main.async {
                     //self.proposalTitleLabel.text = proposal.title
-                    self.yesPercentLabel.text = String(proposal.yesVoteCount / (proposal.yesVoteCount + proposal.noVoteCount) * 100) + "%"
+                    let yesPercent = self.proposal!.yesVoteCount / (self.proposal!.yesVoteCount + self.proposal!.noVoteCount) * 100
                     
-                    self.noPercentLabel.text = String(proposal.noVoteCount / (proposal.yesVoteCount + proposal.noVoteCount) * 100) + "%"
+                    self.yesPercentLabel.text = String(yesPercent) + "%"
                     
-                    self.proposalLabel.text = proposal.title
+                    let noPercent = self.proposal!.noVoteCount / (self.proposal!.yesVoteCount + self.proposal!.noVoteCount) * 100
+                    
+                    self.noPercentLabel.text = String(noPercent) + "%"
+                    
+                    self.proposalLabel.text = self.proposal?.title
                 }
         
             let votersIntermediate = self.contract?.method("getVoters", parameters:[self.voteBatch] as [AnyObject])
@@ -202,11 +231,11 @@ import BigInt
         
     }
     
-    func showInfoMessage(_ info: String, onClose: (() -> Void)?){
+    func showInfoMessage(_ info: String, onClose: @escaping() -> Void){
         let alertController = UIAlertController(title: "Info", message: info, preferredStyle: .alert)
                
         let OKAction = UIAlertAction(title: NSLocalizedString("Close", comment: "Close"), style: .default) { (action:UIAlertAction!) in
-            onClose?()
+            onClose()
         }
 
         alertController.addAction(OKAction)

@@ -101,34 +101,29 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wdz-hg-YcS">
-                                <rect key="frame" x="86" y="155" width="64" height="64"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="64" id="Rz5-5f-rVH"/>
-                                </constraints>
+                                <rect key="frame" x="86" y="155" width="64" height="65"/>
                                 <state key="normal" image="yes"/>
                                 <state key="selected" image="yes_selected"/>
                                 <connections>
-                                    <action selector="yesButton:" destination="d1C-FQ-Fxh" eventType="touchUpInside" id="3S2-Qr-O0k"/>
-                                    <action selector="yesButtonDown:" destination="BiW-UE-FYK" eventType="touchUpInside" id="0WR-z8-x2T"/>
+                                    <action selector="yesButtonDown:" destination="d1C-FQ-Fxh" eventType="touchUpInside" id="i0x-5U-kPg"/>
                                 </connections>
                             </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="0%" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OXe-1C-Vk9">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0%" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OXe-1C-Vk9">
                                 <rect key="frame" x="233" y="166" width="51" height="43"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="36"/>
                                 <color key="textColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="c5u-Cu-xcb">
-                                <rect key="frame" x="86" y="259" width="64" height="64"/>
+                                <rect key="frame" x="86" y="260" width="64" height="64"/>
                                 <state key="normal" image="no"/>
                                 <state key="selected" image="no_selected"/>
                                 <connections>
-                                    <action selector="noButton:" destination="d1C-FQ-Fxh" eventType="touchUpInside" id="b82-du-IyK"/>
-                                    <action selector="noButtonDown:" destination="BiW-UE-FYK" eventType="touchUpInside" id="ig6-j4-4yw"/>
+                                    <action selector="noButtonDown:" destination="d1C-FQ-Fxh" eventType="touchUpInside" id="Msq-pV-uwM"/>
                                 </connections>
                             </button>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="X6D-Fr-nvO">
-                                <rect key="frame" x="48" y="375" width="279" height="256"/>
+                                <rect key="frame" x="48" y="376" width="279" height="255"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                             </tableView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="0%" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eUb-8u-PBz">
@@ -138,7 +133,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Votes" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xOD-lv-YAQ">
-                                <rect key="frame" x="59" y="346" width="44" height="21"/>
+                                <rect key="frame" x="59" y="347" width="44" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                 <nil key="highlightedColor"/>
@@ -344,9 +339,9 @@
                                 <exclude reference="L3a-dM-Uze"/>
                                 <exclude reference="pOf-5M-X4l"/>
                                 <exclude reference="uDa-vI-IrB"/>
-                                <exclude reference="pIP-02-vbv"/>
                                 <exclude reference="PUI-MB-Jfr"/>
                                 <exclude reference="ZCy-0f-Mdn"/>
+                                <exclude reference="pIP-02-vbv"/>
                                 <exclude reference="WDb-qt-BrT"/>
                                 <exclude reference="ktJ-oU-Yvs"/>
                                 <exclude reference="RRh-QH-lZx"/>
@@ -371,9 +366,9 @@
                                 <include reference="L3a-dM-Uze"/>
                                 <include reference="pOf-5M-X4l"/>
                                 <include reference="uDa-vI-IrB"/>
-                                <include reference="pIP-02-vbv"/>
                                 <include reference="PUI-MB-Jfr"/>
                                 <include reference="ZCy-0f-Mdn"/>
+                                <include reference="pIP-02-vbv"/>
                                 <include reference="WDb-qt-BrT"/>
                                 <include reference="ktJ-oU-Yvs"/>
                                 <include reference="RRh-QH-lZx"/>

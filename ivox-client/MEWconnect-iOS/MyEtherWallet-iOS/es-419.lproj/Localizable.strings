@@ -310,3 +310,13 @@
 "You have voted this proposal already" = "Usted ya ha votado en esta propuesta";
 
 "There are no proposals made yet" = "No hay propuestas hechas aún";
+
+"With %d votes favoring" = "Con %d votos a favor";
+
+"With %d votes against" = "Con %d votos en contra";
+
+"Has decided %s, with a vote weight of %d votes" = "Ha decidido %s, con un peso de %d votos";
+
+"Yes" = "Si";
+
+"No" = "No";

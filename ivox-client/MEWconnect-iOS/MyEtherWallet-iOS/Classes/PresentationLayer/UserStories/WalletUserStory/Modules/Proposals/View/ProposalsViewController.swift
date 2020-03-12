@@ -31,7 +31,7 @@ import BigInt
     
     // method to run when table view cell is tapped
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        print("You tapped cell number \(indexPath.row).")
+        //print("You tapped cell number \(indexPath.row).")
         self.router.openVote(withAccountAndMasterToken: self.account, masterToken: self.masterToken, voteBatch: Int32(indexPath.row))
     }
 
