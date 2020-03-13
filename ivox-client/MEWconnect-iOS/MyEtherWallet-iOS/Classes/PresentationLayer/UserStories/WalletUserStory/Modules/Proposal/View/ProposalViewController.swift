@@ -26,8 +26,8 @@ import BigInt
         func doNothing() -> (){
             
         }
-        
-        if (voter.decision == 1){
+               
+        if(voter.decision == 1){
             self.showInfoMessage(String.localizedStringWithFormat(NSLocalizedString("Has decided Yes, with a vote weight of %d votes", comment: "Voter info"), voter.weight), onClose: doNothing)
 
         } else {

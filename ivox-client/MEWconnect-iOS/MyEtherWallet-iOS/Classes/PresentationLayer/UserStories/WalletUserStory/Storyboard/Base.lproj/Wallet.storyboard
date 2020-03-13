@@ -63,7 +63,7 @@
                         <outlet property="proposalsLabel" destination="e6s-4B-3Mc" id="2eN-te-8bX"/>
                         <outlet property="tableView" destination="hNq-dG-mmi" id="ZbU-rp-kMJ"/>
                         <segue destination="BiW-UE-FYK" kind="presentation" identifier="ProposalsToVoteSegueIdentifier" id="mVT-E0-zsf"/>
-                        <segue destination="d1C-FQ-Fxh" kind="presentation" id="lZM-vw-LpH"/>
+                        <segue destination="d1C-FQ-Fxh" kind="presentation" identifier="ProposalsToProposalSegueIdentifier" id="lZM-vw-LpH"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="TLY-cD-S0a" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>

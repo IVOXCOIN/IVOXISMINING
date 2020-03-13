@@ -31,8 +31,36 @@ import BigInt
     
     // method to run when table view cell is tapped
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        //print("You tapped cell number \(indexPath.row).")
-        self.router.openVote(withAccountAndMasterToken: self.account, masterToken: self.masterToken, voteBatch: Int32(indexPath.row))
+        
+        self.voteBatch = Int32(indexPath.row)
+        
+        let alert = UIAlertController(title: NSLocalizedString("Select desired action", comment: ""), message: nil, preferredStyle: .alert)
+        
+        let voteAction = UIAlertAction(title: NSLocalizedString("Vote", comment: "Vote action"), style: .cancel) { (action:UIAlertAction!) in
+            DispatchQueue.main.async {
+
+                self.router.openVote(withAccountAndMasterToken: self.account, masterToken: self.masterToken, voteBatch: self.voteBatch)
+            }
+
+        }
+        
+        let proposalAction = UIAlertAction(title: NSLocalizedString("View", comment: "Cancel action"), style: .default) { (action:UIAlertAction!) in
+            DispatchQueue.main.async {
+
+                self.router.openProposal(withAccountAndMasterToken: self.account, masterToken: self.masterToken, voteBatch: self.voteBatch)
+            }
+
+        }
+
+        alert.addAction(voteAction)
+        alert.addAction(proposalAction)
+
+
+        DispatchQueue.main.async {
+
+            self.present(alert, animated: true)
+        }
+        
     }
 
     struct Proposal {
@@ -46,6 +74,8 @@ import BigInt
         var dateProposed: uint;
         var expirationDate: uint;
     }
+    
+    var voteBatch: Int32 = -1;
     
     var proposals: [Proposal]?;
 
@@ -79,6 +109,8 @@ import BigInt
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        self.voteBatch = -1
         
         self.proposalsLabel.text = NSLocalizedString("Proposals", comment: "Title")
         

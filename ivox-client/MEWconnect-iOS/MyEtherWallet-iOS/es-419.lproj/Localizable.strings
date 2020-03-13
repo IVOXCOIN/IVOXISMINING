@@ -315,8 +315,16 @@
 
 "With %d votes against" = "Con %d votos en contra";
 
-"Has decided %s, with a vote weight of %d votes" = "Ha decidido %s, con un peso de %d votos";
+"Has decided Yes, with a vote weight of %d votes" = "Ha decidido Si, con un peso de %d votos";
+
+"Has decided No, with a vote weight of %d votes" = "Ha decidido No, con un peso de %d votos";
 
 "Yes" = "Si";
 
 "No" = "No";
+
+"Select desired action" = "Seleccione la acción deseada";
+
+"View" = "Ver";
+
+"Vote" = "Votar";

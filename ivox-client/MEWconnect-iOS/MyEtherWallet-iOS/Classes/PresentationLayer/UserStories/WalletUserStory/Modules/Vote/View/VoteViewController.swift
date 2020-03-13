@@ -193,7 +193,6 @@ import BigInt
         
 
         let alert = UIAlertController(title: NSLocalizedString("Type your password", comment: ""), message: nil, preferredStyle: .alert)
-        alert.addAction(UIAlertAction(title: NSLocalizedString("Cancel", comment: ""), style: .cancel, handler: nil))
 
         alert.addTextField(configurationHandler: { textField in
             textField.placeholder = NSLocalizedString("Password", comment: "")
@@ -259,7 +258,7 @@ import BigInt
 
                 }
 
-                let CancelAction = UIAlertAction(title: NSLocalizedString("Cancel", comment: "Cancel action"), style: .default) { (action:UIAlertAction!) in
+                let CancelAction = UIAlertAction(title: NSLocalizedString("Cancel", comment: "Cancel action"), style: .cancel) { (action:UIAlertAction!) in
                     DispatchQueue.main.async {
 
                         self.router.close()
@@ -275,6 +274,17 @@ import BigInt
             }
             
         }))
+        
+        let CancelAction = UIAlertAction(title: NSLocalizedString("Cancel", comment: "Cancel action"), style: .cancel) { (action:UIAlertAction!) in
+            DispatchQueue.main.async {
+
+                self.router.close()
+            }
+
+        }
+
+        alert.addAction(CancelAction)
+
         DispatchQueue.main.async {
 
             self.present(alert, animated: true)
