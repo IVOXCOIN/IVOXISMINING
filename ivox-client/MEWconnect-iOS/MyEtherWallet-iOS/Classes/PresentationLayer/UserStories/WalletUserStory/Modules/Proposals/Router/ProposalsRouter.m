@@ -12,10 +12,13 @@
 #import "ProposalsRouter.h"
 
 #import "VoteModuleInput.h"
+#import "ProposalModuleInput.h"
 
 #import "ApplicationConstants.h"
 
 static NSString *const kProposalsToVoteSegueIdentifier          = @"ProposalsToVoteSegueIdentifier";
+
+static NSString *const kProposalsToProposalSegueIdentifier          = @"ProposalsToProposalSegueIdentifier";
 
 
 @implementation ProposalsRouter
@@ -33,6 +36,14 @@ static NSString *const kProposalsToVoteSegueIdentifier          = @"ProposalsToV
     }];
 
 }
+
+- (void) openProposalWithAccountAndMasterToken:(AccountPlainObject *)account masterToken:(MasterTokenPlainObject*)masterToken voteBatch:(int)voteBatch{
+  [[self.transitionHandler openModuleUsingSegue:kProposalsToProposalSegueIdentifier] thenChainUsingBlock:^id<RamblerViperModuleOutput>(id<ProposalModuleInput> moduleInput) {
+      [moduleInput configureModuleWithAccountAndMasterToken:account masterToken:masterToken voteBatch:voteBatch];
+    return nil;
+  }];
+}
+
 
 
 @end
