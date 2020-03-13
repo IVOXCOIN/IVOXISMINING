@@ -178,12 +178,22 @@ import BigInt
                         expirationDate: expiration)
         
                 DispatchQueue.main.async {
+                    let totalVotes = (self.proposal!.yesVoteCount + self.proposal!.noVoteCount)
+                    
                     //self.proposalTitleLabel.text = proposal.title
-                    let yesPercent = self.proposal!.yesVoteCount / (self.proposal!.yesVoteCount + self.proposal!.noVoteCount) * 100
+                    var yesPercent: uint = 0
+                    
+                    if(totalVotes != 0){
+                        yesPercent = (self.proposal!.yesVoteCount / totalVotes) * 100
+                    }
                     
                     self.yesPercentLabel.text = String(yesPercent) + "%"
                     
-                    let noPercent = self.proposal!.noVoteCount / (self.proposal!.yesVoteCount + self.proposal!.noVoteCount) * 100
+                    var noPercent: uint = 0
+                        
+                    if(totalVotes != 0){
+                        noPercent = (self.proposal!.noVoteCount / totalVotes) * 100
+                    }
                     
                     self.noPercentLabel.text = String(noPercent) + "%"
                     
