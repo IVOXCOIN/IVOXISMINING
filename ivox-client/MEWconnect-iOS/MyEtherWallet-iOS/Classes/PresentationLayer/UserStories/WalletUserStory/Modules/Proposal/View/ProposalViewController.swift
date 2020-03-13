@@ -27,7 +27,13 @@ import BigInt
             
         }
         
-        self.showInfoMessage(String.localizedStringWithFormat(NSLocalizedString("Has decided %s, with a vote weight of %d votes", comment: "Voter info"), voter.decision == 1 ? NSLocalizedString("Yes", comment: "Yes") : NSLocalizedString("No", comment: "No"), voter.weight), onClose: doNothing)
+        if (voter.decision == 1){
+            self.showInfoMessage(String.localizedStringWithFormat(NSLocalizedString("Has decided Yes, with a vote weight of %d votes", comment: "Voter info"), voter.weight), onClose: doNothing)
+
+        } else {
+            self.showInfoMessage(String.localizedStringWithFormat(NSLocalizedString("Has decided No, with a vote weight of %d votes", comment: "Voter info"), voter.weight), onClose: doNothing)
+
+        }
     }
 
     

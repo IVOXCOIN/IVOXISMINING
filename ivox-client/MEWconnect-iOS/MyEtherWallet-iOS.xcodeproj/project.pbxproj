@@ -21,6 +21,7 @@
 /* End PBXAggregateTarget section */
 
 /* Begin PBXBuildFile section */
+		00E7C692EA5E6DE0CB4277BB /* Pods_MEWconnect_Ivoxis_Beta.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1D0865FB7B03BD47CC1182F1 /* Pods_MEWconnect_Ivoxis_Beta.framework */; };
 		010EC2BA658F3F6E97F548A3 /* ForgotPasswordPresenter.m in Sources */ = {isa = PBXBuildFile; fileRef = 957E518FF3E4EF4E7588B86F /* ForgotPasswordPresenter.m */; };
 		0200A429F6FF43815C7B2AFD /* QRScannerRouter.m in Sources */ = {isa = PBXBuildFile; fileRef = 10704F14617B1B50992AA214 /* QRScannerRouter.m */; };
 		0300F8A0DC179B5B8E58E3EC /* ForgotPasswordAssembly.m in Sources */ = {isa = PBXBuildFile; fileRef = 9AD5E93E2F918844127F0D5B /* ForgotPasswordAssembly.m */; };
@@ -924,7 +925,6 @@
 		C1E40ADDC31A90446D7E54FB /* BackupStartPresenter.m in Sources */ = {isa = PBXBuildFile; fileRef = B6027BD5AEE9FF353DAE7B9D /* BackupStartPresenter.m */; };
 		C334927E7011645B8BD78F46 /* AboutPresenter.m in Sources */ = {isa = PBXBuildFile; fileRef = ABD4E433684E1D6237A7BBC0 /* AboutPresenter.m */; };
 		C68E10A4E1B3A9BF240DD0D5 /* NewWalletRouter.m in Sources */ = {isa = PBXBuildFile; fileRef = 877C1D5E65B364E2324BE931 /* NewWalletRouter.m */; };
-		C95138E31BB5BC4F06DECFB7 /* Pods_MEWconnect_MyEtherWallet_iOS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 02DA9993FC3765BC360CD1A4 /* Pods_MEWconnect_MyEtherWallet_iOS.framework */; };
 		CA554F32D5BB45CB5F726783 /* TransactionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 924511172B9F4F60E95BF7AF /* TransactionViewController.m */; };
 		CCFC0575BB50C7E834628489 /* BackupConfirmationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8178A9E0CE273FD82094B504 /* BackupConfirmationViewController.m */; };
 		D2144009EF379EB804F2A23A /* BackupInfoAssembly.m in Sources */ = {isa = PBXBuildFile; fileRef = C623641EDB8D1AB70465606A /* BackupInfoAssembly.m */; };
@@ -932,11 +932,11 @@
 		D5793D1E507610D0FFC818BD /* BackupInfoPresenter.m in Sources */ = {isa = PBXBuildFile; fileRef = B36294E51EE6EA30F1A623BE /* BackupInfoPresenter.m */; };
 		D8F63615756FC3CF5F64F745 /* RestoreWalletPresenter.m in Sources */ = {isa = PBXBuildFile; fileRef = D313732E7465E0EC13FD5915 /* RestoreWalletPresenter.m */; };
 		D9D754DAE5ADEDE854FC750F /* HomeRouter.m in Sources */ = {isa = PBXBuildFile; fileRef = 6C1964AC5C3634BFC5E30471 /* HomeRouter.m */; };
+		DE0631C0B33946B94E4F8CCB /* Pods_MEWconnect_Ivoxis.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4E95329CD8C84DC14993ABA3 /* Pods_MEWconnect_Ivoxis.framework */; };
 		DF0D46B9486CD04C5E2DD220 /* RestoreSeedAssembly.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A0B21D76E1EA6CE0078EB3D /* RestoreSeedAssembly.m */; };
 		DF3ADF6CC9BC3327264D2490 /* RestoreSafetyRouter.m in Sources */ = {isa = PBXBuildFile; fileRef = 9FDDDE05634C7B9D64835F97 /* RestoreSafetyRouter.m */; };
 		E1B7293C16794C0147ED8ED9 /* RestorePrepareAssembly.m in Sources */ = {isa = PBXBuildFile; fileRef = 831A8F1086FC553349185CE3 /* RestorePrepareAssembly.m */; };
 		E382C859C6675B6E524BDC87 /* NewWalletAssembly.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D636DCB86E2833A9F98A3AD /* NewWalletAssembly.m */; };
-		E6EACBBA7F2CDEAD2790ECF9 /* Pods_MEWconnect_MyEtherWallet_iOS_Beta.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E96BD30D76272316209C7C81 /* Pods_MEWconnect_MyEtherWallet_iOS_Beta.framework */; };
 		E734FB2A06F7D6E28F813C4A /* BuyEtherHistoryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 565935FC5198CFB42639DA1E /* BuyEtherHistoryViewController.m */; };
 		EA0EFB4E115E73BC1B98904C /* BuyEtherNavigationRouter.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F910C8CC283FEA75480826F /* BuyEtherNavigationRouter.m */; };
 		EA36650C452FF14AEA63AC24 /* BuyEtherWebPresenter.m in Sources */ = {isa = PBXBuildFile; fileRef = F874AB48E5F30E4011B5DBC3 /* BuyEtherWebPresenter.m */; };
@@ -983,7 +983,7 @@
 		01ECFF5B5043E5AC48BF6BB0 /* AboutViewOutput.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = AboutViewOutput.h; sourceTree = "<group>"; };
 		025D982CB42D66CDAF002D10 /* BackupDoneRouterInput.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = BackupDoneRouterInput.h; sourceTree = "<group>"; };
 		025E27E1A7548E8432952990 /* BuyEtherHistoryViewController.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = BuyEtherHistoryViewController.h; sourceTree = "<group>"; };
-		02DA9993FC3765BC360CD1A4 /* Pods_MEWconnect_MyEtherWallet_iOS.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MEWconnect_MyEtherWallet_iOS.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		02B47D47BC7B3FDC06DE05F2 /* Pods-MEWconnect-Ivoxis-Beta.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MEWconnect-Ivoxis-Beta.debug.xcconfig"; path = "Target Support Files/Pods-MEWconnect-Ivoxis-Beta/Pods-MEWconnect-Ivoxis-Beta.debug.xcconfig"; sourceTree = "<group>"; };
 		031D8F420D269D8ED3C9C22C /* SettingsInteractorTests.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = SettingsInteractorTests.m; sourceTree = "<group>"; };
 		031DF4DDFCD1F4CB393CF0F3 /* BackupWordsPresenterTests.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = BackupWordsPresenterTests.m; sourceTree = "<group>"; };
 		03491FF5CF0635180DAF3068 /* BackupConfirmationAssembly.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = BackupConfirmationAssembly.h; sourceTree = "<group>"; };
@@ -1174,6 +1174,7 @@
 		1C0F46052299D3FF10B71B78 /* ShareRouterTests.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = ShareRouterTests.m; sourceTree = "<group>"; };
 		1C469E896852666A2C64CED9 /* BuyEtherNavigationRouterTests.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = BuyEtherNavigationRouterTests.m; sourceTree = "<group>"; };
 		1CDD047163265F2219DB9330 /* RestoreWalletModuleInput.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = RestoreWalletModuleInput.h; sourceTree = "<group>"; };
+		1D0865FB7B03BD47CC1182F1 /* Pods_MEWconnect_Ivoxis_Beta.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MEWconnect_Ivoxis_Beta.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		1D45CE5C9E7CF192D1261F9D /* Pods-MEWconnect-MyEtherWallet-iOS.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MEWconnect-MyEtherWallet-iOS.release.xcconfig"; path = "Target Support Files/Pods-MEWconnect-MyEtherWallet-iOS/Pods-MEWconnect-MyEtherWallet-iOS.release.xcconfig"; sourceTree = "<group>"; };
 		1DAB2A7857952022D09D33FD /* RestoreSeedInteractorOutput.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = RestoreSeedInteractorOutput.h; sourceTree = "<group>"; };
 		1DCFE3BAFF7EEC4E746F3EBF /* SplashPasswordInteractor.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = SplashPasswordInteractor.m; sourceTree = "<group>"; };
@@ -1206,6 +1207,7 @@
 		2673BA0FCE2148F0248EB6B5 /* InfoViewController.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = InfoViewController.m; sourceTree = "<group>"; };
 		26B42D22B611E6BEBBE4521C /* BackupWordsRouter.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = BackupWordsRouter.h; sourceTree = "<group>"; };
 		279D4C165085D7738F69DF71 /* TransactionAssemblyTests.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = TransactionAssemblyTests.m; sourceTree = "<group>"; };
+		27D5A36A347CF736252B9269 /* Pods-MEWconnect-Ivoxis-Beta.appstore.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MEWconnect-Ivoxis-Beta.appstore.xcconfig"; path = "Target Support Files/Pods-MEWconnect-Ivoxis-Beta/Pods-MEWconnect-Ivoxis-Beta.appstore.xcconfig"; sourceTree = "<group>"; };
 		2842690E1693534DDE4B82F5 /* RestoreWalletAssembly.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = RestoreWalletAssembly.h; sourceTree = "<group>"; };
 		284DDD350F19220FA39E525D /* BuyEtherNavigationViewOutput.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = BuyEtherNavigationViewOutput.h; sourceTree = "<group>"; };
 		2863ED6ADE5AAC141CCE995F /* PasswordModuleInput.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = PasswordModuleInput.h; sourceTree = "<group>"; };
@@ -1258,6 +1260,7 @@
 		3838E2266E67A6E690767F7F /* StartRouterInput.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = StartRouterInput.h; sourceTree = "<group>"; };
 		385AE944E6C3E92C11090766 /* MessageSignerInteractorOutput.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = MessageSignerInteractorOutput.h; sourceTree = "<group>"; };
 		39AA506F90D5DA17CEEA02A2 /* MessageSignerViewOutput.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = MessageSignerViewOutput.h; sourceTree = "<group>"; };
+		39AF071C5F7EF28921620E96 /* Pods-MEWconnect-Ivoxis-Beta.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MEWconnect-Ivoxis-Beta.release.xcconfig"; path = "Target Support Files/Pods-MEWconnect-Ivoxis-Beta/Pods-MEWconnect-Ivoxis-Beta.release.xcconfig"; sourceTree = "<group>"; };
 		3A0AD7323FFC7A92E597AD4D /* DeclinedTransactionRouterInput.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = DeclinedTransactionRouterInput.h; sourceTree = "<group>"; };
 		3A4CA9764FA3996485E6B116 /* SplashPasswordViewController.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = SplashPasswordViewController.h; sourceTree = "<group>"; };
 		3A5832B5412D36A5E81636FA /* RestoreWalletPresenter.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = RestoreWalletPresenter.h; sourceTree = "<group>"; };
@@ -1312,6 +1315,7 @@
 		4CF8DD7DF880E904E14CAC7C /* ContextPasswordInteractorTests.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = ContextPasswordInteractorTests.m; sourceTree = "<group>"; };
 		4D5E4B8379656716703EA74C /* StartRouter.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = StartRouter.h; sourceTree = "<group>"; };
 		4DE20D7E2447DAE839CD1825 /* Pods_MEWconnect_MyEtherWallet_iOS_MyEtherWallet_iOSTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MEWconnect_MyEtherWallet_iOS_MyEtherWallet_iOSTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		4E95329CD8C84DC14993ABA3 /* Pods_MEWconnect_Ivoxis.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MEWconnect_Ivoxis.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		4F3FCE8A4C03F212E0A52768 /* ConfirmPasswordAssembly.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = ConfirmPasswordAssembly.m; sourceTree = "<group>"; };
 		4FCDE88F259FA12CDB7D9AA6 /* ShareViewController.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = ShareViewController.h; sourceTree = "<group>"; };
 		504098B8E8A6CFE0373554CD /* BuyEtherNavigationPresenterTests.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = BuyEtherNavigationPresenterTests.m; sourceTree = "<group>"; };
@@ -2018,6 +2022,7 @@
 		58CD597FAD4BC82FAB971450 /* InfoViewInput.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = InfoViewInput.h; sourceTree = "<group>"; };
 		595E150D59988827EB634103 /* ConfirmedTransactionModuleInput.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = ConfirmedTransactionModuleInput.h; sourceTree = "<group>"; };
 		599C9B76298246215B8EA192 /* SplashPasswordInteractorTests.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = SplashPasswordInteractorTests.m; sourceTree = "<group>"; };
+		59AFB46082F38B3D2284F96A /* Pods-MEWconnect-Ivoxis.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MEWconnect-Ivoxis.release.xcconfig"; path = "Target Support Files/Pods-MEWconnect-Ivoxis/Pods-MEWconnect-Ivoxis.release.xcconfig"; sourceTree = "<group>"; };
 		59CA1E60E401B7E8B5B3718F /* ConfirmPasswordAssembly.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = ConfirmPasswordAssembly.h; sourceTree = "<group>"; };
 		59D8ADF991EA07A285EC6B93 /* SettingsRouterTests.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = SettingsRouterTests.m; sourceTree = "<group>"; };
 		59FE0E01B039D09A800DDCFB /* PasswordInteractorOutput.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = PasswordInteractorOutput.h; sourceTree = "<group>"; };
@@ -2052,6 +2057,7 @@
 		659B041CF2812AB80D90C014 /* BackupWordsRouterInput.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = BackupWordsRouterInput.h; sourceTree = "<group>"; };
 		662D369C7D7EF3C79B848623 /* TransactionViewOutput.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = TransactionViewOutput.h; sourceTree = "<group>"; };
 		6650E1013997B8E0A7206FC7 /* HomeInteractorTests.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = HomeInteractorTests.m; sourceTree = "<group>"; };
+		6660BDAB46F730058438C920 /* Pods-MEWconnect-Ivoxis.appstore.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MEWconnect-Ivoxis.appstore.xcconfig"; path = "Target Support Files/Pods-MEWconnect-Ivoxis/Pods-MEWconnect-Ivoxis.appstore.xcconfig"; sourceTree = "<group>"; };
 		66C146259578DAEB115671CB /* ConfirmationNavigationViewController.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = ConfirmationNavigationViewController.h; sourceTree = "<group>"; };
 		6765B7A02E6227C2A5247040 /* RestoreOptionsViewOutput.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = RestoreOptionsViewOutput.h; sourceTree = "<group>"; };
 		67BBD72C212E5F0C7F100132 /* RestoreOptionsInteractor.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = RestoreOptionsInteractor.h; sourceTree = "<group>"; };
@@ -2368,6 +2374,7 @@
 		DA3FF272181D58AFE0AF7544 /* NewWalletInteractorInput.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = NewWalletInteractorInput.h; sourceTree = "<group>"; };
 		DAAC174F21B3E04A4219AE53 /* ConfirmationNavigationViewController.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = ConfirmationNavigationViewController.m; sourceTree = "<group>"; };
 		DB75CECCCB7BAB70B863FD0F /* BuyEtherAmountViewOutput.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = BuyEtherAmountViewOutput.h; sourceTree = "<group>"; };
+		DB996EB4859CF5F0FE312A07 /* Pods-MEWconnect-Ivoxis.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MEWconnect-Ivoxis.debug.xcconfig"; path = "Target Support Files/Pods-MEWconnect-Ivoxis/Pods-MEWconnect-Ivoxis.debug.xcconfig"; sourceTree = "<group>"; };
 		DC0DACBE3EACB94253861E96 /* SplashPasswordPresenter.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = SplashPasswordPresenter.m; sourceTree = "<group>"; };
 		DD110C7B23B316FCBDF56162 /* DeclinedTransactionRouter.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = DeclinedTransactionRouter.m; sourceTree = "<group>"; };
 		DE11DB14265201485DBE15F1 /* MessageSignerRouter.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = MessageSignerRouter.m; sourceTree = "<group>"; };
@@ -2413,7 +2420,6 @@
 		E8E8D975A693CB86AE129FBB /* RestoreOptionsRouter.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = RestoreOptionsRouter.h; sourceTree = "<group>"; };
 		E8F97F5BAAA949B69A665EDE /* BackupInfoViewOutput.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = BackupInfoViewOutput.h; sourceTree = "<group>"; };
 		E9629DE819FA5324BECC2913 /* BackupDoneInteractorTests.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = BackupDoneInteractorTests.m; sourceTree = "<group>"; };
-		E96BD30D76272316209C7C81 /* Pods_MEWconnect_MyEtherWallet_iOS_Beta.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MEWconnect_MyEtherWallet_iOS_Beta.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		E9C2AFE38F3096F6D7BED2C8 /* QRScannerInteractorTests.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = QRScannerInteractorTests.m; sourceTree = "<group>"; };
 		E9DCA55C3F5B66ADF71BE41C /* HomeAssembly_Testable.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = HomeAssembly_Testable.h; sourceTree = "<group>"; };
 		EA59E9E985891C1CAF4AAD52 /* ConfirmedTransactionAssemblyTests.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = ConfirmedTransactionAssemblyTests.m; sourceTree = "<group>"; };
@@ -2488,7 +2494,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				E6EACBBA7F2CDEAD2790ECF9 /* Pods_MEWconnect_MyEtherWallet_iOS_Beta.framework in Frameworks */,
+				00E7C692EA5E6DE0CB4277BB /* Pods_MEWconnect_Ivoxis_Beta.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2496,7 +2502,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				C95138E31BB5BC4F06DECFB7 /* Pods_MEWconnect_MyEtherWallet_iOS.framework in Frameworks */,
+				DE0631C0B33946B94E4F8CCB /* Pods_MEWconnect_Ivoxis.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -9120,6 +9126,12 @@
 				A33198B7FE3B1C6747A20165 /* Pods-MyEtherWallet-iOSUITests.debug.xcconfig */,
 				32FC60064586409837CCAD63 /* Pods-MyEtherWallet-iOSUITests.release.xcconfig */,
 				1B2E8C2C90FF987B1212A726 /* Pods-MyEtherWallet-iOSUITests.appstore.xcconfig */,
+				DB996EB4859CF5F0FE312A07 /* Pods-MEWconnect-Ivoxis.debug.xcconfig */,
+				59AFB46082F38B3D2284F96A /* Pods-MEWconnect-Ivoxis.release.xcconfig */,
+				6660BDAB46F730058438C920 /* Pods-MEWconnect-Ivoxis.appstore.xcconfig */,
+				02B47D47BC7B3FDC06DE05F2 /* Pods-MEWconnect-Ivoxis-Beta.debug.xcconfig */,
+				39AF071C5F7EF28921620E96 /* Pods-MEWconnect-Ivoxis-Beta.release.xcconfig */,
+				27D5A36A347CF736252B9269 /* Pods-MEWconnect-Ivoxis-Beta.appstore.xcconfig */,
 			);
 			path = Pods;
 			sourceTree = "<group>";
@@ -10102,10 +10114,10 @@
 				561840C520CD2AD5004BEB7E /* RamblerTyphoonUtils.framework */,
 				561840BE20CCA0BA004BEB7E /* RamblerTyphoonUtils.framework */,
 				56C628A92092446100BE98EA /* EtherealCereal.framework */,
-				02DA9993FC3765BC360CD1A4 /* Pods_MEWconnect_MyEtherWallet_iOS.framework */,
-				E96BD30D76272316209C7C81 /* Pods_MEWconnect_MyEtherWallet_iOS_Beta.framework */,
 				4DE20D7E2447DAE839CD1825 /* Pods_MEWconnect_MyEtherWallet_iOS_MyEtherWallet_iOSTests.framework */,
 				9288F15E7528CD24F6ABB58D /* Pods_MyEtherWallet_iOSUITests.framework */,
+				4E95329CD8C84DC14993ABA3 /* Pods_MEWconnect_Ivoxis.framework */,
+				1D0865FB7B03BD47CC1182F1 /* Pods_MEWconnect_Ivoxis_Beta.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -10771,7 +10783,7 @@
 			files = (
 			);
 			inputPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-MEWconnect-MyEtherWallet-iOS/Pods-MEWconnect-MyEtherWallet-iOS-frameworks.sh",
+				"${PODS_ROOT}/Target Support Files/Pods-MEWconnect-Ivoxis/Pods-MEWconnect-Ivoxis-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/AFNetworking/AFNetworking.framework",
 				"${BUILT_PRODUCTS_DIR}/BEMCheckBox/BEMCheckBox.framework",
 				"${BUILT_PRODUCTS_DIR}/BigInt/BigInt.framework",
@@ -10860,7 +10872,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-MEWconnect-MyEtherWallet-iOS/Pods-MEWconnect-MyEtherWallet-iOS-frameworks.sh\"\n";
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-MEWconnect-Ivoxis/Pods-MEWconnect-Ivoxis-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		4D0EDDE94F57A45E0B628E09 /* [CP] Check Pods Manifest.lock */ = {
@@ -10878,7 +10890,7 @@
 			outputFileListPaths = (
 			);
 			outputPaths = (
-				"$(DERIVED_FILE_DIR)/Pods-MEWconnect-MyEtherWallet-iOS-checkManifestLockResult.txt",
+				"$(DERIVED_FILE_DIR)/Pods-MEWconnect-Ivoxis-checkManifestLockResult.txt",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -10904,7 +10916,7 @@
 			files = (
 			);
 			inputPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-MEWconnect-MyEtherWallet-iOS-Beta/Pods-MEWconnect-MyEtherWallet-iOS-Beta-frameworks.sh",
+				"${PODS_ROOT}/Target Support Files/Pods-MEWconnect-Ivoxis-Beta/Pods-MEWconnect-Ivoxis-Beta-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/AFNetworking/AFNetworking.framework",
 				"${BUILT_PRODUCTS_DIR}/BEMCheckBox/BEMCheckBox.framework",
 				"${BUILT_PRODUCTS_DIR}/BigInt/BigInt.framework",
@@ -10993,7 +11005,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-MEWconnect-MyEtherWallet-iOS-Beta/Pods-MEWconnect-MyEtherWallet-iOS-Beta-frameworks.sh\"\n";
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-MEWconnect-Ivoxis-Beta/Pods-MEWconnect-Ivoxis-Beta-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		B2BFED4EC00E6403590F3EAF /* [CP] Check Pods Manifest.lock */ = {
@@ -11011,7 +11023,7 @@
 			outputFileListPaths = (
 			);
 			outputPaths = (
-				"$(DERIVED_FILE_DIR)/Pods-MEWconnect-MyEtherWallet-iOS-Beta-checkManifestLockResult.txt",
+				"$(DERIVED_FILE_DIR)/Pods-MEWconnect-Ivoxis-Beta-checkManifestLockResult.txt",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
