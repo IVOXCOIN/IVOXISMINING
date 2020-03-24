@@ -71,7 +71,7 @@
 }
 
 - (void)orderDidCreated:(SimplexOrder *)order forMasterToken:(MasterTokenPlainObject *)masterToken {
-  [self.router openBuyEtherWebWithOrder:order masterToken:masterToken];
+//  [self.router openBuyEtherWebWithOrder:order masterToken:masterToken];
 }
 
 - (void) minimumAmountDidReached:(BOOL)minimumAmountReached {

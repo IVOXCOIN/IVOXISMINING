@@ -495,14 +495,14 @@ static NSString *const RopstenTokensContractAddress = @"0xb8e1bbc50fd87ea00d8ce7
               
               for(NSDictionary * item in responseDictionary)
               {
-                  NSString *paypal = [item objectForKey:@"paypal"];
+                  /*NSString *paypal = [item objectForKey:@"paypal"];
                   NSString *wallet = [item objectForKey:@"wallet"];
                   NSString *source = [item objectForKey:@"source"];
                   NSString *identifier = [item objectForKey:@"id"];
                   NSString *destination = [item objectForKey:@"destination"];
                   NSString *purchase = [item objectForKey:@"purchase"];
                   NSString *date = [item objectForKey:@"date"];
-                  NSString *status = [item objectForKey:@"status"];
+                  NSString *status = [item objectForKey:@"status"];*/
                   NSString *value = [item objectForKey:@"value"];
 
                   NSEntityDescription *balanceEntity = [NSEntityDescription entityForName:@"Balance" inManagedObjectContext:rootSavingContext];

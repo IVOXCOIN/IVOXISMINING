@@ -24,7 +24,6 @@ PODS:
     - CocoaLumberjack/Core (= 3.6.0)
   - CocoaLumberjack/Core (3.6.0)
   - CryptoSwift (0.15.0)
-  - DZNWebViewController (3.2)
   - EasyMapping (0.22.1):
     - EasyMapping/Core (= 0.22.1)
   - EasyMapping/Core (0.22.1)
@@ -129,9 +128,6 @@ PODS:
   - SwiftRLP (1.2):
     - BigInt (~> 3.1)
   - SwiftSelfAware (1.0.5)
-  - TOWebViewController (2.2.8):
-    - TOWebViewController/Core (= 2.2.8)
-  - TOWebViewController/Core (2.2.8)
   - TrezorCrypto (0.0.9)
   - TTTAttributedLabel (2.0.0)
   - Typhoon (4.0.7):
@@ -166,7 +162,6 @@ DEPENDENCIES:
   - BlockiesSwift
   - CHIPageControl/Chimayo (= 0.1.6)
   - CocoaLumberjack (~> 3.4)
-  - DZNWebViewController (from `https://github.com/Foboz/DZNWebViewController.git`)
   - EasyMapping (~> 0.15)
   - GoogleWebRTC (= 1.1.26675)
   - GSKStretchyHeaderView (~> 1.0.4)
@@ -182,7 +177,6 @@ DEPENDENCIES:
   - RamblerTyphoonUtils/AssemblyCollector (= 1.5.0)
   - SDWebImage (~> 3.7)
   - Socket.IO-Client-Swift
-  - TOWebViewController
   - TrezorCrypto
   - TTTAttributedLabel (~> 2.0.0)
   - Typhoon (= 4.0.7)
@@ -223,7 +217,6 @@ SPEC REPOS:
     - Starscream
     - SwiftRLP
     - SwiftSelfAware
-    - TOWebViewController
     - TrezorCrypto
     - TTTAttributedLabel
     - Typhoon
@@ -234,8 +227,6 @@ SPEC REPOS:
     - zxcvbn-ios
 
 EXTERNAL SOURCES:
-  DZNWebViewController:
-    :git: https://github.com/Foboz/DZNWebViewController.git
   libextobjc:
     :git: https://github.com/jspahrsummers/libextobjc.git
   M13Checkbox:
@@ -249,9 +240,6 @@ EXTERNAL SOURCES:
     :git: https://github.com/Foboz/web3swift.git
 
 CHECKOUT OPTIONS:
-  DZNWebViewController:
-    :commit: 2c4aabea8687452c01537fe0205a1b41fc824f63
-    :git: https://github.com/Foboz/DZNWebViewController.git
   libextobjc:
     :commit: bdec77056a38a52bc8f30a19cec52d66a70e7bf6
     :git: https://github.com/jspahrsummers/libextobjc.git
@@ -274,7 +262,6 @@ SPEC CHECKSUMS:
   CHIPageControl: 21b85bb8c7d4d1d15fc4f353e1eb095eb75de5f1
   CocoaLumberjack: 78b0c238666f4f58db069738ec176f4519557516
   CryptoSwift: 769f58a9e89f64e8796c2e59ce5f002dc81a2438
-  DZNWebViewController: 8e927a5de637fe0c4104c001d5cccd4fa5621e50
   EasyMapping: 52860151d1df5db1b245b1d1568e2e05a27a4689
   EthereumABI: f040f5429e5a4366d028c88b88d9441e137593af
   EthereumAddress: f476e1320dca3a0024431e713ede7a09c7eb7796
@@ -298,7 +285,6 @@ SPEC CHECKSUMS:
   Starscream: 4bb2f9942274833f7b4d296a55504dcfc7edb7b0
   SwiftRLP: 98a02b2210128353ca02e4c2f4d83e2a9796db4f
   SwiftSelfAware: a705d6c80fa1ad64e58274f82b74ffee9cdac2a8
-  TOWebViewController: 953a24619d32f7aa1d9d4098a74885a9236f7348
   TrezorCrypto: bfeea47a052dca2c77d4a39e1e183865e52de14d
   TTTAttributedLabel: 8cffe8e127e4e82ff3af1e5386d4cd0ad000b656
   Typhoon: f89030797a7c8a23ee85aa7c7dbdfd2e5d8a8471
@@ -310,6 +296,6 @@ SPEC CHECKSUMS:
   YLProgressBar: 365b6c5e934be18b661f79413db33c993c8e8251
   zxcvbn-ios: fef98b7c80f1512ff0eec47ac1fa399fc00f7e3c
 
-PODFILE CHECKSUM: bc50b4b61730d5b093b3c03a3a683a0009c09c05
+PODFILE CHECKSUM: 3325c41d68352e06d23e14c80338fe4aa6bfb75b
 
 COCOAPODS: 1.8.4

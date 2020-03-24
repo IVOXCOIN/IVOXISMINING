@@ -8,13 +8,13 @@
 
 @import ViperMcFlurryX;
 
-#import "BuyEtherWebModuleInput.h"
+//#import "BuyEtherWebModuleInput.h"
 #import "BuyEtherHistoryModuleInput.h"
 
 #import "BuyEtherAmountRouter.h"
 
-static NSString *const kBuyEtherAmountToBuyEtherWebSegueIdentifier      = @"BuyEtherAmountToBuyEtherWebSegueIdentifier";
-static NSString *const kBuyEtherAmountToBuyEther10WebSegueIdentifier    = @"BuyEtherAmountToBuyEther10WebSegueIdentifier";
+//static NSString *const kBuyEtherAmountToBuyEtherWebSegueIdentifier      = @"BuyEtherAmountToBuyEtherWebSegueIdentifier";
+//static NSString *const kBuyEtherAmountToBuyEther10WebSegueIdentifier    = @"BuyEtherAmountToBuyEther10WebSegueIdentifier";
 static NSString *const kBuyEtherAmountToBuyEtherHistorySegueIdentifier  = @"BuyEtherAmountToBuyEtherHistorySegueIdentifier";
 
 @implementation BuyEtherAmountRouter
@@ -25,6 +25,7 @@ static NSString *const kBuyEtherAmountToBuyEtherHistorySegueIdentifier  = @"BuyE
   [self.transitionHandler closeCurrentModule:YES];
 }
 
+/*
 - (void) openBuyEtherWebWithOrder:(SimplexOrder *)order masterToken:(MasterTokenPlainObject *)masterToken {
   NSString *segueIdentifier;
   if (@available(iOS 11.0, *)) {
@@ -37,6 +38,7 @@ static NSString *const kBuyEtherAmountToBuyEtherHistorySegueIdentifier  = @"BuyE
     return nil;
   }];
 }
+ */
 
 - (void) openBuyEtherHistoryForMasterToken:(MasterTokenPlainObject *)masterToken {
   [[self.transitionHandler openModuleUsingSegue:kBuyEtherAmountToBuyEtherHistorySegueIdentifier] thenChainUsingBlock:^id<RamblerViperModuleOutput>(id<BuyEtherHistoryModuleInput> moduleInput) {

@@ -349,35 +349,10 @@ included in this rate</string>
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
-                    <connections>
-                        <segue destination="Fuu-kI-jEg" kind="relationship" relationship="rootViewController" id="d93-sf-dNt"/>
-                    </connections>
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Yqc-rr-IN4" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-234" y="862"/>
-        </scene>
-        <!--Buy Ether Web View Controller-->
-        <scene sceneID="4th-ok-gkU">
-            <objects>
-                <viewController id="Fuu-kI-jEg" customClass="BuyEtherWebViewController" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="oqc-6h-3bN">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                        <viewLayoutGuide key="safeArea" id="1g8-ns-PEn"/>
-                    </view>
-                    <navigationItem key="navigationItem" id="jBm-zl-O7w">
-                        <barButtonItem key="rightBarButtonItem" style="done" systemItem="done" id="R9J-lz-uxR">
-                            <connections>
-                                <action selector="doneAction:" destination="Fuu-kI-jEg" id="01b-Y5-NKg"/>
-                            </connections>
-                        </barButtonItem>
-                    </navigationItem>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="9Pa-aD-mIp" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="553" y="861"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="Z7I-vf-7eh">
@@ -387,35 +362,10 @@ included in this rate</string>
                         <rect key="frame" x="0.0" y="0.0" width="375" height="56"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
-                    <connections>
-                        <segue destination="CiG-F7-whf" kind="relationship" relationship="rootViewController" id="4Cv-Te-kyy"/>
-                    </connections>
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Voq-Xa-ahD" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-258" y="1580"/>
-        </scene>
-        <!--Buy Ether10 Web View Controller-->
-        <scene sceneID="cUd-Ll-cNQ">
-            <objects>
-                <viewController id="CiG-F7-whf" customClass="BuyEther10WebViewController" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="XlZ-xz-kSH">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="647"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                        <viewLayoutGuide key="safeArea" id="tro-Yn-LNx"/>
-                    </view>
-                    <navigationItem key="navigationItem" id="xFU-vm-Dgf">
-                        <barButtonItem key="rightBarButtonItem" style="done" systemItem="done" id="pPy-9m-Jji">
-                            <connections>
-                                <action selector="doneAction:" destination="CiG-F7-whf" id="bSN-9L-AUv"/>
-                            </connections>
-                        </barButtonItem>
-                    </navigationItem>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="mOn-Ax-CbL" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="529" y="1579"/>
         </scene>
     </scenes>
     <resources>

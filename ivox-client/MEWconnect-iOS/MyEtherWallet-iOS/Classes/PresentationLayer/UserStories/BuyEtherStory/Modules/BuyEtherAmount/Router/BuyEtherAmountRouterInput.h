@@ -12,7 +12,7 @@
 @class MasterTokenPlainObject;
 
 @protocol BuyEtherAmountRouterInput <NSObject>
-- (void) openBuyEtherWebWithOrder:(SimplexOrder *)order masterToken:(MasterTokenPlainObject *)masterToken;
+//- (void) openBuyEtherWebWithOrder:(SimplexOrder *)order masterToken:(MasterTokenPlainObject *)masterToken;
 - (void) openBuyEtherHistoryForMasterToken:(MasterTokenPlainObject *)masterToken;
 - (void) close;
 @end
