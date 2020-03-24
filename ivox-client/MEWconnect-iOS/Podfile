@@ -18,7 +18,8 @@ abstract_target 'MEWconnect' do
   pod 'ViperMcFlurryX', :git => 'https://github.com/Foboz/ViperMcFlurryX.git'
   
   # Network
-  pod 'AFNetworking'
+#  pod 'AFNetworking'
+  pod 'AFNetworking', '~> 3.0', :source => 'https://github.com/ElfSundae/CocoaPods-Specs.git'
   pod 'Socket.IO-Client-Swift'
   
   # Other
